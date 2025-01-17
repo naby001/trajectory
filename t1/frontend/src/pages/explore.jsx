@@ -19,7 +19,8 @@ import {
   Box,
   TextField,
 } from "@mui/material"
-
+import { MapPin, Calendar, Users } from 'lucide-react'
+import Navbar from "./Navbar"
 
 // Mock data for tours
 const tours = [
@@ -106,6 +107,10 @@ export function Explore() {
         backgroundPosition: 'center',
       }}
     >
+      {/* Navbar */}
+      <AppBar position="fixed" sx={{ background: "#282a3a" }}>
+        <Navbar />
+      </AppBar>
       <Typography variant="h1" component="h1" gutterBottom>Explore Tours</Typography>
       <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4, mb: 8 }}>
         <TextField
