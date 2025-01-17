@@ -14,6 +14,7 @@ import {
   CardMedia,
   Container
 } from '@mui/material';
+import Navbar from './Navbar';
 
 const theme = createTheme({
   palette: {
@@ -114,7 +115,12 @@ const TourGrid = () => (
 
 export default function GroupTourMagazine() {
   return (
+    <>
+    <AppBar position="fixed" sx={{ background: "#282a3a" }}>
+        <Navbar />
+      </AppBar>
     <ThemeProvider theme={theme}>
+      
       <CssBaseline />
       <React.Fragment>
         
@@ -122,6 +128,7 @@ export default function GroupTourMagazine() {
         <TourGrid />
       </React.Fragment>
     </ThemeProvider>
+    </>
   );
 }
 

@@ -12,6 +12,7 @@ import {
   CardMedia,
   Box,
 } from "@mui/material"
+import Navbar from './Navbar';
 
 export function About() {
   return (
@@ -23,6 +24,11 @@ export function About() {
       py: 8,
       
     }}>
+      {/* Navbar */}
+      <AppBar position="fixed" sx={{ background: "#282a3a" }}>
+        <Navbar />
+      </AppBar>
+      
       <Container maxWidth="lg">
         <Typography variant="h2" component="h1" sx={{color: '#FFD700', fontWeight: 'bold', mb: 4, textShadow: '2px 2px 4px black' }}>
           About Us

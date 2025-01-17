@@ -23,8 +23,9 @@ const Navbar = () => {
   };
 
   const navItems = [
+    { label: "Home", to: "/" },
     { label: "Explore", to: "/explore" },
-    { label: "Plan Your Trip", to: "" },
+    
     { label: "Magazine", to: "/magazine" },
     { label: "About", to: "/about" },
     { label: "Login", to: "/login" },
