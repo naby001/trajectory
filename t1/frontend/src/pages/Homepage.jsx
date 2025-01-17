@@ -217,7 +217,7 @@ function HomePage() {
             marginTop: 10,
           }}
         >
-          Welcome to Mechanical Tech Fest 
+          Welcome to Mechanical Tech Fest  yah
         </Typography>
       </Box>
 
