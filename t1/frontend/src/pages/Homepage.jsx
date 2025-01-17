@@ -100,27 +100,27 @@ const testimonials = [
 const destinations = [
   {
     id: 1,
-    name: "Jaipur",
+    name: "Mechanical Department",
     image:
-      "https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://lh3.googleusercontent.com/p/AF1QipNFES13e38ErdouLsTOOg3bLR9eOeokcMRXVc0c=s1360-w1360-h1020",
   },
   {
     id: 2,
-    name: "Kerala",
+    name: "Playground",
     image:
-      "https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://lh3.googleusercontent.com/p/AF1QipOUccatxSmzPhxPiiGjKlywuohaPcLe_LCNce94=s1360-w1360-h1020",
   },
   {
     id: 3,
-    name: "Goa",
+    name: "Playground",
     image:
-      "https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://lh3.googleusercontent.com/p/AF1QipPiTbxdJpMtj2MNCUWrZ7h__6jGr2iL4ft9QZeX=s1360-w1360-h1020",
   },
   {
     id: 4,
     name: "Agra",
     image:
-      "https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://lh3.googleusercontent.com/p/AF1QipPiNJJwo8Zm5JsHLqmoyL3PhlPFybcvYTExE_Fv=s1360-w1360-h1020",
   },
 ];
 
@@ -185,7 +185,14 @@ function HomePage() {
           sx={{
             fontSize: { xs: "2rem", sm: "3rem", md: "4rem" },
             fontWeight: "bold",
-            textShadow: "2px 2px 8px rgba(0, 0, 0, 0.7)",
+            textShadow: `
+                1px 1px 0px #ff8c00, 
+                2px 2px 0px #ff4500, 
+                3px 3px 0px #ff1493, 
+                4px 4px 0px #9400d3, 
+                5px 5px 0px #1e90ff, 
+                6px 6px 0px #00fa9a
+              `,
           }}
         >
           Welcome to Mechanical Tech Fest
@@ -236,10 +243,10 @@ function HomePage() {
         <Typography align="center">&copy; {new Date().getFullYear()} Mechanical Tech Fest. All rights reserved.</Typography>
       </Box>
       
-      <Box sx={{ bgcolor: "rgba(0, 0, 0, 0.5)", py: 8 }}>
+      <Box sx={{ bgcolor: "rgba(0, 0, 0, 0.5)", py: 8,color:"white" }}>
         <Container maxWidth="lg">
           <Typography variant="h4" align="center" gutterBottom>
-            Featured Destinations
+           where You find Us?
           </Typography>
           <Box
             sx={{
@@ -316,9 +323,9 @@ function HomePage() {
         </Container>
       </Box>
 
-      <Container sx={{ py: 8 }} maxWidth="md">
+      <Container sx={{ py: 8 ,color:"white"}} maxWidth="md">
         <Typography variant="h4" align="center" gutterBottom>
-          What Our Travelers Say
+          What Our Organisers Say
         </Typography>
         <Grid container spacing={4}>
           {testimonials.map((testimonial) => (
@@ -363,41 +370,16 @@ function HomePage() {
         <Typography variant="h6" align="center" gutterBottom>
           Ready to start your adventure?
         </Typography>
-        <Button
-          variant="contained"
-          size="large"
-          sx={{
-            display: "block",
-            mx: "auto",
-            mt: 2,
-            backgroundColor: "blue",
-            color: "white",
-          }}
-        >
-          Create Your Tour Now
-        </Button>
+        
         <Box sx={{ mt: 4, display: "flex", justifyContent: "center" }}>
-          <TextField
-            variant="outlined"
-            placeholder="Enter your email"
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton edge="end">
-                    <EmailIcon />
-                  </IconButton>
-                </InputAdornment>
-              ),
-              style: { backgroundColor: "white" },
-            }}
-            sx={{ mr: 2 }}
-          />
+          
           <Button
             variant="outlined"
             sx={{ color: "white", borderColor: "white" }}
           >
-            Subscribe to Newsletter
+            Subscribe to Social Media
           </Button>
+          
         </Box>
         <Typography
           variant="subtitle1"
@@ -406,7 +388,7 @@ function HomePage() {
           component="p"
           sx={{ mt: 3 }}
         >
-          © {new Date().getFullYear()} TourPlanner. All rights reserved.
+          © {new Date().getFullYear()} Trajectory. All rights reserved.
         </Typography>
       </Box>
     </Box>
