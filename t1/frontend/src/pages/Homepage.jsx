@@ -22,10 +22,8 @@ import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import EmailIcon from "@mui/icons-material/Email";
-import backgroundImage from "../assets/back.jpg";
-import backgroundvid from "../assets/vid.mp4";
 import Navbar from "./Navbar";
-
+import backgroundvid from "../assets/vid.mp4";
 import { Link } from "react-router-dom";
 
 const tours = [
@@ -74,7 +72,7 @@ const tours = [
     description:
       "Learn and implement the latest AI and machine learning techniques to solve modern problems.",
     image:
-      "https://images.pexels.com/photos/190537/pexels-photo-190537.jpeg?auto=compress&cs=tinysrgb&w=600", // replace with a suitable image URL
+      "https://images.pexels.com/photos/190537/pexels-photo-190537.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
 ];
 
@@ -82,19 +80,19 @@ const testimonials = [
   {
     id: 1,
     name: "Rahul Sharma",
-    avatar: "url(${backgroundImage})",
+    avatar: "https://via.placeholder.com/150",
     text: "TourPlanner made our trip to India unforgettable!",
   },
   {
     id: 2,
     name: "Priya Singh",
-    avatar: "url(${backgroundImage})",
+    avatar: "https://via.placeholder.com/150",
     text: "The best way to explore India's hidden gems.",
   },
   {
     id: 3,
     name: "Amit Patel",
-    avatar: "/placeholder.svg?height=50&width=50",
+    avatar: "https://via.placeholder.com/150",
     text: "I've never had such a seamless travel experience before.",
   },
 ];
@@ -104,25 +102,25 @@ const destinations = [
     id: 1,
     name: "Jaipur",
     image:
-      "https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress&cs=tinysrgb&w=600?height=300&width=400",
+      "https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     id: 2,
     name: "Kerala",
     image:
-      "https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg?auto=compress&cs=tinysrgb&w=600?height=200&width=300",
+      "https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     id: 3,
     name: "Goa",
     image:
-      "https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&w=400?height=300&width=400",
+      "https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     id: 4,
     name: "Agra",
     image:
-      "https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress&cs=tinysrgb&w=400?height=300&width=400",
+      "https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
 ];
 
@@ -144,134 +142,100 @@ function HomePage() {
       sx={{
         display: "flex",
         flexDirection: "column",
-
-        maxHeight: "100vh",
-        // backgroundImage: url(),
-        backgroundSize: "cover",
-        backgroundPosition: "center",
+        minHeight: "100vh",
+        position: "relative",
       }}
     >
+      {/* Navbar */}
+      <AppBar position="fixed" sx={{ background: "#282a3a" }}>
+        <Navbar />
+      </AppBar>
+
+      {/* Background Video */}
       <video
         autoPlay
         muted
         loop
-        playsInline
         style={{
           position: "absolute",
-          top: "0",
-          left: "0",
+          top: 0,
+          left: 0,
           width: "100%",
-          height: "225%",
+          height: "100%",
           objectFit: "cover",
-          zIndex: -1, // Ensures video stays behind content
+          zIndex: -1,
         }}
       >
         <source src={backgroundvid} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
-      {/* nabvar */}
-      <AppBar
-        position="fixed"
-        sx={{
-          background: "#282a3a", // Gradient background
-          boxShadow: "0px 4px 10px rgba(124, 6, 6, 0.3)", // Subtle shadow for depth
-
-          // borderRadius:5,
-          // width:900
-        }}
-      >
-        <Navbar></Navbar>
-      </AppBar>
-
+      {/* Main Content */}
       <Box
         sx={{
-          height: "100vh",
-          display: "flex",
-          flexDirection: "column",
-          // justifyContent: "center",
-          backgroundColor: "rgba(23, 23, 17, 0.4)",
+          mt: 8,
           py: 6,
+          color: "white",
+          textAlign: "center",
+          backgroundColor: "rgba(0, 0, 0, 0.5)",
         }}
       >
         <Typography
-          component="h1"
-          //variant="h2"
-          align="center"
-          color="white"
-          gutterBottom
+          variant="h1"
           sx={{
+            fontSize: { xs: "2rem", sm: "3rem", md: "4rem" },
             fontWeight: "bold",
-            color: "white",
-            mb: 1,
-            fontFamily: "K2D",
-            fontSize: 100,
-            textShadow: `
-                1px 1px 0px #ff8c00, 
-                2px 2px 0px #ff4500, 
-                3px 3px 0px #ff1493, 
-                4px 4px 0px #9400d3, 
-                5px 5px 0px #1e90ff, 
-                6px 6px 0px #00fa9a
-              `,
-            marginTop: 10,
+            textShadow: "2px 2px 8px rgba(0, 0, 0, 0.7)",
           }}
         >
-          Welcome to Mechanical Tech Fest  yah
+          Welcome to Mechanical Tech Fest
         </Typography>
       </Box>
 
+      {/* Featured Events */}
       <Container sx={{ py: 8 }} maxWidth="lg">
         <Typography
           variant="h4"
           align="center"
-          gutterBottom
           sx={{
-            fontFamily: "Arial, sans-serif",
             fontWeight: "bold",
-            color: "#ffd700", // Golden color for text
-            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)", // Subtle shadow for text
-            letterSpacing: 2,
-            fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem" }, // Responsive font size
+            mb: 4,
+            color: "#ffd700",
+            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)",
           }}
         >
-          Featured events
+          Featured Events
         </Typography>
 
         <Grid container spacing={4}>
           {tours.map((tour) => (
             <Grid item key={tour.id} xs={12} sm={6} md={4}>
-              <Card
-                sx={{
-                  height: "100%",
-                  display: "flex",
-                  flexDirection: "column",
-                  backgroundColor: "rgba(139, 141, 144, 0.8)",
-                }}
-              >
+              <Card sx={{ height: "100%", backgroundColor: "rgba(255, 255, 255, 0.8)" }}>
                 <CardMedia
                   component="img"
-                  sx={{
-                    height: 200,
-                  }}
+                  height="200"
                   image={tour.image}
                   alt={tour.title}
                 />
-                <CardContent sx={{ flexGrow: 1 }}>
-                  <Typography gutterBottom variant="h5" component="h2">
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
                     {tour.title}
                   </Typography>
-                  <Typography>{tour.description}</Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {tour.description}
+                  </Typography>
                 </CardContent>
-                <Button size="small" sx={{ m: 2 }}>
-                  View Details
-                </Button>
               </Card>
             </Grid>
           ))}
         </Grid>
       </Container>
 
+      {/* Footer */}
+      <Box sx={{ bgcolor: "rgba(0, 0, 0, 0.8)", color: "white", p: 4 }}>
+        <Typography align="center">&copy; {new Date().getFullYear()} Mechanical Tech Fest. All rights reserved.</Typography>
+      </Box>
+      
       <Box sx={{ bgcolor: "rgba(0, 0, 0, 0.5)", py: 8 }}>
         <Container maxWidth="lg">
           <Typography variant="h4" align="center" gutterBottom>

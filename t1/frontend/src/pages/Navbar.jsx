@@ -1,11 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Toolbar, Typography, Button } from "@mui/material";
+import {
+  Toolbar,
+  Typography,
+  Button,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+  useMediaQuery,
+} from "@mui/material";
 import ExploreIcon from "@mui/icons-material/Explore";
+import MenuIcon from "@mui/icons-material/Menu";
 
 const Navbar = () => {
+  const isMobile = useMediaQuery("(max-width:600px)");
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const handleDrawerToggle = () => {
+    setDrawerOpen(!drawerOpen);
+  };
+
+  const navItems = [
+    { label: "Explore", to: "/explore" },
+    { label: "Plan Your Trip", to: "" },
+    { label: "Magazine", to: "/magazine" },
+    { label: "About", to: "/about" },
+    { label: "Login", to: "/login" },
+  ];
+
   return (
-    <Toolbar>
+    <Toolbar sx={{ }}>
       <ExploreIcon
         sx={{
           mr: 2,
@@ -30,86 +56,58 @@ const Navbar = () => {
       >
         TraJectory
       </Typography>
-      <Button
-        color="inherit"
-        component={Link}
-        to="/explore"
-        sx={{
-          color: "white",
-          fontSize: 16,
-          "&:hover": {
-            color: "#ffd700",
-            transform: "scale(1.1)", // Slight enlargement on hover
-          },
-          transition: "transform 0.2s, color 0.2s",
-        }}
-      >
-        Explore
-      </Button>
-      <Button
-        color="inherit"
-        component={Link}
-        to=""
-        sx={{
-          color: "white",
-          fontSize: 16,
-          "&:hover": {
-            color: "#ffd700",
-            transform: "scale(1.1)",
-          },
-          transition: "transform 0.2s, color 0.2s",
-        }}
-      >
-        Plan Your Trip
-      </Button>
-      <Button
-        color="inherit"
-        component={Link}
-        to="/magazine"
-        sx={{
-          color: "white",
-          fontSize: 16,
-          "&:hover": {
-            color: "#ffd700",
-            transform: "scale(1.1)",
-          },
-          transition: "transform 0.2s, color 0.2s",
-        }}
-      >
-        Magazine
-      </Button>
-      <Button
-        color="inherit"
-        component={Link}
-        to="/about"
-        sx={{
-          color: "white",
-          fontSize: 16,
-          "&:hover": {
-            color: "#ffd700",
-            transform: "scale(1.1)",
-          },
-          transition: "transform 0.2s, color 0.2s",
-        }}
-      >
-        About
-      </Button>
-      <Button
-        color="inherit"
-        component={Link}
-        to="/login"
-        sx={{
-          color: "white",
-          fontSize: 16,
-          "&:hover": {
-            color: "#ffd700",
-            transform: "scale(1.1)",
-          },
-          transition: "transform 0.2s, color 0.2s",
-        }}
-      >
-        Login
-      </Button>
+      {isMobile ? (
+        <>
+          <IconButton
+            edge="end"
+            color="inherit"
+            aria-label="menu"
+            onClick={handleDrawerToggle}
+            sx={{ color: "white" }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Drawer
+            anchor="right"
+            open={drawerOpen}
+            onClose={handleDrawerToggle}
+          >
+            <List>
+              {navItems.map((item) => (
+                <ListItem
+                  button
+                  key={item.label}
+                  component={Link}
+                  to={item.to}
+                  onClick={handleDrawerToggle}
+                >
+                  <ListItemText primary={item.label} />
+                </ListItem>
+              ))}
+            </List>
+          </Drawer>
+        </>
+      ) : (
+        navItems.map((item) => (
+          <Button
+            key={item.label}
+            color="inherit"
+            component={Link}
+            to={item.to}
+            sx={{
+              color: "white",
+              fontSize: 16,
+              "&:hover": {
+                color: "#ffd700",
+                transform: "scale(1.1)",
+              },
+              transition: "transform 0.2s, color 0.2s",
+            }}
+          >
+            {item.label}
+          </Button>
+        ))
+      )}
     </Toolbar>
   );
 };
