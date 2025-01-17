@@ -31,7 +31,7 @@ const Navbar = () => {
   ];
 
   return (
-    <Toolbar sx={{ }}>
+    <Toolbar sx={{ backgroundColor: "#6666ff" }}>
       <ExploreIcon
         sx={{
           mr: 2,
@@ -72,7 +72,7 @@ const Navbar = () => {
             open={drawerOpen}
             onClose={handleDrawerToggle}
           >
-            <List>
+            <List sx={{ backgroundColor: "#6666ff", height: "100%" }}>
               {navItems.map((item) => (
                 <ListItem
                   button
@@ -80,8 +80,23 @@ const Navbar = () => {
                   component={Link}
                   to={item.to}
                   onClick={handleDrawerToggle}
+                  sx={{
+                    "&:hover": {
+                      backgroundColor: "#444",
+                    },
+                  }}
                 >
-                  <ListItemText primary={item.label} />
+                  <ListItemText
+                    primary={item.label}
+                    sx={{
+                      color: "white",
+                      fontSize: 16,
+                      "&:hover": {
+                        color: "#ffd700",
+                        textShadow: "0 0 8px #ffd700",
+                      },
+                    }}
+                  />
                 </ListItem>
               ))}
             </List>
