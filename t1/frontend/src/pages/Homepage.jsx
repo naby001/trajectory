@@ -79,21 +79,21 @@ const tours = [
 const testimonials = [
   {
     id: 1,
-    name: "Rahul Sharma",
+    name: "Sayan Das",
     avatar: "https://via.placeholder.com/150",
-    text: "TourPlanner made our trip to India unforgettable!",
+    text: "Best event yet organised",
   },
   {
     id: 2,
-    name: "Priya Singh",
+    name: "Himoprovo",
     avatar: "https://via.placeholder.com/150",
-    text: "The best way to explore India's hidden gems.",
+    text: "The best way to explore JU's hidden gems.",
   },
   {
     id: 3,
-    name: "Amit Patel",
+    name: "Raju Da",
     avatar: "https://via.placeholder.com/150",
-    text: "I've never had such a seamless travel experience before.",
+    text: "I've never had such a porota.",
   },
 ];
 
