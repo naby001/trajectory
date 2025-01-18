@@ -235,7 +235,7 @@ function HomePage() {
               `,
           }}
         >
-          Welcome to Mechanical Tech Fest
+          Welcome to mechanical Tech Fest
         </Typography>
       </Box>
 
