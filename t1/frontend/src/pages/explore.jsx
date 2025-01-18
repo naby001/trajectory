@@ -159,6 +159,11 @@ export function Explore() {
   })
 
   return (
+    <>
+     {/* Navbar */}
+     <AppBar position="fixed" sx={{ background: "#282a3a" }}>
+        <Navbar />
+      </AppBar>
     <Box
       sx={{
         px: 4,
@@ -166,13 +171,11 @@ export function Explore() {
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
+        paddingTop:"8%"
       }}
     >
-      {/* Navbar */}
-      <AppBar position="fixed" sx={{ background: "#282a3a" }}>
-        <Navbar />
-      </AppBar>
-      <Typography variant="h1" component="h1" gutterBottom>Explore Tours</Typography>
+     
+      <Typography variant="h1" component="h1" gutterBottom>Explore Events</Typography>
       <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4, mb: 8 }}>
         <TextField
           label="Search tours..."
@@ -235,6 +238,7 @@ export function Explore() {
         ))}
       </Grid>
     </Box>
+    </>
   )
 }
 

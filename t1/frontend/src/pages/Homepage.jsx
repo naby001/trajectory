@@ -23,7 +23,7 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import EmailIcon from "@mui/icons-material/Email";
 import Navbar from "./Navbar";
-import backgroundvid from "../assets/vid.mp4";
+import backgroundvid from "../assets/vid2.mp4";
 import { Link } from "react-router-dom";
 
 const tours = [
@@ -152,23 +152,63 @@ function HomePage() {
       </AppBar>
 
       {/* Background Video */}
-      <video
-        autoPlay
-        muted
-        loop
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          zIndex: -1,
-        }}
-      >
-        <source src={backgroundvid} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      <div
+  style={{
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    display: "flex",
+    flexDirection: "column", // Stack videos vertically
+    overflow: "hidden",
+    zIndex: -1,
+  }}
+>
+  <div
+    style={{
+      flex: 1,
+      width: "100%",
+      height: "50%",
+    }}
+  >
+    <video
+      autoPlay
+      muted
+      loop
+      style={{
+        objectFit: "cover",
+        width: "100%",
+        height: "100%",
+      }}
+    >
+      <source src={backgroundvid} type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <div
+    style={{
+      flex: 1,
+      width: "100%",
+      height: "50%",
+    }}
+  >
+    <video
+      autoPlay
+      muted
+      loop
+      style={{
+        objectFit: "cover",
+        width: "100%",
+        height: "100%",
+      }}
+    >
+      <source src={backgroundvid} type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</div>
+
 
       {/* Main Content */}
       <Box
