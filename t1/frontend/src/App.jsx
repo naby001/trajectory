@@ -8,6 +8,7 @@ import {About} from './pages/about';
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import  Details from './pages/events/details'
+import AuthPage from './pages/login';
 
 
 
@@ -69,7 +70,7 @@ function App() {
           <Route path="/explore" element={ <Explore/>} />
           {/* <Route path="/plan" element={<PlanYourTrip />} /> */}
           <Route path="/about" element={<About />} />
-
+          <Route path="/login" element={<AuthPage/>} />
           <Route path='/details'  element={<Details></Details>}/>
         </Routes>
       </Router>

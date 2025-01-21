@@ -68,7 +68,7 @@ const tours = [
     title: "HoverPod",
     description: "Compete in an intense 5-a-side football tournament.",
     location: "Sports Ground, North Campus",
-    duration: "6 hours",
+    duration: "Hardware Challenge",
     groupSize: "Hardware Challenge",
     price: 100,
     image: "https://images.pexels.com/photos/47730/the-ball-stadion-football-the-pitch-47730.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
