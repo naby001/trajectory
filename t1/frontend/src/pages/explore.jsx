@@ -175,6 +175,7 @@ export function Explore() {
      <AppBar position="fixed" sx={{ background: "#282a3a" }}>
         <Navbar />
       </AppBar>
+      
     <Box
       sx={{
         px: 4,
@@ -189,14 +190,14 @@ export function Explore() {
       <Typography variant="h1" component="h1" gutterBottom>Explore Events</Typography>
       <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4, mb: 8 }}>
         <TextField
-          label="Search tours..."
+          label="Search Events..."
           variant="outlined"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           sx={{ width: { md: '50%' } }}
         />
         <FormControl variant="outlined" sx={{ width: { md: '25%' } }}>
-          <InputLabel>Filter by duration</InputLabel>
+          <InputLabel>Filter by Challenge</InputLabel>
           <Select
             value={filterDuration}
             onChange={(e) => setFilterDuration(e.target.value)}

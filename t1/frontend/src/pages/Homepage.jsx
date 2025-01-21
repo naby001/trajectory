@@ -257,7 +257,17 @@ function HomePage() {
         <Grid container spacing={4}>
           {tours.map((tour) => (
             <Grid item key={tour.id} xs={12} sm={6} md={4}>
-              <Card sx={{ height: "100%", backgroundColor: "rgba(255, 255, 255, 0.8)" }}>
+              <Card
+                sx={{
+                  height: "100%",
+                  backgroundColor: "rgba(255, 255, 255, 0.8)",
+                  transition: "transform 0.3s, box-shadow 0.3s",
+                  "&:hover": {
+                    transform: "scale(1.05)",
+                    boxShadow: "0 8px 16px rgba(0, 0, 0, 0.2)",
+                  },
+                }}
+              >
                 <CardMedia
                   component="img"
                   height="200"
@@ -276,6 +286,7 @@ function HomePage() {
             </Grid>
           ))}
         </Grid>
+
       </Container>
 
       {/* Footer */}
