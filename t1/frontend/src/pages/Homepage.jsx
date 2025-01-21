@@ -23,7 +23,7 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import EmailIcon from "@mui/icons-material/Email";
 import Navbar from "./Navbar";
-import backgroundvid from "../assets/vid2.mp4";
+import backgroundvid from "../assets/vid3.mp4";
 import { Link } from "react-router-dom";
 
 const tours = [
@@ -48,7 +48,7 @@ const tours = [
     title: "General",
     description: "Quiz, Debate, Cultural events etc..",
     image:
-      "https://images.pexels.com/photos/5428830/pexels-photo-5428830.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://viralsolutions.net/wp-content/uploads/2019/06/shutterstock_749036344.webp",
   },
   {
     id: 4,
@@ -68,11 +68,11 @@ const tours = [
   },
   {
     id: 6,
-    title: "AI & Machine Learning Workshop",
+    title: "Mystery Event?",
     description:
-      "Learn and implement the latest AI and machine learning techniques to solve modern problems.",
+      "Event closes with a banger",
     image:
-      "https://images.pexels.com/photos/190537/pexels-photo-190537.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/5428830/pexels-photo-5428830.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
 ];
 
@@ -235,7 +235,7 @@ function HomePage() {
               `,
           }}
         >
-          Welcome to mechanical Tech Fest
+          Welcome to Mechanical Tech Fest
         </Typography>
       </Box>
 
@@ -418,7 +418,6 @@ function HomePage() {
           </Button>
           
         </Box>
-        
         <Typography
           variant="subtitle1"
           align="center"

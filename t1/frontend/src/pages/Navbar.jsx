@@ -11,7 +11,7 @@ import {
   ListItemText,
   useMediaQuery,
 } from "@mui/material";
-import ExploreIcon from "@mui/icons-material/Explore";
+import logo from "../assets/logo.png";
 import MenuIcon from "@mui/icons-material/Menu";
 
 const Navbar = () => {
@@ -25,24 +25,22 @@ const Navbar = () => {
   const navItems = [
     { label: "Home", to: "/" },
     { label: "Explore", to: "/explore" },
-    
-    
     { label: "About", to: "/about" },
     { label: "Login", to: "/login" },
   ];
 
   return (
-    <Toolbar sx={{ backgroundColor: "#6666ff" }}>
-      <ExploreIcon
-        sx={{
-          mr: 2,
-          color: "white",
-          fontSize: 28,
-          "&:hover": {
-            color: "#ffd700", // Golden glow on hover
-            textShadow: "0 0 8px #ffd700",
-          },
+    <Toolbar sx={{ backgroundColor: "black" }}>
+      <img
+        src={logo}
+        alt="Logo"
+        style={{
+          width: 40,
+          height: 40,
+          marginRight: 16,
+          cursor: "pointer",
         }}
+        onClick={() => window.location.href = "/"} // Redirect to home on logo click
       />
       <Typography
         variant="h6"
