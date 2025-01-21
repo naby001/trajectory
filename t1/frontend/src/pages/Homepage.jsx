@@ -279,9 +279,6 @@ function HomePage() {
       </Container>
 
       {/* Footer */}
-      <Box sx={{ bgcolor: "rgba(0, 0, 0, 0.8)", color: "white", p: 4 }}>
-        <Typography align="center">&copy; {new Date().getFullYear()} Mechanical Tech Fest. All rights reserved.</Typography>
-      </Box>
       
       <Box sx={{ bgcolor: "rgba(0, 0, 0, 0.5)", py: 8,color:"white" }}>
         <Container maxWidth="lg">
@@ -421,6 +418,7 @@ function HomePage() {
           </Button>
           
         </Box>
+        
         <Typography
           variant="subtitle1"
           align="center"

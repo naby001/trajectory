@@ -5,7 +5,7 @@ import HomePage from './pages/Homepage';
 
 import {Explore} from './pages/explore'; 
 import {About} from './pages/about'; 
-import GroupTourMagazine from './pages/magazine'; 
+
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import  Details from './pages/events/details'
 
@@ -69,7 +69,7 @@ function App() {
           <Route path="/explore" element={ <Explore/>} />
           {/* <Route path="/plan" element={<PlanYourTrip />} /> */}
           <Route path="/about" element={<About />} />
-          <Route path="/magazine" element={<GroupTourMagazine/>} /> 
+
           <Route path='/details'  element={<Details></Details>}/>
         </Routes>
       </Router>
