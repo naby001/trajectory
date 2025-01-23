@@ -28,7 +28,7 @@ const events = [
     title: "Water Rocket",
     description: "Showcase your CAD skills by designing innovative mechanical components.",
     location: "Hall A, Jadavpur University",
-    duration: "Hardware Challenge",
+    type: "Hardware Challenge",
     groupSize: "1-3",
     price: 150,
     image: "https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
@@ -38,7 +38,7 @@ const events = [
     title: "Robo Soccer",
     description: "Build and race your robots on an obstacle-filled track.",
     location: "Central Lawn, Tech Campus",
-    duration: "Hardware Challenge",
+    type: "Hardware Challenge",
     groupSize: "2-5",
     price: 300,
     image: "https://images.pexels.com/photos/256412/pexels-photo-256412.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
@@ -48,7 +48,7 @@ const events = [
     title: "Line Follower",
     description: "Design and construct a line-following robot that navigates a predefined path.",
     location: "Workshop Area, Block B",
-    duration: "Hardware Challenge",
+    type: "Hardware Challenge",
     groupSize: "3-6",
     price: 200,
     image: "https://images.pexels.com/photos/1438515/pexels-photo-1438515.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
@@ -58,7 +58,7 @@ const events = [
     title: "Egglosion",
     description: "Build a hydraulic arm to complete specified tasks with precision.",
     location: "Lab 3, Mechanical Wing",
-    duration: "Hardware Challenge",
+    type: "Hardware Challenge",
     groupSize: "1-4",
     price: 250,
     image: "https://images.pexels.com/photos/256660/pexels-photo-256660.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
@@ -68,8 +68,8 @@ const events = [
     title: "HoverPod",
     description: "Compete in an intense 5-a-side football tournament.",
     location: "Sports Ground, North Campus",
-    duration: "Hardware Challenge",
-    groupSize: "Hardware Challenge",
+    type: "Hardware Challenge",
+    groupSize: "5",
     price: 100,
     image: "https://images.pexels.com/photos/47730/the-ball-stadion-football-the-pitch-47730.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
   },
@@ -78,7 +78,7 @@ const events = [
     title: "Solidworks/Fusion",
     description: "Design innovative mechanical components using Solidworks or Fusion software.",
     location: "Gaming Arena, Hall C",
-    duration: "Simulation Challenge",
+    type: "Simulation Challenge",
     groupSize: "5",
     price: 200,
     image: "https://images.pexels.com/photos/4425763/pexels-photo-4425763.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
@@ -88,7 +88,7 @@ const events = [
     title: "Quiz",
     description: "Test your knowledge in a challenging quiz competition.",
     location: "Open Ground, East Campus",
-    duration: "8 hours",
+    type: "General",
     groupSize: "General",
     price: 500,
     image: "https://images.pexels.com/photos/209831/pexels-photo-209831.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
@@ -98,7 +98,7 @@ const events = [
     title: "Debate",
     description: "Engage in a lively debate on important topics with fellow participants.",
     location: "eSports Zone, Hall B",
-    duration: "General",
+    type: "General",
     groupSize: "5",
     price: 200,
     image: "https://images.pexels.com/photos/9825980/pexels-photo-9825980.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
@@ -108,7 +108,7 @@ const events = [
     title: "Badminton(Mixed)",
     description: "Compete in a fast-paced mixed doubles badminton tournament.",
     location: "Recreation Hall, Block F",
-    duration: "Sports Challenge",
+    type: "Sports Challenge",
     groupSize: "1",
     price: 50,
     image: "https://images.pexels.com/photos/210027/pexels-photo-210027.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
@@ -118,7 +118,7 @@ const events = [
     title: "Tug of War",
     description: "Compete in a traditional tug of war competition with your team.",
     location: "Automotive Lab, Block E",
-    duration: "Sports Challenge",
+    type: "Sports Challenge",
     groupSize: "3-5",
     price: 450,
     image: "https://images.pexels.com/photos/630839/pexels-photo-630839.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
@@ -128,7 +128,7 @@ const events = [
     title: "Cricket",
     description: "Participate in a thrilling cricket match, showcasing your skills.",
     location: "eSports Lounge, Main Block",
-    duration: "Sports Challenge",
+    type: "Sports Challenge",
     groupSize: "3",
     price: 150,
     image: "https://images.pexels.com/photos/1446001/pexels-photo-1446001.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
@@ -138,7 +138,7 @@ const events = [
     title: "Football",
     description: "Participate in an exciting football match with your team.",
     location: "Cricket Ground, South Campus",
-    duration: "Sports Challenge",
+    type: "Sports Challenge",
     groupSize: "6-10",
     price: 100,
     image: "https://images.pexels.com/photos/1594942/pexels-photo-1594942.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
@@ -148,7 +148,7 @@ const events = [
     title: "Treasure Hunt",
     description: "Embark on a treasure hunt across the campus, solving clues and finding hidden treasures.",
     location: "Campus Grounds",
-    duration: "Fun Activities",
+    type: "Fun Activities",
     groupSize: "6-10",
     price: 100,
     image: "https://images.pexels.com/photos/1594942/pexels-photo-1594942.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
@@ -157,12 +157,12 @@ const events = [
 
 export function Explore() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [filterChallenge, setFilterChallenge] = useState("");
+  const [filterType, setFilterType] = useState("");
 
   const filteredEvents = events.filter((event) => {
     return (
       event.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
-      (filterChallenge === "" || event.duration.includes(filterChallenge))
+      (filterType === "" || event.type.includes(filterType))
     );
   });
 
@@ -207,11 +207,11 @@ export function Explore() {
             sx={{ width: { md: '50%' }, backgroundColor: "#fff" }}
           />
           <FormControl variant="outlined" sx={{ width: { md: '25%' }, backgroundColor: "#fff" }}>
-            <InputLabel>Filter by Challenge</InputLabel>
+            <InputLabel>Filter by Type</InputLabel>
             <Select
-              value={filterChallenge}
-              onChange={(e) => setFilterChallenge(e.target.value)}
-              label="Filter by Challenge"
+              value={filterType}
+              onChange={(e) => setFilterType(e.target.value)}
+              label="Filter by Type"
             >
               <MenuItem value="">All events</MenuItem>
               <MenuItem value="Hardware Challenge">Hardware Challenge</MenuItem>
@@ -244,7 +244,7 @@ export function Explore() {
                     </Box>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                       <Calendar className="w-4 h-4 mr-2" />
-                      <span>{event.duration}</span>
+                      <span>{event.type}</span>
                     </Box>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                       <Users className="w-4 h-4 mr-2" />

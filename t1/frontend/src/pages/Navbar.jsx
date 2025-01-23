@@ -14,10 +14,6 @@ import {
 import logo from "../assets/logo.png";
 import MenuIcon from "@mui/icons-material/Menu";
 
-
-
-
-
 const Navbar = () => {
   const isMobile = useMediaQuery("(max-width:600px)");
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -39,8 +35,8 @@ const Navbar = () => {
         src={logo}
         alt="Logo"
         style={{
-          width: 40,
-          height: 40,
+          width: 60, // Increased size
+          height: 60, // Increased size
           marginRight: 16,
           cursor: "pointer",
         }}
@@ -48,13 +44,15 @@ const Navbar = () => {
       />
       <Typography
         variant="h6"
-        component="div"
+        component={Link} // Changed to Link component
+        to="/"
         sx={{
           flexGrow: 1,
           fontFamily: "k2d",
           fontWeight: "bold",
           color: "white",
           letterSpacing: 1.2,
+          textDecoration: "none", // Remove underline
         }}
       >
         TraJectory

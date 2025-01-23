@@ -37,11 +37,11 @@ const tours = [
   },
   {
     id: 2,
-    title: "Case Study",
+    title: "Sports Challenge",
     description:
       "Dive deep into real-world engineering cases and come up with innovative solutions.",
     image:
-      "https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/2294361/pexels-photo-2294361.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     id: 3,
