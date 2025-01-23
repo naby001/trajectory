@@ -24,7 +24,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import EmailIcon from "@mui/icons-material/Email";
 import Navbar from "./Navbar";
 import backgroundvid from "../assets/vid3.mp4";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const tours = [
   {
@@ -125,6 +125,12 @@ const destinations = [
 ];
 
 function HomePage() {
+  const navigate = useNavigate();
+  
+  const handleCardClick = (type) => {
+    navigate(`/explore?filter=${type}`);
+  };
+
   const [currentDestination, setCurrentDestination] = React.useState(0);
 
   const nextDestination = () => {
@@ -267,6 +273,7 @@ function HomePage() {
                     boxShadow: "0 8px 16px rgba(0, 0, 0, 0.2)",
                   },
                 }}
+                onClick={() => handleCardClick(tour.title)}
               >
                 <CardMedia
                   component="img"

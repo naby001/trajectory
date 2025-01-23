@@ -21,6 +21,7 @@ import {
 } from "@mui/material"
 import { MapPin, Calendar, Users } from 'lucide-react'
 import Navbar from "./Navbar"
+import { useLocation } from "react-router-dom";
 
 const events = [
   {
@@ -151,13 +152,27 @@ const events = [
     type: "Fun Activities",
     groupSize: "6-10",
     price: 100,
-    image: "https://images.pexels.com/photos/1594942/pexels-photo-1594942.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
+    image: "",
+  },
+  {
+    id: 14,
+    title: "Mystery Event",
+    description: "",
+    location: "JU Campus",
+    type: "Fun Activities",
+    groupSize: "6-10",
+    price: 100,
+    image: "https://images.pexels.com/photos/5428830/pexels-photo-5428830.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
 ];
 
 export function Explore() {
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const initialFilterType = queryParams.get("filter") || "";
+
   const [searchTerm, setSearchTerm] = useState("");
-  const [filterType, setFilterType] = useState("");
+  const [filterType, setFilterType] = useState(initialFilterType);
 
   const filteredEvents = events.filter((event) => {
     return (
@@ -197,6 +212,8 @@ export function Explore() {
         >
           <source src={backgroundVideo} type="video/mp4" />
         </video>
+        <br>
+        </br>
         <Typography variant="h1" component="h1" gutterBottom sx={{ color: "#fff" }}>Explore Events</Typography>
         <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4, mb: 8 }}>
           <TextField
