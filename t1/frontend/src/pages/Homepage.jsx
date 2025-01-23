@@ -22,6 +22,9 @@ import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import EmailIcon from "@mui/icons-material/Email";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import FacebookIcon from "@mui/icons-material/Facebook";
 import Navbar from "./Navbar";
 import backgroundvid from "../assets/vid3.mp4";
 import { Link, useNavigate } from "react-router-dom";
@@ -142,6 +145,11 @@ function HomePage() {
       (prev) => (prev - 1 + destinations.length) % destinations.length
     );
   };
+
+  React.useEffect(() => {
+    const interval = setInterval(nextDestination, 3000); // Change slide every 3 seconds
+    return () => clearInterval(interval); // Cleanup interval on component unmount
+  }, []);
 
   return (
     <Box
@@ -435,6 +443,32 @@ function HomePage() {
             Subscribe to Social Media
           </Button>
           
+        </Box>
+        <Box sx={{ mt: 4, display: "flex", justifyContent: "center" }}>
+          <IconButton
+            component="a"
+            href="https://www.linkedin.com/company/trajectoryjumech/"
+            target="_blank"
+            sx={{ color: "white" }}
+          >
+            <LinkedInIcon />
+          </IconButton>
+          <IconButton
+            component="a"
+            href="https://www.instagram.com/trajectory_jumech/"
+            target="_blank"
+            sx={{ color: "white" }}
+          >
+            <InstagramIcon />
+          </IconButton>
+          <IconButton
+            component="a"
+            href="https://www.facebook.com/profile.php?id=61572408332143"
+            target="_blank"
+            sx={{ color: "white" }}
+          >
+            <FacebookIcon />
+          </IconButton>
         </Box>
         <Typography
           variant="subtitle1"

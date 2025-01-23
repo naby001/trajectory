@@ -65,10 +65,9 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/explore" element={<Explore />} />
-          {/* <Route path="/plan" element={<PlanYourTrip />} /> */}
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<AuthPage />} />
-          <Route path="/details" element={<Details></Details>} />
+          <Route path="/details" element={<Details />} />
         </Routes>
       </Router>
     </ThemeProvider>
