@@ -22,6 +22,7 @@ import {
 import { MapPin, Calendar, Users } from 'lucide-react'
 import Navbar from "./Navbar"
 import { useLocation } from "react-router-dom";
+import cricketImage from "../assets/crick.webp";
 
 const events = [
   {
@@ -122,7 +123,7 @@ const events = [
     type: "Sports Challenge",
     groupSize: "3-5",
     price: 450,
-    image: "https://images.pexels.com/photos/630839/pexels-photo-630839.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMpWZh3RDT7SttEtt1yebbB2tnpHMeQ8BqqA&s",
   },
   {
     id: 11,
@@ -132,7 +133,7 @@ const events = [
     type: "Sports Challenge",
     groupSize: "3",
     price: 150,
-    image: "https://images.pexels.com/photos/1446001/pexels-photo-1446001.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
+    image: cricketImage,
   },
   {
     id: 12,
@@ -142,7 +143,7 @@ const events = [
     type: "Sports Challenge",
     groupSize: "6-10",
     price: 100,
-    image: "https://images.pexels.com/photos/1594942/pexels-photo-1594942.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
+    image: "https://cdn.magicdecor.in/com/2024/05/22173454/Football-Abstract-Design-Wallpaper-Mural-710x488.jpg",
   },
   {
     id: 13,
@@ -152,14 +153,14 @@ const events = [
     type: "Fun Activities",
     groupSize: "6-10",
     price: 100,
-    image: "",
+    image: "https://www.wanderquest.in/monthly-subscription-boxes-for-kids-6-to-12-years/modules//smartblog/images/15-single-default.jpg",
   },
   {
     id: 14,
     title: "Mystery Event",
     description: "",
     location: "JU Campus",
-    type: "Fun Activities",
+    type: "Mystery Event?",
     groupSize: "6-10",
     price: 100,
     image: "https://images.pexels.com/photos/5428830/pexels-photo-5428830.jpeg?auto=compress&cs=tinysrgb&w=600",
@@ -242,7 +243,7 @@ export function Explore() {
         <Grid container spacing={3}>
           {filteredEvents.map((event) => (
             <Grid item xs={12} md={6} lg={4} key={event.id}>
-              <Card>
+              <Card sx={{ transition: 'transform 0.3s', '&:hover': { transform: 'scale(1.05)' } }}>
                 <CardHeader title={event.title} />
                 <CardMedia
                   component="img"

@@ -30,18 +30,18 @@ export function About() {
 
       <Container maxWidth="lg">
         <Typography variant="h2" component="h1" sx={{color: '#FFD700', fontWeight: 'bold', mb: 4, textShadow: '2px 2px 4px black' }}>
-         Trajectory 2025
+          Trajectory 2025
         </Typography>
         <Grid container spacing={4}>
           <Grid item xs={12} md={6}>
             <Typography variant="body1" sx={{ mb: 2 }}>
-              Welcome to **Trajectory 2025**, the grandest celebration of mechanical engineering innovation and technology! This landmark event marks five years of evolution in the field of engineering, bringing together enthusiasts, professionals, and students from across the globe.
+              Welcome to **Trajectory 2025**, the premier event for mechanical engineering enthusiasts and professionals! This event is designed to bring together the brightest minds in the field to showcase innovations, share knowledge, and inspire the next generation of engineers.
             </Typography>
             <Typography variant="body1" sx={{ mb: 2 }}>
-              Set to take place in 2029, MechNova is designed to showcase cutting-edge technologies, foster collaboration, and ignite passion for mechanical engineering. The event will feature hands-on workshops, live demonstrations, keynote speeches by industry leaders, and thrilling competitions.
+              Trajectory 2025 will feature a variety of activities including hands-on workshops, live demonstrations, keynote speeches by industry leaders, and exciting competitions. Whether you're a seasoned engineer or a curious student, there's something for everyone.
             </Typography>
             <Typography variant="body1">
-              Whether you're a seasoned engineer or a curious innovator, MechNova promises an unforgettable experience. Join us in exploring the future of sustainable engineering, robotics, and manufacturing. Together, let's shape the future.
+              Join us in exploring the latest advancements in sustainable engineering, robotics, and manufacturing. Together, let's shape the future of mechanical engineering.
             </Typography>
           </Grid>
           <Grid item xs={12} md={6}>
