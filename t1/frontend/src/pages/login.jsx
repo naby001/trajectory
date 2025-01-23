@@ -47,10 +47,11 @@ export default function AuthPage() {
     const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
     return re.test(email)
   }
+ 
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
-
+   
     // Reset errors
     setEmailError("")
     setPasswordError("")
@@ -86,7 +87,7 @@ export default function AuthPage() {
     if (!isLogin && !name) {
       setNameError("Name is required")
     }
-
+    
     // If there are no errors, you can proceed with login/signup logic here
     if (
       validateEmail(email) &&
@@ -94,12 +95,22 @@ export default function AuthPage() {
       university &&
       (isLogin || (password === confirmPassword && name))
     ) {
-      console.log(isLogin ? "Login attempt with:" : "Sign up attempt with:", {
-        email,
-        password,
-        university,
-        ...(isLogin ? {} : { name }),
+      console.log(email, password, university, name)
+     try{
+      const body={email:email,password:password,university:university,name:name};
+      const respond= await fetch(`http://localhost:5000/api/${isLogin ? "login" : "register"}`,{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify(body)
       })
+      const data=await respond.json()
+      console.log(data)
+
+
+     }catch(err){
+       console.log(err)
+      }
+
       // Add your login/signup logic here
     }
   }

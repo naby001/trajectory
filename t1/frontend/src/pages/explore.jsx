@@ -243,7 +243,15 @@ export function Explore() {
         <Grid container spacing={3}>
           {filteredEvents.map((event) => (
             <Grid item xs={12} md={6} lg={4} key={event.id}>
-              <Card sx={{ transition: 'transform 0.3s', '&:hover': { transform: 'scale(1.05)' } }}>
+              <Card
+                sx={{
+                  transition: 'transform 0.3s, box-shadow 0.3s',
+                  '&:hover': {
+                    transform: 'scale(1.05)',
+                    boxShadow: '0 0 20px rgba(255, 255, 255, 0.6)',
+                  },
+                }}
+              >
                 <CardHeader title={event.title} />
                 <CardMedia
                   component="img"
