@@ -1,7 +1,7 @@
 import { useState } from "react"
 import CardActions from '@mui/material/CardActions'
 import CardHeader from '@mui/material/CardHeader'
-import backgroundImage from "../assets/cover.jpg"
+import backgroundVideo from "../assets/vid3.mp4"
 import MenuItem from '@mui/material/MenuItem'
 import Select from '@mui/material/Select'
 import InputLabel from '@mui/material/InputLabel'
@@ -22,7 +22,7 @@ import {
 import { MapPin, Calendar, Users } from 'lucide-react'
 import Navbar from "./Navbar"
 
-const tours = [
+const events = [
   {
     id: 1,
     title: "Water Rocket",
@@ -155,103 +155,113 @@ const tours = [
   },
 ];
 
-
-
-
 export function Explore() {
-  const [searchTerm, setSearchTerm] = useState("")
-  const [filterDuration, setFilterDuration] = useState("")
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filterChallenge, setFilterChallenge] = useState("");
 
-  const filteredTours = tours.filter((tour) => {
+  const filteredEvents = events.filter((event) => {
     return (
-      tour.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
-      (filterDuration === "" || tour.duration.includes(filterDuration))
-    )
-  })
+      event.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
+      (filterChallenge === "" || event.duration.includes(filterChallenge))
+    );
+  });
 
   return (
     <>
-     {/* Navbar */}
-     <AppBar position="fixed" sx={{ background: "#282a3a" }}>
+      {/* Navbar */}
+      <AppBar position="fixed" sx={{ background: "#282a3a" }}>
         <Navbar />
       </AppBar>
       
-    <Box
-      sx={{
-        px: 4,
-        py: 8,
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        paddingTop:"8%"
-      }}
-    >
-     
-      <Typography variant="h1" component="h1" gutterBottom>Explore Events</Typography>
-      <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4, mb: 8 }}>
-        <TextField
-          label="Search Events..."
-          variant="outlined"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          sx={{ width: { md: '50%' } }}
-        />
-        <FormControl variant="outlined" sx={{ width: { md: '25%' } }}>
-          <InputLabel>Filter by Challenge</InputLabel>
-          <Select
-            value={filterDuration}
-            onChange={(e) => setFilterDuration(e.target.value)}
-            label="Filter by duration"
-          >
-            <MenuItem value="">All events</MenuItem>
-            <MenuItem value="Hardware Challenge">Hardware Challenge</MenuItem>
-            <MenuItem value="Simulation Challenge">Simulation Challenge</MenuItem>
-            <MenuItem value="General">General</MenuItem>
-            <MenuItem value="Sports Challenge">Sports Challenge</MenuItem>
-            <MenuItem value="Fun Activities">Fun Activities</MenuItem>
-          </Select>
-        </FormControl>
+      <Box
+        sx={{
+          position: 'relative',
+          px: 4,
+          py: 8,
+          paddingTop: "8%",
+        }}
+      >
+        <video
+          autoPlay
+          loop
+          muted
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            zIndex: -1,
+          }}
+        >
+          <source src={backgroundVideo} type="video/mp4" />
+        </video>
+        <Typography variant="h1" component="h1" gutterBottom sx={{ color: "#fff" }}>Explore Events</Typography>
+        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4, mb: 8 }}>
+          <TextField
+            label="Search Events..."
+            variant="outlined"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            sx={{ width: { md: '50%' }, backgroundColor: "#fff" }}
+          />
+          <FormControl variant="outlined" sx={{ width: { md: '25%' }, backgroundColor: "#fff" }}>
+            <InputLabel>Filter by Challenge</InputLabel>
+            <Select
+              value={filterChallenge}
+              onChange={(e) => setFilterChallenge(e.target.value)}
+              label="Filter by Challenge"
+            >
+              <MenuItem value="">All events</MenuItem>
+              <MenuItem value="Hardware Challenge">Hardware Challenge</MenuItem>
+              <MenuItem value="Simulation Challenge">Simulation Challenge</MenuItem>
+              <MenuItem value="General">General</MenuItem>
+              <MenuItem value="Sports Challenge">Sports Challenge</MenuItem>
+              <MenuItem value="Fun Activities">Fun Activities</MenuItem>
+            </Select>
+          </FormControl>
+        </Box>
+        <Grid container spacing={3}>
+          {filteredEvents.map((event) => (
+            <Grid item xs={12} md={6} lg={4} key={event.id}>
+              <Card>
+                <CardHeader title={event.title} />
+                <CardMedia
+                  component="img"
+                  height="200"
+                  image={event.image}
+                  alt={event.title}
+                />
+                <CardContent>
+                  <Typography variant="body2" color="textSecondary" component="p">
+                    {event.description}
+                  </Typography>
+                  <Box sx={{ mt: 4, spaceY: 2 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                      <MapPin className="w-4 h-4 mr-2" />
+                      <span>{event.location}</span>
+                    </Box>
+                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                      <Calendar className="w-4 h-4 mr-2" />
+                      <span>{event.duration}</span>
+                    </Box>
+                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                      <Users className="w-4 h-4 mr-2" />
+                      <span>{event.groupSize} people</span>
+                    </Box>
+                  </Box>
+                </CardContent>
+                <CardActions sx={{ justifyContent: 'space-between' }}>
+                  <Typography variant="h6" component="span">${event.price}</Typography>
+                  <Button variant="contained" color="primary">Register</Button>
+                </CardActions>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
       </Box>
-      <Grid container spacing={3}>
-        {filteredTours.map((tour) => (
-          <Grid item xs={12} md={6} lg={4} key={tour.id}>
-            <Card>
-              <CardHeader title={tour.title} />
-              <CardMedia
-                component="img"
-                height="200"
-                image={tour.image}
-                alt={tour.title}
-              />
-              <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  {tour.description}
-                </Typography>
-                <Box sx={{ mt: 4, spaceY: 2 }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <MapPin className="w-4 h-4 mr-2" />
-                    <span>{tour.location}</span>
-                  </Box>
-                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <Calendar className="w-4 h-4 mr-2" />
-                    <span>{tour.duration}</span>
-                  </Box>
-                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <Users className="w-4 h-4 mr-2" />
-                    <span>{tour.groupSize} people</span>
-                  </Box>
-                </Box>
-              </CardContent>
-              <CardActions sx={{ justifyContent: 'space-between' }}>
-                <Typography variant="h6" component="span">${tour.price}</Typography>
-                <Button variant="contained" color="primary">Book Now</Button>
-              </CardActions>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
-    </Box>
     </>
-  )
+  );
 }
 
