@@ -167,62 +167,61 @@ function HomePage() {
 
       {/* Background Video */}
       <div
-  style={{
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-    display: "flex",
-    flexDirection: "column", // Stack videos vertically
-    overflow: "hidden",
-    zIndex: -1,
-  }}
->
-  <div
-    style={{
-      flex: 1,
-      width: "100%",
-      height: "50%",
-    }}
-  >
-    <video
-      autoPlay
-      muted
-      loop
-      style={{
-        objectFit: "cover",
-        width: "100%",
-        height: "100%",
-      }}
-    >
-      <source src={backgroundvid} type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-  </div>
-  <div
-    style={{
-      flex: 1,
-      width: "100%",
-      height: "50%",
-    }}
-  >
-    <video
-      autoPlay
-      muted
-      loop
-      style={{
-        objectFit: "cover",
-        width: "100%",
-        height: "100%",
-      }}
-    >
-      <source src={backgroundvid} type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-  </div>
-</div>
-
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          overflow: "hidden",
+          zIndex: -1,
+        }}
+      >
+        <div
+          style={{
+            flex: 1,
+            width: "100%",
+            height: "50%",
+          }}
+        >
+          <video
+            autoPlay
+            muted
+            loop
+            style={{
+              objectFit: "cover",
+              width: "100%",
+              height: "100%",
+            }}
+          >
+            <source src={backgroundvid} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div
+          style={{
+            flex: 1,
+            width: "100%",
+            height: "50%",
+          }}
+        >
+          <video
+            autoPlay
+            muted
+            loop
+            style={{
+              objectFit: "cover",
+              width: "100%",
+              height: "100%",
+            }}
+          >
+            <source src={backgroundvid} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
 
       {/* Main Content */}
       <Box

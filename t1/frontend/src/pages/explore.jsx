@@ -1,11 +1,11 @@
-import { useState } from "react"
-import CardActions from '@mui/material/CardActions'
-import CardHeader from '@mui/material/CardHeader'
-import backgroundVideo from "../assets/vid3.mp4"
-import MenuItem from '@mui/material/MenuItem'
-import Select from '@mui/material/Select'
-import InputLabel from '@mui/material/InputLabel'
-import FormControl from '@mui/material/FormControl'
+import { useState } from "react";
+import CardActions from '@mui/material/CardActions';
+import CardHeader from '@mui/material/CardHeader';
+import backgroundVideo from "../assets/vid3.mp4";
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
+import FormControl from '@mui/material/FormControl';
 import {
   AppBar,
   Toolbar,
@@ -18,9 +18,9 @@ import {
   CardMedia,
   Box,
   TextField,
-} from "@mui/material"
-import { MapPin, Calendar, Users } from 'lucide-react'
-import Navbar from "./Navbar"
+} from "@mui/material";
+import { MapPin, Calendar, Users } from 'lucide-react';
+import Navbar from "./Navbar";
 import { useLocation } from "react-router-dom";
 import cricketImage from "../assets/crick.webp";
 
@@ -215,16 +215,16 @@ export function Explore() {
         </video>
         <br>
         </br>
-        <Typography variant="h1" component="h1" gutterBottom sx={{ color: "#fff" }}>Explore Events</Typography>
+        <Typography variant="h1" component="h1" gutterBottom sx={{ color: "#fff", fontSize: { xs: '2rem', md: '4rem' } }}>Explore Events</Typography>
         <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4, mb: 8 }}>
           <TextField
             label="Search Events..."
             variant="outlined"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            sx={{ width: { md: '50%' }, backgroundColor: "#fff" }}
+            sx={{ width: { xs: '100%', md: '50%' }, backgroundColor: "#fff" }}
           />
-          <FormControl variant="outlined" sx={{ width: { md: '25%' }, backgroundColor: "#fff" }}>
+          <FormControl variant="outlined" sx={{ width: { xs: '100%', md: '25%' }, backgroundColor: "#fff" }}>
             <InputLabel>Filter by Type</InputLabel>
             <Select
               value={filterType}
@@ -248,11 +248,17 @@ export function Explore() {
                   transition: 'transform 0.3s, box-shadow 0.3s',
                   '&:hover': {
                     transform: 'scale(1.05)',
-                    boxShadow: '0 0 20px rgba(255, 255, 255, 0.6)',
+                    boxShadow: '0 0 20px rgba(0, 0, 0, 0.6)',
                   },
+                  borderRadius: '15px',
+                  overflow: 'hidden',
+                  backgroundColor: '#f5f5f5',
                 }}
               >
-                <CardHeader title={event.title} />
+                <CardHeader
+                  title={event.title}
+                  sx={{ backgroundColor: '#3f51b5', color: '#fff', textAlign: 'center' }}
+                />
                 <CardMedia
                   component="img"
                   height="200"

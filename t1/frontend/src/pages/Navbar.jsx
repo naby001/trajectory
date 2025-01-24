@@ -30,21 +30,21 @@ const Navbar = () => {
   ];
 
   return (
-    <Toolbar sx={{ backgroundColor: "black" }}>
+    <Toolbar sx={{ backgroundColor: "black", justifyContent: "space-between", padding: isMobile ? "0 8px" : "0 16px" }}>
       <img
         src={logo}
         alt="Logo"
         style={{
-          width: 60, // Increased size
-          height: 60, // Increased size
+          width: isMobile ? 40 : 60,
+          height: isMobile ? 40 : 60,
           marginRight: 16,
           cursor: "pointer",
         }}
-        onClick={() => window.location.href = "/"} // Redirect to home on logo click
+        onClick={() => window.location.href = "/"}
       />
       <Typography
         variant="h6"
-        component={Link} // Changed to Link component
+        component={Link}
         to="/"
         sx={{
           flexGrow: 1,
@@ -52,7 +52,8 @@ const Navbar = () => {
           fontWeight: "bold",
           color: "white",
           letterSpacing: 1.2,
-          textDecoration: "none", // Remove underline
+          textDecoration: "none",
+          display: isMobile ? "none" : "block",
         }}
       >
         TraJectory

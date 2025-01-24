@@ -17,11 +17,10 @@ import Navbar from './Navbar';
 export function About() {
   return (
     <Box sx={{
-      backgroundImage: `url(${coverImage})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
+      background: 'linear-gradient(135deg, #0b0c10 30%, #1f2833 90%)', // Gradient background
       minHeight: '100vh',
       py: 8,
+      color: 'white', // Set font color to white
     }}>
       {/* Navbar */}
       <AppBar position="fixed" sx={{ background: "#282a3a" }}>
@@ -34,13 +33,13 @@ export function About() {
         </Typography>
         <Grid container spacing={4}>
           <Grid item xs={12} md={6}>
-            <Typography variant="body1" sx={{ mb: 2 }}>
+            <Typography variant="body1" sx={{ mb: 2, color: 'white' }}>
               Welcome to **Trajectory 2025**, the premier event for mechanical engineering enthusiasts and professionals! This event is designed to bring together the brightest minds in the field to showcase innovations, share knowledge, and inspire the next generation of engineers.
             </Typography>
-            <Typography variant="body1" sx={{ mb: 2 }}>
+            <Typography variant="body1" sx={{ mb: 2, color: 'white' }}>
               Trajectory 2025 will feature a variety of activities including hands-on workshops, live demonstrations, keynote speeches by industry leaders, and exciting competitions. Whether you're a seasoned engineer or a curious student, there's something for everyone.
             </Typography>
-            <Typography variant="body1">
+            <Typography variant="body1" sx={{ color: 'white' }}>
               Join us in exploring the latest advancements in sustainable engineering, robotics, and manufacturing. Together, let's shape the future of mechanical engineering.
             </Typography>
           </Grid>
