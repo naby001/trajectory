@@ -12,6 +12,7 @@ import {
   CssBaseline,
   Paper,
 } from "@mui/material"
+import { useNavigate } from "react-router-dom"
 
 // Create a dark theme instance
 const theme = createTheme({
@@ -42,7 +43,7 @@ export default function AuthPage() {
   const [confirmPasswordError, setConfirmPasswordError] = useState("")
   const [universityError, setUniversityError] = useState("")
   const [nameError, setNameError] = useState("")
-
+  const navigate=useNavigate();
   const validateEmail = (email) => {
     const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
     return re.test(email)
@@ -95,7 +96,7 @@ export default function AuthPage() {
       university &&
       (isLogin || (password === confirmPassword && name))
     ) {
-      console.log(email, password, university, name)
+      //console.log(email, password, university, name)
      try{
       const body={email:email,password:password,university:university,name:name};
       const respond= await fetch(`http://localhost:5000/api/${isLogin ? "login" : "register"}`,{
@@ -104,7 +105,7 @@ export default function AuthPage() {
         body:JSON.stringify(body)
       })
       const data=await respond.json()
-      console.log(data)
+      navigate("/",{user:data.user});
 
 
      }catch(err){

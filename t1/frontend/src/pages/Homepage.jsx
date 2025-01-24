@@ -129,7 +129,7 @@ const destinations = [
 
 function HomePage() {
   const navigate = useNavigate();
-  
+  //console.log(user);
   const handleCardClick = (type) => {
     navigate(`/explore?filter=${type}`);
   };
