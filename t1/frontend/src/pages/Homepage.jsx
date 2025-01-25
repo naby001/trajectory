@@ -15,6 +15,7 @@ import {
   Paper,
   IconButton,
   InputAdornment,
+  Fade,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import ExploreIcon from "@mui/icons-material/Explore";
@@ -171,12 +172,16 @@ function HomePage() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
+          entry.target.style.transition = "opacity 1s ease-in-out";
+          entry.target.style.opacity = 1;
+        } else {
+          entry.target.style.opacity = 0;
         }
       });
     });
 
     document.querySelectorAll(".fade-in").forEach((element) => {
+      element.style.opacity = 0;
       observer.observe(element);
     });
 
@@ -259,264 +264,269 @@ function HomePage() {
         </div>
 
         {/* Main Content */}
-        <Box
-          className="fade-in"
-          sx={{
-            mt: 8,
-            py: 6,
-            color: "white",
-            textAlign: "center",
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-          }}
-        >
-          <Typography
-            variant="h1"
+        <Fade in={true} timeout={1000}>
+          <Box
+            className="fade-in"
             sx={{
-              fontSize: { xs: "2rem", sm: "3rem", md: "4rem" },
-              fontWeight: "bold",
-              textShadow: `
-                1px 1px 0px #ff8c00, 
-                2px 2px 0px #ff4500, 
-                3px 3px 0px #ff1493, 
-                4px 4px 0px #9400d3, 
-                5px 5px 0px #1e90ff, 
-                6px 6px 0px #00fa9a
-              `,
+              mt: 8,
+              py: 6,
+              color: "white",
+              textAlign: "center",
+              backgroundColor: "rgba(0, 0, 0, 0.5)",
             }}
           >
-            Welcome to Mechanical Tech Fest
-          </Typography>
-        </Box>
-
-        {/* Featured Events */}
-        <Container className="fade-in" sx={{ py: 8 }} maxWidth="lg">
-          <Typography
-            variant="h4"
-            align="center"
-            sx={{
-              fontWeight: "bold",
-              mb: 4,
-              color: "#ffd700",
-              textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)",
-            }}
-          >
-            Featured Events
-          </Typography>
-
-          <Grid container spacing={4}>
-            {tours.map((tour) => (
-              <Grid item key={tour.id} xs={12} sm={6} md={4}>
-                <Card
-                  className="fade-in"
-                  sx={{
-                    height: "100%",
-                    backgroundColor: "rgba(255, 255, 255, 0.8)",
-                    transition: "transform 0.3s, box-shadow 0.3s",
-                    "&:hover": {
-                      transform: "scale(1.05)",
-                      boxShadow: "0 0 20px rgba(255, 255, 255, 0.6)",
-                    },
-                  }}
-                  onClick={() => handleCardClick(tour.title)}
-                >
-                  <CardMedia
-                    component="img"
-                    height="200"
-                    image={tour.image}
-                    alt={tour.title}
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      {tour.title}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {tour.description}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-
-        </Container>
-
-        {/* Footer */}
-        
-        <Box className="fade-in" sx={{ bgcolor: "rgba(0, 0, 0, 0.5)", py: 8,color:"white" }}>
-          <Container maxWidth="lg">
-            <Typography variant="h4" align="center" gutterBottom>
-             where You find Us?
-            </Typography>
-            <Box
+            <Typography
+              variant="h1"
               sx={{
-                position: "relative",
-                width: "100%",
-                height: 400,
-                overflow: "hidden",
+                fontSize: { xs: "2rem", sm: "3rem", md: "4rem" },
+                fontWeight: "bold",
+                textShadow: `
+                  1px 1px 0px #ff8c00, 
+                  2px 2px 0px #ff4500, 
+                  3px 3px 0px #ff1493, 
+                  4px 4px 0px #9400d3, 
+                  5px 5px 0px #1e90ff, 
+                  6px 6px 0px #00fa9a
+                `,
               }}
             >
-              <IconButton
-                sx={{
-                  position: "absolute",
-                  left: 0,
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                  zIndex: 1,
-                  color: "white",
-                }}
-                onClick={prevDestination}
-              >
-                <ArrowBackIosIcon />
-              </IconButton>
-              <IconButton
-                sx={{
-                  position: "absolute",
-                  right: 0,
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                  zIndex: 1,
-                  color: "white",
-                }}
-                onClick={nextDestination}
-              >
-                <ArrowForwardIosIcon />
-              </IconButton>
+              Welcome to Mechanical Tech Fest
+            </Typography>
+          </Box>
+        </Fade>
+
+        {/* Featured Events */}
+        <Fade in={true} timeout={1000}>
+          <Container className="fade-in" sx={{ py: 8 }} maxWidth="lg">
+            <Typography
+              variant="h4"
+              align="center"
+              sx={{
+                fontWeight: "bold",
+                mb: 4,
+                color: "#ffd700",
+                textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)",
+              }}
+            >
+              Featured Events
+            </Typography>
+
+            <Grid container spacing={4}>
+              {tours.map((tour) => (
+                <Grid item key={tour.id} xs={12} sm={6} md={4}>
+                  <Card
+                    className="fade-in"
+                    sx={{
+                      height: "100%",
+                      backgroundColor: "rgba(255, 255, 255, 0.8)",
+                      transition: "transform 0.3s, box-shadow 0.3s",
+                      "&:hover": {
+                        transform: "scale(1.05)",
+                        boxShadow: "0 0 20px rgba(255, 255, 255, 0.6)",
+                      },
+                    }}
+                    onClick={() => handleCardClick(tour.title)}
+                  >
+                    <CardMedia
+                      component="img"
+                      height="200"
+                      image={tour.image}
+                      alt={tour.title}
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="div">
+                        {tour.title}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {tour.description}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              ))}
+            </Grid>
+          </Container>
+        </Fade>
+
+        {/* Footer */}
+        <Fade in={true} timeout={1000}>
+          <Box className="fade-in" sx={{ bgcolor: "rgba(0, 0, 0, 0.5)", py: 8, color: "white" }}>
+            <Container maxWidth="lg">
+              <Typography variant="h4" align="center" gutterBottom>
+                Where You Find Us?
+              </Typography>
               <Box
                 sx={{
-                  display: "flex",
-                  transition: "transform 0.5s ease",
-                  transform: `translateX(-${currentDestination * 100}%)`,
+                  position: "relative",
+                  width: "100%",
+                  height: 400,
+                  overflow: "hidden",
                 }}
               >
-                {destinations.map((destination) => (
-                  <Box
-                    key={destination.id}
-                    sx={{
-                      flexShrink: 0,
-                      width: "100%",
-                      height: 400,
-                      backgroundImage: `url(${destination.image})`,
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                      display: "flex",
-                      alignItems: "flex-end",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <Typography
-                      variant="h3"
-                      sx={{
-                        color: "white",
-                        backgroundColor: "rgba(0,0,0,0.5)",
-                        p: 2,
-                        width: "100%",
-                        textAlign: "center",
-                      }}
-                    >
-                      {destination.name}
-                    </Typography>
-                  </Box>
-                ))}
-              </Box>
-            </Box>
-          </Container>
-        </Box>
-
-        <Container className="fade-in" sx={{ py: 8 ,color:"white"}} maxWidth="md">
-          <Typography variant="h4" align="center" gutterBottom>
-            What Our Organisers Say
-          </Typography>
-          <Grid container spacing={4}>
-            {testimonials.map((testimonial) => (
-              <Grid item key={testimonial.id} xs={12} md={4}>
-                <Paper
-                  elevation={3}
+                <IconButton
                   sx={{
-                    p: 3,
-                    height: "100%",
+                    position: "absolute",
+                    left: 0,
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    zIndex: 1,
+                    color: "white",
+                  }}
+                  onClick={prevDestination}
+                >
+                  <ArrowBackIosIcon />
+                </IconButton>
+                <IconButton
+                  sx={{
+                    position: "absolute",
+                    right: 0,
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    zIndex: 1,
+                    color: "white",
+                  }}
+                  onClick={nextDestination}
+                >
+                  <ArrowForwardIosIcon />
+                </IconButton>
+                <Box
+                  sx={{
                     display: "flex",
-                    flexDirection: "column",
-                    backgroundColor: "rgba(255, 255, 255, 0.8)",
+                    transition: "transform 0.5s ease",
+                    transform: `translateX(-${currentDestination * 100}%)`,
                   }}
                 >
-                  <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                    <Avatar
-                      src={testimonial.avatar}
-                      alt={testimonial.name}
-                      sx={{ mr: 2 }}
-                    />
-                    <Typography variant="subtitle1">
-                      {testimonial.name}
-                    </Typography>
-                  </Box>
-                  <Typography variant="body1" sx={{ flexGrow: 1 }}>
-                    "{testimonial.text}"
-                  </Typography>
-                </Paper>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
+                  {destinations.map((destination) => (
+                    <Box
+                      key={destination.id}
+                      sx={{
+                        flexShrink: 0,
+                        width: "100%",
+                        height: 400,
+                        backgroundImage: `url(${destination.image})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                        display: "flex",
+                        alignItems: "flex-end",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <Typography
+                        variant="h3"
+                        sx={{
+                          color: "white",
+                          backgroundColor: "rgba(0,0,0,0.5)",
+                          p: 2,
+                          width: "100%",
+                          textAlign: "center",
+                        }}
+                      >
+                        {destination.name}
+                      </Typography>
+                    </Box>
+                  ))}
+                </Box>
+              </Box>
+            </Container>
+          </Box>
+        </Fade>
 
-        <Box
-          className="fade-in"
-          sx={{
-            bgcolor: "rgba(0, 0, 0, 0.7)",
-            p: 6,
-            mt: "auto",
-          }}
-          component="footer"
-        >
-          <Typography variant="h6" align="center" gutterBottom>
-            Ready to start your adventure?
-          </Typography>
-          
-          <Box sx={{ mt: 4, display: "flex", justifyContent: "center" }}>
-            
-            <Button
-              variant="outlined"
-              sx={{ color: "white", borderColor: "white" }}
-            >
-              Subscribe to Social Media
-            </Button>
-            
-          </Box>
-          <Box sx={{ mt: 4, display: "flex", justifyContent: "center" }}>
-            <IconButton
-              component="a"
-              href="https://www.linkedin.com/company/trajectoryjumech/"
-              target="_blank"
-              sx={{ color: "white" }}
-            >
-              <LinkedInIcon />
-            </IconButton>
-            <IconButton
-              component="a"
-              href="https://www.instagram.com/trajectory_jumech/"
-              target="_blank"
-              sx={{ color: "white" }}
-            >
-              <InstagramIcon />
-            </IconButton>
-            <IconButton
-              component="a"
-              href="https://www.facebook.com/profile.php?id=61572408332143"
-              target="_blank"
-              sx={{ color: "white" }}
-            >
-              <FacebookIcon />
-            </IconButton>
-          </Box>
-          <Typography
-            variant="subtitle1"
-            align="center"
-            color="white"
-            component="p"
-            sx={{ mt: 3 }}
+        <Fade in={true} timeout={1000}>
+          <Container className="fade-in" sx={{ py: 8, color: "white" }} maxWidth="md">
+            <Typography variant="h4" align="center" gutterBottom>
+              What Our Organisers Say
+            </Typography>
+            <Grid container spacing={4}>
+              {testimonials.map((testimonial) => (
+                <Grid item key={testimonial.id} xs={12} md={4}>
+                  <Paper
+                    elevation={3}
+                    sx={{
+                      p: 3,
+                      height: "100%",
+                      display: "flex",
+                      flexDirection: "column",
+                      backgroundColor: "rgba(255, 255, 255, 0.8)",
+                    }}
+                  >
+                    <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+                      <Avatar
+                        src={testimonial.avatar}
+                        alt={testimonial.name}
+                        sx={{ mr: 2 }}
+                      />
+                      <Typography variant="subtitle1">
+                        {testimonial.name}
+                      </Typography>
+                    </Box>
+                    <Typography variant="body1" sx={{ flexGrow: 1 }}>
+                      "{testimonial.text}"
+                    </Typography>
+                  </Paper>
+                </Grid>
+              ))}
+            </Grid>
+          </Container>
+        </Fade>
+
+        <Fade in={true} timeout={1000}>
+          <Box
+            className="fade-in"
+            sx={{
+              bgcolor: "rgba(0, 0, 0, 0.7)",
+              p: 6,
+              mt: "auto",
+            }}
+            component="footer"
           >
-            © {new Date().getFullYear()} Trajectory. All rights reserved.
-          </Typography>
-        </Box>
+            <Typography variant="h6" align="center" gutterBottom>
+              Ready to start your adventure?
+            </Typography>
+            <Box sx={{ mt: 4, display: "flex", justifyContent: "center" }}>
+              <Button
+                variant="outlined"
+                sx={{ color: "white", borderColor: "white" }}
+              >
+                Subscribe to Social Media
+              </Button>
+            </Box>
+            <Box sx={{ mt: 4, display: "flex", justifyContent: "center" }}>
+              <IconButton
+                component="a"
+                href="https://www.linkedin.com/company/trajectoryjumech/"
+                target="_blank"
+                sx={{ color: "white" }}
+              >
+                <LinkedInIcon />
+              </IconButton>
+              <IconButton
+                component="a"
+                href="https://www.instagram.com/trajectory_jumech/"
+                target="_blank"
+                sx={{ color: "white" }}
+              >
+                <InstagramIcon />
+              </IconButton>
+              <IconButton
+                component="a"
+                href="https://www.facebook.com/profile.php?id=61572408332143"
+                target="_blank"
+                sx={{ color: "white" }}
+              >
+                <FacebookIcon />
+              </IconButton>
+            </Box>
+            <Typography
+              variant="subtitle1"
+              align="center"
+              color="white"
+              component="p"
+              sx={{ mt: 3 }}
+            >
+              © {new Date().getFullYear()} Trajectory. All rights reserved.
+            </Typography>
+          </Box>
+        </Fade>
       </Box>
     </ThemeProvider>
   );
