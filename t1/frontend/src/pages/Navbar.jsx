@@ -31,17 +31,18 @@ const Navbar = () => {
 
   return (
     <Toolbar sx={{ backgroundColor: "black", justifyContent: "space-between", padding: isMobile ? "0 8px" : "0 16px" }}>
-      <img
-        src={logo}
-        alt="Logo"
-        style={{
-          width: isMobile ? 40 : 60,
-          height: isMobile ? 40 : 60,
-          marginRight: 16,
-          cursor: "pointer",
-        }}
-        onClick={() => window.location.href = "/"}
-      />
+      <Link to="/">
+        <img
+          src={logo}
+          alt="Logo"
+          style={{
+            width: isMobile ? 40 : 60,
+            height: isMobile ? 40 : 60,
+            marginRight: 16,
+            cursor: "pointer",
+          }}
+        />
+      </Link>
       <Typography
         variant="h6"
         component={Link}

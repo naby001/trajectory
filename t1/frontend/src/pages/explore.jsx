@@ -18,11 +18,28 @@ import {
   CardMedia,
   Box,
   TextField,
+  createTheme,
+  ThemeProvider,
 } from "@mui/material";
 import { MapPin, Calendar, Users } from 'lucide-react';
 import Navbar from "./Navbar";
 import { useLocation } from "react-router-dom";
 import cricketImage from "../assets/crick.webp";
+import "@fontsource/roboto"; // Import Roboto font
+import "@fontsource/lobster"; // Import Lobster font
+import "@fontsource/open-sans"; // Import Open Sans font
+
+const theme = createTheme({
+  typography: {
+    fontFamily: "Open Sans, Arial",
+    h1: {
+      fontFamily: "Lobster, Arial",
+    },
+    h4: {
+      fontFamily: "Lobster, Arial",
+    },
+  },
+});
 
 const events = [
   {
@@ -183,7 +200,7 @@ export function Explore() {
   });
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       {/* Navbar */}
       <AppBar position="fixed" sx={{ background: "#282a3a" }}>
         <Navbar />
@@ -293,7 +310,7 @@ export function Explore() {
           ))}
         </Grid>
       </Box>
-    </>
+    </ThemeProvider>
   );
 }
 

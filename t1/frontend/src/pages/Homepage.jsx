@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   AppBar,
   Toolbar,
@@ -28,6 +28,22 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import Navbar from "./Navbar";
 import backgroundvid from "../assets/vid3.mp4";
 import { Link, useNavigate } from "react-router-dom";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import "@fontsource/roboto"; // Import Roboto font
+import "@fontsource/lobster"; // Import Lobster font
+import "@fontsource/open-sans"; // Import Open Sans font
+
+const theme = createTheme({
+  typography: {
+    fontFamily: "Open Sans, Arial",
+    h1: {
+      fontFamily: "Lobster, Arial",
+    },
+    h4: {
+      fontFamily: "Lobster, Arial",
+    },
+  },
+});
 
 const tours = [
   {
@@ -151,94 +167,114 @@ function HomePage() {
     return () => clearInterval(interval); // Cleanup interval on component unmount
   }, []);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    });
+
+    document.querySelectorAll(".fade-in").forEach((element) => {
+      observer.observe(element);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        minHeight: "100vh",
-        position: "relative",
-      }}
-    >
-      {/* Navbar */}
-      <AppBar position="fixed" sx={{ background: "#282a3a" }}>
-        <Navbar />
-      </AppBar>
-
-      {/* Background Video */}
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          overflow: "hidden",
-          zIndex: -1,
-        }}
-      >
-        <div
-          style={{
-            flex: 1,
-            width: "100%",
-            height: "50%",
-          }}
-        >
-          <video
-            autoPlay
-            muted
-            loop
-            style={{
-              objectFit: "cover",
-              width: "100%",
-              height: "100%",
-            }}
-          >
-            <source src={backgroundvid} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        <div
-          style={{
-            flex: 1,
-            width: "100%",
-            height: "50%",
-          }}
-        >
-          <video
-            autoPlay
-            muted
-            loop
-            style={{
-              objectFit: "cover",
-              width: "100%",
-              height: "100%",
-            }}
-          >
-            <source src={backgroundvid} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-      </div>
-
-      {/* Main Content */}
+    <ThemeProvider theme={theme}>
       <Box
         sx={{
-          mt: 8,
-          py: 6,
-          color: "white",
-          textAlign: "center",
-          backgroundColor: "rgba(0, 0, 0, 0.5)",
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "100vh",
+          position: "relative",
         }}
       >
-        <Typography
-          variant="h1"
+        {/* Navbar */}
+        <AppBar position="fixed" sx={{ background: "#282a3a" }}>
+          <Navbar />
+        </AppBar>
+
+        {/* Background Video */}
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            overflow: "hidden",
+            zIndex: -1,
+          }}
+        >
+          <div
+            style={{
+              flex: 1,
+              width: "100%",
+              height: "50%",
+            }}
+          >
+            <video
+              autoPlay
+              muted
+              loop
+              style={{
+                objectFit: "cover",
+                width: "100%",
+                height: "100%",
+              }}
+            >
+              <source src={backgroundvid} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div
+            style={{
+              flex: 1,
+              width: "100%",
+              height: "50%",
+            }}
+          >
+            <video
+              autoPlay
+              muted
+              loop
+              style={{
+                objectFit: "cover",
+                width: "100%",
+                height: "100%",
+              }}
+            >
+              <source src={backgroundvid} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+
+        {/* Main Content */}
+        <Box
+          className="fade-in"
           sx={{
-            fontSize: { xs: "2rem", sm: "3rem", md: "4rem" },
-            fontWeight: "bold",
-            textShadow: `
+            mt: 8,
+            py: 6,
+            color: "white",
+            textAlign: "center",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+          }}
+        >
+          <Typography
+            variant="h1"
+            sx={{
+              fontSize: { xs: "2rem", sm: "3rem", md: "4rem" },
+              fontWeight: "bold",
+              textShadow: `
                 1px 1px 0px #ff8c00, 
                 2px 2px 0px #ff4500, 
                 3px 3px 0px #ff1493, 
@@ -246,240 +282,243 @@ function HomePage() {
                 5px 5px 0px #1e90ff, 
                 6px 6px 0px #00fa9a
               `,
-          }}
-        >
-          Welcome to Mechanical Tech Fest
-        </Typography>
-      </Box>
-
-      {/* Featured Events */}
-      <Container sx={{ py: 8 }} maxWidth="lg">
-        <Typography
-          variant="h4"
-          align="center"
-          sx={{
-            fontWeight: "bold",
-            mb: 4,
-            color: "#ffd700",
-            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)",
-          }}
-        >
-          Featured Events
-        </Typography>
-
-        <Grid container spacing={4}>
-          {tours.map((tour) => (
-            <Grid item key={tour.id} xs={12} sm={6} md={4}>
-              <Card
-                sx={{
-                  height: "100%",
-                  backgroundColor: "rgba(255, 255, 255, 0.8)",
-                  transition: "transform 0.3s, box-shadow 0.3s",
-                  "&:hover": {
-                    transform: "scale(1.05)",
-                    boxShadow: "0 0 20px rgba(255, 255, 255, 0.6)",
-                  },
-                }}
-                onClick={() => handleCardClick(tour.title)}
-              >
-                <CardMedia
-                  component="img"
-                  height="200"
-                  image={tour.image}
-                  alt={tour.title}
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    {tour.title}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {tour.description}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-
-      </Container>
-
-      {/* Footer */}
-      
-      <Box sx={{ bgcolor: "rgba(0, 0, 0, 0.5)", py: 8,color:"white" }}>
-        <Container maxWidth="lg">
-          <Typography variant="h4" align="center" gutterBottom>
-           where You find Us?
-          </Typography>
-          <Box
-            sx={{
-              position: "relative",
-              width: "100%",
-              height: 400,
-              overflow: "hidden",
             }}
           >
-            <IconButton
-              sx={{
-                position: "absolute",
-                left: 0,
-                top: "50%",
-                transform: "translateY(-50%)",
-                zIndex: 1,
-                color: "white",
-              }}
-              onClick={prevDestination}
-            >
-              <ArrowBackIosIcon />
-            </IconButton>
-            <IconButton
-              sx={{
-                position: "absolute",
-                right: 0,
-                top: "50%",
-                transform: "translateY(-50%)",
-                zIndex: 1,
-                color: "white",
-              }}
-              onClick={nextDestination}
-            >
-              <ArrowForwardIosIcon />
-            </IconButton>
+            Welcome to Mechanical Tech Fest
+          </Typography>
+        </Box>
+
+        {/* Featured Events */}
+        <Container className="fade-in" sx={{ py: 8 }} maxWidth="lg">
+          <Typography
+            variant="h4"
+            align="center"
+            sx={{
+              fontWeight: "bold",
+              mb: 4,
+              color: "#ffd700",
+              textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)",
+            }}
+          >
+            Featured Events
+          </Typography>
+
+          <Grid container spacing={4}>
+            {tours.map((tour) => (
+              <Grid item key={tour.id} xs={12} sm={6} md={4}>
+                <Card
+                  className="fade-in"
+                  sx={{
+                    height: "100%",
+                    backgroundColor: "rgba(255, 255, 255, 0.8)",
+                    transition: "transform 0.3s, box-shadow 0.3s",
+                    "&:hover": {
+                      transform: "scale(1.05)",
+                      boxShadow: "0 0 20px rgba(255, 255, 255, 0.6)",
+                    },
+                  }}
+                  onClick={() => handleCardClick(tour.title)}
+                >
+                  <CardMedia
+                    component="img"
+                    height="200"
+                    image={tour.image}
+                    alt={tour.title}
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                      {tour.title}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {tour.description}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+
+        </Container>
+
+        {/* Footer */}
+        
+        <Box className="fade-in" sx={{ bgcolor: "rgba(0, 0, 0, 0.5)", py: 8,color:"white" }}>
+          <Container maxWidth="lg">
+            <Typography variant="h4" align="center" gutterBottom>
+             where You find Us?
+            </Typography>
             <Box
               sx={{
-                display: "flex",
-                transition: "transform 0.5s ease",
-                transform: `translateX(-${currentDestination * 100}%)`,
+                position: "relative",
+                width: "100%",
+                height: 400,
+                overflow: "hidden",
               }}
             >
-              {destinations.map((destination) => (
-                <Box
-                  key={destination.id}
-                  sx={{
-                    flexShrink: 0,
-                    width: "100%",
-                    height: 400,
-                    backgroundImage: `url(${destination.image})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    display: "flex",
-                    alignItems: "flex-end",
-                    justifyContent: "center",
-                  }}
-                >
-                  <Typography
-                    variant="h3"
-                    sx={{
-                      color: "white",
-                      backgroundColor: "rgba(0,0,0,0.5)",
-                      p: 2,
-                      width: "100%",
-                      textAlign: "center",
-                    }}
-                  >
-                    {destination.name}
-                  </Typography>
-                </Box>
-              ))}
-            </Box>
-          </Box>
-        </Container>
-      </Box>
-
-      <Container sx={{ py: 8 ,color:"white"}} maxWidth="md">
-        <Typography variant="h4" align="center" gutterBottom>
-          What Our Organisers Say
-        </Typography>
-        <Grid container spacing={4}>
-          {testimonials.map((testimonial) => (
-            <Grid item key={testimonial.id} xs={12} md={4}>
-              <Paper
-                elevation={3}
+              <IconButton
                 sx={{
-                  p: 3,
-                  height: "100%",
+                  position: "absolute",
+                  left: 0,
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  zIndex: 1,
+                  color: "white",
+                }}
+                onClick={prevDestination}
+              >
+                <ArrowBackIosIcon />
+              </IconButton>
+              <IconButton
+                sx={{
+                  position: "absolute",
+                  right: 0,
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  zIndex: 1,
+                  color: "white",
+                }}
+                onClick={nextDestination}
+              >
+                <ArrowForwardIosIcon />
+              </IconButton>
+              <Box
+                sx={{
                   display: "flex",
-                  flexDirection: "column",
-                  backgroundColor: "rgba(255, 255, 255, 0.8)",
+                  transition: "transform 0.5s ease",
+                  transform: `translateX(-${currentDestination * 100}%)`,
                 }}
               >
-                <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                  <Avatar
-                    src={testimonial.avatar}
-                    alt={testimonial.name}
-                    sx={{ mr: 2 }}
-                  />
-                  <Typography variant="subtitle1">
-                    {testimonial.name}
-                  </Typography>
-                </Box>
-                <Typography variant="body1" sx={{ flexGrow: 1 }}>
-                  "{testimonial.text}"
-                </Typography>
-              </Paper>
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
+                {destinations.map((destination) => (
+                  <Box
+                    key={destination.id}
+                    sx={{
+                      flexShrink: 0,
+                      width: "100%",
+                      height: 400,
+                      backgroundImage: `url(${destination.image})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      display: "flex",
+                      alignItems: "flex-end",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Typography
+                      variant="h3"
+                      sx={{
+                        color: "white",
+                        backgroundColor: "rgba(0,0,0,0.5)",
+                        p: 2,
+                        width: "100%",
+                        textAlign: "center",
+                      }}
+                    >
+                      {destination.name}
+                    </Typography>
+                  </Box>
+                ))}
+              </Box>
+            </Box>
+          </Container>
+        </Box>
 
-      <Box
-        sx={{
-          bgcolor: "rgba(0, 0, 0, 0.7)",
-          p: 6,
-          mt: "auto",
-        }}
-        component="footer"
-      >
-        <Typography variant="h6" align="center" gutterBottom>
-          Ready to start your adventure?
-        </Typography>
-        
-        <Box sx={{ mt: 4, display: "flex", justifyContent: "center" }}>
-          
-          <Button
-            variant="outlined"
-            sx={{ color: "white", borderColor: "white" }}
-          >
-            Subscribe to Social Media
-          </Button>
-          
-        </Box>
-        <Box sx={{ mt: 4, display: "flex", justifyContent: "center" }}>
-          <IconButton
-            component="a"
-            href="https://www.linkedin.com/company/trajectoryjumech/"
-            target="_blank"
-            sx={{ color: "white" }}
-          >
-            <LinkedInIcon />
-          </IconButton>
-          <IconButton
-            component="a"
-            href="https://www.instagram.com/trajectory_jumech/"
-            target="_blank"
-            sx={{ color: "white" }}
-          >
-            <InstagramIcon />
-          </IconButton>
-          <IconButton
-            component="a"
-            href="https://www.facebook.com/profile.php?id=61572408332143"
-            target="_blank"
-            sx={{ color: "white" }}
-          >
-            <FacebookIcon />
-          </IconButton>
-        </Box>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="white"
-          component="p"
-          sx={{ mt: 3 }}
+        <Container className="fade-in" sx={{ py: 8 ,color:"white"}} maxWidth="md">
+          <Typography variant="h4" align="center" gutterBottom>
+            What Our Organisers Say
+          </Typography>
+          <Grid container spacing={4}>
+            {testimonials.map((testimonial) => (
+              <Grid item key={testimonial.id} xs={12} md={4}>
+                <Paper
+                  elevation={3}
+                  sx={{
+                    p: 3,
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    backgroundColor: "rgba(255, 255, 255, 0.8)",
+                  }}
+                >
+                  <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+                    <Avatar
+                      src={testimonial.avatar}
+                      alt={testimonial.name}
+                      sx={{ mr: 2 }}
+                    />
+                    <Typography variant="subtitle1">
+                      {testimonial.name}
+                    </Typography>
+                  </Box>
+                  <Typography variant="body1" sx={{ flexGrow: 1 }}>
+                    "{testimonial.text}"
+                  </Typography>
+                </Paper>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+
+        <Box
+          className="fade-in"
+          sx={{
+            bgcolor: "rgba(0, 0, 0, 0.7)",
+            p: 6,
+            mt: "auto",
+          }}
+          component="footer"
         >
-          © {new Date().getFullYear()} Trajectory. All rights reserved.
-        </Typography>
+          <Typography variant="h6" align="center" gutterBottom>
+            Ready to start your adventure?
+          </Typography>
+          
+          <Box sx={{ mt: 4, display: "flex", justifyContent: "center" }}>
+            
+            <Button
+              variant="outlined"
+              sx={{ color: "white", borderColor: "white" }}
+            >
+              Subscribe to Social Media
+            </Button>
+            
+          </Box>
+          <Box sx={{ mt: 4, display: "flex", justifyContent: "center" }}>
+            <IconButton
+              component="a"
+              href="https://www.linkedin.com/company/trajectoryjumech/"
+              target="_blank"
+              sx={{ color: "white" }}
+            >
+              <LinkedInIcon />
+            </IconButton>
+            <IconButton
+              component="a"
+              href="https://www.instagram.com/trajectory_jumech/"
+              target="_blank"
+              sx={{ color: "white" }}
+            >
+              <InstagramIcon />
+            </IconButton>
+            <IconButton
+              component="a"
+              href="https://www.facebook.com/profile.php?id=61572408332143"
+              target="_blank"
+              sx={{ color: "white" }}
+            >
+              <FacebookIcon />
+            </IconButton>
+          </Box>
+          <Typography
+            variant="subtitle1"
+            align="center"
+            color="white"
+            component="p"
+            sx={{ mt: 3 }}
+          >
+            © {new Date().getFullYear()} Trajectory. All rights reserved.
+          </Typography>
+        </Box>
       </Box>
-    </Box>
+    </ThemeProvider>
   );
 }
 
