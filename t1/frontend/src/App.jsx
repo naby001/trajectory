@@ -9,7 +9,7 @@ import { About } from "./pages/about";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Details from "./pages/events/details";
 import AuthPage from "./pages/login";
-
+import ProfilePage from "./pages/Profile";
 const theme = createTheme({
   palette: {
     primary: {
@@ -68,6 +68,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<AuthPage />} />
           <Route path="/details" element={<Details />} />
+          <Route path="/Profile" element={<ProfilePage/>}/>
         </Routes>
       </Router>
     </ThemeProvider>
