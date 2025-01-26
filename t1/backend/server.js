@@ -1,23 +1,30 @@
-require("dotenv").config();
-const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const cors = require("cors");
-const authRoutes = require("./routes/authRoutes");
+const express = require('express');
+const connectDB = require('./config/db');
+const authRoutes = require('./routes/authRoutes');
+const dotenv = require('dotenv');
+const cors = require('cors');
 
+dotenv.config();
 const app = express();
-const port = process.env.PORT || 5000;
-
-// Middleware
-app.use(bodyParser.json());
 app.use(cors());
+app.use(express.json());
 
-// MongoDB connection
-mongoose.connect(process.env.MONGODB_URI);
+connectDB();
 
-// Routes
-app.use("/api", authRoutes);
+console.log("JWT Secret Key:", process.env.JWT_SECRET || "JWT_SECRET not set");
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+app.use('/api/auth', authRoutes);
+
+// Test route to check if environment variables are loaded correctly
+app.get('/api/test-env', (req, res) => {
+  res.json({
+    PORT: process.env.PORT,
+    MONGO_URI: process.env.MONGO_URI ? "Mongo URI is set" : "Not set",
+    JWT_SECRET: process.env.JWT_SECRET ? "JWT Secret is set" : "Not set",
+  });
 });
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () =>
+  console.log(`Server running on port ${PORT}`)
+);
