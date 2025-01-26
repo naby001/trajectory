@@ -6,6 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
+import { keyframes } from "@emotion/react";
 import {
   AppBar,
   Toolbar,
@@ -40,6 +41,26 @@ const theme = createTheme({
     },
   },
 });
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+const slideIn = keyframes`
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+`;
 
 const events = [
   {
@@ -213,6 +234,7 @@ export function Explore() {
           px: 4,
           py: 8,
           paddingTop: "8%",
+          animation: `${fadeIn} 1s ease-in-out`,
         }}
       >
         <video
@@ -234,7 +256,7 @@ export function Explore() {
         <br>
         </br>
         <Typography variant="h1" component="h1" gutterBottom sx={{ color: "#fff", fontSize: { xs: '2rem', md: '4rem' } }}>Explore Events</Typography>
-        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4, mb: 8 }}>
+        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4, mb: 8, animation: `${slideIn} 0.5s ease-in-out` }}>
           <TextField
             label="Search Events..."
             variant="outlined"
@@ -260,7 +282,7 @@ export function Explore() {
         </Box>
         <Grid container spacing={3}>
           {filteredEvents.map((event) => (
-            <Grid item xs={12} md={6} lg={4} key={event.id}>
+            <Grid item xs={12} md={6} lg={4} key={event.id} sx={{ animation: `${slideIn} 0.5s ease-in-out` }}>
               <Card
                 sx={{
                   transition: 'transform 0.3s, box-shadow 0.3s',
