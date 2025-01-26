@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import CardActions from '@mui/material/CardActions';
 import CardHeader from '@mui/material/CardHeader';
 import backgroundVideo from "../assets/vid3.mp4";
@@ -191,45 +191,6 @@ export function Explore() {
 
   const [searchTerm, setSearchTerm] = useState("");
   const [filterType, setFilterType] = useState(initialFilterType);
-  const sectionRef = useRef(null);
-  const cardRefs = useRef([]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate');
-          } else {
-            entry.target.classList.remove('animate');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    const section = sectionRef.current;
-    if (section) {
-      observer.observe(section);
-    }
-
-    cardRefs.current.forEach((card) => {
-      if (card) {
-        observer.observe(card);
-      }
-    });
-
-    return () => {
-      if (section) {
-        observer.unobserve(section);
-      }
-      cardRefs.current.forEach((card) => {
-        if (card) {
-          observer.unobserve(card);
-        }
-      });
-    };
-  }, []);
 
   const filteredEvents = events.filter((event) => {
     return (
@@ -239,6 +200,7 @@ export function Explore() {
   });
 
   return (
+    
     <ThemeProvider theme={theme}>
       {/* Navbar */}
       <AppBar position="fixed" sx={{ background: "#282a3a" }}>
@@ -246,19 +208,11 @@ export function Explore() {
       </AppBar>
       
       <Box
-        ref={sectionRef}
         sx={{
           position: 'relative',
           px: 4,
           py: 8,
           paddingTop: "8%",
-          opacity: 0,
-          transform: 'translateY(20px)',
-          transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
-          '&.animate': {
-            opacity: 1,
-            transform: 'translateY(0)',
-          },
         }}
       >
         <video
@@ -305,24 +259,8 @@ export function Explore() {
           </FormControl>
         </Box>
         <Grid container spacing={3}>
-          {filteredEvents.map((event, index) => (
-            <Grid
-              item
-              xs={12}
-              md={6}
-              lg={4}
-              key={event.id}
-              ref={(el) => (cardRefs.current[index] = el)}
-              sx={{
-                opacity: 0,
-                transform: 'translateY(20px)',
-                transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
-                '&.animate': {
-                  opacity: 1,
-                  transform: 'translateY(0)',
-                },
-              }}
-            >
+          {filteredEvents.map((event) => (
+            <Grid item xs={12} md={6} lg={4} key={event.id}>
               <Card
                 sx={{
                   transition: 'transform 0.3s, box-shadow 0.3s',
@@ -373,7 +311,7 @@ export function Explore() {
           ))}
         </Grid>
       </Box>
+    
     </ThemeProvider>
   );
 }
-
