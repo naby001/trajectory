@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import CardActions from '@mui/material/CardActions';
 import CardHeader from '@mui/material/CardHeader';
 import backgroundVideo from "../assets/vid3.mp4";
@@ -29,6 +29,7 @@ import cricketImage from "../assets/crick.webp";
 import "@fontsource/roboto"; // Import Roboto font
 import "@fontsource/lobster"; // Import Lobster font
 import "@fontsource/open-sans"; // Import Open Sans font
+import { Link, animateScroll as scroll } from 'react-scroll';
 
 const theme = createTheme({
   typography: {
@@ -58,6 +59,17 @@ const slideIn = keyframes`
   }
   to {
     transform: translateY(0);
+    opacity: 1;
+  }
+`;
+
+const focusIn = keyframes`
+  from {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+  to {
+    transform: scale(1);
     opacity: 1;
   }
 `;
@@ -212,6 +224,7 @@ export function Explore() {
 
   const [searchTerm, setSearchTerm] = useState("");
   const [filterType, setFilterType] = useState(initialFilterType);
+  const cardRefs = useRef([]);
 
   const filteredEvents = events.filter((event) => {
     return (
@@ -220,8 +233,36 @@ export function Explore() {
     );
   });
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+          } else {
+            entry.target.classList.remove("active");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    cardRefs.current.forEach((ref) => {
+      if (ref) {
+        observer.observe(ref);
+      }
+    });
+
+    return () => {
+      cardRefs.current.forEach((ref) => {
+        if (ref) {
+          observer.unobserve(ref);
+        }
+      });
+    };
+  }, [filteredEvents]);
+
   return (
-    
     <ThemeProvider theme={theme}>
       {/* Navbar */}
       <AppBar position="fixed" sx={{ background: "#282a3a" }}>
@@ -277,63 +318,70 @@ export function Explore() {
               <MenuItem value="General">General</MenuItem>
               <MenuItem value="Sports Challenge">Sports Challenge</MenuItem>
               <MenuItem value="Fun Activities">Fun Activities</MenuItem>
+              <MenuItem value="Mystery Event?">Mystery Event?</MenuItem>
             </Select>
           </FormControl>
         </Box>
         <Grid container spacing={3}>
-          {filteredEvents.map((event) => (
+          {filteredEvents.map((event, index) => (
             <Grid item xs={12} md={6} lg={4} key={event.id} sx={{ animation: `${slideIn} 0.5s ease-in-out` }}>
-              <Card
-                sx={{
-                  transition: 'transform 0.3s, box-shadow 0.3s',
-                  '&:hover': {
-                    transform: 'scale(1.05)',
-                    boxShadow: '0 0 20px rgba(0, 0, 0, 0.6)',
-                  },
-                  borderRadius: '15px',
-                  overflow: 'hidden',
-                  backgroundColor: '#f5f5f5',
-                }}
-              >
-                <CardHeader
-                  title={event.title}
-                  sx={{ backgroundColor: '#3f51b5', color: '#fff', textAlign: 'center' }}
-                />
-                <CardMedia
-                  component="img"
-                  height="200"
-                  image={event.image}
-                  alt={event.title}
-                />
-                <CardContent>
-                  <Typography variant="body2" color="textSecondary" component="p">
-                    {event.description}
-                  </Typography>
-                  <Box sx={{ mt: 4, spaceY: 2 }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                      <MapPin className="w-4 h-4 mr-2" />
-                      <span>{event.location}</span>
+              <Link to={`event-${event.id}`} smooth={true} duration={500}>
+                <Card
+                  id={`event-${event.id}`}
+                  ref={(el) => (cardRefs.current[index] = el)}
+                  sx={{
+                    transition: 'transform 0.3s, box-shadow 0.3s',
+                    '&:hover': {
+                      transform: 'scale(1.05)',
+                      boxShadow: '0 0 20px rgba(0, 0, 0, 0.6)',
+                    },
+                    borderRadius: '15px',
+                    overflow: 'hidden',
+                    backgroundColor: '#f5f5f5',
+                    '&.active': {
+                      animation: `${focusIn} 0.5s ease-in-out`,
+                    },
+                  }}
+                >
+                  <CardHeader
+                    title={event.title}
+                    sx={{ backgroundColor: '#3f51b5', color: '#fff', textAlign: 'center' }}
+                  />
+                  <CardMedia
+                    component="img"
+                    height="200"
+                    image={event.image}
+                    alt={event.title}
+                  />
+                  <CardContent>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                      {event.description}
+                    </Typography>
+                    <Box sx={{ mt: 4, spaceY: 2 }}>
+                      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                        <MapPin className="w-4 h-4 mr-2" />
+                        <span>{event.location}</span>
+                      </Box>
+                      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                        <Calendar className="w-4 h-4 mr-2" />
+                        <span>{event.type}</span>
+                      </Box>
+                      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                        <Users className="w-4 h-4 mr-2" />
+                        <span>{event.groupSize} people</span>
+                      </Box>
                     </Box>
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                      <Calendar className="w-4 h-4 mr-2" />
-                      <span>{event.type}</span>
-                    </Box>
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                      <Users className="w-4 h-4 mr-2" />
-                      <span>{event.groupSize} people</span>
-                    </Box>
-                  </Box>
-                </CardContent>
-                <CardActions sx={{ justifyContent: 'space-between' }}>
-                  <Typography variant="h6" component="span">${event.price}</Typography>
-                  <Button variant="contained" color="primary">Register</Button>
-                </CardActions>
-              </Card>
+                  </CardContent>
+                  <CardActions sx={{ justifyContent: 'space-between' }}>
+                    <Typography variant="h6" component="span">${event.price}</Typography>
+                    <Button variant="contained" color="primary">Register</Button>
+                  </CardActions>
+                </Card>
+              </Link>
             </Grid>
           ))}
         </Grid>
       </Box>
-    
     </ThemeProvider>
   );
 }
