@@ -378,6 +378,11 @@ export function Explore() {
                   borderRadius: "15px",
                   overflow: "hidden",
                   backgroundColor: "#f5f5f5",
+                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                  "&:hover": {
+                    transform: "scale(1.05)",
+                    boxShadow: "0 0 20px rgba(0, 0, 0, 0.6)",
+                  },
                 }}
               >
                 <CardHeader
@@ -392,8 +397,23 @@ export function Explore() {
                 />
                 <CardContent>
                   <Typography>{event.description}</Typography>
+                  <Box sx={{ mt: 2 }}>
+                    <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
+                      <MapPin style={{ marginRight: "8px" }} />
+                      <Typography>{event.location}</Typography>
+                    </Box>
+                    <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
+                      <Calendar style={{ marginRight: "8px" }} />
+                      <Typography>{event.type}</Typography>
+                    </Box>
+                    <Box sx={{ display: "flex", alignItems: "center" }}>
+                      <Users style={{ marginRight: "8px" }} />
+                      <Typography>{event.groupSize} people</Typography>
+                    </Box>
+                  </Box>
                 </CardContent>
-                <CardActions>
+                <CardActions sx={{ justifyContent: "space-between", p: 2 }}>
+                  <Typography variant="h6">${event.price}</Typography>
                   <Button
                     variant="contained"
                     color="primary"
