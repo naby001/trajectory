@@ -1,18 +1,16 @@
-import { useState, useEffect, useRef } from "react";
-import CardActions from '@mui/material/CardActions';
-import CardHeader from '@mui/material/CardHeader';
+import React, { useState, useEffect, useRef } from "react";
+import CardActions from "@mui/material/CardActions";
+import CardHeader from "@mui/material/CardHeader";
 import backgroundVideo from "../assets/vid3.mp4";
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
-import InputLabel from '@mui/material/InputLabel';
-import FormControl from '@mui/material/FormControl';
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
+import InputLabel from "@mui/material/InputLabel";
+import FormControl from "@mui/material/FormControl";
 import { keyframes } from "@emotion/react";
 import {
   AppBar,
-  Toolbar,
   Typography,
   Button,
-  Container,
   Grid,
   Card,
   CardContent,
@@ -22,14 +20,14 @@ import {
   createTheme,
   ThemeProvider,
 } from "@mui/material";
-import { MapPin, Calendar, Users } from 'lucide-react';
+import { MapPin, Calendar, Users } from "lucide-react";
 import Navbar from "./Navbar";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import cricketImage from "../assets/crick.webp";
-import "@fontsource/roboto"; // Import Roboto font
-import "@fontsource/lobster"; // Import Lobster font
-import "@fontsource/open-sans"; // Import Open Sans font
-import { Link, animateScroll as scroll } from 'react-scroll';
+import "@fontsource/roboto";
+import "@fontsource/lobster";
+import "@fontsource/open-sans";
+import { Link } from "react-scroll";
 
 const theme = createTheme({
   typography: {
@@ -78,12 +76,14 @@ const events = [
   {
     id: 1,
     title: "Water Rocket",
-    description: "Showcase your CAD skills by designing innovative mechanical components.",
+    description:
+      "Showcase your CAD skills by designing innovative mechanical components.",
     location: "Hall A, Jadavpur University",
     type: "Hardware Challenge",
     groupSize: "1-3",
     price: 150,
-    image: "https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
+    image:
+      "https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
   },
   {
     id: 2,
@@ -93,27 +93,32 @@ const events = [
     type: "Hardware Challenge",
     groupSize: "2-5",
     price: 300,
-    image: "https://images.pexels.com/photos/256412/pexels-photo-256412.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
+    image:
+      "https://images.pexels.com/photos/256412/pexels-photo-256412.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
   },
   {
     id: 3,
     title: "Line Follower",
-    description: "Design and construct a line-following robot that navigates a predefined path.",
+    description:
+      "Design and construct a line-following robot that navigates a predefined path.",
     location: "Workshop Area, Block B",
     type: "Hardware Challenge",
     groupSize: "3-6",
     price: 200,
-    image: "https://images.pexels.com/photos/1438515/pexels-photo-1438515.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
+    image:
+      "https://images.pexels.com/photos/1438515/pexels-photo-1438515.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
   },
   {
     id: 4,
     title: "Egglosion",
-    description: "Build a hydraulic arm to complete specified tasks with precision.",
+    description:
+      "Build a hydraulic arm to complete specified tasks with precision.",
     location: "Lab 3, Mechanical Wing",
     type: "Hardware Challenge",
     groupSize: "1-4",
     price: 250,
-    image: "https://images.pexels.com/photos/256660/pexels-photo-256660.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
+    image:
+      "https://images.pexels.com/photos/256660/pexels-photo-256660.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
   },
   {
     id: 5,
@@ -123,17 +128,20 @@ const events = [
     type: "Hardware Challenge",
     groupSize: "5",
     price: 100,
-    image: "https://images.pexels.com/photos/47730/the-ball-stadion-football-the-pitch-47730.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
+    image:
+      "https://images.pexels.com/photos/47730/the-ball-stadion-football-the-pitch-47730.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
   },
   {
     id: 6,
     title: "Solidworks/Fusion",
-    description: "Design innovative mechanical components using Solidworks or Fusion software.",
+    description:
+      "Design innovative mechanical components using Solidworks or Fusion software.",
     location: "Gaming Arena, Hall C",
     type: "Simulation Challenge",
     groupSize: "5",
     price: 200,
-    image: "https://images.pexels.com/photos/4425763/pexels-photo-4425763.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
+    image:
+      "https://images.pexels.com/photos/4425763/pexels-photo-4425763.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
   },
   {
     id: 7,
@@ -143,17 +151,20 @@ const events = [
     type: "General",
     groupSize: "General",
     price: 500,
-    image: "https://images.pexels.com/photos/209831/pexels-photo-209831.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
+    image:
+      "https://images.pexels.com/photos/209831/pexels-photo-209831.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
   },
   {
     id: 8,
     title: "Debate",
-    description: "Engage in a lively debate on important topics with fellow participants.",
+    description:
+      "Engage in a lively debate on important topics with fellow participants.",
     location: "eSports Zone, Hall B",
     type: "General",
     groupSize: "5",
     price: 200,
-    image: "https://images.pexels.com/photos/9825980/pexels-photo-9825980.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
+    image:
+      "https://images.pexels.com/photos/9825980/pexels-photo-9825980.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
   },
   {
     id: 9,
@@ -163,22 +174,26 @@ const events = [
     type: "Sports Challenge",
     groupSize: "1",
     price: 50,
-    image: "https://images.pexels.com/photos/210027/pexels-photo-210027.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
+    image:
+      "https://images.pexels.com/photos/210027/pexels-photo-210027.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
   },
   {
     id: 10,
     title: "Tug of War",
-    description: "Compete in a traditional tug of war competition with your team.",
+    description:
+      "Compete in a traditional tug of war competition with your team.",
     location: "Automotive Lab, Block E",
     type: "Sports Challenge",
     groupSize: "3-5",
     price: 450,
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMpWZh3RDT7SttEtt1yebbB2tnpHMeQ8BqqA&s",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMpWZh3RDT7SttEtt1yebbB2tnpHMeQ8BqqA&s",
   },
   {
     id: 11,
     title: "Cricket",
-    description: "Participate in a thrilling cricket match, showcasing your skills.",
+    description:
+      "Participate in a thrilling cricket match, showcasing your skills.",
     location: "eSports Lounge, Main Block",
     type: "Sports Challenge",
     groupSize: "3",
@@ -193,17 +208,20 @@ const events = [
     type: "Sports Challenge",
     groupSize: "6-10",
     price: 100,
-    image: "https://cdn.magicdecor.in/com/2024/05/22173454/Football-Abstract-Design-Wallpaper-Mural-710x488.jpg",
+    image:
+      "https://cdn.magicdecor.in/com/2024/05/22173454/Football-Abstract-Design-Wallpaper-Mural-710x488.jpg",
   },
   {
     id: 13,
     title: "Treasure Hunt",
-    description: "Embark on a treasure hunt across the campus, solving clues and finding hidden treasures.",
+    description:
+      "Embark on a treasure hunt across the campus, solving clues and finding hidden treasures.",
     location: "Campus Grounds",
     type: "Fun Activities",
     groupSize: "6-10",
     price: 100,
-    image: "https://www.wanderquest.in/monthly-subscription-boxes-for-kids-6-to-12-years/modules//smartblog/images/15-single-default.jpg",
+    image:
+      "https://www.wanderquest.in/monthly-subscription-boxes-for-kids-6-to-12-years/modules//smartblog/images/15-single-default.jpg",
   },
   {
     id: 14,
@@ -213,18 +231,29 @@ const events = [
     type: "Mystery Event?",
     groupSize: "6-10",
     price: 100,
-    image: "https://images.pexels.com/photos/5428830/pexels-photo-5428830.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image:
+      "https://images.pexels.com/photos/5428830/pexels-photo-5428830.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
 ];
 
 export function Explore() {
   const location = useLocation();
+  const navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);
   const initialFilterType = queryParams.get("filter") || "";
 
   const [searchTerm, setSearchTerm] = useState("");
   const [filterType, setFilterType] = useState(initialFilterType);
   const cardRefs = useRef([]);
+
+  const handleRegisterClick = (eventTitle) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      alert(`You have successfully registered for ${eventTitle}`);
+    } else {
+      navigate("/login");
+    }
+  };
 
   const filteredEvents = events.filter((event) => {
     return (
@@ -264,14 +293,13 @@ export function Explore() {
 
   return (
     <ThemeProvider theme={theme}>
-      {/* Navbar */}
-      <AppBar position="fixed" sx={{ background: "#282a3a" }}>
+      <AppBar position="fixed" sx={{ background: "#282a3a", zIndex: 1000 }}>
         <Navbar />
       </AppBar>
-      
+
       <Box
         sx={{
-          position: 'relative',
+          position: "relative",
           px: 4,
           py: 8,
           paddingTop: "8%",
@@ -283,29 +311,45 @@ export function Explore() {
           loop
           muted
           style={{
-            position: 'absolute',
+            position: "absolute",
             top: 0,
             left: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
             zIndex: -1,
           }}
         >
           <source src={backgroundVideo} type="video/mp4" />
         </video>
-        <br>
-        </br>
-        <Typography variant="h1" component="h1" gutterBottom sx={{ color: "#fff", fontSize: { xs: '2rem', md: '4rem' } }}>Explore Events</Typography>
-        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4, mb: 8, animation: `${slideIn} 0.5s ease-in-out` }}>
+        <Typography
+          variant="h1"
+          component="h1"
+          gutterBottom
+          sx={{ color: "#fff", fontSize: { xs: "2rem", md: "4rem" } }}
+        >
+          Explore Events
+        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", md: "row" },
+            gap: 4,
+            mb: 8,
+            animation: `${slideIn} 0.5s ease-in-out`,
+          }}
+        >
           <TextField
             label="Search Events..."
             variant="outlined"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            sx={{ width: { xs: '100%', md: '50%' }, backgroundColor: "#fff" }}
+            sx={{ width: { xs: "100%", md: "50%" }, backgroundColor: "#fff" }}
           />
-          <FormControl variant="outlined" sx={{ width: { xs: '100%', md: '25%' }, backgroundColor: "#fff" }}>
+          <FormControl
+            variant="outlined"
+            sx={{ width: { xs: "100%", md: "25%" }, backgroundColor: "#fff" }}
+          >
             <InputLabel>Filter by Type</InputLabel>
             <Select
               value={filterType}
@@ -314,7 +358,9 @@ export function Explore() {
             >
               <MenuItem value="">All events</MenuItem>
               <MenuItem value="Hardware Challenge">Hardware Challenge</MenuItem>
-              <MenuItem value="Simulation Challenge">Simulation Challenge</MenuItem>
+              <MenuItem value="Simulation Challenge">
+                Simulation Challenge
+              </MenuItem>
               <MenuItem value="General">General</MenuItem>
               <MenuItem value="Sports Challenge">Sports Challenge</MenuItem>
               <MenuItem value="Fun Activities">Fun Activities</MenuItem>
@@ -324,60 +370,39 @@ export function Explore() {
         </Box>
         <Grid container spacing={3}>
           {filteredEvents.map((event, index) => (
-            <Grid item xs={12} md={6} lg={4} key={event.id} sx={{ animation: `${slideIn} 0.5s ease-in-out` }}>
-              <Link to={`event-${event.id}`} smooth={true} duration={500}>
-                <Card
-                  id={`event-${event.id}`}
-                  ref={(el) => (cardRefs.current[index] = el)}
-                  sx={{
-                    transition: 'transform 0.3s, box-shadow 0.3s',
-                    '&:hover': {
-                      transform: 'scale(1.05)',
-                      boxShadow: '0 0 20px rgba(0, 0, 0, 0.6)',
-                    },
-                    borderRadius: '15px',
-                    overflow: 'hidden',
-                    backgroundColor: '#f5f5f5',
-                    '&.active': {
-                      animation: `${focusIn} 0.5s ease-in-out`,
-                    },
-                  }}
-                >
-                  <CardHeader
-                    title={event.title}
-                    sx={{ backgroundColor: '#3f51b5', color: '#fff', textAlign: 'center' }}
-                  />
-                  <CardMedia
-                    component="img"
-                    height="200"
-                    image={event.image}
-                    alt={event.title}
-                  />
-                  <CardContent>
-                    <Typography variant="body2" color="textSecondary" component="p">
-                      {event.description}
-                    </Typography>
-                    <Box sx={{ mt: 4, spaceY: 2 }}>
-                      <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                        <MapPin className="w-4 h-4 mr-2" />
-                        <span>{event.location}</span>
-                      </Box>
-                      <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                        <Calendar className="w-4 h-4 mr-2" />
-                        <span>{event.type}</span>
-                      </Box>
-                      <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                        <Users className="w-4 h-4 mr-2" />
-                        <span>{event.groupSize} people</span>
-                      </Box>
-                    </Box>
-                  </CardContent>
-                  <CardActions sx={{ justifyContent: 'space-between' }}>
-                    <Typography variant="h6" component="span">${event.price}</Typography>
-                    <Button variant="contained" color="primary">Register</Button>
-                  </CardActions>
-                </Card>
-              </Link>
+            <Grid item xs={12} md={6} lg={4} key={event.id}>
+              <Card
+                id={`event-${event.id}`}
+                ref={(el) => (cardRefs.current[index] = el)}
+                sx={{
+                  borderRadius: "15px",
+                  overflow: "hidden",
+                  backgroundColor: "#f5f5f5",
+                }}
+              >
+                <CardHeader
+                  title={event.title}
+                  sx={{ backgroundColor: "#3f51b5", color: "#fff" }}
+                />
+                <CardMedia
+                  component="img"
+                  height="200"
+                  image={event.image}
+                  alt={event.title}
+                />
+                <CardContent>
+                  <Typography>{event.description}</Typography>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => handleRegisterClick(event.title)}
+                  >
+                    Register
+                  </Button>
+                </CardActions>
+              </Card>
             </Grid>
           ))}
         </Grid>
