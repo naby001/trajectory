@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import {
   Toolbar,
   Typography,
@@ -17,6 +17,14 @@ import MenuIcon from "@mui/icons-material/Menu";
 const Navbar = () => {
   const isMobile = useMediaQuery("(max-width:600px)");
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const location = useLocation();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // Check if user is logged in based on localStorage token
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setIsLoggedIn(!!token);
+  }, [location]);
 
   const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen);
@@ -26,11 +34,17 @@ const Navbar = () => {
     { label: "Home", to: "/" },
     { label: "Explore", to: "/explore" },
     { label: "About", to: "/about" },
-    { label: "Login", to: "/login" },
+    isLoggedIn ? { label: "Profile", to: "/profile" } : { label: "Login", to: "/login" },
   ];
 
   return (
-    <Toolbar sx={{ backgroundColor: "black", justifyContent: "space-between", padding: isMobile ? "0 8px" : "0 16px" }}>
+    <Toolbar
+      sx={{
+        backgroundColor: "black",
+        justifyContent: "space-between",
+        padding: isMobile ? "0 8px" : "0 16px",
+      }}
+    >
       <Link to="/">
         <img
           src={logo}
@@ -59,6 +73,7 @@ const Navbar = () => {
       >
         TraJectory
       </Typography>
+
       {isMobile ? (
         <>
           <IconButton
@@ -75,14 +90,16 @@ const Navbar = () => {
             open={drawerOpen}
             onClose={handleDrawerToggle}
           >
-            <List sx={{ backgroundColor: "#6666ff", height: "100%" }}>
+            <List
+              sx={{ backgroundColor: "#6666ff", height: "100%" }}
+              onClick={handleDrawerToggle}
+            >
               {navItems.map((item) => (
                 <ListItem
                   button
                   key={item.label}
                   component={Link}
                   to={item.to}
-                  onClick={handleDrawerToggle}
                   sx={{
                     "&:hover": {
                       backgroundColor: "#444",
@@ -92,8 +109,9 @@ const Navbar = () => {
                   <ListItemText
                     primary={item.label}
                     sx={{
-                      color: "white",
+                      color: location.pathname === item.to ? "#ffd700" : "white",
                       fontSize: 16,
+                      fontWeight: location.pathname === item.to ? "bold" : "normal",
                       "&:hover": {
                         color: "#ffd700",
                         textShadow: "0 0 8px #ffd700",
@@ -113,8 +131,9 @@ const Navbar = () => {
             component={Link}
             to={item.to}
             sx={{
-              color: "white",
+              color: location.pathname === item.to ? "#ffd700" : "white",
               fontSize: 16,
+              fontWeight: location.pathname === item.to ? "bold" : "normal",
               "&:hover": {
                 color: "#ffd700",
                 transform: "scale(1.1)",

@@ -45,8 +45,41 @@ export default function AuthPage() {
     }
   }, [navigate]);
 
+  const validateForm = () => {
+    let formErrors = {};
+
+    if (!email.trim()) {
+      formErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      formErrors.email = "Invalid email address";
+    }
+
+    if (!password.trim()) {
+      formErrors.password = "Password is required";
+    } else if (password.length < 6) {
+      formErrors.password = "Password must be at least 6 characters long";
+    }
+
+    if (!isLogin && password !== confirmPassword) {
+      formErrors.confirmPassword = "Passwords do not match";
+    }
+
+    if (!isLogin && !name.trim()) {
+      formErrors.name = "Full name is required";
+    }
+
+    if (!isLogin && !university.trim()) {
+      formErrors.university = "University name is required";
+    }
+
+    setErrors(formErrors);
+    return Object.keys(formErrors).length === 0;
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (!validateForm()) return;
+
     setLoading(true);
     try {
       const response = await fetch(`http://localhost:5000/api/auth/${isLogin ? "login" : "register"}`, {
@@ -54,14 +87,16 @@ export default function AuthPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password, university, name }),
       });
+
       const data = await response.json();
       if (response.ok) {
         if (!isLogin) {
-          setSnackbarMessage("Successfully signed up! Redirecting to login...");
+          setSnackbarMessage("Successfully signed up! Redirecting to profile...");
           setOpenSnackbar(true);
-          setTimeout(() => navigate("/login"), 2000);
+          setTimeout(() => navigate("/profile"), 2000);
         } else {
           localStorage.setItem("token", data.token);
+          localStorage.setItem("user", JSON.stringify(data.user));
           navigate("/profile", { state: { user: data.user } });
         }
       } else {
@@ -96,6 +131,8 @@ export default function AuthPage() {
                 margin="normal"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                error={!!errors.name}
+                helperText={errors.name}
               />
             )}
             <TextField
@@ -105,6 +142,8 @@ export default function AuthPage() {
               margin="normal"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              error={!!errors.email}
+              helperText={errors.email}
             />
             <TextField
               label="University"
@@ -113,6 +152,8 @@ export default function AuthPage() {
               margin="normal"
               value={university}
               onChange={(e) => setUniversity(e.target.value)}
+              error={!!errors.university}
+              helperText={errors.university}
             />
             <TextField
               label="Password"
@@ -122,6 +163,8 @@ export default function AuthPage() {
               margin="normal"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              error={!!errors.password}
+              helperText={errors.password}
             />
             {!isLogin && (
               <TextField
@@ -132,6 +175,8 @@ export default function AuthPage() {
                 margin="normal"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
+                error={!!errors.confirmPassword}
+                helperText={errors.confirmPassword}
               />
             )}
             {errors.general && <Typography color="error">{errors.general}</Typography>}
