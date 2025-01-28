@@ -22,7 +22,7 @@ import logo from "../assets/logo.png";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
-
+import Navbar from "./Navbar";
 const theme = createTheme({
   palette: {
     mode: "dark",
@@ -129,8 +129,12 @@ export default function AuthPage() {
 
   return (
     <ThemeProvider theme={theme} >
+      
       <CssBaseline />
+      <Navbar />
+
       <Box sx={{ background: "linear-gradient(to bottom, #000000, #434343)", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        
         <Container component="main" maxWidth="lg">
           <Paper elevation={3} sx={{ mt: 8, p: 4, borderRadius: 2, backdropFilter: "blur(10px)", backgroundColor: "rgba(28, 27, 31, 0.8)", boxShadow: "0 0 20px   #F45558" }}>
             <Grid container spacing={4}>
