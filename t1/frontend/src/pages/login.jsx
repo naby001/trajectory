@@ -136,7 +136,7 @@ export default function AuthPage() {
        <AppBar position="fixed" sx={{ background: "#282a3a" }}>
           <Navbar />
         </AppBar>
-      <Box sx={{ background: "linear-gradient(to bottom, #000000, #434343)", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", pt: { xs: 10, md: 10 }, pb: { xs: 2, md: 10 } }}>
+      <Box sx={{ background: "linear-gradient(to bottom, #000000, #434343)", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", pt: { xs: 10, md: 14 }, pb: { xs: 2, md: 10 } }}>
         
         <Container component="main" maxWidth="lg">
           <Paper elevation={3} sx={{ p: { xs: 2, md: 4 }, borderRadius: 2, backdropFilter: "blur(10px)", backgroundColor: "rgba(28, 27, 31, 0.8)", boxShadow: "0 0 20px   #F45558" }}>
