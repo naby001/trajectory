@@ -113,7 +113,7 @@ const testimonials = [
     id: 3,
     name: "Raju Da",
     avatar: "https://via.placeholder.com/150",
-    text: "I've never had such a porota.",
+    text: "The best way to explore JU's hidden gems.",
   },
 ];
 
