@@ -99,7 +99,7 @@ const tours = [
 const testimonials = [
   {
     id: 1,
-    name: "Sayan Das",
+    name: "Sourav Sarkar",
     avatar: "https://via.placeholder.com/150",
     text: "Best event yet organised",
   },
