@@ -20,6 +20,7 @@ exports.registerUser = async (req, res) => {
 };
 
 // User Login
+// User Login
 exports.loginUser = async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -32,18 +33,13 @@ exports.loginUser = async (req, res) => {
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: '1h',
     });
-    res.json({ token, user: { name: user.name, email: user.email } });
+
+    res.json({
+      token,
+      user: { id: user._id, name: user.name, email: user.email },
+    });
   } catch (error) {
     res.status(500).json({ msg: 'Server error' });
   }
 };
 
-// Get User Profile
-exports.getProfile = async (req, res) => {
-  try {
-    const user = await User.findById(req.user.id).select('-password');
-    res.json(user);
-  } catch (error) {
-    res.status(500).json({ msg: 'Server error' });
-  }
-};
