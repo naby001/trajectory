@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {
   Box,
+  AppBar,
   Button,
   Container,
   TextField,
@@ -131,18 +132,20 @@ export default function AuthPage() {
     <ThemeProvider theme={theme} >
       
       <CssBaseline />
-      <Navbar />
-
-      <Box sx={{ background: "linear-gradient(to bottom, #000000, #434343)", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
+       {/* Navbar */}
+       <AppBar position="fixed" sx={{ background: "#282a3a" }}>
+          <Navbar />
+        </AppBar>
+      <Box sx={{ background: "linear-gradient(to bottom, #000000, #434343)", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", pt: { xs: 10, md: 10 }, pb: { xs: 2, md: 10 } }}>
         
         <Container component="main" maxWidth="lg">
-          <Paper elevation={3} sx={{ mt: 8, p: 4, borderRadius: 2, backdropFilter: "blur(10px)", backgroundColor: "rgba(28, 27, 31, 0.8)", boxShadow: "0 0 20px   #F45558" }}>
+          <Paper elevation={3} sx={{ p: { xs: 2, md: 4 }, borderRadius: 2, backdropFilter: "blur(10px)", backgroundColor: "rgba(28, 27, 31, 0.8)", boxShadow: "0 0 20px   #F45558" }}>
             <Grid container spacing={4}>
               <Grid item xs={12} md={6}>
                 <Box
                   component="img"
                   sx={{
-                    width: "50%",
+                    width: { xs: "70%", md: "50%" },
                     height: "auto",
                     display: "block",
                     margin: "0 auto 20px",
