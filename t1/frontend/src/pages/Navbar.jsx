@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   Toolbar,
   Typography,
@@ -10,8 +10,6 @@ import {
   ListItem,
   ListItemText,
   useMediaQuery,
-  Menu,
-  MenuItem,
 } from "@mui/material";
 import logo from "../assets/logo.png";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -20,23 +18,13 @@ const Navbar = () => {
   const isMobile = useMediaQuery("(max-width:600px)");
   const [drawerOpen, setDrawerOpen] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
-  const [user, setUser] = useState(null);
-  const [menuAnchor, setMenuAnchor] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  // Check if user is logged in based on localStorage token
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
+    const token = localStorage.getItem("token");
+    setIsLoggedIn(!!token);
   }, [location]);
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    setUser(null);
-    navigate("/");
-  };
 
   const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen);
@@ -46,6 +34,7 @@ const Navbar = () => {
     { label: "Home", to: "/" },
     { label: "Explore", to: "/explore" },
     { label: "About", to: "/about" },
+    isLoggedIn ? { label: "Profile", to: "/profile" } : { label: "Login", to: "/login" },
   ];
 
   return (
@@ -54,6 +43,7 @@ const Navbar = () => {
         backgroundColor: "black",
         justifyContent: "space-between",
         padding: isMobile ? "0 8px" : "0 16px",
+        boxShadow: "0 0 10px yellow", // Change glow effect to yellow
       }}
     >
       <Link to="/">
@@ -96,7 +86,11 @@ const Navbar = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Drawer anchor="right" open={drawerOpen} onClose={handleDrawerToggle}>
+          <Drawer
+            anchor="right"
+            open={drawerOpen}
+            onClose={handleDrawerToggle}
+          >
             <List
               sx={{ backgroundColor: "#6666ff", height: "100%" }}
               onClick={handleDrawerToggle}
@@ -127,75 +121,30 @@ const Navbar = () => {
                   />
                 </ListItem>
               ))}
-              {user ? (
-                <ListItem button onClick={handleLogout}>
-                  <ListItemText primary="Logout" sx={{ color: "red" }} />
-                </ListItem>
-              ) : (
-                <ListItem button component={Link} to="/login">
-                  <ListItemText primary="Login" sx={{ color: "white" }} />
-                </ListItem>
-              )}
             </List>
           </Drawer>
         </>
       ) : (
-        <>
-          {navItems.map((item) => (
-            <Button
-              key={item.label}
-              color="inherit"
-              component={Link}
-              to={item.to}
-              sx={{
-                color: location.pathname === item.to ? "#ffd700" : "white",
-                fontSize: 16,
-                fontWeight: location.pathname === item.to ? "bold" : "normal",
-                "&:hover": {
-                  color: "#ffd700",
-                  transform: "scale(1.1)",
-                },
-                transition: "transform 0.2s, color 0.2s",
-              }}
-            >
-              {item.label}
-            </Button>
-          ))}
-
-          {user ? (
-            <>
-              <Button
-                color="inherit"
-                onClick={(e) => setMenuAnchor(e.currentTarget)}
-                sx={{ color: "white", textTransform: "none" }}
-              >
-                {user.name}
-              </Button>
-              <Menu
-                anchorEl={menuAnchor}
-                open={Boolean(menuAnchor)}
-                onClose={() => setMenuAnchor(null)}
-              >
-                <MenuItem onClick={handleLogout}>Logout</MenuItem>
-              </Menu>
-            </>
-          ) : (
-            <Button
-              color="inherit"
-              component={Link}
-              to="/login"
-              sx={{
-                color: "white",
-                fontSize: 16,
-                "&:hover": {
-                  color: "#ffd700",
-                },
-              }}
-            >
-              Login
-            </Button>
-          )}
-        </>
+        navItems.map((item) => (
+          <Button
+            key={item.label}
+            color="inherit"
+            component={Link}
+            to={item.to}
+            sx={{
+              color: location.pathname === item.to ? "#ffd700" : "white",
+              fontSize: 16,
+              fontWeight: location.pathname === item.to ? "bold" : "normal",
+              "&:hover": {
+                color: "red", // Change hover color to red
+                transform: "scale(1.1)",
+              },
+              transition: "transform 0.2s, color 0.2s",
+            }}
+          >
+            {item.label}
+          </Button>
+        ))
       )}
     </Toolbar>
   );
