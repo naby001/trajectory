@@ -274,7 +274,7 @@ export default function AuthPage() {
                   </Button>
                   {isLogin && (
                     <Typography sx={{ mt: 2, textAlign: "center" }}>
-                      <Link to="#" style={{ color: "#F45558" }}>
+                      <Link to="#" style={{ color: "yellow" }}>
                         Forgotten password?
                       </Link>
                     </Typography>

@@ -304,7 +304,9 @@ export function Explore() {
           py: 8,
           paddingTop: "8%",
           animation: `${fadeIn} 1s ease-in-out`,
+          pt: { xs: 10, md: 14 }, pb: { xs: 2, md: 10 },
         }}
+        
       >
         <video
           autoPlay
