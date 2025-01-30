@@ -89,8 +89,7 @@ const tours = [
   {
     id: 6,
     title: "Mystery Event?",
-    description:
-      "Event closes with a banger",
+    description: "Event closes with a banger",
     image:
       "https://images.pexels.com/photos/5428830/pexels-photo-5428830.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
@@ -312,34 +311,154 @@ function HomePage() {
             </Typography>
 
             <Grid container spacing={4}>
-              {tours.map((tour) => (
+              {tours.map((tour, index) => (
                 <Grid item key={tour.id} xs={12} sm={6} md={4}>
                   <Card
-                    className="fade-in"
                     sx={{
                       height: "100%",
-                      backgroundColor: "rgba(255, 255, 255, 0.8)",
-                      transition: "transform 0.3s, box-shadow 0.3s",
+                      position: "relative",
+                      overflow: "hidden",
+                      backgroundColor: "rgba(255, 255, 255, 0.1)",
+                      transition: "transform 0.5s, box-shadow 0.5s",
+                      transform:
+                        "perspective(1000px) rotateX(0deg) rotateY(0deg)",
                       "&:hover": {
-                        transform: "scale(1.05)",
-                        boxShadow: "0 0 20px rgba(255, 255, 255, 0.6)",
+                        transform:
+                          "perspective(1000px) rotateX(5deg) rotateY(5deg) scale(1.05)",
+                        boxShadow: `0 0 25px ${
+                          [
+                            "#FF0000", // Red for first card
+                            "#00FF00", // Green for second card
+                            "#0000FF", // Blue for third card
+                            "#FFFF00", // Yellow for fourth card
+                            "#FF00FF", // Purple for fifth card
+                            "#00FFFF", // Cyan for sixth card
+                          ][index]
+                        }`,
                       },
                     }}
-                    onClick={() => handleCardClick(tour.title)}
                   >
-                    <CardMedia
-                      component="img"
-                      height="200"
-                      image={tour.image}
-                      alt={tour.title}
+                    {/* Glowing Background Effect */}
+                    <Box
+                      sx={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%",
+                        background: `radial-gradient(circle, ${
+                          [
+                            "rgba(255, 0, 0, 0.3)", // Red
+                            "rgba(0, 255, 0, 0.3)", // Green
+                            "rgba(0, 0, 255, 0.3)", // Blue
+                            "rgba(255, 255, 0, 0.3)", // Yellow
+                            "rgba(255, 0, 255, 0.3)", // Purple
+                            "rgba(0, 255, 255, 0.3)", // Cyan
+                          ][index]
+                        }, transparent)`,
+                        filter: "blur(15px)",
+                        opacity: 0,
+                        transition: "opacity 0.5s",
+                        zIndex: -1,
+                        "&:hover": {
+                          opacity: 1,
+                        },
+                      }}
                     />
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="div">
+
+                    {/* Card Image */}
+                    <Box sx={{ overflow: "hidden", position: "relative" }}>
+                      <CardMedia
+                        component="img"
+                        height="200"
+                        image={tour.image}
+                        alt={tour.title}
+                        sx={{
+                          filter: "grayscale(100%) brightness(50%)",
+                          transition: "all 0.5s ease-in-out",
+                          "&:hover": {
+                            filter:
+                              "grayscale(0%) brightness(100%) drop-shadow(0 0 20px white)",
+                          },
+                        }}
+                      />
+                    </Box>
+
+                    {/* Card Content */}
+                    <CardContent sx={{ textAlign: "center", color: "white" }}>
+                      {/* Date-like Badge on Top */}
+                      <Box
+                        sx={{
+                          display: "inline-block",
+                          backgroundColor: [
+                            "#FF0000", // Red
+                            "#00FF00", // Green
+                            "#0000FF", // Blue
+                            "#FFFF00", // Yellow
+                            "#FF00FF", // Purple
+                            "#00FFFF", // Cyan
+                          ][index],
+                          color: "white",
+                          padding: "5px 10px",
+                          borderRadius: "5px",
+                          fontWeight: "bold",
+                          position: "absolute",
+                          top: "10px",
+                          left: "10px",
+                        }}
+                      >
+                        {`JUNE ${29 + index}`} {/* Simulated date */}
+                      </Box>
+
+                      <Typography
+                        gutterBottom
+                        variant="h5"
+                        sx={{
+                          fontWeight: "bold",
+                          transition: "color 0.3s",
+                          "&:hover": {
+                            color: "#FFD700",
+                            textShadow: "0 0 10px #FFD700",
+                          },
+                        }}
+                      >
                         {tour.title}
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
+
+                      <Typography variant="body2" sx={{ color: "gray" }}>
                         {tour.description}
                       </Typography>
+
+                      {/* See More Button */}
+                      <Button
+                        sx={{
+                          marginTop: "10px",
+                          color: "white",
+                          fontWeight: "bold",
+                          "&:hover": {
+                            color: [
+                              "#FF0000", // Red
+                              "#00FF00", // Green
+                              "#0000FF", // Blue
+                              "#FFFF00", // Yellow
+                              "#FF00FF", // Purple
+                              "#00FFFF", // Cyan
+                            ][index],
+                            textShadow: `0 0 10px ${
+                              [
+                                "#FF0000",
+                                "#00FF00",
+                                "#0000FF",
+                                "#FFFF00",
+                                "#FF00FF",
+                                "#00FFFF",
+                              ][index]
+                            }`,
+                          },
+                        }}
+                      >
+                        SEE MORE
+                      </Button>
                     </CardContent>
                   </Card>
                 </Grid>
@@ -350,7 +469,10 @@ function HomePage() {
 
         {/* Footer */}
         <Fade in={true} timeout={1000}>
-          <Box className="fade-in" sx={{ bgcolor: "rgba(0, 0, 0, 0.5)", py: 8, color: "white" }}>
+          <Box
+            className="fade-in"
+            sx={{ bgcolor: "rgba(0, 0, 0, 0.5)", py: 8, color: "white" }}
+          >
             <Container maxWidth="lg">
               <Typography variant="h4" align="center" gutterBottom>
                 Where You Find Us?
@@ -432,7 +554,11 @@ function HomePage() {
         </Fade>
 
         <Fade in={true} timeout={1000}>
-          <Container className="fade-in" sx={{ py: 8, color: "white" }} maxWidth="md">
+          <Container
+            className="fade-in"
+            sx={{ py: 8, color: "white" }}
+            maxWidth="md"
+          >
             <Typography variant="h4" align="center" gutterBottom>
               What Our Organisers Say
             </Typography>
