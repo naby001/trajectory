@@ -1,152 +1,222 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
+  AppBar,
   Toolbar,
-  Typography,
   Button,
   IconButton,
   Drawer,
   List,
   ListItem,
   ListItemText,
+  Avatar,
+  Menu,
+  MenuItem,
   useMediaQuery,
 } from "@mui/material";
-import logo from "../assets/logo.png";
 import MenuIcon from "@mui/icons-material/Menu";
+import logo from "../assets/logo.png";
 
 const Navbar = () => {
-  const isMobile = useMediaQuery("(max-width:600px)");
+  const isMobile = useMediaQuery("(max-width: 600px)");
   const [drawerOpen, setDrawerOpen] = useState(false);
   const location = useLocation();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userName, setUserName] = useState("User");
+  const [anchorEl, setAnchorEl] = useState(null);
 
-  // Check if user is logged in based on localStorage token
+  // ✅ Update user info after login/signup/logout
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    setIsLoggedIn(!!token);
-  }, [location]);
+    const updateUserData = () => {
+      const token = localStorage.getItem("token");
+      setIsLoggedIn(!!token);
+
+      const storedUser = localStorage.getItem("user");
+      if (storedUser) {
+        try {
+          const parsedUser = JSON.parse(storedUser);
+          setUserName(parsedUser?.name || "User");
+        } catch (error) {
+          console.error("Error parsing user data:", error);
+          setUserName("User");
+        }
+      } else {
+        setUserName("User");
+      }
+    };
+
+    updateUserData(); // Run on mount
+
+    // ✅ Listen for localStorage changes (Fixes issue after sign-up)
+    window.addEventListener("storage", updateUserData);
+    return () => window.removeEventListener("storage", updateUserData);
+  }, [location]); // ✅ Re-run when location changes
 
   const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen);
   };
 
-  const navItems = [
-    { label: "Home", to: "/" },
-    { label: "Explore", to: "/explore" },
-    { label: "About", to: "/about" },
-    isLoggedIn ? { label: "Profile", to: "/profile" } : { label: "Login", to: "/login" },
-  ];
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    setIsLoggedIn(false);
+    setUserName("User");
+    setAnchorEl(null);
+    window.dispatchEvent(new Event("storage"));
+    window.location.reload();
+  };
+
+  const handleAvatarClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
-    <Toolbar
+    <AppBar
+      position="fixed"
       sx={{
-        backgroundColor: "black",
-        justifyContent: "space-between",
-        padding: isMobile ? "0 8px" : "0 16px",
-        boxShadow: "0 0 10px yellow", // Change glow effect to yellow
+        backgroundColor: "#121212",
+        padding: "5px 0", // ✅ Reduced height
+        boxShadow: "0px 0px 15px rgba(255, 215, 0, 0.3)", // ✅ Soft glow effect
       }}
     >
-      <Link to="/">
-        <img
-          src={logo}
-          alt="Logo"
-          style={{
-            width: isMobile ? 40 : 60,
-            height: isMobile ? 40 : 60,
-            marginRight: 16,
-            cursor: "pointer",
-          }}
-        />
-      </Link>
-      <Typography
-        variant="h6"
-        component={Link}
-        to="/"
-        sx={{
-          flexGrow: 1,
-          fontFamily: "k2d",
-          fontWeight: "bold",
-          color: "white",
-          letterSpacing: 1.2,
-          textDecoration: "none",
-          display: isMobile ? "none" : "block",
-        }}
-      >
-        TraJectory
-      </Typography>
+      <Toolbar sx={{ justifyContent: "space-between", padding: "0 20px", height: "60px" }}> {/* ✅ Fixed height */}
+        {/* Logo with Corrected Size */}
+        <Link to="/">
+          <img
+            src={logo}
+            alt="Logo"
+            style={{
+              width: isMobile ? 60 : 80, // ✅ Adjusted to be visible but not oversized
+              height: isMobile ? 60 : 80, // ✅ Balanced height
+              cursor: "pointer",
+              transition: "transform 0.3s ease-in-out",
+            }}
+            onMouseEnter={(e) => (e.target.style.transform = "scale(1.1)")}
+            onMouseLeave={(e) => (e.target.style.transform = "scale(1)")}
+          />
+        </Link>
 
-      {isMobile ? (
-        <>
-          <IconButton
-            edge="end"
-            color="inherit"
-            aria-label="menu"
-            onClick={handleDrawerToggle}
-            sx={{ color: "white" }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Drawer
-            anchor="right"
-            open={drawerOpen}
-            onClose={handleDrawerToggle}
-          >
-            <List
-              sx={{ backgroundColor: "#6666ff", height: "100%" }}
-              onClick={handleDrawerToggle}
-            >
-              {navItems.map((item) => (
-                <ListItem
-                  button
-                  key={item.label}
-                  component={Link}
-                  to={item.to}
+        {/* Navigation Items */}
+        {!isMobile && (
+          <div style={{ display: "flex", alignItems: "center", marginLeft: "auto" }}>
+            {["Home", "Explore", "About"].map((label, index) => (
+              <Button
+                key={index}
+                component={Link}
+                to={label === "Home" ? "/" : `/${label.toLowerCase()}`}
+                sx={{
+                  color: "white",
+                  margin: "0 12px",
+                  fontSize: "16px",
+                  fontWeight: "bold",
+                  transition: "transform 0.3s, text-shadow 0.3s",
+                  "&:hover": {
+                    color: "#ffcc00",
+                    transform: "scale(1.2)",
+                    textShadow: "0px 0px 10px #ffcc00",
+                  },
+                }}
+              >
+                {label}
+              </Button>
+            ))}
+
+            {/* Profile Avatar with Dropdown */}
+            {isLoggedIn ? (
+              <>
+                <IconButton onClick={handleAvatarClick} sx={{ marginLeft: "20px" }}>
+                  <Avatar sx={{ bgcolor: "#F45558" }}>{userName.charAt(0).toUpperCase()}</Avatar>
+                </IconButton>
+                <Menu
+                  anchorEl={anchorEl}
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
                   sx={{
-                    "&:hover": {
-                      backgroundColor: "#444",
+                    "& .MuiPaper-root": {
+                      backgroundColor: "#222",
+                      color: "white",
+                      boxShadow: "0 0 10px rgba(255, 215, 0, 0.5)",
                     },
                   }}
                 >
-                  <ListItemText
-                    primary={item.label}
-                    sx={{
-                      color: location.pathname === item.to ? "#ffd700" : "white",
-                      fontSize: 16,
-                      fontWeight: location.pathname === item.to ? "bold" : "normal",
-                      "&:hover": {
-                        color: "#ffd700",
-                        textShadow: "0 0 8px #ffd700",
-                      },
-                    }}
-                  />
-                </ListItem>
-              ))}
-            </List>
-          </Drawer>
-        </>
-      ) : (
-        navItems.map((item) => (
-          <Button
-            key={item.label}
-            color="inherit"
-            component={Link}
-            to={item.to}
-            sx={{
-              color: location.pathname === item.to ? "#ffd700" : "white",
-              fontSize: 16,
-              fontWeight: location.pathname === item.to ? "bold" : "normal",
-              "&:hover": {
-                color: "red", // Change hover color to red
-                transform: "scale(1.1)",
-              },
-              transition: "transform 0.2s, color 0.2s",
-            }}
-          >
-            {item.label}
-          </Button>
-        ))
-      )}
-    </Toolbar>
+                  <MenuItem disabled sx={{ fontWeight: "bold" }}>{userName.toUpperCase()}</MenuItem>
+                  <MenuItem onClick={handleLogout} sx={{ color: "red", fontWeight: "bold" }}>Logout</MenuItem>
+                </Menu>
+              </>
+            ) : (
+              <Button
+                component={Link}
+                to="/login"
+                sx={{
+                  backgroundColor: "#F45558",
+                  color: "white",
+                  fontWeight: "bold",
+                  borderRadius: "20px",
+                  padding: "8px 16px",
+                  marginLeft: "20px",
+                  transition: "transform 0.3s, box-shadow 0.3s",
+                  "&:hover": {
+                    backgroundColor: "#ff6666",
+                    transform: "scale(1.1)",
+                    boxShadow: "0 0 15px #ff6666",
+                  },
+                }}
+              >
+                Login
+              </Button>
+            )}
+          </div>
+        )}
+
+        {/* Mobile Menu */}
+        {isMobile && (
+          <>
+            <IconButton color="inherit" onClick={handleDrawerToggle}>
+              <MenuIcon />
+            </IconButton>
+            <Drawer anchor="right" open={drawerOpen} onClose={handleDrawerToggle}>
+              <List sx={{ backgroundColor: "#333", height: "100%" }}>
+                {["Home", "Explore", "About"].map((label, index) => (
+                  <ListItem button key={index} component={Link} to={label === "Home" ? "/" : `/${label.toLowerCase()}`} onClick={handleDrawerToggle}>
+                    <ListItemText
+                      primary={label}
+                      sx={{
+                        color: "white",
+                        fontWeight: "bold",
+                        textAlign: "center",
+                        "&:hover": {
+                          color: "#ffcc00",
+                          textShadow: "0 0 10px #ffcc00",
+                        },
+                      }}
+                    />
+                  </ListItem>
+                ))}
+
+                {isLoggedIn ? (
+                  <>
+                    <ListItem disabled>
+                      <ListItemText primary={userName.toUpperCase()} sx={{ color: "white", fontWeight: "bold", textAlign: "center" }} />
+                    </ListItem>
+                    <ListItem button onClick={handleLogout}>
+                      <ListItemText primary="Logout" sx={{ color: "red", textAlign: "center" }} />
+                    </ListItem>
+                  </>
+                ) : (
+                  <ListItem button component={Link} to="/login" onClick={handleDrawerToggle}>
+                    <ListItemText primary="Login" sx={{ color: "white", textAlign: "center" }} />
+                  </ListItem>
+                )}
+              </List>
+            </Drawer>
+          </>
+        )}
+      </Toolbar>
+    </AppBar>
   );
 };
 
