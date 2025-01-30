@@ -43,6 +43,7 @@ const Navbar = () => {
         backgroundColor: "black",
         justifyContent: "space-between",
         padding: isMobile ? "0 8px" : "0 16px",
+        boxShadow: "0 0 10px yellow", // Change glow effect to yellow
       }}
     >
       <Link to="/">
@@ -135,7 +136,7 @@ const Navbar = () => {
               fontSize: 16,
               fontWeight: location.pathname === item.to ? "bold" : "normal",
               "&:hover": {
-                color: "#ffd700",
+                color: "red", // Change hover color to red
                 transform: "scale(1.1)",
               },
               transition: "transform 0.2s, color 0.2s",

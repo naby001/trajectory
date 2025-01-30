@@ -78,7 +78,7 @@ export function About() {
       </AppBar>
 
       <Container maxWidth="lg">
-        <Typography variant="h2" component="h1" sx={{ fontFamily: 'Lobster, Arial', color: '#FFD700', fontWeight: 'bold', mb: 4, textShadow: '2px 2px 4px black' }}>
+        <Typography variant="h2" component="h1" sx={{ fontFamily: 'Lobster, Arial', color: '#FFD700', fontWeight: 'bold', mb: 4, textShadow: '2px 2px 4px black' ,pt:3 }}>
           Trajectory 2025
         </Typography>
         <Grid container spacing={4}>
