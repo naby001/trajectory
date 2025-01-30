@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 // User Registration
+// User Registration
 exports.registerUser = async (req, res) => {
   const { name, email, password } = req.body;
   try {
@@ -13,7 +14,20 @@ exports.registerUser = async (req, res) => {
     user = new User({ name, email, password: hashedPassword });
 
     await user.save();
-    res.status(201).json({ msg: 'User registered successfully' });
+
+    // 🔹 Generate token for the user after registration
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: '1h',
+    });
+
+    // 🔹 Send user details and token after successful signup
+    res.status(201).json({
+      msg: 'User registered successfully',
+      token,
+      user: { id: user._id, name: user.name, email: user.email },
+    });
+    
+
   } catch (error) {
     res.status(500).json({ msg: 'Server error' });
   }

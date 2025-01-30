@@ -38,6 +38,10 @@ const theme = createTheme({
 
 export default function AuthPage() {
   const [isLogin, setIsLogin] = useState(true);
+  const [userName, setUserName] = useState("User");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -50,13 +54,34 @@ export default function AuthPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
+  
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      navigate("/profile", { replace: true });
-    }
-  }, [navigate]);
+    const updateUserData = () => {
+      const token = localStorage.getItem("token");
+      setIsLoggedIn(!!token);
+  
+      const storedUser = localStorage.getItem("user");
+      if (storedUser) {
+        try {
+          const parsedUser = JSON.parse(storedUser);
+          setUserName(parsedUser.name || "User");
+        } catch (error) {
+          console.error("Error parsing user data:", error);
+          setUserName("User");
+        }
+      } else {
+        setUserName("User");
+      }
+    };
+  
+    updateUserData(); // Run on mount
+  
+    // 🔹 Listen for storage changes (Fixes issue after sign-up)
+    window.addEventListener("storage", updateUserData);
+    return () => window.removeEventListener("storage", updateUserData);
+  }, [location]); // ✅ Re-run when location changes
+  
 
   const validateForm = () => {
     let formErrors = {};
@@ -104,14 +129,33 @@ export default function AuthPage() {
       const data = await response.json();
       if (response.ok) {
         if (!isLogin) {
-          setSnackbarMessage("Successfully signed up! Redirecting to profile...");
+          setSnackbarMessage("Successfully signed up! Logging in...");
           setOpenSnackbar(true);
-          setTimeout(() => navigate("/profile"), 2000);
-        } else {
+        
+          if (data.user) { // 🔹 Ensure user data exists
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("user", JSON.stringify(data.user));
+        
+            window.dispatchEvent(new Event("storage")); // 🔹 Triggers navbar update
+        
+            setTimeout(() => navigate("/"), 1000);
+          } else {
+            setErrors({ general: "Signup successful but user data is missing." });
+          }
+        }
+        
+        else {
           localStorage.setItem("token", data.token);
           localStorage.setItem("user", JSON.stringify(data.user));
-          navigate("/profile", { state: { user: data.user } });
-        }
+          
+          setUserName(data.user.name); // Update username immediately
+          setIsLoggedIn(true); // Ensure logged-in state updates
+          
+          window.dispatchEvent(new Event("storage"));
+          
+          navigate("/", { state: { user: data.user } });
+      }
+        
       } else {
         setErrors({ general: data.msg || "Something went wrong" });
       }
