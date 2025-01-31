@@ -407,7 +407,7 @@ function HomePage() {
                           left: "10px",
                         }}
                       >
-                        {`JUNE ${29 + index}`} {/* Simulated date */}
+                        {`MARCH ${17 + (index % 3)}`} {/* Simulated date for March 17, 18, 19 */}
                       </Box>
 
                       <Typography
@@ -456,6 +456,7 @@ function HomePage() {
                             }`,
                           },
                         }}
+                        onClick={() => handleCardClick(tour.title)}
                       >
                         SEE MORE
                       </Button>
