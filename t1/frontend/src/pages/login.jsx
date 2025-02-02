@@ -1,3 +1,4 @@
+// login.jsx
 import React, { useState, useEffect } from "react";
 import {
   Box,
@@ -8,59 +9,113 @@ import {
   Typography,
   ThemeProvider,
   createTheme,
-  Switch,
   FormControlLabel,
   CssBaseline,
   Paper,
   Snackbar,
   Alert,
   Grid,
-  Checkbox
+  Checkbox,
+  MenuItem,
 } from "@mui/material";
-import { useNavigate, Link } from "react-router-dom";
+import Autocomplete from "@mui/material/Autocomplete";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import log from "../assets/log.png";
 import logo from "../assets/logo.png";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
 import Navbar from "./Navbar";
+
 const theme = createTheme({
   palette: {
     mode: "dark",
     primary: { main: "#F45558" },
     secondary: { main: "#FFFFFF" },
-    background: { default: "linear-gradient(to bottom, #000000, #434343)", paper: "rgba(28, 27, 31, 0.8)" },
+    background: {
+      default: "linear-gradient(to bottom, #000000, #434343)",
+      paper: "rgba(28, 27, 31, 0.8)",
+    },
   },
   typography: {
     fontFamily: "Poppins, sans-serif",
   },
 });
 
+const departments = [
+  "Computer Science",
+  "Mechanical Engineering",
+  "Electrical Engineering",
+  "Civil Engineering",
+  "Business Administration",
+  "Biology",
+  "Physics",
+  "Chemistry",
+  "Mathematics",
+  "Economics",
+];
+
+const yearOptions = ["Freshman", "Sophomore", "Junior", "Senior", "Graduate"];
+
 export default function AuthPage() {
   const [isLogin, setIsLogin] = useState(true);
   const [userName, setUserName] = useState("User");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const [universities, setUniversities] = useState([]);
 
+  useEffect(() => {
+    const fetchUniversities = async () => {
+      try {
+        const response = await fetch(
+          "https://raw.githubusercontent.com/Hipo/university-domains-list/master/world_universities_and_domains.json"
+        );
+  
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+  
+        const data = await response.json();
+        console.log("Fetched Universities:", data);
+  
+        // Extract only university names and remove duplicates
+        const universityNames = [...new Set(data.map((uni) => uni.name))];
+  
+        setUniversities(universityNames);
+      } catch (error) {
+        console.error("Error fetching universities:", error);
+      }
+    };
+  
+    fetchUniversities();
+  }, []);
+  
+  
+
+  // State fields for authentication
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [university, setUniversity] = useState("");
+  const [department, setDepartment] = useState("");
+  const [universityYear, setUniversityYear] = useState("");
   const [name, setName] = useState("");
+
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   const navigate = useNavigate();
-  
+  const location = useLocation();
 
   useEffect(() => {
     const updateUserData = () => {
       const token = localStorage.getItem("token");
       setIsLoggedIn(!!token);
-  
+
       const storedUser = localStorage.getItem("user");
       if (storedUser) {
         try {
@@ -74,14 +129,13 @@ export default function AuthPage() {
         setUserName("User");
       }
     };
-  
-    updateUserData(); // Run on mount
-  
-    // 🔹 Listen for storage changes (Fixes issue after sign-up)
+
+    updateUserData();
+
+    // Listen for storage changes
     window.addEventListener("storage", updateUserData);
     return () => window.removeEventListener("storage", updateUserData);
-  }, [location]); // ✅ Re-run when location changes
-  
+  }, [location]);
 
   const validateForm = () => {
     let formErrors = {};
@@ -106,8 +160,16 @@ export default function AuthPage() {
       formErrors.name = "Full name is required";
     }
 
-    if (!isLogin && !university.trim()) {
-      formErrors.university = "University name is required";
+    if (!isLogin && !university) {
+      formErrors.university = "University is required";
+    }
+
+    if (!isLogin && !department) {
+      formErrors.department = "Department is required";
+    }
+
+    if (!isLogin && !universityYear) {
+      formErrors.universityYear = "University year is required";
     }
 
     setErrors(formErrors);
@@ -120,42 +182,42 @@ export default function AuthPage() {
 
     setLoading(true);
     try {
-      const response = await fetch(`http://localhost:5000/api/auth/${isLogin ? "login" : "register"}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password, university, name }),
-      });
+      const endpoint = isLogin ? "login" : "register";
+      const payload = isLogin
+        ? { email, password }
+        : { email, password, name, university, department, universityYear };
+      const response = await fetch(
+        `http://localhost:5000/api/auth/${endpoint}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        }
+      );
 
       const data = await response.json();
       if (response.ok) {
         if (!isLogin) {
           setSnackbarMessage("Successfully signed up! Logging in...");
           setOpenSnackbar(true);
-        
-          if (data.user) { // 🔹 Ensure user data exists
+          if (data.user) {
             localStorage.setItem("token", data.token);
             localStorage.setItem("user", JSON.stringify(data.user));
-        
-            window.dispatchEvent(new Event("storage")); // 🔹 Triggers navbar update
-        
-            setTimeout(() => navigate("/"), 1000);
+            window.dispatchEvent(new Event("storage"));
+            setTimeout(() => navigate("/"), 1500);
           } else {
-            setErrors({ general: "Signup successful but user data is missing." });
+            setErrors({
+              general: "Signup successful but user data is missing.",
+            });
           }
-        }
-        
-        else {
+        } else {
           localStorage.setItem("token", data.token);
           localStorage.setItem("user", JSON.stringify(data.user));
-          
-          setUserName(data.user.name); // Update username immediately
-          setIsLoggedIn(true); // Ensure logged-in state updates
-          
+          setUserName(data.user.name);
+          setIsLoggedIn(true);
           window.dispatchEvent(new Event("storage"));
-          
           navigate("/", { state: { user: data.user } });
-      }
-        
+        }
       } else {
         setErrors({ general: data.msg || "Something went wrong" });
       }
@@ -167,23 +229,39 @@ export default function AuthPage() {
   };
 
   const handleClickShowPassword = () => setShowPassword(!showPassword);
-  const handleClickShowConfirmPassword = () => setShowConfirmPassword(!showConfirmPassword);
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
+  const handleClickShowConfirmPassword = () =>
+    setShowConfirmPassword(!showConfirmPassword);
+  const handleMouseDownPassword = (event) => event.preventDefault();
 
   return (
-    <ThemeProvider theme={theme} >
-      
+    <ThemeProvider theme={theme}>
       <CssBaseline />
-       {/* Navbar */}
-       <AppBar position="fixed" sx={{ background: "#282a3a" }}>
-          <Navbar />
-        </AppBar>
-      <Box sx={{ background: "linear-gradient(to bottom, #000000, #434343)", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", pt: { xs: 10, md: 14 }, pb: { xs: 2, md: 10 } }}>
-        
+      {/* Navbar */}
+      <AppBar position="fixed" sx={{ background: "#282a3a" }}>
+        <Navbar />
+      </AppBar>
+      <Box
+        sx={{
+          background: "linear-gradient(to bottom, #000000, #434343)",
+          minHeight: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          pt: { xs: 10, md: 14 },
+          pb: { xs: 2, md: 10 },
+        }}
+      >
         <Container component="main" maxWidth="lg">
-          <Paper elevation={3} sx={{ p: { xs: 2, md: 4 }, borderRadius: 2, backdropFilter: "blur(10px)", backgroundColor: "rgba(28, 27, 31, 0.8)", boxShadow: "0 0 20px   #F45558" }}>
+          <Paper
+            elevation={3}
+            sx={{
+              p: { xs: 2, md: 4 },
+              borderRadius: 2,
+              backdropFilter: "blur(10px)",
+              backgroundColor: "rgba(28, 27, 31, 0.8)",
+              boxShadow: "0 0 20px #F45558",
+            }}
+          >
             <Grid container spacing={4}>
               <Grid item xs={12} md={6}>
                 <Box
@@ -212,13 +290,32 @@ export default function AuthPage() {
                   alt="Login illustration"
                   src={log}
                 />
-                <Typography component="h2" variant="h5" sx={{ textAlign: "center", mb: 3, color: "#F45558", fontWeight: "bold" }}>
-                  Welcome back Champions!
+                <Typography
+                  component="h2"
+                  variant="h5"
+                  sx={{
+                    textAlign: "center",
+                    mb: 3,
+                    color: "#F45558",
+                    fontWeight: "bold",
+                  }}
+                >
+                  {isLogin ? "Welcome back Champions!" : "Join the Champions!"}
                 </Typography>
-                <Typography component="h5" variant="body2" sx={{ textAlign: "center", mb: 3 }}>
-                  Login to take up the next big challenge
+                <Typography
+                  component="h5"
+                  variant="body2"
+                  sx={{ textAlign: "center", mb: 3 }}
+                >
+                  {isLogin
+                    ? "Login to take up the next big challenge"
+                    : "Sign up to take up the next big challenge"}
                 </Typography>
-                <Box component="form" onSubmit={handleSubmit} sx={{ width: "100%" }}>
+                <Box
+                  component="form"
+                  onSubmit={handleSubmit}
+                  sx={{ width: "100%" }}
+                >
                   {!isLogin && (
                     <TextField
                       label="Full Name"
@@ -242,16 +339,68 @@ export default function AuthPage() {
                     helperText={errors.email}
                   />
                   {!isLogin && (
+                    <Autocomplete
+                    options={universities}
+                    getOptionLabel={(option) => option}
+                    filterOptions={(options, { inputValue }) =>
+                      options.filter((option) =>
+                        option.toLowerCase().includes(inputValue.toLowerCase())
+                      ).slice(0, 10) // Limit to 10 results for better UX
+                    }
+                    value={university}
+                    onChange={(event, newValue) => setUniversity(newValue)}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        label="University"
+                        variant="outlined"
+                        margin="normal"
+                        error={!!errors.university}
+                        helperText={errors.university}
+                      />
+                    )}
+                  />
+                  
+                  
+                  
+                  )}
+                  {!isLogin && (
                     <TextField
-                      label="University"
+                      label="Department"
+                      select
                       fullWidth
                       variant="outlined"
                       margin="normal"
-                      value={university}
-                      onChange={(e) => setUniversity(e.target.value)}
-                      error={!!errors.university}
-                      helperText={errors.university}
-                    />
+                      value={department}
+                      onChange={(e) => setDepartment(e.target.value)}
+                      error={!!errors.department}
+                      helperText={errors.department}
+                    >
+                      {departments.map((option) => (
+                        <MenuItem key={option} value={option}>
+                          {option}
+                        </MenuItem>
+                      ))}
+                    </TextField>
+                  )}
+                  {!isLogin && (
+                    <TextField
+                      label="University Year"
+                      select
+                      fullWidth
+                      variant="outlined"
+                      margin="normal"
+                      value={universityYear}
+                      onChange={(e) => setUniversityYear(e.target.value)}
+                      error={!!errors.universityYear}
+                      helperText={errors.universityYear}
+                    >
+                      {yearOptions.map((option) => (
+                        <MenuItem key={option} value={option}>
+                          {option}
+                        </MenuItem>
+                      ))}
+                    </TextField>
                   )}
                   <TextField
                     label="Password"
@@ -298,14 +447,20 @@ export default function AuthPage() {
                               onMouseDown={handleMouseDownPassword}
                               edge="end"
                             >
-                              {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
+                              {showConfirmPassword ? (
+                                <VisibilityOff />
+                              ) : (
+                                <Visibility />
+                              )}
                             </IconButton>
                           </InputAdornment>
                         ),
                       }}
                     />
                   )}
-                  {errors.general && <Typography color="error">{errors.general}</Typography>}
+                  {errors.general && (
+                    <Typography color="error">{errors.general}</Typography>
+                  )}
                   {isLogin && (
                     <FormControlLabel
                       control={<Checkbox defaultChecked />}
@@ -313,30 +468,44 @@ export default function AuthPage() {
                       sx={{ mt: 2 }}
                     />
                   )}
-                  <Button type="submit" fullWidth variant="contained" disabled={loading} sx={{ mt: 3, backgroundColor: "#F45558", color: "#FFFFFF" }}>
-                    {loading ? "Processing..." : isLogin ? "Sign In" : "Sign Up"}
+                  <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    disabled={loading}
+                    sx={{ mt: 3, backgroundColor: "#F45558", color: "#FFFFFF" }}
+                  >
+                    {loading
+                      ? "Processing..."
+                      : isLogin
+                      ? "Sign In"
+                      : "Sign Up"}
                   </Button>
-                  {isLogin && (
-                    <Typography sx={{ mt: 2, textAlign: "center" }}>
-                      <Link to="#" style={{ color: "yellow" }}>
-                        Forgotten password?
-                      </Link>
-                    </Typography>
-                  )}
                 </Box>
                 <Typography sx={{ mt: 2, textAlign: "center" }}>
                   {isLogin ? (
-                    <span onClick={() => setIsLogin(false)} style={{ color: "#F45558", cursor: "pointer" }}>
+                    <span
+                      onClick={() => setIsLogin(false)}
+                      style={{ color: "#F45558", cursor: "pointer" }}
+                    >
                       Need an account? Sign up
                     </span>
                   ) : (
-                    <span onClick={() => setIsLogin(true)} style={{ color: "#F45558", cursor: "pointer" }}>
+                    <span
+                      onClick={() => setIsLogin(true)}
+                      style={{ color: "#F45558", cursor: "pointer" }}
+                    >
                       Already have an account? Log in
                     </span>
                   )}
                 </Typography>
               </Grid>
-              <Grid item xs={12} md={6} sx={{ display: { xs: "none", md: "block" } }}>
+              <Grid
+                item
+                xs={12}
+                md={6}
+                sx={{ display: { xs: "none", md: "block" } }}
+              >
                 <Box
                   component="img"
                   sx={{
@@ -354,7 +523,11 @@ export default function AuthPage() {
             </Grid>
           </Paper>
         </Container>
-        <Snackbar open={openSnackbar} autoHideDuration={3000} onClose={() => setOpenSnackbar(false)}>
+        <Snackbar
+          open={openSnackbar}
+          autoHideDuration={3000}
+          onClose={() => setOpenSnackbar(false)}
+        >
           <Alert onClose={() => setOpenSnackbar(false)} severity="success">
             {snackbarMessage}
           </Alert>

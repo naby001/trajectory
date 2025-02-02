@@ -9,6 +9,7 @@ import { About } from "./pages/about";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Details from "./pages/events/details";
 import AuthPage from "./pages/login";
+// import ForgotPassword from "./pages/ForgotPassword";
 
 const theme = createTheme({
   palette: {
@@ -67,6 +68,7 @@ function App() {
           <Route path="/explore" element={<Explore />} />
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<AuthPage />} />
+          {/* <Route path="/forgot-password" element={<ForgotPassword />} /> */}
           <Route path="/details" element={<Details />} />
           
         </Routes>
