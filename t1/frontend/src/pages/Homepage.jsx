@@ -28,7 +28,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import Navbar from "./Navbar";
 import backgroundvid from "../assets/vid3.mp4";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "@fontsource/roboto"; // Import Roboto font
 import "@fontsource/lobster"; // Import Lobster font
@@ -145,7 +145,8 @@ const destinations = [
 
 function HomePage() {
   const navigate = useNavigate();
-  //console.log(user);
+
+  // When a card's SEE MORE is clicked, navigate to the Explore page with the tour title as filter.
   const handleCardClick = (type) => {
     navigate(`/explore?filter=${type}`);
   };
@@ -311,159 +312,161 @@ function HomePage() {
             </Typography>
 
             <Grid container spacing={4}>
-              {tours.map((tour, index) => (
-                <Grid item key={tour.id} xs={12} sm={6} md={4}>
-                  <Card
-                    sx={{
-                      height: "100%",
-                      position: "relative",
-                      overflow: "hidden",
-                      backgroundColor: "rgba(255, 255, 255, 0.1)",
-                      transition: "transform 0.5s, box-shadow 0.5s",
-                      transform:
-                        "perspective(1000px) rotateX(0deg) rotateY(0deg)",
-                      "&:hover": {
-                        transform:
-                          "perspective(1000px) rotateX(5deg) rotateY(5deg) scale(1.05)",
-                        boxShadow: `0 0 25px ${
-                          [
-                            "#FF0000", // Red for first card
-                            "#00FF00", // Green for second card
-                            "#0000FF", // Blue for third card
-                            "#FFFF00", // Yellow for fourth card
-                            "#FF00FF", // Purple for fifth card
-                            "#00FFFF", // Cyan for sixth card
-                          ][index]
-                        }`,
-                      },
-                    }}
-                  >
-                    {/* Glowing Background Effect */}
-                    <Box
+              {tours.map((tour, index) => {
+                const glowColor = [
+                  "#FF0000", // Red
+                  "#00FF00", // Green
+                  "#0000FF", // Blue
+                  "#FFFF00", // Yellow
+                  "#FF00FF", // Purple
+                  "#00FFFF", // Cyan
+                ][index];
+                return (
+                  <Grid item key={tour.id} xs={12} sm={6} md={6}>
+                    <Card
                       sx={{
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        width: "100%",
                         height: "100%",
-                        background: `radial-gradient(circle, ${
-                          [
-                            "rgba(255, 0, 0, 0.3)", // Red
-                            "rgba(0, 255, 0, 0.3)", // Green
-                            "rgba(0, 0, 255, 0.3)", // Blue
-                            "rgba(255, 255, 0, 0.3)", // Yellow
-                            "rgba(255, 0, 255, 0.3)", // Purple
-                            "rgba(0, 255, 255, 0.3)", // Cyan
-                          ][index]
-                        }, transparent)`,
-                        filter: "blur(15px)",
-                        opacity: 0,
-                        transition: "opacity 0.5s",
-                        zIndex: -1,
+                        position: "relative",
+                        overflow: "hidden",
+                        backgroundColor: "rgba(255, 255, 255, 0.1)",
+                        transition: "transform 0.5s, box-shadow 0.5s",
+                        transform:
+                          "perspective(1000px) rotateX(0deg) rotateY(0deg)",
                         "&:hover": {
-                          opacity: 1,
+                          transform:
+                            "perspective(1000px) rotateX(5deg) rotateY(5deg) scale(0.95)",
+                          boxShadow: `0 0 20px ${glowColor}, 0 0 30px ${glowColor}, 0 0 40px ${glowColor}`,
                         },
                       }}
-                    />
-
-                    {/* Card Image */}
-                    <Box sx={{ overflow: "hidden", position: "relative" }}>
-                      <CardMedia
-                        component="img"
-                        height="200"
-                        image={tour.image}
-                        alt={tour.title}
+                    >
+                      {/* Glowing Background Effect */}
+                      <Box
                         sx={{
-                          filter: "grayscale(100%) brightness(50%)",
-                          transition: "all 0.5s ease-in-out",
+                          position: "absolute",
+                          top: 0,
+                          left: 0,
+                          width: "100%",
+                          height: "100%",
+                          background: `radial-gradient(circle, ${
+                            [
+                              "rgba(255, 0, 0, 0.3)",
+                              "rgba(0, 255, 0, 0.3)",
+                              "rgba(0, 0, 255, 0.3)",
+                              "rgba(255, 255, 0, 0.3)",
+                              "rgba(255, 0, 255, 0.3)",
+                              "rgba(0, 255, 255, 0.3)",
+                            ][index]
+                          }, transparent)`,
+                          filter: "blur(15px)",
+                          opacity: 0,
+                          transition: "opacity 0.5s",
+                          zIndex: -1,
+                          // Keep the existing effect and let the card hover add more glow
                           "&:hover": {
-                            filter:
-                              "grayscale(0%) brightness(100%) drop-shadow(0 0 20px white)",
+                            opacity: 1,
                           },
                         }}
                       />
-                    </Box>
 
-                    {/* Card Content */}
-                    <CardContent sx={{ textAlign: "center", color: "white" }}>
-                      {/* Date-like Badge on Top */}
-                      <Box
-                        sx={{
-                          display: "inline-block",
-                          backgroundColor: [
-                            "#FF0000", // Red
-                            "#00FF00", // Green
-                            "#0000FF", // Blue
-                            "#FFFF00", // Yellow
-                            "#FF00FF", // Purple
-                            "#00FFFF", // Cyan
-                          ][index],
-                          color: "white",
-                          padding: "5px 10px",
-                          borderRadius: "5px",
-                          fontWeight: "bold",
-                          position: "absolute",
-                          top: "10px",
-                          left: "10px",
-                        }}
-                      >
-                        {`MARCH ${17 + (index % 3)}`} {/* Simulated date for March 17, 18, 19 */}
+                      {/* Card Image */}
+                      <Box sx={{ overflow: "hidden", position: "relative" }}>
+                        <CardMedia
+                          component="img"
+                          height="200"
+                          image={tour.image}
+                          alt={tour.title}
+                          sx={{
+                            filter: "grayscale(100%) brightness(50%)",
+                            transition: "all 0.5s ease-in-out",
+                            "&:hover": {
+                              filter:
+                                "grayscale(0%) brightness(100%) drop-shadow(0 0 20px white)",
+                            },
+                          }}
+                        />
                       </Box>
 
-                      <Typography
-                        gutterBottom
-                        variant="h5"
-                        sx={{
-                          fontWeight: "bold",
-                          transition: "color 0.3s",
-                          "&:hover": {
-                            color: "#FFD700",
-                            textShadow: "0 0 10px #FFD700",
-                          },
-                        }}
-                      >
-                        {tour.title}
-                      </Typography>
-
-                      <Typography variant="body2" sx={{ color: "gray" }}>
-                        {tour.description}
-                      </Typography>
-
-                      {/* See More Button */}
-                      <Button
-                        sx={{
-                          marginTop: "10px",
-                          color: "white",
-                          fontWeight: "bold",
-                          "&:hover": {
-                            color: [
-                              "#FF0000", // Red
-                              "#00FF00", // Green
-                              "#0000FF", // Blue
-                              "#FFFF00", // Yellow
-                              "#FF00FF", // Purple
-                              "#00FFFF", // Cyan
+                      {/* Card Content */}
+                      <CardContent sx={{ textAlign: "center", color: "white" }}>
+                        {/* Date-like Badge on Top */}
+                        <Box
+                          sx={{
+                            display: "inline-block",
+                            backgroundColor: [
+                              "#FF0000",
+                              "#00FF00",
+                              "#0000FF",
+                              "#FFFF00",
+                              "#FF00FF",
+                              "#00FFFF",
                             ][index],
-                            textShadow: `0 0 10px ${
-                              [
+                            color: "white",
+                            padding: "5px 10px",
+                            borderRadius: "5px",
+                            fontWeight: "bold",
+                            position: "absolute",
+                            top: "10px",
+                            left: "10px",
+                          }}
+                        >
+                          {`JUNE ${29 + index}`}
+                        </Box>
+
+                        <Typography
+                          gutterBottom
+                          variant="h5"
+                          sx={{
+                            fontWeight: "bold",
+                            transition: "color 0.3s",
+                            "&:hover": {
+                              color: "#FFD700",
+                              textShadow: "0 0 10px #FFD700",
+                            },
+                          }}
+                        >
+                          {tour.title}
+                        </Typography>
+
+                        <Typography variant="body2" sx={{ color: "gray" }}>
+                          {tour.description}
+                        </Typography>
+
+                        {/* See More Button with Navigation */}
+                        <Button
+                          onClick={() => handleCardClick(tour.title)}
+                          sx={{
+                            marginTop: "10px",
+                            color: "white",
+                            fontWeight: "bold",
+                            "&:hover": {
+                              color: [
                                 "#FF0000",
                                 "#00FF00",
                                 "#0000FF",
                                 "#FFFF00",
                                 "#FF00FF",
                                 "#00FFFF",
-                              ][index]
-                            }`,
-                          },
-                        }}
-                        onClick={() => handleCardClick(tour.title)}
-                      >
-                        SEE MORE
-                      </Button>
-                    </CardContent>
-                  </Card>
-                </Grid>
-              ))}
+                              ][index],
+                              textShadow: `0 0 10px ${
+                                [
+                                  "#FF0000",
+                                  "#00FF00",
+                                  "#0000FF",
+                                  "#FFFF00",
+                                  "#FF00FF",
+                                  "#00FFFF",
+                                ][index]
+                              }`,
+                            },
+                          }}
+                        >
+                          SEE MORE
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                );
+              })}
             </Grid>
           </Container>
         </Fade>

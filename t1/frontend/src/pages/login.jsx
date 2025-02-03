@@ -70,25 +70,27 @@ export default function AuthPage() {
         const response = await fetch(
           "https://raw.githubusercontent.com/Hipo/university-domains-list/master/world_universities_and_domains.json"
         );
-
+  
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
-
+  
         const data = await response.json();
         console.log("Fetched Universities:", data);
-
+  
         // Extract only university names and remove duplicates
         const universityNames = [...new Set(data.map((uni) => uni.name))];
-
+  
         setUniversities(universityNames);
       } catch (error) {
         console.error("Error fetching universities:", error);
       }
     };
-
+  
     fetchUniversities();
   }, []);
+  
+  
 
   // State fields for authentication
   const [email, setEmail] = useState("");
@@ -338,28 +340,29 @@ export default function AuthPage() {
                   />
                   {!isLogin && (
                     <Autocomplete
-                      options={universities}
-                      getOptionLabel={(option) => option}
-                      filterOptions={(options, { inputValue }) =>
-                        options
-                          .filter((option) =>
-                            option.toLowerCase().includes(inputValue.toLowerCase())
-                          )
-                          .slice(0, 10) // Limit to 10 results for better UX
-                      }
-                      value={university}
-                      onChange={(event, newValue) => setUniversity(newValue)}
-                      renderInput={(params) => (
-                        <TextField
-                          {...params}
-                          label="University"
-                          variant="outlined"
-                          margin="normal"
-                          error={!!errors.university}
-                          helperText={errors.university}
-                        />
-                      )}
-                    />
+                    options={universities}
+                    getOptionLabel={(option) => option}
+                    filterOptions={(options, { inputValue }) =>
+                      options.filter((option) =>
+                        option.toLowerCase().includes(inputValue.toLowerCase())
+                      ).slice(0, 10) // Limit to 10 results for better UX
+                    }
+                    value={university}
+                    onChange={(event, newValue) => setUniversity(newValue)}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        label="University"
+                        variant="outlined"
+                        margin="normal"
+                        error={!!errors.university}
+                        helperText={errors.university}
+                      />
+                    )}
+                  />
+                  
+                  
+                  
                   )}
                   {!isLogin && (
                     <TextField

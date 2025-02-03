@@ -24,8 +24,9 @@ const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUserName] = useState("User");
   const [anchorEl, setAnchorEl] = useState(null);
+  const [hasTeam, setHasTeam] = useState(false); // Track team status
 
-  // ✅ Update user info after login/signup/logout
+  // ✅ Fetch user & team info
   useEffect(() => {
     const updateUserData = () => {
       const token = localStorage.getItem("token");
@@ -36,6 +37,10 @@ const Navbar = () => {
         try {
           const parsedUser = JSON.parse(storedUser);
           setUserName(parsedUser?.name || "User");
+
+          // ✅ Check if user has a team
+          const storedTeam = localStorage.getItem("team");
+          setHasTeam(!!storedTeam);
         } catch (error) {
           console.error("Error parsing user data:", error);
           setUserName("User");
@@ -45,12 +50,10 @@ const Navbar = () => {
       }
     };
 
-    updateUserData(); // Run on mount
-
-    // ✅ Listen for localStorage changes (Fixes issue after sign-up)
+    updateUserData();
     window.addEventListener("storage", updateUserData);
     return () => window.removeEventListener("storage", updateUserData);
-  }, [location]); // ✅ Re-run when location changes
+  }, [location]);
 
   const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen);
@@ -59,8 +62,10 @@ const Navbar = () => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+    localStorage.removeItem("team"); // ✅ Remove team on logout
     setIsLoggedIn(false);
     setUserName("User");
+    setHasTeam(false);
     setAnchorEl(null);
     window.dispatchEvent(new Event("storage"));
     window.location.reload();
@@ -79,19 +84,19 @@ const Navbar = () => {
       position="fixed"
       sx={{
         backgroundColor: "#121212",
-        padding: "5px 0", // ✅ Reduced height
-        boxShadow: "0px 0px 15px rgba(255, 215, 0, 0.3)", // ✅ Soft glow effect
+        padding: "5px 0",
+        boxShadow: "0px 0px 15px rgba(255, 215, 0, 0.3)",
       }}
     >
-      <Toolbar sx={{ justifyContent: "space-between", padding: "0 20px", height: "60px" }}> {/* ✅ Fixed height */}
-        {/* Logo with Corrected Size */}
+      <Toolbar sx={{ justifyContent: "space-between", padding: "0 20px", height: "60px" }}>
+        {/* Logo */}
         <Link to="/">
           <img
             src={logo}
             alt="Logo"
             style={{
-              width: isMobile ? 60 : 80, // ✅ Adjusted to be visible but not oversized
-              height: isMobile ? 60 : 80, // ✅ Balanced height
+              width: isMobile ? 60 : 80,
+              height: isMobile ? 60 : 80,
               cursor: "pointer",
               transition: "transform 0.3s ease-in-out",
             }}
@@ -100,7 +105,7 @@ const Navbar = () => {
           />
         </Link>
 
-        {/* Navigation Items */}
+        {/* Navigation */}
         {!isMobile && (
           <div style={{ display: "flex", alignItems: "center", marginLeft: "auto" }}>
             {["Home", "Explore", "About"].map((label, index) => (
@@ -124,6 +129,30 @@ const Navbar = () => {
                 {label}
               </Button>
             ))}
+
+            {/* ✅ Team Registration Button */}
+            {isLoggedIn && (
+              <Button
+                component={Link}
+                to="/teamregistration"
+                sx={{
+                  backgroundColor: hasTeam ? "#4CAF50" : "#F45558",
+                  color: "white",
+                  fontWeight: "bold",
+                  borderRadius: "20px",
+                  padding: "8px 16px",
+                  marginLeft: "20px",
+                  transition: "transform 0.3s, box-shadow 0.3s",
+                  "&:hover": {
+                    backgroundColor: hasTeam ? "#66bb6a" : "#ff6666",
+                    transform: "scale(1.1)",
+                    boxShadow: `0 0 15px ${hasTeam ? "#66bb6a" : "#ff6666"}`,
+                  },
+                }}
+              >
+                {hasTeam ? "Edit Team" : "Register Team"}
+              </Button>
+            )}
 
             {/* Profile Avatar with Dropdown */}
             {isLoggedIn ? (
@@ -182,33 +211,12 @@ const Navbar = () => {
               <List sx={{ backgroundColor: "#333", height: "100%" }}>
                 {["Home", "Explore", "About"].map((label, index) => (
                   <ListItem button key={index} component={Link} to={label === "Home" ? "/" : `/${label.toLowerCase()}`} onClick={handleDrawerToggle}>
-                    <ListItemText
-                      primary={label}
-                      sx={{
-                        color: "white",
-                        fontWeight: "bold",
-                        textAlign: "center",
-                        "&:hover": {
-                          color: "#ffcc00",
-                          textShadow: "0 0 10px #ffcc00",
-                        },
-                      }}
-                    />
+                    <ListItemText primary={label} sx={{ color: "white", textAlign: "center" }} />
                   </ListItem>
                 ))}
-
-                {isLoggedIn ? (
-                  <>
-                    <ListItem disabled>
-                      <ListItemText primary={userName.toUpperCase()} sx={{ color: "white", fontWeight: "bold", textAlign: "center" }} />
-                    </ListItem>
-                    <ListItem button onClick={handleLogout}>
-                      <ListItemText primary="Logout" sx={{ color: "red", textAlign: "center" }} />
-                    </ListItem>
-                  </>
-                ) : (
-                  <ListItem button component={Link} to="/login" onClick={handleDrawerToggle}>
-                    <ListItemText primary="Login" sx={{ color: "white", textAlign: "center" }} />
+                {isLoggedIn && (
+                  <ListItem button component={Link} to="/team-registration" onClick={handleDrawerToggle}>
+                    <ListItemText primary={hasTeam ? "Edit Team" : "Register Team"} sx={{ color: "white", textAlign: "center" }} />
                   </ListItem>
                 )}
               </List>
