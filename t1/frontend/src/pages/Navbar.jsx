@@ -88,6 +88,7 @@ const Navbar = () => {
         boxShadow: "0px 0px 15px rgba(255, 215, 0, 0.3)",
       }}
     >
+      
       <Toolbar sx={{ justifyContent: "space-between", padding: "0 20px", height: "60px" }}>
         {/* Logo */}
         <Link to="/">

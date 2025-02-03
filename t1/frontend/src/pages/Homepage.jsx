@@ -275,6 +275,20 @@ function HomePage() {
               backgroundColor: "rgba(0, 0, 0, 0.5)",
             }}
           >
+            {/* Website in Progress Header */}
+            <Box
+              sx={{
+                width: "100%",
+                backgroundColor: "rgba(245, 248, 106, 0.5)",
+                color: "white",
+                textAlign: "center",
+                py: 1,
+              }}
+            >
+              <Typography variant="h6">Website Still in Progress</Typography>
+            </Box>
+            {/* Website in Progress Header */}
+            
             <Typography
               variant="h1"
               sx={{
