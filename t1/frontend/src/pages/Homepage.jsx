@@ -217,6 +217,7 @@ function HomePage() {
             flexDirection: "column",
             overflow: "hidden",
             zIndex: -1,
+            pointerEvents: "none", // Disable pointer events
           }}
         >
           <div
