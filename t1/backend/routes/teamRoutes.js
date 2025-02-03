@@ -2,106 +2,137 @@ const express = require("express");
 const router = express.Router();
 const Team = require("../models/Team");
 const User = require("../models/User");
-const nodemailer = require("nodemailer");
 const authMiddleware = require("../middleware/authMiddleware");
-const crypto = require("crypto");
 
-// Create a new team
+// ✅ Create a new team
 router.post("/create", authMiddleware, async (req, res) => {
   try {
     const { name } = req.body;
     const leader = req.user.id;
 
-    // Check if team name exists
-    const existingTeam = await Team.findOne({ name });
-    if (existingTeam) {
+    // Check if team name already exists
+    if (await Team.findOne({ name })) {
       return res.status(400).json({ message: "Team name already exists" });
     }
 
-    // Create new team
+    // Create a new team
     const team = new Team({ name, leader, members: [leader] });
     await team.save();
 
     res.status(201).json({ message: "Team created successfully", team });
   } catch (error) {
+    console.error("Error creating team:", error);
     res.status(500).json({ message: "Server Error", error: error.message });
   }
 });
 
-// Invite a member
+// ✅ Invite a user by user ID (Instead of email)
 router.post("/invite", authMiddleware, async (req, res) => {
   try {
-    const { teamId, email } = req.body;
+    const { teamId, userId } = req.body;
     const team = await Team.findById(teamId);
+    const invitedUser = await User.findById(userId);
 
-    if (!team) {
-      return res.status(404).json({ message: "Team not found" });
+    if (!team || !invitedUser) {
+      return res.status(404).json({ message: "Team or user not found" });
     }
 
-    // Ensure only the leader can invite
-    if (team.leader.toString() !== req.user.id) {
-      return res.status(403).json({ message: "Only the leader can invite members" });
+    // Ensure only the leader can invite members
+    if (String(team.leader) !== req.user.id) {
+      return res.status(403).json({ message: "Only the team leader can invite members" });
     }
 
-    // Generate invitation token
-    const inviteToken = crypto.randomBytes(20).toString("hex");
+    // Check if user is already in the team
+    if (team.members.includes(userId)) {
+      return res.status(400).json({ message: "User is already a team member" });
+    }
 
-    // Store invitation
-    team.invitations.push({ email, token: inviteToken });
-    await team.save();
+    // Check if invite already exists
+    const existingInvite = invitedUser.invites.find(inv => String(inv.teamId) === teamId);
+    if (existingInvite) {
+      return res.status(400).json({ message: "User has already been invited to this team" });
+    }
 
-    // Send email invitation
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: { user: process.env.EMAIL, pass: process.env.EMAIL_PASSWORD },
-    });
+    // Add invite to user
+    invitedUser.invites.push({ teamId, teamName: team.name });
+    await invitedUser.save();
 
-    const inviteLink = `${process.env.FRONTEND_URL}/join-team/${inviteToken}`;
-    const mailOptions = {
-      from: process.env.EMAIL,
-      to: email,
-      subject: "Team Invitation",
-      text: `You have been invited to join the team "${team.name}". Click the link to accept: ${inviteLink}`,
-    };
-
-    await transporter.sendMail(mailOptions);
-
-    res.json({ message: "Invitation sent successfully", inviteLink });
+    res.json({ message: "Invitation sent successfully" });
   } catch (error) {
+    console.error("Error inviting user:", error);
     res.status(500).json({ message: "Server Error", error: error.message });
   }
 });
 
-// Accept Invitation
-router.post("/accept-invite/:token", authMiddleware, async (req, res) => {
+// ✅ Fetch received invitations for the logged-in user
+router.get("/invites", authMiddleware, async (req, res) => {
   try {
-    const { token } = req.params;
+    const user = await User.findById(req.user.id, "invites");
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    res.json(user.invites);
+  } catch (error) {
+    console.error("Error fetching invites:", error);
+    res.status(500).json({ message: "Server Error", error: error.message });
+  }
+});
+
+// ✅ Accept an invitation
+router.post("/accept-invite", authMiddleware, async (req, res) => {
+  try {
+    const { teamId } = req.body;
     const userId = req.user.id;
 
-    // Find team with the matching invitation token
-    const team = await Team.findOne({ "invitations.token": token });
+    const team = await Team.findById(teamId);
+    if (!team) return res.status(404).json({ message: "Team not found" });
 
-    if (!team) {
-      return res.status(404).json({ message: "Invalid or expired invitation link" });
+    // Check if user is already a member
+    if (team.members.includes(userId)) {
+      return res.status(400).json({ message: "User is already a member of this team" });
     }
 
-    // Add user to the team
+    // Add user to team & remove invite
     team.members.push(userId);
-    team.invitations = team.invitations.filter((inv) => inv.token !== token);
     await team.save();
+
+    await User.findByIdAndUpdate(userId, {
+      $pull: { invites: { teamId } },
+    });
 
     res.json({ message: "Successfully joined the team!", team });
   } catch (error) {
+    console.error("Error accepting invitation:", error);
     res.status(500).json({ message: "Server Error", error: error.message });
   }
 });
 
-// Fetch all teams
-router.get("/all", async (req, res) => {
+// ✅ Decline an invitation
+router.post("/decline-invite", authMiddleware, async (req, res) => {
   try {
-    const teams = await Team.find().populate("leader members");
+    const { teamId } = req.body;
+    const userId = req.user.id;
+
+    // Remove invite from user's list
+    const user = await User.findByIdAndUpdate(userId, {
+      $pull: { invites: { teamId } },
+    }, { new: true });
+
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    res.json({ message: "Invitation declined successfully" });
+  } catch (error) {
+    console.error("Error declining invitation:", error);
+    res.status(500).json({ message: "Server Error", error: error.message });
+  }
+});
+
+// ✅ Fetch teams of a specific user
+router.get("/my-teams", authMiddleware, async (req, res) => {
+  try {
+    const teams = await Team.find({ members: req.user.id }).populate("leader members");
     res.json(teams);
   } catch (error) {
+    console.error("Error fetching user teams:", error);
     res.status(500).json({ message: "Server Error", error: error.message });
   }
 });

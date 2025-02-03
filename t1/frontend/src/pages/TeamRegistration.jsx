@@ -8,47 +8,89 @@ import {
   FormControlLabel,
   Typography,
   Paper,
+  Snackbar,
+  Alert,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const TeamRegistration = () => {
   const [isRegistered, setIsRegistered] = useState(false);
-  const [teamName, setTeamName] = useState("");
-  const [teamChoice, setTeamChoice] = useState("");
-  const [email, setEmail] = useState("");
+  const [teamName, setTeamName] = useState("");  // ✅ Ensures empty string as default
+  const [teamChoice, setTeamChoice] = useState("create"); // ✅ Default choice
+  const [email, setEmail] = useState(""); 
   const [name, setName] = useState("");
   const [institution, setInstitution] = useState("");
+  const [error, setError] = useState("");
+  const [open, setOpen] = useState(false); // Snackbar state
+  const [loading, setLoading] = useState(false); // Loading state
 
   const navigate = useNavigate();
 
-  // Load user & team data from localStorage
+  // ✅ Load user & team data from localStorage or API
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
-    const storedTeam = JSON.parse(localStorage.getItem("team"));
-
     if (user) {
-      setEmail(user.email);
-      setName(user.name);
-      setInstitution(user.university);
+      setEmail(user.email || ""); // ✅ Default empty if missing
+      setName(user.name || "");
+      setInstitution(user.university || "");
     }
 
-    if (storedTeam) {
-      setTeamName(storedTeam.teamName);
-      setTeamChoice(storedTeam.teamChoice);
-      setIsRegistered(true);
-    }
+    const fetchTeamData = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        if (!token) return;
+
+        const response = await axios.get("http://localhost:5000/api/team/my-teams", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+
+        if (response.data.length > 0) {
+          setTeamName(response.data[0].name || ""); // ✅ Default empty if missing
+          setTeamChoice("create");
+          setIsRegistered(true);
+        }
+      } catch (err) {
+        console.error("❌ Error fetching team data:", err);
+      }
+    };
+
+    fetchTeamData();
   }, []);
 
-  const handleRegister = () => {
-    if (teamName.trim() === "" || teamChoice === "") {
-      alert("Please enter a team name and select an option.");
+  // ✅ Handle Team Registration
+  const handleRegister = async () => {
+    if (!teamName.trim()) {
+      setError("⚠️ Please enter a valid team name.");
+      setOpen(true);
       return;
     }
 
-    const teamData = { teamName, teamChoice };
-    localStorage.setItem("team", JSON.stringify(teamData));
-    setIsRegistered(true);
-    alert("Team Registered Successfully!");
+    try {
+      setLoading(true);
+      const token = localStorage.getItem("token");
+      if (!token) {
+        setError("❌ User not authenticated. Please log in.");
+        setOpen(true);
+        return;
+      }
+
+      const response = await axios.post(
+        "http://localhost:5000/api/team/create",
+        { name: teamName },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+
+      localStorage.setItem("team", JSON.stringify(response.data.team));
+      setIsRegistered(true);
+      setError("✅ Team Registered Successfully!");
+      setOpen(true);
+    } catch (error) {
+      setError(error.response?.data?.message || "❌ Error registering team");
+      setOpen(true);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -58,23 +100,28 @@ const TeamRegistration = () => {
           Team Registration
         </Typography>
 
-        {/* User Details - Always Locked */}
+        {/* ✅ Snackbar for Notifications */}
+        <Snackbar open={open} autoHideDuration={3000} onClose={() => setOpen(false)}>
+          <Alert severity={error.includes("successfully") ? "success" : "error"}>{error}</Alert>
+        </Snackbar>
+
+        {/* ✅ User Details - Always Locked */}
         <TextField label="Email" fullWidth variant="outlined" margin="normal" value={email} disabled />
         <TextField label="Full Name" fullWidth variant="outlined" margin="normal" value={name} disabled />
         <TextField label="Institution" fullWidth variant="outlined" margin="normal" value={institution} disabled />
 
-        {/* Team Name - Editable only after clicking Register */}
+        {/* ✅ Team Name - Editable only before registration */}
         <TextField
           label="Team Name"
           fullWidth
           variant="outlined"
           margin="normal"
-          value={teamName}
+          value={teamName || ""}  // ✅ Prevent undefined
           onChange={(e) => setTeamName(e.target.value)}
           disabled={isRegistered}
         />
 
-        {/* Create or Join a Team - Unlocks after Register */}
+        {/* ✅ Create or Join a Team */}
         <Typography variant="subtitle1" gutterBottom>
           Select your option:
         </Typography>
@@ -82,26 +129,32 @@ const TeamRegistration = () => {
           row
           value={teamChoice}
           onChange={(e) => setTeamChoice(e.target.value)}
-          disabled={isRegistered}
         >
           <FormControlLabel value="create" control={<Radio />} label="Create a Team" disabled={isRegistered} />
           <FormControlLabel value="join" control={<Radio />} label="Join a Team" disabled={isRegistered} />
         </RadioGroup>
 
-        {/* Register or Edit Team */}
+        {/* ✅ Register or Manage Team */}
         {!isRegistered ? (
-          <Button variant="contained" color="primary" fullWidth onClick={handleRegister} style={{ marginTop: "20px" }}>
-            Register
+          <Button
+            variant="contained"
+            color="primary"
+            fullWidth
+            onClick={handleRegister}
+            disabled={loading}
+            style={{ marginTop: "20px" }}
+          >
+            {loading ? "Registering..." : "Register"}
           </Button>
         ) : (
           <Button
             variant="contained"
             color="secondary"
             fullWidth
-            onClick={() => navigate("/InviteTeamMembers")}
+            onClick={() => navigate("/invites")}
             style={{ marginTop: "20px" }}
           >
-            Edit Your Team
+            Manage Your Team
           </Button>
         )}
       </Paper>

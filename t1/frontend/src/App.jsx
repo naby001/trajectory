@@ -1,15 +1,17 @@
 import React from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import HomePage from "./pages/Homepage";
-import { Explore } from "./pages/explore";
-import { About } from "./pages/about";
-
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+
+import HomePage from "./pages/Homepage";
+import {Explore} from "./pages/explore";
+import {About} from "./pages/about";
 import Details from "./pages/events/details";
 import AuthPage from "./pages/login";
 import TeamRegistration from "./pages/TeamRegistration";
-import InviteTeamMembers from "./pages/InviteTeamMembers";
+// import InviteTeamMembers from "./pages/InviteTeamMembers";
+import Invites from "./pages/Invites"; // ✅ Added Invites Page
 
 const theme = createTheme({
   palette: {
@@ -32,18 +34,22 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router>
+        {/* <Navbar /> ✅ Add Navbar so it updates dynamically */}
         <Routes>
+          {/* Public Routes */}
           <Route path="/" element={<HomePage />} />
           <Route path="/explore" element={<Explore />} />
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<AuthPage />} />
           <Route path="/details" element={<Details />} />
+
+          {/* ✅ Team Routes - Will show in Navbar if logged in */}
           <Route path="/TeamRegistration" element={<TeamRegistration />} />
-          <Route path="/InviteTeamMembers" element={<InviteTeamMembers />} />
+          <Route path="/invites" element={<Invites />} />
+          
         </Routes>
       </Router>
     </ThemeProvider>
   );
 }
-
 export default App;
