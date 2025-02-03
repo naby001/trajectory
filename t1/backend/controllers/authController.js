@@ -1,67 +1,61 @@
-const User = require('../models/User');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+const User = require("../models/User");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
-// ----------------------
-// Registration & Login Endpoints
-// ----------------------
-
-// User Registration (without email verification)
 exports.registerUser = async (req, res) => {
-  const { name, email, password, university, department, universityYear } = req.body;
   try {
-    let user = await User.findOne({ email });
-    if (user) return res.status(400).json({ msg: 'User already exists' });
+    const { name, email, password, university, department, universityYear } = req.body;
 
-    const hashedPassword = await bcrypt.hash(password, 10);
-    // Create the user and mark as verified by default
-    user = new User({ 
-      name, 
-      email, 
+    let user = await User.findOne({ email });
+    if (user) {
+      return res.status(400).json({ msg: "User already exists" });
+    }
+
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    user = new User({
+      name,
+      email,
       password: hashedPassword,
       university,
       department,
       universityYear,
-      isVerified: true,
     });
 
     await user.save();
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: '1h',
-    });
+    const payload = { user: { id: user.id } };
+    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "1h" });
 
-    res.status(201).json({
-      msg: 'User registered successfully.',
-      token,
-      user: { id: user._id, name: user.name, email: user.email, isVerified: user.isVerified }
-    });
+    res.status(201).json({ token });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ msg: 'Server error' });
+    console.error(error.message);
+    res.status(500).json({ msg: "Server error" });
   }
 };
 
-// User Login
 exports.loginUser = async (req, res) => {
-  const { email, password } = req.body;
   try {
+    let { email, password } = req.body;
+    email = email.trim(); // ✅ Trim spaces to prevent matching issues
+
     const user = await User.findOne({ email });
-    if (!user) return res.status(400).json({ msg: 'Invalid credentials' });
+    if (!user) {
+      return res.status(400).json({ msg: "Invalid credentials" });
+    }
 
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).json({ msg: 'Invalid credentials' });
+    if (!isMatch) {
+      return res.status(400).json({ msg: "Invalid credentials" });
+    }
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: '1h',
-    });
+    const payload = { user: { id: user.id } };
+    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "1h" });
 
-    res.json({
-      token,
-      user: { id: user._id, name: user.name, email: user.email, isVerified: user.isVerified }
-    });
+    res.json({ token, user: { id: user.id, name: user.name, email: user.email } }); // ✅ Send user data with token
   } catch (error) {
     console.error(error);
-    res.status(500).json({ msg: 'Server error' });
+    res.status(500).json({ msg: "Server error" });
   }
 };
