@@ -4,12 +4,27 @@ const authMiddleware = require('../middleware/authMiddleware');
 
 const router = express.Router();
 
+// User Registration
 router.post('/register', registerUser);
+
+// User Login
 router.post('/login', loginUser);
 
-// ✅ Add this route to verify token
+// ✅ Verify Token Route
 router.get('/verify-token', authMiddleware, (req, res) => {
-  res.json({ msg: 'Token is valid', user: req.user });
+  try {
+    res.status(200).json({
+      success: true,
+      message: 'Token is valid',
+      user: req.user, // Send user details
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Server error',
+      error: error.message,
+    });
+  }
 });
 
 module.exports = router;

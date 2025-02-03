@@ -5,30 +5,29 @@ import {
   Toolbar,
   Button,
   IconButton,
-  Drawer,
-  List,
-  ListItem,
-  ListItemText,
   Avatar,
   Menu,
   MenuItem,
+  Badge,
   useMediaQuery,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import MailIcon from "@mui/icons-material/Mail";
 import logo from "../assets/logo.png";
+import axios from "axios";
 
 const Navbar = () => {
   const isMobile = useMediaQuery("(max-width: 600px)");
-  const [drawerOpen, setDrawerOpen] = useState(false);
   const location = useLocation();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUserName] = useState("User");
   const [anchorEl, setAnchorEl] = useState(null);
-  const [hasTeam, setHasTeam] = useState(false); // Track team status
+  const [hasTeam, setHasTeam] = useState(false);
+  const [inviteCount, setInviteCount] = useState(0);
 
   // ✅ Fetch user & team info
   useEffect(() => {
-    const updateUserData = () => {
+    const updateUserData = async () => {
       const token = localStorage.getItem("token");
       setIsLoggedIn(!!token);
 
@@ -41,6 +40,26 @@ const Navbar = () => {
           // ✅ Check if user has a team
           const storedTeam = localStorage.getItem("team");
           setHasTeam(!!storedTeam);
+
+          // ✅ Fetch pending invites count
+          if (token && token !== "null" && token !== "undefined") {
+            try {
+              const response = await axios.get("http://localhost:5000/api/team/invites", {
+                headers: { Authorization: `Bearer ${token}` },
+              });
+          
+              if (response.status === 200) {
+                setInviteCount(response.data.length);
+              }
+            } catch (err) {
+              console.error("Error fetching invites:", err.response?.data || err.message);
+              if (err.response?.status === 401) {
+                localStorage.removeItem("token"); // Clear invalid token
+                setIsLoggedIn(false);
+              }
+            }
+          }
+          
         } catch (error) {
           console.error("Error parsing user data:", error);
           setUserName("User");
@@ -55,17 +74,12 @@ const Navbar = () => {
     return () => window.removeEventListener("storage", updateUserData);
   }, [location]);
 
-  const handleDrawerToggle = () => {
-    setDrawerOpen(!drawerOpen);
-  };
-
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    localStorage.removeItem("team"); // ✅ Remove team on logout
+    localStorage.clear();
     setIsLoggedIn(false);
     setUserName("User");
     setHasTeam(false);
+    setInviteCount(0);
     setAnchorEl(null);
     window.dispatchEvent(new Event("storage"));
     window.location.reload();
@@ -130,33 +144,41 @@ const Navbar = () => {
               </Button>
             ))}
 
-            {/* ✅ Team Registration Button */}
+            {/* ✅ Show only if logged in */}
             {isLoggedIn && (
-              <Button
-                component={Link}
-                to="/teamregistration"
-                sx={{
-                  backgroundColor: hasTeam ? "#4CAF50" : "#F45558",
-                  color: "white",
-                  fontWeight: "bold",
-                  borderRadius: "20px",
-                  padding: "8px 16px",
-                  marginLeft: "20px",
-                  transition: "transform 0.3s, box-shadow 0.3s",
-                  "&:hover": {
-                    backgroundColor: hasTeam ? "#66bb6a" : "#ff6666",
-                    transform: "scale(1.1)",
-                    boxShadow: `0 0 15px ${hasTeam ? "#66bb6a" : "#ff6666"}`,
-                  },
-                }}
-              >
-                {hasTeam ? "Edit Team" : "Register Team"}
-              </Button>
-            )}
-
-            {/* Profile Avatar with Dropdown */}
-            {isLoggedIn ? (
               <>
+                {/* ✅ Team Registration Button */}
+                <Button
+                  component={Link}
+                  to="/teamregistration"
+                  sx={{
+                    backgroundColor: hasTeam ? "#4CAF50" : "#F45558",
+                    color: "white",
+                    fontWeight: "bold",
+                    borderRadius: "20px",
+                    padding: "8px 16px",
+                    marginLeft: "20px",
+                    transition: "transform 0.3s, box-shadow 0.3s",
+                    "&:hover": {
+                      backgroundColor: hasTeam ? "#66bb6a" : "#ff6666",
+                      transform: "scale(1.1)",
+                      boxShadow: `0 0 15px ${hasTeam ? "#66bb6a" : "#ff6666"}`,
+                    },
+                  }}
+                >
+                  {hasTeam ? "Edit Team" : "Register Team"}
+                </Button>
+
+                {/* ✅ Invitations Button */}
+                {inviteCount > 0 && (
+                  <IconButton component={Link} to="/invites" sx={{ marginLeft: "20px", color: "white" }}>
+                    <Badge badgeContent={inviteCount} color="error">
+                      <MailIcon />
+                    </Badge>
+                  </IconButton>
+                )}
+
+                {/* ✅ Profile Avatar with Dropdown */}
                 <IconButton onClick={handleAvatarClick} sx={{ marginLeft: "20px" }}>
                   <Avatar sx={{ bgcolor: "#F45558" }}>{userName.charAt(0).toUpperCase()}</Avatar>
                 </IconButton>
@@ -176,7 +198,10 @@ const Navbar = () => {
                   <MenuItem onClick={handleLogout} sx={{ color: "red", fontWeight: "bold" }}>Logout</MenuItem>
                 </Menu>
               </>
-            ) : (
+            )}
+
+            {/* ✅ Show login button only if NOT logged in */}
+            {!isLoggedIn && (
               <Button
                 component={Link}
                 to="/login"
@@ -199,29 +224,6 @@ const Navbar = () => {
               </Button>
             )}
           </div>
-        )}
-
-        {/* Mobile Menu */}
-        {isMobile && (
-          <>
-            <IconButton color="inherit" onClick={handleDrawerToggle}>
-              <MenuIcon />
-            </IconButton>
-            <Drawer anchor="right" open={drawerOpen} onClose={handleDrawerToggle}>
-              <List sx={{ backgroundColor: "#333", height: "100%" }}>
-                {["Home", "Explore", "About"].map((label, index) => (
-                  <ListItem button key={index} component={Link} to={label === "Home" ? "/" : `/${label.toLowerCase()}`} onClick={handleDrawerToggle}>
-                    <ListItemText primary={label} sx={{ color: "white", textAlign: "center" }} />
-                  </ListItem>
-                ))}
-                {isLoggedIn && (
-                  <ListItem button component={Link} to="/team-registration" onClick={handleDrawerToggle}>
-                    <ListItemText primary={hasTeam ? "Edit Team" : "Register Team"} sx={{ color: "white", textAlign: "center" }} />
-                  </ListItem>
-                )}
-              </List>
-            </Drawer>
-          </>
         )}
       </Toolbar>
     </AppBar>

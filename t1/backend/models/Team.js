@@ -5,13 +5,12 @@ const teamSchema = new mongoose.Schema({
   leader: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
   members: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
 
-  // Invitation system with tokens
+  // Invitations stored using user IDs instead of emails
   invitations: [
     {
-      email: { type: String, required: true },
-      token: { type: String, required: true },
+      userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
       status: { type: String, default: "pending" }, // pending, accepted, declined
-      expiresAt: { type: Date, default: () => Date.now() + 7 * 24 * 60 * 60 * 1000 }, // 7 days expiration
+      invitedAt: { type: Date, default: Date.now }, // Track invitation date
     },
   ],
 });
