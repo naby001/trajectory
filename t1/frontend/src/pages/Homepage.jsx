@@ -27,12 +27,12 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import Navbar from "./Navbar";
-import backgroundvid from "../assets/vid3.mp4";
 import { useNavigate } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "@fontsource/roboto"; // Import Roboto font
 import "@fontsource/lobster"; // Import Lobster font
 import "@fontsource/open-sans"; // Import Open Sans font
+import CarRoadmap from "../components/CarRoadmap"; // Import the CarRoadmap component
 
 const theme = createTheme({
   typography: {
@@ -198,71 +198,13 @@ function HomePage() {
           flexDirection: "column",
           minHeight: "100vh",
           position: "relative",
+          backgroundColor: "black", // Change background color to black
         }}
       >
         {/* Navbar */}
         <AppBar position="fixed" sx={{ background: "#282a3a" }}>
           <Navbar />
         </AppBar>
-
-        {/* Background Video */}
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            display: "flex",
-            flexDirection: "column",
-            overflow: "hidden",
-            zIndex: -1,
-            pointerEvents: "none", // Disable pointer events
-          }}
-        >
-          <div
-            style={{
-              flex: 1,
-              width: "100%",
-              height: "50%",
-            }}
-          >
-            <video
-              autoPlay
-              muted
-              loop
-              style={{
-                objectFit: "cover",
-                width: "100%",
-                height: "100%",
-              }}
-            >
-              <source src={backgroundvid} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          <div
-            style={{
-              flex: 1,
-              width: "100%",
-              height: "50%",
-            }}
-          >
-            <video
-              autoPlay
-              muted
-              loop
-              style={{
-                objectFit: "cover",
-                width: "100%",
-                height: "100%",
-              }}
-            >
-              <source src={backgroundvid} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </div>
 
         {/* Main Content */}
         <Fade in={true} timeout={1000}>
@@ -309,6 +251,15 @@ function HomePage() {
             </Typography>
           </Box>
         </Fade>
+
+        {/* Car Roadmap */}
+        <Fade in={true} timeout={1000}>
+          <Box className="fade-in" sx={{ py: 8 }}>
+            <CarRoadmap />
+          </Box>
+        </Fade>
+        <br>
+        </br>
 
         {/* Featured Events */}
         <Fade in={true} timeout={1000}>
