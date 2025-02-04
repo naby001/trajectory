@@ -185,6 +185,12 @@ function HomePage() {
       observer.observe(element);
     });
 
+    // Observe each event card
+    document.querySelectorAll(".event-card").forEach((element) => {
+      element.style.opacity = 0;
+      observer.observe(element);
+    });
+
     return () => {
       observer.disconnect();
     };
@@ -252,6 +258,92 @@ function HomePage() {
           </Box>
         </Fade>
 
+        {/* Slideshow Section */}
+        <Fade in={true} timeout={1000}>
+          <Box
+            className="fade-in"
+            sx={{ bgcolor: "rgba(0, 0, 0, 0.5)", py: 8, color: "white" }}
+          >
+            <Container maxWidth="lg">
+              <Typography variant="h4" align="center" gutterBottom>
+                Where You Find Us?
+              </Typography>
+              <Box
+                sx={{
+                  position: "relative",
+                  width: "100%",
+                  height: { xs: 300, sm: 400 }, // Adjust height for responsiveness
+                  overflow: "hidden",
+                }}
+              >
+                <IconButton
+                  sx={{
+                    position: "absolute",
+                    left: 0,
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    zIndex: 1,
+                    color: "white",
+                  }}
+                  onClick={prevDestination}
+                >
+                  <ArrowBackIosIcon />
+                </IconButton>
+                <IconButton
+                  sx={{
+                    position: "absolute",
+                    right: 0,
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    zIndex: 1,
+                    color: "white",
+                  }}
+                  onClick={nextDestination}
+                >
+                  <ArrowForwardIosIcon />
+                </IconButton>
+                <Box
+                  sx={{
+                    display: "flex",
+                    transition: "transform 0.5s ease",
+                    transform: `translateX(-${currentDestination * 100}%)`,
+                  }}
+                >
+                  {destinations.map((destination) => (
+                    <Box
+                      key={destination.id}
+                      sx={{
+                        flexShrink: 0,
+                        width: "100%",
+                        height: { xs: 300, sm: 400 }, // Adjust height for responsiveness
+                        backgroundImage: `url(${destination.image})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                        display: "flex",
+                        alignItems: "flex-end",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <Typography
+                        variant="h3"
+                        sx={{
+                          color: "white",
+                          backgroundColor: "rgba(0,0,0,0.5)",
+                          p: 2,
+                          width: "100%",
+                          textAlign: "center",
+                        }}
+                      >
+                        {destination.name}
+                      </Typography>
+                    </Box>
+                  ))}
+                </Box>
+              </Box>
+            </Container>
+          </Box>
+        </Fade>
+
         {/* Car Roadmap */}
         <Fade in={true} timeout={1000}>
           <Box className="fade-in" sx={{ py: 8 }}>
@@ -288,7 +380,7 @@ function HomePage() {
                   "#00FFFF", // Cyan
                 ][index];
                 return (
-                  <Grid item key={tour.id} xs={12} sm={6} md={6}>
+                  <Grid item key={tour.id} xs={12} sm={6} md={6} className="event-card">
                     <Card
                       sx={{
                         height: "100%",
@@ -438,91 +530,6 @@ function HomePage() {
         </Fade>
 
         {/* Footer */}
-        <Fade in={true} timeout={1000}>
-          <Box
-            className="fade-in"
-            sx={{ bgcolor: "rgba(0, 0, 0, 0.5)", py: 8, color: "white" }}
-          >
-            <Container maxWidth="lg">
-              <Typography variant="h4" align="center" gutterBottom>
-                Where You Find Us?
-              </Typography>
-              <Box
-                sx={{
-                  position: "relative",
-                  width: "100%",
-                  height: 400,
-                  overflow: "hidden",
-                }}
-              >
-                <IconButton
-                  sx={{
-                    position: "absolute",
-                    left: 0,
-                    top: "50%",
-                    transform: "translateY(-50%)",
-                    zIndex: 1,
-                    color: "white",
-                  }}
-                  onClick={prevDestination}
-                >
-                  <ArrowBackIosIcon />
-                </IconButton>
-                <IconButton
-                  sx={{
-                    position: "absolute",
-                    right: 0,
-                    top: "50%",
-                    transform: "translateY(-50%)",
-                    zIndex: 1,
-                    color: "white",
-                  }}
-                  onClick={nextDestination}
-                >
-                  <ArrowForwardIosIcon />
-                </IconButton>
-                <Box
-                  sx={{
-                    display: "flex",
-                    transition: "transform 0.5s ease",
-                    transform: `translateX(-${currentDestination * 100}%)`,
-                  }}
-                >
-                  {destinations.map((destination) => (
-                    <Box
-                      key={destination.id}
-                      sx={{
-                        flexShrink: 0,
-                        width: "100%",
-                        height: 400,
-                        backgroundImage: `url(${destination.image})`,
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                        display: "flex",
-                        alignItems: "flex-end",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <Typography
-                        variant="h3"
-                        sx={{
-                          color: "white",
-                          backgroundColor: "rgba(0,0,0,0.5)",
-                          p: 2,
-                          width: "100%",
-                          textAlign: "center",
-                        }}
-                      >
-                        {destination.name}
-                      </Typography>
-                    </Box>
-                  ))}
-                </Box>
-              </Box>
-            </Container>
-          </Box>
-        </Fade>
-
         <Fade in={true} timeout={1000}>
           <Container
             className="fade-in"

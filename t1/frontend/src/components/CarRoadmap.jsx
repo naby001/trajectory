@@ -13,6 +13,9 @@ const RoadmapContainer = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
     height: "450px", // Adjust the height for small screens
   },
+  [theme.breakpoints.down("xs")]: {
+    height: "100vh", // Make it full screen for extra small screens
+  },
 }));
 
 const Road = styled("div")({
@@ -33,6 +36,15 @@ const Car = styled(DirectionsCarIcon)(({ theme }) => ({
   fontSize: "24px", // Fix the size of the car component
   transition: "top 0.5s ease-in-out",
   zIndex: 3, // Ensure the car is above the road
+  animation: "glow 1s infinite alternate",
+  "@keyframes glow": {
+    from: {
+      boxShadow: `0 0 5px ${theme.palette.primary.main}`,
+    },
+    to: {
+      boxShadow: `0 0 20px ${theme.palette.primary.main}`,
+    },
+  },
 }));
 
 const MapPoint = styled(Paper)(({ theme }) => ({
@@ -48,14 +60,48 @@ const MapPoint = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
   boxShadow: theme.shadows[3],
   zIndex: 4, // Ensure the map points are above the road
+  "&:hover + div": {
+    boxShadow: `0 0 30px ${theme.palette.primary.main}`, // Increase glow spread
+    transform: "scale(1.05)", // Add zoom-in animation
+  },
+}));
+
+const EventDetailsBox = styled(Paper)(({ theme, side }) => ({
+  position: "absolute",
+  left: side === "left" ? "calc(50% - 250px)" : "calc(50% + 50px)",
+  width: "200px",
+  padding: theme.spacing(2),
+  marginTop: theme.spacing(4), // Increase spacing between point and details
+  backgroundColor: theme.palette.background.paper,
+  boxShadow: theme.shadows[3],
+  zIndex: 5, // Ensure the event details box is above other elements
+  transition: "box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out, opacity 0.5s ease-in-out",
+  opacity: 0,
+  "&:hover": {
+    boxShadow: `0 0 30px ${theme.palette.primary.main}`, // Increase glow spread
+    transform: "scale(1.05)", // Add zoom-in animation
+  },
+  "&.fade-in": {
+    opacity: 1,
+  },
+  [theme.breakpoints.down("sm")]: {
+    left: side === "left" ? "calc(50% - 200px)" : "calc(50% + 20px)",
+    width: "180px",
+  },
+  [theme.breakpoints.down("xs")]: {
+    left: "50%",
+    transform: "translateX(-50%)",
+    width: "70%", // Reduce width to 70% for extra small screens
+    boxSizing: "border-box", // Ensure padding is included in width calculation
+  },
 }));
 
 const mapPoints = [
-  { name: "Start", position: 0 },
-  { name: "Point A", position: 25 },
-  { name: "Point B", position: 50 },
-  { name: "Point C", position: 75 },
-  { name: "End", position: 100 },
+  { name: "Day 1", position: 0, details: "Event details for Day 1" },
+  { name: "Day 2", position: 25, details: "Event details for Day 2" },
+  { name: "Day 3", position: 50, details: "Event details for Day 3" },
+  { name: "Day 4", position: 75, details: "Event details for Day 4" },
+  { name: "Day 5", position: 100, details: "Event details for Day 5" },
 ];
 
 export default function CarRoadmap() {
@@ -74,16 +120,46 @@ export default function CarRoadmap() {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const elements = document.querySelectorAll(".event-details-box");
+      elements.forEach((element) => {
+        const rect = element.getBoundingClientRect();
+        if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+          element.classList.add("fade-in");
+        } else {
+          element.classList.remove("fade-in");
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Initial check
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <RoadmapContainer>
       <Road />
       <Car style={{ top: `${carPosition}%` }} />
       {mapPoints.map((point, index) => (
-        <MapPoint key={index} style={{ top: `calc(${point.position}% - 40px)` }}>
-          <Typography variant="body2" align="center">
-            {point.name}
-          </Typography>
-        </MapPoint>
+        <div key={index}>
+          <MapPoint style={{ top: `calc(${point.position}% - 40px)` }}>
+            <Typography variant="body2" align="center">
+              {point.name}
+            </Typography>
+          </MapPoint>
+          <EventDetailsBox
+            className="event-details-box"
+            side={index % 2 === 0 ? "left" : "right"}
+            style={{ top: `calc(${point.position}% - 40px)` }}
+          >
+            <Typography variant="body2">
+              {point.details}
+            </Typography>
+          </EventDetailsBox>
+        </div>
       ))}
     </RoadmapContainer>
   );

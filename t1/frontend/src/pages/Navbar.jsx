@@ -24,6 +24,11 @@ const Navbar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [hasTeam, setHasTeam] = useState(false);
   const [inviteCount, setInviteCount] = useState(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const handleMobileMenuToggle = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
 
   // ✅ Fetch user & team info
   useEffect(() => {
@@ -119,6 +124,18 @@ const Navbar = () => {
             onMouseLeave={(e) => (e.target.style.transform = "scale(1)")}
           />
         </Link>
+
+        {/* Mobile Menu Icon */}
+        {isMobile && (
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            onClick={handleMobileMenuToggle}
+          >
+            <MenuIcon />
+          </IconButton>
+        )}
 
         {/* Navigation */}
         {!isMobile && (
@@ -225,6 +242,74 @@ const Navbar = () => {
               </Button>
             )}
           </div>
+        )}
+
+        {/* Mobile Menu */}
+        {isMobile && (
+          <Menu
+            anchorEl={anchorEl}
+            open={mobileMenuOpen}
+            onClose={handleMobileMenuToggle}
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+            sx={{
+              "& .MuiPaper-root": {
+                backgroundColor: "#222",
+                color: "white",
+                boxShadow: "0 0 10px rgba(255, 215, 0, 0.5)",
+              },
+            }}
+          >
+            {["Home", "Explore", "About"].map((label, index) => (
+              <MenuItem
+                key={index}
+                component={Link}
+                to={label === "Home" ? "/" : `/${label.toLowerCase()}`}
+                onClick={handleMobileMenuToggle}
+              >
+                {label}
+              </MenuItem>
+            ))}
+            {/* Show only if logged in */}
+            {isLoggedIn && (
+              <>
+                <MenuItem
+                  component={Link}
+                  to="/teamregistration"
+                  onClick={handleMobileMenuToggle}
+                >
+                  {hasTeam ? "Edit Team" : "Register Team"}
+                </MenuItem>
+                {inviteCount > 0 && (
+                  <MenuItem
+                    component={Link}
+                    to="/invites"
+                    onClick={handleMobileMenuToggle}
+                  >
+                    Invitations ({inviteCount})
+                  </MenuItem>
+                )}
+                <MenuItem onClick={handleLogout} sx={{ color: "red", fontWeight: "bold" }}>
+                  Logout
+                </MenuItem>
+              </>
+            )}
+            {!isLoggedIn && (
+              <MenuItem
+                component={Link}
+                to="/login"
+                onClick={handleMobileMenuToggle}
+              >
+                Login
+              </MenuItem>
+            )}
+          </Menu>
         )}
       </Toolbar>
     </AppBar>
