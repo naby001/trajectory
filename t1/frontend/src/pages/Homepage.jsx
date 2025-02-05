@@ -390,6 +390,7 @@ function HomePage() {
                         transition: "transform 0.5s, box-shadow 0.5s",
                         transform:
                           "perspective(1000px) rotateX(0deg) rotateY(0deg)",
+                        borderRadius: "16px", // Increase border radius
                         "&:hover": {
                           transform:
                             "perspective(1000px) rotateX(5deg) rotateY(5deg) scale(0.95)",
