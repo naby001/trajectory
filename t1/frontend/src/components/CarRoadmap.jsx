@@ -3,7 +3,7 @@
 import { Box, Typography, Paper } from "@mui/material"
 import { styled } from "@mui/material/styles"
 import PropTypes from 'prop-types'
-import { useEffect } from 'react'
+import { useEffect, useState, useRef } from 'react'
 
 const events = [
   {
@@ -62,6 +62,13 @@ const TimelineItem = styled(Paper)(({ theme }) => ({
   border: "1px solid rgba(139, 92, 246, 0.3)",
   borderRadius: "8px",
   boxShadow: "0 0 20px rgba(139, 92, 246, 0.1)",
+  opacity: 0,
+  transform: 'translateY(50px)',
+  transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
+  '&.visible': {
+    opacity: 1,
+    transform: 'translateY(0)',
+  },
   "&::after": {
     content: '""',
     position: "absolute",
@@ -101,10 +108,39 @@ const LeftTimelineItem = styled(TimelineItem)(({ theme }) => ({
 }))
 
 export default function EventTimeline() {
+  const [scrolled, setScrolled] = useState(false);
+  const timelineRefs = useRef([]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+
+      timelineRefs.current.forEach((ref, index) => {
+        if (ref) {
+          const rect = ref.getBoundingClientRect();
+          if (rect.top < window.innerHeight - 100) {
+            ref.classList.add('visible');
+          } else {
+            ref.classList.remove('visible');
+          }
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <Box
       sx={{
-        bgcolor: "#000",
+        bgcolor:  "#000",
         minHeight: "100vh",
         color: "white",
         py: 8,
@@ -130,7 +166,11 @@ export default function EventTimeline() {
           const TimelineItemComponent = event.align === "left" ? LeftTimelineItem : TimelineItem
 
           return (
-            <TimelineItemComponent key={index} elevation={0}>
+            <TimelineItemComponent
+              key={index}
+              elevation={0}
+              ref={el => timelineRefs.current[index] = el}
+            >
               <Typography
                 variant="h5"
                 component="h3"
