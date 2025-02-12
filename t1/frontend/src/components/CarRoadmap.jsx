@@ -47,9 +47,10 @@ const TimelineContainer = styled(Box)(({ theme }) => ({
     top: 0,
     bottom: 0,
     left: "50%",
-    marginLeft: "-1px",
+    transform: "translateX(-50%)",
     [theme.breakpoints.down('sm')]: {
       left: "90%",
+      transform: "translateX(0)",
     },
   },
 }))
@@ -84,11 +85,14 @@ const TimelineItem = styled(Paper)(({ theme }) => ({
     [theme.breakpoints.down('sm')]: {
       left: "auto",
       right: "-8px",
+      transform: "translateY(-50%)",
     },
   },
   [theme.breakpoints.down('sm')]: {
-    width: "100%",
+    width: "calc(100% - 40px)",
     marginLeft: 0,
+    marginRight: "auto",
+    marginBottom: "20px",
   },
 }))
 
@@ -100,10 +104,13 @@ const LeftTimelineItem = styled(TimelineItem)(({ theme }) => ({
     [theme.breakpoints.down('sm')]: {
       left: "auto",
       right: "-8px",
+      transform: "translateY(-50%)",
     },
   },
   [theme.breakpoints.down('sm')]: {
     marginLeft: 0,
+    marginRight: "auto",
+    marginBottom: "20px",
   },
 }))
 
@@ -122,7 +129,7 @@ export default function EventTimeline() {
       timelineRefs.current.forEach((ref, index) => {
         if (ref) {
           const rect = ref.getBoundingClientRect();
-          if (rect.top < window.innerHeight - 100) {
+          if (rect.top < window.innerHeight / 2) {
             ref.classList.add('visible');
           } else {
             ref.classList.remove('visible');
