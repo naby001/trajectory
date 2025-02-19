@@ -100,19 +100,19 @@ const testimonials = [
     id: 1,
     name: "Sourav Sarkar",
     avatar: "https://via.placeholder.com/150",
-    text: "Best event yet organised",
+    text: "The event was incredibly well-organized and inspiring. I learned so much and met amazing people!",
   },
   {
     id: 2,
     name: "Himoprovo",
     avatar: "https://via.placeholder.com/150",
-    text: "The best way to explore JU's hidden gems.",
+    text: "This was the perfect way to discover the hidden gems of JU. I never knew our campus had so much to offer!",
   },
   {
     id: 3,
     name: "Raju Da",
     avatar: "https://via.placeholder.com/150",
-    text: "The best way to explore JU's hidden gems.",
+    text: "A truly unforgettable experience. The organizers went above and beyond to make it special for everyone.",
   },
 ];
 
@@ -205,6 +205,10 @@ function HomePage() {
           minHeight: "100vh",
           position: "relative",
           backgroundColor: "black", // Change background color to black
+          backgroundImage: "url('https://example.com/your-background-image.jpg')", // Add background image
+          backgroundSize: "cover", // Ensure the image covers the entire background
+          backgroundPosition: "center", // Center the background image
+          backgroundRepeat: "no-repeat", // Prevent the image from repeating
         }}
       >
         {/* Navbar */}

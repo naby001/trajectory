@@ -115,8 +115,8 @@ const Navbar = () => {
             src={logo}
             alt="Logo"
             style={{
-              width: isMobile ? 60 : 80,
-              height: isMobile ? 60 : 80,
+              width: isMobile ? 120 : 150, // Adjusted width
+              height: isMobile ? 50 : 50, // Adjusted height
               cursor: "pointer",
               transition: "transform 0.3s ease-in-out",
             }}

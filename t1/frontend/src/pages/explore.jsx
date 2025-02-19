@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import CardActions from "@mui/material/CardActions";
 import CardHeader from "@mui/material/CardHeader";
-import backgroundVideo from "../assets/vid3.mp4";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
@@ -72,142 +71,154 @@ const focusIn = keyframes`
   }
 `;
 
+const glow = keyframes`
+  0% {
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+  }
+`;
+
 const events = [
   {
     id: 1,
-    title: "Water Rocket",
+    title: "HydroBlasters",
     description:
       "Showcase your CAD skills by designing innovative mechanical components.",
-    location: "Hall A, Jadavpur University",
+    location: "Mechanical Dept, Jadavpur University",
     type: "Hardware Challenge",
     groupSize: "1-3",
-    price: 150,
+    price: 1000.00,
     image:
       "https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
   },
   {
     id: 2,
-    title: "Robo Soccer",
+    title: "Robo League",
     description: "Build and race your robots on an obstacle-filled track.",
-    location: "Central Lawn, Tech Campus",
+    location: "Mechanical Dept, Jadavpur University",
     type: "Hardware Challenge",
     groupSize: "2-5",
-    price: 300,
+    price: 6000.00,
     image:
       "https://images.pexels.com/photos/256412/pexels-photo-256412.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
   },
   {
     id: 3,
-    title: "Line Follower",
+    title: "Mazecraft",
     description:
       "Design and construct a line-following robot that navigates a predefined path.",
-    location: "Workshop Area, Block B",
+    location: "Mechanical Dept, Jadavpur University",
     type: "Hardware Challenge",
     groupSize: "3-6",
-    price: 200,
+    price: 6000.00,
     image:
       "https://images.pexels.com/photos/1438515/pexels-photo-1438515.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
   },
   {
     id: 4,
-    title: "Egglosion",
+    title: "Prot-Egg-t",
     description:
       "Build a hydraulic arm to complete specified tasks with precision.",
-    location: "Lab 3, Mechanical Wing",
+    location: "Mechanical Dept, Jadavpur University",
     type: "Hardware Challenge",
     groupSize: "1-4",
-    price: 250,
+    price: 1000.00,
     image:
       "https://images.pexels.com/photos/256660/pexels-photo-256660.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
   },
   {
     id: 5,
-    title: "HoverPod",
+    title: "Hoverpod",
     description: "Compete in an intense 5-a-side football tournament.",
-    location: "Sports Ground, North Campus",
+    location: "Mechanical Dept, Jadavpur University",
     type: "Hardware Challenge",
     groupSize: "5",
-    price: 100,
+    price: 6000.00,
     image:
       "https://images.pexels.com/photos/47730/the-ball-stadion-football-the-pitch-47730.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
   },
   {
     id: 6,
-    title: "Solidworks/Fusion",
+    title: "Model Matrix",
     description:
       "Design innovative mechanical components using Solidworks or Fusion software.",
-    location: "Gaming Arena, Hall C",
+    location: "Mechanical Dept, Jadavpur University",
     type: "Simulation Challenge",
     groupSize: "5",
-    price: 200,
+    price: 1000.00,
     image:
       "https://images.pexels.com/photos/4425763/pexels-photo-4425763.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
   },
   {
     id: 7,
-    title: "Quiz",
+    title: "Gyaan Yudh",
     description: "Test your knowledge in a challenging quiz competition.",
-    location: "Open Ground, East Campus",
+    location: "Mechanical Dept, Jadavpur University",
     type: "General",
     groupSize: "General",
-    price: 500,
+    price: 1000.00,
     image:
       "https://images.pexels.com/photos/209831/pexels-photo-209831.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
   },
   {
     id: 8,
-    title: "Debate",
+    title: "Tarka Bitarka",
     description:
       "Engage in a lively debate on important topics with fellow participants.",
-    location: "eSports Zone, Hall B",
+    location: "Mechanical Dept, Jadavpur University",
     type: "General",
     groupSize: "5",
-    price: 200,
+    price: 1000.00,
     image:
       "https://images.pexels.com/photos/9825980/pexels-photo-9825980.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
   },
   {
     id: 9,
-    title: "Badminton(Mixed)",
+    title: "Beyond The Frame",
     description: "Compete in a fast-paced mixed doubles badminton tournament.",
-    location: "Recreation Hall, Block F",
+    location: "Mechanical Dept, Jadavpur University",
     type: "Sports Challenge",
     groupSize: "1",
-    price: 50,
+    price: 1000.00,
     image:
       "https://images.pexels.com/photos/210027/pexels-photo-210027.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
   },
   {
     id: 10,
-    title: "Tug of War",
+    title: "Clash of Cases",
     description:
       "Compete in a traditional tug of war competition with your team.",
-    location: "Automotive Lab, Block E",
+    location: "Mechanical Dept, Jadavpur University",
     type: "Sports Challenge",
     groupSize: "3-5",
-    price: 450,
+    price: 1000.00,
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMpWZh3RDT7SttEtt1yebbB2tnpHMeQ8BqqA&s",
   },
   {
     id: 11,
-    title: "Cricket",
+    title: "Data Mine",
     description:
       "Participate in a thrilling cricket match, showcasing your skills.",
-    location: "eSports Lounge, Main Block",
+    location: "Mechanical Dept, Jadavpur University",
     type: "Sports Challenge",
     groupSize: "3",
-    price: 150,
+    price: 1000.00,
     image: cricketImage,
   },
   {
     id: 12,
     title: "Football",
     description: "Participate in an exciting football match with your team.",
-    location: "Cricket Ground, South Campus",
+    location: "Mechanical Dept, Jadavpur University",
     type: "Sports Challenge",
     groupSize: "6-10",
-    price: 100,
+    price: 1000.00,
     image:
       "https://cdn.magicdecor.in/com/2024/05/22173454/Football-Abstract-Design-Wallpaper-Mural-710x488.jpg",
   },
@@ -216,10 +227,10 @@ const events = [
     title: "Treasure Hunt",
     description:
       "Embark on a treasure hunt across the campus, solving clues and finding hidden treasures.",
-    location: "Campus Grounds",
+    location: "Mechanical Dept, Jadavpur University",
     type: "Fun Activities",
     groupSize: "6-10",
-    price: 100,
+    price: 1000.00,
     image:
       "https://www.wanderquest.in/monthly-subscription-boxes-for-kids-6-to-12-years/modules//smartblog/images/15-single-default.jpg",
   },
@@ -227,10 +238,10 @@ const events = [
     id: 14,
     title: "Mystery Event",
     description: "",
-    location: "JU Campus",
+    location: "Mechanical Dept, Jadavpur University",
     type: "Mystery Event?",
     groupSize: "6-10",
-    price: 100,
+    price: 1000.00,
     image:
       "https://images.pexels.com/photos/5428830/pexels-photo-5428830.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
@@ -245,11 +256,17 @@ export function Explore() {
   const [searchTerm, setSearchTerm] = useState("");
   const [filterType, setFilterType] = useState(initialFilterType);
   const cardRefs = useRef([]);
+  const [registeredEvents, setRegisteredEvents] = useState([]);
 
   const handleRegisterClick = (eventTitle) => {
     const token = localStorage.getItem("token");
     if (token) {
-      alert(`You have successfully registered for ${eventTitle}`);
+      if (registeredEvents.includes(eventTitle)) {
+        alert(`You are already registered for ${eventTitle}`);
+      } else {
+        setRegisteredEvents([...registeredEvents, eventTitle]);
+        alert(`You have successfully registered for ${eventTitle}`);
+      }
     } else {
       navigate("/login");
     }
@@ -291,6 +308,10 @@ export function Explore() {
     };
   }, [filteredEvents]);
 
+  useEffect(() => {
+    setFilterType(initialFilterType);
+  }, [initialFilterType]);
+
   return (
     <ThemeProvider theme={theme}>
       <AppBar position="fixed" sx={{ background: "#282a3a", zIndex: 1000 }}>
@@ -304,26 +325,11 @@ export function Explore() {
           py: 8,
           paddingTop: "8%",
           animation: `${fadeIn} 1s ease-in-out`,
-          pt: { xs: 10, md: 14 },
-          pb: { xs: 2, md: 10 },
+          pt: { xs: 10, md: 14 }, pb: { xs: 2, md: 10 },
+          background: "black",
         }}
+        
       >
-        <video
-          autoPlay
-          loop
-          muted
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            zIndex: -1,
-          }}
-        >
-          <source src={backgroundVideo} type="video/mp4" />
-        </video>
         <Typography
           variant="h1"
           component="h1"
@@ -379,17 +385,22 @@ export function Explore() {
                 sx={{
                   borderRadius: "15px",
                   overflow: "hidden",
-                  backgroundColor: "#f5f5f5",
+                  backgroundColor: "rgba(255, 255, 255, 0.1)",
+                  backdropFilter: "blur(10px)",
                   transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  animation: `${glow} 2s infinite`,
                   "&:hover": {
                     transform: "scale(1.05)",
-                    boxShadow: "0 0 20px rgba(0, 0, 0, 0.6)",
+                    boxShadow: "0 0 20px rgba(255, 215, 0, 0.3)",
                   },
                 }}
               >
                 <CardHeader
                   title={event.title}
-                  sx={{ backgroundColor: "#3f51b5", color: "#fff" }}
+                  sx={{ backgroundColor: "rgba(0, 0, 0, 0.7)", color: "#fff" }}
                 />
                 <CardMedia
                   component="img"
@@ -397,7 +408,7 @@ export function Explore() {
                   image={event.image}
                   alt={event.title}
                 />
-                <CardContent>
+                <CardContent sx={{ flexGrow: 1, color: "#fff" }}>
                   <Typography>{event.description}</Typography>
                   <Box sx={{ mt: 2 }}>
                     <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
@@ -415,13 +426,13 @@ export function Explore() {
                   </Box>
                 </CardContent>
                 <CardActions sx={{ justifyContent: "space-between", p: 2 }}>
-                  <Typography variant="h6">${event.price}</Typography>
+                  <Typography variant="h6" sx={{ color: "#fff" }}>₹ {event.price}</Typography>
                   <Button
                     variant="contained"
-                    color="primary"
+                     color={registeredEvents.includes(event.title) ? "error" : "primary"}
                     onClick={() => handleRegisterClick(event.title)}
                   >
-                    Register
+                    {registeredEvents.includes(event.title) ? "Registered" : "Register"}
                   </Button>
                 </CardActions>
               </Card>
