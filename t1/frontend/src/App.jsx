@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/Homepage";
 import {Explore} from "./pages/explore";
 import {About} from "./pages/about";
-import Details from "./pages/events/details";
+import Details from "./pages/details";
 import AuthPage from "./pages/login";
 import TeamRegistration from "./pages/TeamRegistration";
 // import InviteTeamMembers from "./pages/InviteTeamMembers";

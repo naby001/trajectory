@@ -262,10 +262,11 @@ export function Explore() {
     const token = localStorage.getItem("token");
     if (token) {
       if (registeredEvents.includes(eventTitle)) {
-        alert(`You are already registered for ${eventTitle}`);
+        console.log(`You are already registered for ${eventTitle}`);
       } else {
         setRegisteredEvents([...registeredEvents, eventTitle]);
-        alert(`You have successfully registered for ${eventTitle}`);
+        console.log(`You have successfully registered for ${eventTitle}`);
+        navigate("/details");
       }
     } else {
       navigate("/login");
