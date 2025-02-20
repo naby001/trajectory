@@ -137,7 +137,7 @@ const destinations = [
   },
   {
     id: 4,
-    name: "Agra",
+    name: "Mechanical Department",
     image:
       "https://lh3.googleusercontent.com/p/AF1QipPiNJJwo8Zm5JsHLqmoyL3PhlPFybcvYTExE_Fv=s1360-w1360-h1020",
   },

@@ -258,15 +258,15 @@ export function Explore() {
   const cardRefs = useRef([]);
   const [registeredEvents, setRegisteredEvents] = useState([]);
 
-  const handleRegisterClick = (eventTitle) => {
+  const handleRegisterClick = (event) => {
     const token = localStorage.getItem("token");
     if (token) {
-      if (registeredEvents.includes(eventTitle)) {
-        console.log(`You are already registered for ${eventTitle}`);
+      if (registeredEvents.includes(event.title)) {
+        console.log(`You are already registered for ${event.title}`);
       } else {
-        setRegisteredEvents([...registeredEvents, eventTitle]);
-        console.log(`You have successfully registered for ${eventTitle}`);
-        navigate("/details");
+        setRegisteredEvents([...registeredEvents, event.title]);
+        console.log(`You have successfully registered for ${event.title}`);
+        navigate(`/details?event=${event.id}`);
       }
     } else {
       navigate("/login");
@@ -430,8 +430,8 @@ export function Explore() {
                   <Typography variant="h6" sx={{ color: "#fff" }}>₹ {event.price}</Typography>
                   <Button
                     variant="contained"
-                     color={registeredEvents.includes(event.title) ? "error" : "primary"}
-                    onClick={() => handleRegisterClick(event.title)}
+                    color={registeredEvents.includes(event.title) ? "error" : "primary"}
+                    onClick={() => handleRegisterClick(event)}
                   >
                     {registeredEvents.includes(event.title) ? "Registered" : "Register"}
                   </Button>
