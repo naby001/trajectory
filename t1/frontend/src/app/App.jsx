@@ -4,14 +4,14 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 
-import HomePage from "./pages/Homepage";
-import {Explore} from "./pages/explore";
-import {About} from "./pages/about";
-import Details from "./pages/details";
-import AuthPage from "./pages/login";
-import TeamRegistration from "./pages/TeamRegistration";
+import HomePage from "../pages/Homepage";
+import {Explore} from "../pages/explore";
+import {About} from "../pages/about";
+import Details from "../pages/details";
+import AuthPage from "../pages/login";
+import TeamRegistration from "../pages/TeamRegistration";
 // import InviteTeamMembers from "./pages/InviteTeamMembers";
-import Invites from "./pages/Invites"; // ✅ Added Invites Page
+import Invites from "../pages/Invites"; // ✅ Added Invites Page
 
 const theme = createTheme({
   palette: {
