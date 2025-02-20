@@ -3,10 +3,13 @@ const Event = require("../models/Event");
 const User = require("../models/User");
 
 exports.registerEvent = async (req, res) => {
+  console.log("📌 Debug: registerEvent function is running");
+
   const { eventId } = req.body;
 
   try {
     if (!mongoose.Types.ObjectId.isValid(eventId)) {
+      console.error("❌ Invalid Event ID:", eventId);
       return res.status(400).json({ msg: "Invalid Event ID" });
     }
 
@@ -28,7 +31,19 @@ exports.registerEvent = async (req, res) => {
 
     res.json({ msg: "Registered successfully", registeredEvents: user.registeredEvents });
   } catch (error) {
-    console.error(error);
+    console.error("❌ Server error:", error);
+    res.status(500).json({ msg: "Server error" });
+  }
+};
+
+// ✅ Ensure this is exported
+exports.getRegisteredEvents = async (req, res) => {
+  console.log("📌 Debug: getRegisteredEvents function is running");
+  try {
+    const user = await User.findById(req.user.id).populate("registeredEvents");
+    res.json(user.registeredEvents);
+  } catch (error) {
+    console.error("❌ Server error:", error);
     res.status(500).json({ msg: "Server error" });
   }
 };
