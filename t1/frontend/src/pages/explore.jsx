@@ -85,163 +85,163 @@ const glow = keyframes`
 
 const events = [
   {
-    id: 1,
+    _id: "67b7102b9a01ff3f0a3c85e1",
     title: "HydroBlasters",
     description:
       "Showcase your CAD skills by designing innovative mechanical components.",
     location: "Mechanical Dept, Jadavpur University",
     type: "Hardware Challenge",
     groupSize: "1-3",
-    price: 1000.00,
+    price: 1000.0,
     image:
       "https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
   },
   {
-    id: 2,
+    _id: "67b710919a01ff3f0a3c85e2",
     title: "Robo League",
     description: "Build and race your robots on an obstacle-filled track.",
     location: "Mechanical Dept, Jadavpur University",
     type: "Hardware Challenge",
     groupSize: "2-5",
-    price: 6000.00,
+    price: 6000.0,
     image:
       "https://images.pexels.com/photos/256412/pexels-photo-256412.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
   },
   {
-    id: 3,
+    _id: "67b710b69a01ff3f0a3c85e3",
     title: "Mazecraft",
     description:
       "Design and construct a line-following robot that navigates a predefined path.",
     location: "Mechanical Dept, Jadavpur University",
     type: "Hardware Challenge",
     groupSize: "3-6",
-    price: 6000.00,
+    price: 6000.0,
     image:
       "https://images.pexels.com/photos/1438515/pexels-photo-1438515.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
   },
   {
-    id: 4,
+    _id: "67b7141b9a01ff3f0a3c85e4",
     title: "Prot-Egg-t",
     description:
       "Build a hydraulic arm to complete specified tasks with precision.",
     location: "Mechanical Dept, Jadavpur University",
     type: "Hardware Challenge",
     groupSize: "1-4",
-    price: 1000.00,
+    price: 1000.0,
     image:
       "https://images.pexels.com/photos/256660/pexels-photo-256660.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
   },
   {
-    id: 5,
+    _id: "67b714349a01ff3f0a3c85e5",
     title: "Hoverpod",
     description: "Compete in an intense 5-a-side football tournament.",
     location: "Mechanical Dept, Jadavpur University",
     type: "Hardware Challenge",
     groupSize: "5",
-    price: 6000.00,
+    price: 6000.0,
     image:
       "https://images.pexels.com/photos/47730/the-ball-stadion-football-the-pitch-47730.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
   },
   {
-    id: 6,
+    _id: "67b714449a01ff3f0a3c85e6",
     title: "Model Matrix",
     description:
       "Design innovative mechanical components using Solidworks or Fusion software.",
     location: "Mechanical Dept, Jadavpur University",
     type: "Simulation Challenge",
     groupSize: "5",
-    price: 1000.00,
+    price: 1000.0,
     image:
       "https://images.pexels.com/photos/4425763/pexels-photo-4425763.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
   },
   {
-    id: 7,
+    _id: "67b714529a01ff3f0a3c85e7",
     title: "Gyaan Yudh",
     description: "Test your knowledge in a challenging quiz competition.",
     location: "Mechanical Dept, Jadavpur University",
     type: "General",
     groupSize: "General",
-    price: 1000.00,
+    price: 1000.0,
     image:
       "https://images.pexels.com/photos/209831/pexels-photo-209831.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
   },
   {
-    id: 8,
+    _id: "67b7145e9a01ff3f0a3c85e8",
     title: "Tarka Bitarka",
     description:
       "Engage in a lively debate on important topics with fellow participants.",
     location: "Mechanical Dept, Jadavpur University",
     type: "General",
     groupSize: "5",
-    price: 1000.00,
+    price: 1000.0,
     image:
       "https://images.pexels.com/photos/9825980/pexels-photo-9825980.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
   },
   {
-    id: 9,
+    _id: "67b7146e9a01ff3f0a3c85e9",
     title: "Beyond The Frame",
     description: "Compete in a fast-paced mixed doubles badminton tournament.",
     location: "Mechanical Dept, Jadavpur University",
     type: "Sports Challenge",
     groupSize: "1",
-    price: 1000.00,
+    price: 1000.0,
     image:
       "https://images.pexels.com/photos/210027/pexels-photo-210027.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
   },
   {
-    id: 10,
+    _id: "67b714799a01ff3f0a3c85ea",
     title: "Clash of Cases",
     description:
       "Compete in a traditional tug of war competition with your team.",
     location: "Mechanical Dept, Jadavpur University",
     type: "Sports Challenge",
     groupSize: "3-5",
-    price: 1000.00,
+    price: 1000.0,
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMpWZh3RDT7SttEtt1yebbB2tnpHMeQ8BqqA&s",
   },
   {
-    id: 11,
+    _id: "67b7148d9a01ff3f0a3c85ec",
     title: "Data Mine",
     description:
       "Participate in a thrilling cricket match, showcasing your skills.",
     location: "Mechanical Dept, Jadavpur University",
     type: "Sports Challenge",
     groupSize: "3",
-    price: 1000.00,
+    price: 1000.0,
     image: cricketImage,
   },
   {
-    id: 12,
+    _id: "67b714ad9a01ff3f0a3c85ed",
     title: "Football",
     description: "Participate in an exciting football match with your team.",
     location: "Mechanical Dept, Jadavpur University",
     type: "Sports Challenge",
     groupSize: "6-10",
-    price: 1000.00,
+    price: 1000.0,
     image:
       "https://cdn.magicdecor.in/com/2024/05/22173454/Football-Abstract-Design-Wallpaper-Mural-710x488.jpg",
   },
   {
-    id: 13,
+    _id: "67b714b79a01ff3f0a3c85ee",
     title: "Treasure Hunt",
     description:
       "Embark on a treasure hunt across the campus, solving clues and finding hidden treasures.",
     location: "Mechanical Dept, Jadavpur University",
     type: "Fun Activities",
     groupSize: "6-10",
-    price: 1000.00,
+    price: 1000.0,
     image:
       "https://www.wanderquest.in/monthly-subscription-boxes-for-kids-6-to-12-years/modules//smartblog/images/15-single-default.jpg",
   },
   {
-    id: 14,
+    _id: "67b714d09a01ff3f0a3c85ef",
     title: "Mystery Event",
     description: "",
     location: "Mechanical Dept, Jadavpur University",
     type: "Mystery Event?",
     groupSize: "6-10",
-    price: 1000.00,
+    price: 1000.0,
     image:
       "https://images.pexels.com/photos/5428830/pexels-photo-5428830.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
@@ -258,18 +258,69 @@ export function Explore() {
   const cardRefs = useRef([]);
   const [registeredEvents, setRegisteredEvents] = useState([]);
 
-  const handleRegisterClick = (event) => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      if (registeredEvents.includes(event.title)) {
-        console.log(`You are already registered for ${event.title}`);
-      } else {
-        setRegisteredEvents([...registeredEvents, event.title]);
-        console.log(`You have successfully registered for ${event.title}`);
-        navigate(`/details?event=${event.id}`);
+  useEffect(() => {
+    const fetchRegisteredEvents = async () => {
+      const token = localStorage.getItem("token");
+      if (!token) return;
+
+      try {
+        const response = await fetch(
+          "http://localhost:5000/api/events/registered",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(`Error ${response.status}: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        setRegisteredEvents(data.map((event) => event._id)); // ✅ Store event IDs
+      } catch (error) {
+        console.error("❌ Error fetching registered events:", error);
       }
-    } else {
+    };
+
+    fetchRegisteredEvents();
+  }, []);
+
+  const handleRegisterClick = async (event) => {
+    const token = localStorage.getItem("token");
+    if (!token) {
       navigate("/login");
+      return;
+    }
+
+    console.log("📌 Debug: Event Data:", event); // ✅ Log full event data
+    console.log("📌 Debug: Event ID being sent:", event._id || "undefined"); // ✅ Log the ID being sent
+
+    if (!event._id) {
+      console.error("❌ Error: Event ID is missing!");
+      return; // Stop execution if ID is missing
+    }
+
+    try {
+      const response = await fetch(
+        "http://localhost:5000/api/events/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ eventId: event._id }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`❌ Error ${response.status}: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+      setRegisteredEvents([...registeredEvents, event._id]); // ✅ Update UI
+    } catch (error) {
+      console.error("❌ Registration failed:", error);
     }
   };
 
@@ -326,10 +377,10 @@ export function Explore() {
           py: 8,
           paddingTop: "8%",
           animation: `${fadeIn} 1s ease-in-out`,
-          pt: { xs: 10, md: 14 }, pb: { xs: 2, md: 10 },
+          pt: { xs: 10, md: 14 },
+          pb: { xs: 2, md: 10 },
           background: "black",
         }}
-        
       >
         <Typography
           variant="h1"
@@ -381,7 +432,7 @@ export function Explore() {
           {filteredEvents.map((event, index) => (
             <Grid item xs={12} md={6} lg={4} key={event.id}>
               <Card
-                id={`event-${event.id}`}
+                id={`event-${event._id}`}
                 ref={(el) => (cardRefs.current[index] = el)}
                 sx={{
                   borderRadius: "15px",
@@ -427,13 +478,35 @@ export function Explore() {
                   </Box>
                 </CardContent>
                 <CardActions sx={{ justifyContent: "space-between", p: 2 }}>
-                  <Typography variant="h6" sx={{ color: "#fff" }}>₹ {event.price}</Typography>
+                  <Typography variant="h6" sx={{ color: "#fff" }}>
+                    ₹ {event.price}
+                  </Typography>
                   <Button
                     variant="contained"
-                    color={registeredEvents.includes(event.title) ? "error" : "primary"}
-                    onClick={() => handleRegisterClick(event)}
+                    sx={{
+                      backgroundColor: registeredEvents.includes(event._id)
+                        ? "green"
+                        : "primary.main",
+                      "&:hover": {
+                        backgroundColor: registeredEvents.includes(event._id)
+                          ? "darkgreen"
+                          : "primary.dark",
+                      },
+                      color: "#fff", // Ensures text remains visible
+                      cursor: registeredEvents.includes(event._id)
+                        ? "not-allowed"
+                        : "pointer", // Prevents clicks but remains visible
+                      opacity: registeredEvents.includes(event._id) ? 1 : 1, // Ensures full visibility
+                    }}
+                    onClick={
+                      !registeredEvents.includes(event._id)
+                        ? () => handleRegisterClick(event)
+                        : undefined
+                    }
                   >
-                    {registeredEvents.includes(event.title) ? "Registered" : "Register"}
+                    {registeredEvents.includes(event._id)
+                      ? "Registered"
+                      : "Register"}
                   </Button>
                 </CardActions>
               </Card>
