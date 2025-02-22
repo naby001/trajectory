@@ -508,6 +508,13 @@ export function Explore() {
                       ? "Registered"
                       : "Register"}
                   </Button>
+                  <Button
+                    variant="outlined"
+                    sx={{ color: "#fff", borderColor: "#fff" }}
+                    onClick={() => navigate(`/details?event=${event._id}`)} // Use _id instead of id
+                  >
+                    See More
+                  </Button>
                 </CardActions>
               </Card>
             </Grid>

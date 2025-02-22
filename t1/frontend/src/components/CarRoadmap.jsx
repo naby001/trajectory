@@ -16,7 +16,7 @@ const events = [
   {
     title: "Day 2",
     date: "March 18, 2024",
-    description: "hARtware workshop! Learn how to build your own AR/VR hardware from scratch.",
+    description: "Hardware workshop! Learn how to build your own AR/VR hardware from scratch.",
     align: "left",
   },
   {
