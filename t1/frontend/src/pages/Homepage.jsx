@@ -212,15 +212,16 @@ function HomePage() {
           flexDirection: "column",
           minHeight: "100vh",
           position: "relative",
-          backgroundColor: "#1C1B1F", // Updated background color
-          backgroundImage: "url('https://example.com/your-background-image.jpg')", // Add background image
-          backgroundSize: "cover", // Ensure the image covers the entire background
-          backgroundPosition: "center", // Center the background image
-          backgroundRepeat: "no-repeat", // Prevent the image from repeating
+          backgroundColor: "#1C1B1F", // Set consistent background color
+          // Remove background image if not needed
+          // backgroundImage: "url('https://example.com/your-background-image.jpg')",
+          // backgroundSize: "cover",
+          // backgroundPosition: "center",
+          // backgroundRepeat: "no-repeat",
         }}
       >
         {/* Navbar */}
-        <AppBar position="fixed" sx={{ background: "#1C1B1F" }}> // Updated AppBar color
+        <AppBar position="fixed" sx={{ background: "#1C1B1F" }}>
           <Navbar />
         </AppBar>
 
@@ -233,7 +234,7 @@ function HomePage() {
               py: 6,
               color: "white",
               textAlign: "center",
-              backgroundColor: "rgba(0, 0, 0, 0.5)",
+             
             }}
           >
             {/* Website in Progress Header */}
@@ -267,92 +268,6 @@ function HomePage() {
             >
               Welcome to Mechanical Tech Fest
             </Typography>
-          </Box>
-        </Fade>
-
-        {/* Slideshow Section */}
-        <Fade in={true} timeout={1000}>
-          <Box
-            className="fade-in"
-            sx={{ bgcolor: "rgba(0, 0, 0, 0.5)", py: 8, color: "white" }}
-          >
-            <Container maxWidth="lg">
-              <Typography variant="h4" align="center" gutterBottom>
-                Where You Find Us?
-              </Typography>
-              <Box
-                sx={{
-                  position: "relative",
-                  width: "100%",
-                  height: { xs: 300, sm: 400 }, // Adjust height for responsiveness
-                  overflow: "hidden",
-                }}
-              >
-                <IconButton
-                  sx={{
-                    position: "absolute",
-                    left: 0,
-                    top: "50%",
-                    transform: "translateY(-50%)",
-                    zIndex: 1,
-                    color: "white",
-                  }}
-                  onClick={prevDestination}
-                >
-                  <ArrowBackIosIcon />
-                </IconButton>
-                <IconButton
-                  sx={{
-                    position: "absolute",
-                    right: 0,
-                    top: "50%",
-                    transform: "translateY(-50%)",
-                    zIndex: 1,
-                    color: "white",
-                  }}
-                  onClick={nextDestination}
-                >
-                  <ArrowForwardIosIcon />
-                </IconButton>
-                <Box
-                  sx={{
-                    display: "flex",
-                    transition: "transform 0.5s ease",
-                    transform: `translateX(-${currentDestination * 100}%)`,
-                  }}
-                >
-                  {destinations.map((destination) => (
-                    <Box
-                      key={destination.id}
-                      sx={{
-                        flexShrink: 0,
-                        width: "100%",
-                        height: { xs: 300, sm: 400 }, // Adjust height for responsiveness
-                        backgroundImage: `url(${destination.image})`,
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                        display: "flex",
-                        alignItems: "flex-end",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <Typography
-                        variant="h3"
-                        sx={{
-                          color: "white",
-                          backgroundColor: "rgba(0,0,0,0.5)",
-                          p: 2,
-                          width: "100%",
-                          textAlign: "center",
-                        }}
-                      >
-                        {destination.name}
-                      </Typography>
-                    </Box>
-                  ))}
-                </Box>
-              </Box>
-            </Container>
           </Box>
         </Fade>
 
@@ -542,63 +457,104 @@ function HomePage() {
           </Container>
         </Fade>
 
-        {/* Footer */}
+        {/* Where You Find Us? */}
         <Fade in={true} timeout={1000}>
-          <Container
+          <Box
             className="fade-in"
             sx={{ py: 8, color: "white" }}
-            maxWidth="md"
           >
-            <Typography variant="h4" align="center" gutterBottom>
-              What Our Organisers Say
-            </Typography>
-            <Grid container spacing={4}>
-              {testimonials.map((testimonial) => (
-                <Grid item key={testimonial.id} xs={12} md={4}>
-                  <Paper
-                    elevation={3}
-                    sx={{
-                      p: 3,
-                      height: "100%",
-                      display: "flex",
-                      flexDirection: "column",
-                      backgroundColor: "rgba(255, 255, 255, 0.8)",
-                    }}
-                  >
-                    <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                      <Avatar
-                        src={testimonial.avatar}
-                        alt={testimonial.name}
-                        sx={{ mr: 2 }}
-                      />
-                      <Typography variant="subtitle1">
-                        {testimonial.name}
+            <Container maxWidth="lg">
+              <Typography variant="h4" align="center" gutterBottom>
+                Where You Find Us?
+              </Typography>
+              <Box
+                sx={{
+                  position: "relative",
+                  width: "100%",
+                  height: { xs: 300, sm: 400 }, // Adjust height for responsiveness
+                  overflow: "hidden",
+                }}
+              >
+                <IconButton
+                  sx={{
+                    position: "absolute",
+                    left: 0,
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    zIndex: 1,
+                    color: "white",
+                  }}
+                  onClick={prevDestination}
+                >
+                  <ArrowBackIosIcon />
+                </IconButton>
+                <IconButton
+                  sx={{
+                    position: "absolute",
+                    right: 0,
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    zIndex: 1,
+                    color: "white",
+                  }}
+                  onClick={nextDestination}
+                >
+                  <ArrowForwardIosIcon />
+                </IconButton>
+                <Box
+                  sx={{
+                    display: "flex",
+                    transition: "transform 0.5s ease",
+                    transform: `translateX(-${currentDestination * 100}%)`,
+                  }}
+                >
+                  {destinations.map((destination) => (
+                    <Box
+                      key={destination.id}
+                      sx={{
+                        flexShrink: 0,
+                        width: "100%",
+                        height: { xs: 300, sm: 400 }, // Adjust height for responsiveness
+                        backgroundImage: `url(${destination.image})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                        display: "flex",
+                        alignItems: "flex-end",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <Typography
+                        variant="h3"
+                        sx={{
+                          color: "white",
+                          backgroundColor: "rgba(0,0,0,0.5)",
+                          p: 2,
+                          width: "100%",
+                          textAlign: "center",
+                        }}
+                      >
+                        {destination.name}
                       </Typography>
                     </Box>
-                    <Typography variant="body1" sx={{ flexGrow: 1 }}>
-                      "{testimonial.text}"
-                    </Typography>
-                  </Paper>
-                </Grid>
-              ))}
-            </Grid>
-          </Container>
+                  ))}
+                </Box>
+              </Box>
+            </Container>
+          </Box>
         </Fade>
 
+        {/* Footer */}
         <Fade in={true} timeout={1000}>
           <Box
             className="fade-in"
             sx={{
               bgcolor: "rgba(0, 0, 0, 0.7)",
-              p: 6,
+              p: 3, // Reduced padding
               mt: "auto",
             }}
             component="footer"
           >
-            <Typography variant="h6" align="center" gutterBottom>
-              Ready to start your adventure?
-            </Typography>
-            <Box sx={{ mt: 4, display: "flex", justifyContent: "center" }}>
+            <Box sx={{ mt: 1, display: "flex", justifyContent: "center" }}>
               <Button
                 variant="outlined"
                 sx={{ color: "rgb(187, 83, 84)", borderColor: "rgb(187, 83, 84)" }} // Updated button color
@@ -606,7 +562,7 @@ function HomePage() {
                 Subscribe to Social Media
               </Button>
             </Box>
-            <Box sx={{ mt: 4, display: "flex", justifyContent: "center" }}>
+            <Box sx={{ mt: 2, display: "flex", justifyContent: "center" }}> {/* Reduced margin-top */}
               <IconButton
                 component="a"
                 href="https://www.linkedin.com/company/trajectoryjumech/"
@@ -637,7 +593,7 @@ function HomePage() {
               align="center"
               color="white"
               component="p"
-              sx={{ mt: 3 }}
+              sx={{ mt: 2 }} // Reduced margin-top
             >
               © {new Date().getFullYear()} Trajectory. All rights reserved.
             </Typography>
