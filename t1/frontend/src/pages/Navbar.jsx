@@ -165,29 +165,8 @@ const Navbar = () => {
             {/* ✅ Show only if logged in */}
             {isLoggedIn && (
               <>
-                {/* ✅ Team Registration Button */}
-                <Button
-                  component={Link}
-                  to="/teamregistration"
-                  sx={{
-                    backgroundColor: hasTeam ? "#4CAF50" : "#F45558", // Updated to red
-                    color: "#FFFFFF", // Updated to white
-                    fontWeight: "bold",
-                    borderRadius: "20px",
-                    padding: "8px 16px",
-                    marginLeft: "20px",
-                    transition: "transform 0.3s, box-shadow 0.3s",
-                    "&:hover": {
-                      backgroundColor: hasTeam ? "#66bb6a" : "#ff6666",
-                      transform: "scale(1.1)",
-                      boxShadow: `0 0 15px ${hasTeam ? "#66bb6a" : "#ff6666"}`,
-                    },
-                  }}
-                >
-                  {hasTeam ? "Edit Team" : "Register Team"}
-                </Button>
-
-                {/* ✅ Invitations Button */}
+                {/* Remove Team Registration Button */}
+                {/* Invitations Button */}
                 {inviteCount > 0 && (
                   <IconButton component={Link} to="/invites" sx={{ marginLeft: "20px", color: "white" }}>
                     <Badge badgeContent={inviteCount} color="error">

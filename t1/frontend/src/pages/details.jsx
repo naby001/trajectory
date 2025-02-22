@@ -102,14 +102,44 @@ export default function Details() {
                     '&:hover': {
                       backgroundColor: '#00008B',
                     },
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                   }}
                   fullWidth
                   onClick={() => window.location.href = 'https://unstop.com/'}
                 >
-                  Registration Open
+                  <Box
+                    component="img"
+                    src="https://d8it4huxumps7.cloudfront.net/uploads/images/unstop/branding-guidelines/icon/unstop-icon-800x800.png" // Replace with the actual URL of the Unstop logo
+                    sx={{
+                      width: '24px',
+                      height: '24px',
+                      mr: 1,
+                    }}
+                  />
+                  Register on Unstop
+                </Button>
+                <Typography variant="body1" sx={{ mt: 2, color: 'white', textAlign: 'center' }}>
+                  OR 
+                </Typography>
+                <Button
+                  variant="contained"
+                  sx={{ 
+                    mt: 2, 
+                    backgroundColor: '#4A9DFF',
+                    '&:hover': {
+                      backgroundColor: '#00008B',
+                    },
+                  }}
+                  fullWidth
+                  onClick={() => window.location.href = '/teamregistration'}
+                >
+                 Quick Register
                 </Button>
               </Paper>
             </Grid>
+            
 
             {/* Event Details */}
             <Grid item xs={12} md={6}>

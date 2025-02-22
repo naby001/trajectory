@@ -43,7 +43,7 @@ const theme = createTheme({
       main: "#1C1B1F",
     },
     secondary: {
-      main: "rgb(187, 83, 84)",
+      main: "#F45558", // Updated red color
     },
   },
 });
@@ -394,7 +394,7 @@ export function Explore() {
           variant="h1"
           component="h1"
           gutterBottom
-          sx={{ color: "rgb(187, 83, 84)", fontSize: { xs: "2rem", md: "4rem" } }}
+          sx={{ color: "#F45558", fontSize: { xs: "2rem", md: "4rem" } }}
         >
           Explore Events
         </Typography>
@@ -493,7 +493,7 @@ export function Explore() {
                     variant="contained"
                     sx={{
                       backgroundColor: registeredEvents.includes(event._id)
-                        ? "rgb(187, 83, 84)"
+                        ? "#F45558" // Updated red color
                         : "primary.main",
                       "&:hover": {
                         backgroundColor: registeredEvents.includes(event._id)
@@ -518,7 +518,7 @@ export function Explore() {
                   </Button>
                   <Button
                     variant="outlined"
-                    sx={{ color: "rgb(187, 83, 84)", borderColor: "rgb(187, 83, 84)" }}
+                    sx={{ color: "#F45558", borderColor: "#F45558" }} // Updated red color
                     onClick={() => navigate(`/details?event=${event._id}`)} // Use _id instead of id
                   >
                    Event Details
