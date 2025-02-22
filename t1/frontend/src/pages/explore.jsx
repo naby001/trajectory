@@ -376,7 +376,7 @@ export function Explore() {
           px: 4,
           py: 8,
           paddingTop: "8%",
-          animation: `${fadeIn} 1s ease-in-out`,
+          
           pt: { xs: 10, md: 14 },
           pb: { xs: 2, md: 10 },
           background: "black",
@@ -513,7 +513,7 @@ export function Explore() {
                     sx={{ color: "#fff", borderColor: "#fff" }}
                     onClick={() => navigate(`/details?event=${event._id}`)} // Use _id instead of id
                   >
-                    See More
+                   Event Details
                   </Button>
                 </CardActions>
               </Card>
