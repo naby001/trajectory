@@ -43,7 +43,7 @@ const TimelineContainer = styled(Box)(({ theme }) => ({
     content: '""',
     position: "absolute",
     width: "2px",
-    background: "linear-gradient(180deg, #8B5CF6 0%, #3B82F6 100%)",
+    background: "linear-gradient(180deg, #BB5354 0%, #1C1B1F 100%)",
     top: 0,
     bottom: 0,
     left: "50%",
@@ -59,10 +59,10 @@ const TimelineItem = styled(Paper)(({ theme }) => ({
   position: "relative",
   width: "45%",
   marginBottom: "60px",
-  background: "rgba(30, 30, 30, 0.9)",
-  border: "1px solid rgba(139, 92, 246, 0.3)",
+  background: "rgba(28, 27, 31, 0.9)",
+  border: "1px solid rgba(244, 85, 88, 0.3)",
   borderRadius: "8px",
-  boxShadow: "0 0 20px rgba(139, 92, 246, 0.1)",
+  boxShadow: "0 0 20px rgba(244, 85, 88, 0.1)",
   opacity: 0,
   transform: 'translateY(50px)',
   transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
@@ -76,8 +76,8 @@ const TimelineItem = styled(Paper)(({ theme }) => ({
     width: "16px",
     height: "16px",
     right: "-45px",
-    backgroundColor: "#8B5CF6",
-    border: "4px solid rgba(139, 92, 246, 0.3)",
+    backgroundColor: "#F45558",
+    border: "4px solid rgba(244, 85, 88, 0.3)",
     top: "50%",
     transform: "translateY(-50%)",
     borderRadius: "50%",
@@ -147,7 +147,7 @@ export default function EventTimeline() {
   return (
     <Box
       sx={{
-        bgcolor:  "#000",
+        bgcolor:  "#1C1B1F",
         minHeight: "100vh",
         color: "white",
         py: 8,
@@ -159,7 +159,7 @@ export default function EventTimeline() {
         sx={{
           textAlign: "center",
           mb: 6,
-          background: "linear-gradient(90deg, #8B5CF6 0%, #3B82F6 100%)",
+          background: " #F45558",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
           fontWeight: "bold",
@@ -182,7 +182,7 @@ export default function EventTimeline() {
                 variant="h5"
                 component="h3"
                 sx={{
-                  color: "#8B5CF6",
+                  color: "#F45558",
                   fontWeight: "bold",
                   mb: 1,
                 }}

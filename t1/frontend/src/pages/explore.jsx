@@ -38,6 +38,14 @@ const theme = createTheme({
       fontFamily: "Lobster, Arial",
     },
   },
+  palette: {
+    primary: {
+      main: "#1C1B1F",
+    },
+    secondary: {
+      main: "rgb(187, 83, 84)",
+    },
+  },
 });
 
 const fadeIn = keyframes`
@@ -366,7 +374,7 @@ export function Explore() {
 
   return (
     <ThemeProvider theme={theme}>
-      <AppBar position="fixed" sx={{ background: "#282a3a", zIndex: 1000 }}>
+      <AppBar position="fixed" sx={{ background: "#1C1B1F", zIndex: 1000 }}>
         <Navbar />
       </AppBar>
 
@@ -379,14 +387,14 @@ export function Explore() {
           
           pt: { xs: 10, md: 14 },
           pb: { xs: 2, md: 10 },
-          background: "black",
+          background: "#1C1B1F",
         }}
       >
         <Typography
           variant="h1"
           component="h1"
           gutterBottom
-          sx={{ color: "#fff", fontSize: { xs: "2rem", md: "4rem" } }}
+          sx={{ color: "rgb(187, 83, 84)", fontSize: { xs: "2rem", md: "4rem" } }}
         >
           Explore Events
         </Typography>
@@ -485,11 +493,11 @@ export function Explore() {
                     variant="contained"
                     sx={{
                       backgroundColor: registeredEvents.includes(event._id)
-                        ? "green"
+                        ? "rgb(187, 83, 84)"
                         : "primary.main",
                       "&:hover": {
                         backgroundColor: registeredEvents.includes(event._id)
-                          ? "darkgreen"
+                          ? "darkred"
                           : "primary.dark",
                       },
                       color: "#fff", // Ensures text remains visible
@@ -510,7 +518,7 @@ export function Explore() {
                   </Button>
                   <Button
                     variant="outlined"
-                    sx={{ color: "#fff", borderColor: "#fff" }}
+                    sx={{ color: "rgb(187, 83, 84)", borderColor: "rgb(187, 83, 84)" }}
                     onClick={() => navigate(`/details?event=${event._id}`)} // Use _id instead of id
                   >
                    Event Details

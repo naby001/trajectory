@@ -102,9 +102,9 @@ const Navbar = () => {
     <AppBar
       position="fixed"
       sx={{
-        background: "linear-gradient(90deg, #1C1B1F 0%, #F45558 50%, #1C1B1F 100%)", 
+        background: "rgba(28, 27, 31, 0.8)", // Transparent background
+        backdropFilter: "blur(10px)", // Backdrop filter for blur effect
         padding: "5px 0",
-        boxShadow: "0px 0px 15px rgba(255, 215, 0, 0.3)",
       }}
     >
       

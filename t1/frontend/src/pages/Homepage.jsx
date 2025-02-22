@@ -44,6 +44,14 @@ const theme = createTheme({
       fontFamily: "Lobster, Arial",
     },
   },
+  palette: {
+    primary: {
+      main: "#1C1B1F",
+    },
+    secondary: {
+      main: "rgb(187, 83, 84)",
+    },
+  },
 });
 
 const tours = [
@@ -204,7 +212,7 @@ function HomePage() {
           flexDirection: "column",
           minHeight: "100vh",
           position: "relative",
-          backgroundColor: "black", // Change background color to black
+          backgroundColor: "#1C1B1F", // Updated background color
           backgroundImage: "url('https://example.com/your-background-image.jpg')", // Add background image
           backgroundSize: "cover", // Ensure the image covers the entire background
           backgroundPosition: "center", // Center the background image
@@ -212,7 +220,7 @@ function HomePage() {
         }}
       >
         {/* Navbar */}
-        <AppBar position="fixed" sx={{ background: "#282a3a" }}>
+        <AppBar position="fixed" sx={{ background: "#1C1B1F" }}> // Updated AppBar color
           <Navbar />
         </AppBar>
 
@@ -248,12 +256,12 @@ function HomePage() {
                 fontSize: { xs: "2rem", sm: "3rem", md: "4rem" },
                 fontWeight: "bold",
                 textShadow: `
-                  1px 1px 0px #ff8c00, 
-                  2px 2px 0px #ff4500, 
-                  3px 3px 0px #ff1493, 
-                  4px 4px 0px #9400d3, 
-                  5px 5px 0px #1e90ff, 
-                  6px 6px 0px #00fa9a
+                  1px 1px 0px rgb(187, 83, 84), 
+                  2px 2px 0px rgb(187, 83, 84), 
+                  3px 3px 0px rgb(187, 83, 84), 
+                  4px 4px 0px rgb(187, 83, 84), 
+                  5px 5px 0px rgb(187, 83, 84), 
+                  6px 6px 0px rgb(187, 83, 84)
                 `,
               }}
             >
@@ -366,7 +374,7 @@ function HomePage() {
               sx={{
                 fontWeight: "bold",
                 mb: 4,
-                color: "#ffd700",
+                color: "rgb(187, 83, 84)", // Updated text color
                 textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)",
               }}
             >
@@ -593,7 +601,7 @@ function HomePage() {
             <Box sx={{ mt: 4, display: "flex", justifyContent: "center" }}>
               <Button
                 variant="outlined"
-                sx={{ color: "white", borderColor: "white" }}
+                sx={{ color: "rgb(187, 83, 84)", borderColor: "rgb(187, 83, 84)" }} // Updated button color
               >
                 Subscribe to Social Media
               </Button>
@@ -603,7 +611,7 @@ function HomePage() {
                 component="a"
                 href="https://www.linkedin.com/company/trajectoryjumech/"
                 target="_blank"
-                sx={{ color: "white" }}
+                sx={{ color: "rgb(187, 83, 84)" }} // Updated icon button color
               >
                 <LinkedInIcon />
               </IconButton>
@@ -611,7 +619,7 @@ function HomePage() {
                 component="a"
                 href="https://www.instagram.com/trajectory_jumech/"
                 target="_blank"
-                sx={{ color: "white" }}
+                sx={{ color: "rgb(187, 83, 84)" }} // Updated icon button color
               >
                 <InstagramIcon />
               </IconButton>
@@ -619,7 +627,7 @@ function HomePage() {
                 component="a"
                 href="https://www.facebook.com/profile.php?id=61572408332143"
                 target="_blank"
-                sx={{ color: "white" }}
+                sx={{ color: "rgb(187, 83, 84)" }} // Updated icon button color
               >
                 <FacebookIcon />
               </IconButton>
