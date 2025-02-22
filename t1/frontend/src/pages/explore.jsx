@@ -384,17 +384,18 @@ export function Explore() {
           px: 4,
           py: 8,
           paddingTop: "8%",
-          
           pt: { xs: 10, md: 14 },
           pb: { xs: 2, md: 10 },
-          background: "#1C1B1F",
+          background: 'linear-gradient(90deg, #1C1B1F 0%, rgb(81, 44, 44) 50%, #1C1B1F 100%)',
+          zIndex: 1, // Added z-index
+          border: "2px solid black", // Added black border
         }}
       >
         <Typography
           variant="h1"
           component="h1"
           gutterBottom
-          sx={{ color: "#F45558", fontSize: { xs: "2rem", md: "4rem" } }}
+          sx={{ color: "white", fontSize: { xs: "2rem", md: "4rem" } }}
         >
           Explore Events
         </Typography>
@@ -436,17 +437,16 @@ export function Explore() {
             </Select>
           </FormControl>
         </Box>
-        <Grid container spacing={3}>
+        <Grid container spacing={4} sx={{ px: 6, py: 4 }}> {/* Increased padding */}
           {filteredEvents.map((event, index) => (
-            <Grid item xs={12} md={6} lg={4} key={event.id}>
+            <Grid item xs={12} md={6} key={event._id}> {/* 2 cards per row */}
               <Card
                 id={`event-${event._id}`}
                 ref={(el) => (cardRefs.current[index] = el)}
                 sx={{
                   borderRadius: "15px",
                   overflow: "hidden",
-                  backgroundColor: "rgba(255, 255, 255, 0.1)",
-                  backdropFilter: "blur(10px)",
+                  backgroundColor: "#1C1B1F",
                   transition: "transform 0.3s ease, box-shadow 0.3s ease",
                   height: "100%",
                   display: "flex",
