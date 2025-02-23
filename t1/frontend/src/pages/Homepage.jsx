@@ -33,6 +33,7 @@ import "@fontsource/roboto"; // Import Roboto font
 import "@fontsource/lobster"; // Import Lobster font
 import "@fontsource/open-sans"; // Import Open Sans font
 import CarRoadmap from "../components/CarRoadmap"; // Import the CarRoadmap component
+import InfiniteScrollAnimation from "../components/infinity"; // Import the InfiniteScrollAnimation component
 
 const theme = createTheme({
   typography: {
@@ -270,6 +271,7 @@ function HomePage() {
             </Typography>
           </Box>
         </Fade>
+        <InfiniteScrollAnimation></InfiniteScrollAnimation>
 
         {/* Car Roadmap */}
         <Fade in={true} timeout={1000}>
