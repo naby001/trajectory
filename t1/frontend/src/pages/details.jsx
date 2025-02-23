@@ -41,11 +41,12 @@ export default function Details() {
       <Box
         sx={{
           minHeight: '100vh',
-          background: 'black',
-          color: 'white',
+          background: '#1C1B1F', // Removed background gradient
+          color: '#FFFFFF', // Updated text color
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
+          fontFamily: 'Poppins', // Updated font family
         }}
       >
         <Typography variant="h4">Event not found</Typography>
@@ -59,17 +60,27 @@ export default function Details() {
       <Box
         sx={{
           minHeight: '100vh',
-          background: 'black',
-          color: 'white',
+          background: '#1C1B1F', // Removed background gradient
+          color: '#FFFFFF', // Updated text color
           py: 4,
           pt: 12,
+          fontFamily: 'Poppins', // Updated font family
         }}
       >
         <Container maxWidth="lg">
           <Grid container spacing={4}>
             {/* Header */}
             <Grid item xs={12} textAlign="center">
-              <Typography variant="h2" component="h1" sx={{ mb: 1, color: 'white' }}>
+              <Typography 
+                variant="h2" 
+                component="h1" 
+                sx={{ 
+                  mb: 1, 
+                  background: 'linear-gradient(90deg, yellow, white)', // Gradient text color
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                }}
+              >
                 {eventDetails.title}
               </Typography>
             </Grid>
@@ -80,8 +91,8 @@ export default function Details() {
                 elevation={3}
                 sx={{
                   p: 3,
-                  background: 'rgba(255, 255, 255, 0.05)',
-                  backdropFilter: 'blur(10px)',
+                  background: '#1C1B1F', // Removed transparency
+                  boxShadow: '0 0 10px 2px #F45558', // Added glow effect
                 }}
               >
                 <Box component="img" 
@@ -98,16 +109,17 @@ export default function Details() {
                   variant="contained"
                   sx={{ 
                     mt: 2, 
-                    backgroundColor: '#4A9DFF',
+                    backgroundColor: '#0099ff', // Updated button color
                     '&:hover': {
-                      backgroundColor: '#00008B',
+                      backgroundColor: '#F45558',
                     },
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                   }}
                   fullWidth
-                  onClick={() => window.location.href = 'https://unstop.com/'}
+                  onClick={() => window.location.href = 'https://unstop.com/'
+                  }
                 >
                   <Box
                     component="img"
@@ -120,16 +132,16 @@ export default function Details() {
                   />
                   Register on Unstop
                 </Button>
-                <Typography variant="body1" sx={{ mt: 2, color: 'white', textAlign: 'center' }}>
+                <Typography variant="body1" sx={{ mt: 2, color: '#FFFFFF', textAlign: 'center' }}>
                   OR 
                 </Typography>
                 <Button
                   variant="contained"
                   sx={{ 
                     mt: 2, 
-                    backgroundColor: '#4A9DFF',
+                    backgroundColor: '#0099ff', // Updated button color
                     '&:hover': {
-                      backgroundColor: '#00008B',
+                      backgroundColor: '#F45558',
                     },
                   }}
                   fullWidth
@@ -147,47 +159,47 @@ export default function Details() {
                 elevation={3}
                 sx={{
                   p: 3,
-                  background: 'rgba(255, 255, 255, 0.05)',
-                  backdropFilter: 'blur(10px)',
+                  background: '#1C1B1F', // Removed transparency
+                  boxShadow: '0 0 10px 2px #F45558', // Added glow effect
                 }}
               >
                 <List>
                   <ListItem>
                     <ListItemIcon>
-                      <EventIcon sx={{ color: 'white' }} />
+                      <EventIcon sx={{ color: '#FFFFFF' }} />
                     </ListItemIcon>
                     <ListItemText 
-                      primary={<Typography color="white">Event Date (Prelims)</Typography>}
+                      primary={<Typography color="#FFFFFF">Event Date (Prelims)</Typography>}
                       secondary={<Typography color="gray">{eventDetails.prelimsDate}</Typography>}
                     />
                   </ListItem>
 
                   <ListItem>
                     <ListItemIcon>
-                      <EventIcon sx={{ color: 'white' }} />
+                      <EventIcon sx={{ color: '#FFFFFF' }} />
                     </ListItemIcon>
                     <ListItemText 
-                      primary={<Typography color="white">Event Date (Finals)</Typography>}
+                      primary={<Typography color="#FFFFFF">Event Date (Finals)</Typography>}
                       secondary={<Typography color="gray">{eventDetails.finalsDate}</Typography>}
                     />
                   </ListItem>
 
                   <ListItem>
                     <ListItemIcon>
-                      <GroupIcon sx={{ color: 'white' }} />
+                      <GroupIcon sx={{ color: '#FFFFFF' }} />
                     </ListItemIcon>
                     <ListItemText 
-                      primary={<Typography color="white">Team Size</Typography>}
+                      primary={<Typography color="#FFFFFF">Team Size</Typography>}
                       secondary={<Typography color="gray">{eventDetails.groupSize} members</Typography>}
                     />
                   </ListItem>
 
                   <ListItem>
                     <ListItemIcon>
-                      <PhoneIcon sx={{ color: 'white' }} />
+                      <PhoneIcon sx={{ color: '#FFFFFF' }} />
                     </ListItemIcon>
                     <ListItemText 
-                      primary={<Typography color="white">Event Coordinators</Typography>}
+                      primary={<Typography color="#FFFFFF">Event Coordinators</Typography>}
                       secondary={
                         <Box>
                           {eventDetails.coordinators.map((coordinator, index) => (
@@ -200,20 +212,20 @@ export default function Details() {
 
                   <ListItem>
                     <ListItemIcon>
-                      <PrizeIcon sx={{ color: 'white' }} />
+                      <PrizeIcon sx={{ color: '#FFFFFF' }} />
                     </ListItemIcon>
                     <ListItemText 
-                      primary={<Typography color="white">Prize</Typography>}
+                      primary={<Typography color="#FFFFFF">Prize</Typography>}
                       secondary={<Typography color="gray">Exciting Prizes for the winners.</Typography>}
                     />
                   </ListItem>
 
                   <ListItem>
                     <ListItemIcon>
-                      <InfoIcon sx={{ color: 'white' }} />
+                      <InfoIcon sx={{ color: '#FFFFFF' }} />
                     </ListItemIcon>
                     <ListItemText 
-                      primary={<Typography color="white">Event Description</Typography>}
+                      primary={<Typography color="#FFFFFF">Event Description</Typography>}
                       secondary={
                         <Typography color="gray">
                           {eventDetails.description}
@@ -231,19 +243,19 @@ export default function Details() {
                 elevation={3}
                 sx={{
                   p: 3,
-                  background: 'rgba(255, 255, 255, 0.05)',
-                  backdropFilter: 'blur(10px)',
+                  background: '#1C1B1F', // Removed transparency
+                  boxShadow: '0 0 10px 2px #F45558', // Added glow effect
                 }}
               >
-                <Typography variant="h5" sx={{ mb: 2, color: 'white' }}>
-                  <RulesIcon sx={{ mr: 1, verticalAlign: 'middle', color: 'white' }} />
+                <Typography variant="h5" sx={{ mb: 2, color: '#FFFFFF' }}>
+                  <RulesIcon sx={{ mr: 1, verticalAlign: 'middle', color: '#FFFFFF' }} />
                   Event Rules
                 </Typography>
                 <List>
                   {eventDetails.rules.map((rule, index) => (
                     <ListItem key={index}>
                       <ListItemText 
-                        primary={<Typography color="white">{`${index + 1}. ${rule}`}</Typography>}
+                        primary={<Typography color="#FFFFFF">{`${index + 1}. ${rule}`}</Typography>}
                         sx={{ color: 'gray' }}
                       />
                     </ListItem>

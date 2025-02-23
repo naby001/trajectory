@@ -211,11 +211,11 @@ function HomePage() {
         sx={{
           display: "flex",
           flexDirection: "column",
-          minHeight: "100vh",
+          minHeight: "100%",
           position: "relative",
           top: -70,
           backgroundColor: "#1C1B1F", // Set consistent background color
-         
+          overflow: "hidden", // Ensure content stays within screen boundaries
         }}
       >
         {/* Navbar */}
@@ -223,8 +223,10 @@ function HomePage() {
           <Navbar />
         </AppBar>
 
-       
-        <InfiniteScrollAnimation></InfiniteScrollAnimation>
+        {/* Infinite Scroll Animation */}
+        <Box sx={{ overflow: "hidden" }}>
+          <InfiniteScrollAnimation />
+        </Box>
 
         {/* Car Roadmap */}
         <Fade in={true} timeout={1000}>

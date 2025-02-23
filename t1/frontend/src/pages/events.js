@@ -114,5 +114,110 @@ export const events = [
       "Judges' decisions are final."
     ]
   },
+  {
+    id: "67b714349a01ff3f0a3c85e6",
+    title: "Tech Talk",
+    description: "Attend a series of talks by industry experts on the latest trends in technology.",
+    location: "Auditorium, Jadavpur University",
+    type: "General",
+    groupSize: "1",
+    price: 500.00,
+    image: "https://images.pexels.com/photos/3184298/pexels-photo-3184298.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
+    prelimsDate: "2023-11-06",
+    finalsDate: "2023-11-10",
+    coordinators: [
+      { name: "John Doe", phone: "1234567890" },
+      { name: "Jane Smith", phone: "0987654321" }
+    ],
+    rules: [
+      "Each participant must register individually.",
+      "Participants must adhere to the event guidelines.",
+      "Judges' decisions are final."
+    ]
+  },
+  {
+    id: "67b714349a01ff3f0a3c85e7",
+    title: "Code Sprint",
+    description: "Participate in a competitive coding challenge to solve complex problems.",
+    location: "Computer Lab, Jadavpur University",
+    type: "Simulation Challenge",
+    groupSize: "1-2",
+    price: 2000.00,
+    image: "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
+    prelimsDate: "2023-11-07",
+    finalsDate: "2023-11-11",
+    coordinators: [
+      { name: "Alice Johnson", phone: "1122334455" },
+      { name: "Bob Brown", phone: "5566778899" }
+    ],
+    rules: [
+      "Each team must solve the given problems within the time limit.",
+      "All solutions must be original and adhere to the event guidelines.",
+      "Judges' decisions are final."
+    ]
+  },
+  {
+    id: "67b714349a01ff3f0a3c85e8",
+    title: "Cultural Fest",
+    description: "Enjoy a variety of cultural performances and activities.",
+    location: "Open Ground, Jadavpur University",
+    type: "General",
+    groupSize: "1",
+    price: 0.00,
+    image: "https://images.pexels.com/photos/176306/pexels-photo-176306.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
+    prelimsDate: "2023-11-08",
+    finalsDate: "2023-11-12",
+    coordinators: [
+      { name: "Charlie Davis", phone: "6677889900" },
+      { name: "Dana White", phone: "9988776655" }
+    ],
+    rules: [
+      "Participants must register for individual performances.",
+      "All performances must adhere to the event guidelines.",
+      "Judges' decisions are final."
+    ]
+  },
+  {
+    id: "67b714349a01ff3f0a3c85e9",
+    title: "Debate Competition",
+    description: "Engage in a debate on various topics and showcase your oratory skills.",
+    location: "Seminar Hall, Jadavpur University",
+    type: "General",
+    groupSize: "1-2",
+    price: 500.00,
+    image: "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
+    prelimsDate: "2023-11-09",
+    finalsDate: "2023-11-13",
+    coordinators: [
+      { name: "Eve Green", phone: "3344556677" },
+      { name: "Frank Black", phone: "7766554433" }
+    ],
+    rules: [
+      "Each team must prepare for the given topics.",
+      "All debates must adhere to the event guidelines.",
+      "Judges' decisions are final."
+    ]
+  },
+  {
+    id: "67b714349a01ff3f0a3c85ea",
+    title: "Quiz Competition",
+    description: "Test your knowledge in a variety of subjects in this quiz competition.",
+    location: "Lecture Hall, Jadavpur University",
+    type: "General",
+    groupSize: "1-3",
+    price: 1000.00,
+    image: "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
+    prelimsDate: "2023-11-10",
+    finalsDate: "2023-11-14",
+    coordinators: [
+      { name: "Grace White", phone: "2233445566" },
+      { name: "Hank Brown", phone: "6655443322" }
+    ],
+    rules: [
+      "Each team must answer the given questions within the time limit.",
+      "All answers must adhere to the event guidelines.",
+      "Judges' decisions are final."
+    ]
+  }
   // ...additional events with unique details...
 ];

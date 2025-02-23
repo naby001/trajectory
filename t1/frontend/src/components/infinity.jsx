@@ -7,6 +7,12 @@ const loopAnimation = keyframes`
   100% { transform: translateX(-50%); }
 `;
 
+// Keyframes for the fade-in and fade-out animation
+const fadeInOut = keyframes`
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+`;
+
 // Styled components
 const AppContainer = styled(Box)({
   fontFamily: "'Poppins', sans-serif",
@@ -69,6 +75,7 @@ const Fade = styled(Box)({
   background: 'linear-gradient(90deg, #1C1B1F, transparent 30%, transparent 70%, #1C1B1F)',
   position: 'absolute',
   inset: 0,
+  animation: `${fadeInOut} 3s infinite`, // Add animation
 });
 
 // Data for tags
@@ -108,4 +115,4 @@ const InfiniteScrollAnimation = () => {
   );
 };
 
-export default InfiniteScrollAnimation; 
+export default InfiniteScrollAnimation;
