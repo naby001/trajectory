@@ -213,12 +213,9 @@ function HomePage() {
           flexDirection: "column",
           minHeight: "100vh",
           position: "relative",
+          top: -70,
           backgroundColor: "#1C1B1F", // Set consistent background color
-          // Remove background image if not needed
-          // backgroundImage: "url('https://example.com/your-background-image.jpg')",
-          // backgroundSize: "cover",
-          // backgroundPosition: "center",
-          // backgroundRepeat: "no-repeat",
+         
         }}
       >
         {/* Navbar */}
@@ -226,51 +223,7 @@ function HomePage() {
           <Navbar />
         </AppBar>
 
-        {/* Main Content */}
-        <Fade in={true} timeout={1000}>
-          <Box
-            className="fade-in"
-            sx={{
-              mt: 8,
-              py: 6,
-              color: "white",
-              textAlign: "center",
-             
-            }}
-          >
-            {/* Website in Progress Header */}
-            <Box
-              sx={{
-                width: "100%",
-                backgroundColor: "rgba(245, 248, 106, 0.5)",
-                color: "white",
-                textAlign: "center",
-                py: 1,
-              }}
-            >
-              <Typography variant="h6">Website Still in Progress</Typography>
-            </Box>
-            {/* Website in Progress Header */}
-            
-            <Typography
-              variant="h1"
-              sx={{
-                fontSize: { xs: "2rem", sm: "3rem", md: "4rem" },
-                fontWeight: "bold",
-                textShadow: `
-                  1px 1px 0px rgb(187, 83, 84), 
-                  2px 2px 0px rgb(187, 83, 84), 
-                  3px 3px 0px rgb(187, 83, 84), 
-                  4px 4px 0px rgb(187, 83, 84), 
-                  5px 5px 0px rgb(187, 83, 84), 
-                  6px 6px 0px rgb(187, 83, 84)
-                `,
-              }}
-            >
-              Welcome to Mechanical Tech Fest
-            </Typography>
-          </Box>
-        </Fade>
+       
         <InfiniteScrollAnimation></InfiniteScrollAnimation>
 
         {/* Car Roadmap */}

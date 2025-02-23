@@ -1,16 +1,19 @@
 import React from 'react';
-import { Box, Typography, styled, keyframes } from '@mui/material';
+import { Box, styled, keyframes } from '@mui/material';
 
 // Keyframes for the loop animation
-const loopAnimation = keyframes`0%{transform: translateX(0);}100%{transform: translateX(-50%);}`;
+const loopAnimation = keyframes`
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+`;
 
 // Styled components
 const AppContainer = styled(Box)({
   fontFamily: "'Poppins', sans-serif",
   backgroundColor: '#1C1B1F',
   color: '#FFFFFF',
-  minWidth: '100vw',
-  minHeight: '100vh',
+  width: '100vw', // Adjusted to fit the whole screen
+  height: '100vh', // Adjusted to fit the whole screen
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -18,8 +21,8 @@ const AppContainer = styled(Box)({
 });
 
 const TagList = styled(Box)({
-  width: '30rem',
-  maxWidth: '90vw',
+  width: '100%', // Adjusted to fit the whole screen
+  maxWidth: '100vw', // Adjusted to fit the whole screen
   display: 'flex',
   flexShrink: 0,
   flexDirection: 'column',
@@ -38,6 +41,7 @@ const LoopSlider = styled(Box)(({ duration, direction }) => ({
     animationIterationCount: 'infinite',
     animationDirection: direction,
     animationDuration: duration,
+    whiteSpace: 'nowrap', // Ensure all tags stay in one line
   },
 }));
 
@@ -49,7 +53,7 @@ const Tag = styled(Box)({
   fontSize: '0.9rem',
   backgroundColor: '#F45558',
   borderRadius: '0.4rem',
-  padding: '0.7rem 1rem',
+  padding: '0.7rem 1.5rem', // Adjusted padding for better spacing
   marginRight: '1rem',
   boxShadow:
     '0 0.1rem 0.2rem rgb(0 0 0 / 20%), 0 0.1rem 0.5rem rgb(0 0 0 / 30%), 0 0.2rem 1.5rem rgb(0 0 0 / 40%)',
@@ -57,6 +61,7 @@ const Tag = styled(Box)({
     fontSize: '1.2rem',
     color: '#1C1B1F',
   },
+  whiteSpace: 'nowrap', // Prevent text from wrapping
 });
 
 const Fade = styled(Box)({
@@ -68,11 +73,11 @@ const Fade = styled(Box)({
 
 // Data for tags
 const tags = [
-  ['JavaScript', 'webdev', 'Typescript', 'Next.js', 'UI/UX'],
-  ['webdev', 'Gatsby', 'JavaScript', 'Tailwind', 'Typescript'],
-  ['animation', 'Tailwind', 'React', 'SVG', 'HTML'],
-  ['Gatsby', 'HTML', 'CSS', 'React', 'Next.js'],
-  ['Next.js', 'React', 'webdev', 'Typescript', 'Gatsby'],
+  ['Thermal Engineering', 'Fluid Mechanics', 'Machine Design', 'Heat Transfer', 'Control Systems'],
+  ['Power Electronics', 'Structural Analysis', 'Digital Circuits', 'Data Structures', 'Signal Processing'],
+  ['Manufacturing Processes', 'Software Engineering', 'Embedded Systems', 'Artificial Intelligence', 'Numerical Methods'],
+  ['Fluid Mechanics', 'Machine Design', 'Heat Transfer', 'Control Systems', 'Power Electronics'],
+  ['Structural Analysis', 'Digital Circuits', 'Data Structures', 'Signal Processing', 'Manufacturing Processes'],
 ];
 
 const InfiniteScrollAnimation = () => {
@@ -82,15 +87,18 @@ const InfiniteScrollAnimation = () => {
         {tags.map((tagGroup, index) => (
           <LoopSlider
             key={index}
-            duration={`${Math.floor(Math.random() * 20000) + 10000}ms`}
+            duration={`${Math.floor(Math.random() * 600000) + 300000}ms`} // Slower speed (30s to 90s)
             direction={index % 2 === 0 ? 'normal' : 'reverse'}
           >
             <Box className="inner">
-              {[...tagGroup, ...tagGroup].map((tag, i) => (
-                <Tag key={i}>
-                  <span>#</span> {tag}
-                </Tag>
-              ))}
+              {Array(100) // Duplicate content 100 times
+                .fill([...tagGroup])
+                .flat()
+                .map((tag, i) => (
+                  <Tag key={i}>
+                    <span>#</span> {tag}
+                  </Tag>
+                ))}
             </Box>
           </LoopSlider>
         ))}
@@ -100,4 +108,4 @@ const InfiniteScrollAnimation = () => {
   );
 };
 
-export default InfiniteScrollAnimation;
+export default InfiniteScrollAnimation; 
