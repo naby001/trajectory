@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import Navbar from './Navbar';
 import DecryptedText from '../components/decry';
+import Squares from '../components/Square'; // Import Squares component
 
 export function About() {
   const sectionRef = useRef(null);
@@ -65,6 +66,7 @@ export function About() {
         {`.exo-2-bold { font-family: "Exo 2", serif; font-optical-sizing: auto; font-weight: 700; font-style: normal; }`}
         {`.michroma { font-family: "Michroma", sans-serif; }`}
       </style>
+      
       <Box
         ref={sectionRef}
         sx={{
@@ -79,15 +81,26 @@ export function About() {
             opacity: 1,
             transform: 'translateY(0)',
           },
+          position: "relative", // Add relative positioning
+          zIndex: 1, // Ensure content is above the background
         }}
       >
         {/* Navbar */}
         <AppBar position="fixed" sx={{ background: "#282a3a" }}>
           <Navbar />
         </AppBar>
-
+        <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: 1 }}>
+        <Squares 
+          speed={0.5} 
+          squareSize={40}
+          direction='diagonal' // up, down, left, right, diagonal
+          borderColor='#fff'
+          hoverFillColor='#222'
+        />
+      </div>
+         <Box  sx={{ zIndex:10, position: "relative", padding: "20px", overflow: "hidden"  }}>
         <Container maxWidth="lg">
-          <Typography variant="h2" component="h1" className="michroma" sx={{ color: '#FFD700', mb: 4, textShadow: '2px 2px 4px black', pt: 3 }}>
+          <Typography variant="h2" component="h1" className="michroma" sx={{ color: '#FFD700', mb: 4, textShadow: '10px 10px 4px black, 0 0 10px black', pt: 3, fontWeight: 'bold' }}>
             Trajectory 2025
           </Typography>
           <Grid container spacing={4}>
@@ -106,15 +119,21 @@ export function About() {
                 },
               }}
             >
-              <Typography variant="body1" className="exo-2-regular" sx={{ mb: 2, color: 'white' }}>
-                <DecryptedText text="Welcome to Trajectory 2025, the premier event for mechanical engineering enthusiasts and professionals! This event is designed to bring together the brightest minds in the field to showcase innovations, share knowledge, and inspire the next generation of engineers." />
-              </Typography>
-              <Typography variant="body1" className="exo-2-regular" sx={{ mb: 2, color: 'white' }}>
-                <DecryptedText text="Trajectory 2025 will feature a variety of activities including hands-on workshops, live demonstrations, keynote speeches by industry leaders, and exciting competitions. Whether you're a seasoned engineer or a curious student, there's something for everyone." />
-              </Typography>
-              <Typography variant="body1" className="exo-2-regular" sx={{ color: 'white' }}>
-                <DecryptedText text="Join us in exploring the latest advancements in sustainable engineering, robotics, and manufacturing. Together, let's shape the future of mechanical engineering." />
-              </Typography>
+              <Box sx={{ backgroundColor: 'white', padding: 2, borderRadius: 2, mb: 2, boxShadow: '0 0 10px rgba(255, 255, 255, 0.5)' }}>
+                <Typography variant="body1" className="exo-2-regular" sx={{ color: 'black' }}>
+                  <DecryptedText text="Welcome to Trajectory 2025, the premier event for mechanical engineering enthusiasts and professionals! This event is designed to bring together the brightest minds in the field to showcase innovations, share knowledge, and inspire the next generation of engineers." />
+                </Typography>
+              </Box>
+              <Box sx={{ backgroundColor: 'white', padding: 2, borderRadius: 2, mb: 2, boxShadow: '0 0 10px rgba(255, 255, 255, 0.5)' }}>
+                <Typography variant="body1" className="exo-2-regular" sx={{ color: 'black' }}>
+                  <DecryptedText text="Trajectory 2025 will feature a variety of activities including hands-on workshops, live demonstrations, keynote speeches by industry leaders, and exciting competitions. Whether you're a seasoned engineer or a curious student, there's something for everyone." />
+                </Typography>
+              </Box>
+              <Box sx={{ backgroundColor: 'white', padding: 2, borderRadius: 2, boxShadow: '0 0 10px rgba(255, 255, 255, 0.5)' }}>
+                <Typography variant="body1" className="exo-2-regular" sx={{ color: 'black' }}>
+                  <DecryptedText text="Join us in exploring the latest advancements in sustainable engineering, robotics, and manufacturing. Together, let's shape the future of mechanical engineering." />
+                </Typography>
+              </Box>
             </Grid>
             <Grid
               item
@@ -141,7 +160,7 @@ export function About() {
               </Box>
             </Grid>
           </Grid>
-          <Typography variant="h3" className="michroma" sx={{ color: '#FFD700', mt: 6, mb: 3, textShadow: '2px 2px 4px black' }}>
+          <Typography variant="h3" className="michroma" sx={{ color: '#FFD700', mt: 6, mb: 3, textShadow: '10px 10px 8px black', fontWeight: 'bold' }}>
             Highlights of Trajectory 2025
           </Typography>
           <Grid container spacing={3}>
@@ -162,9 +181,9 @@ export function About() {
                   },
                 }}
               >
-                <Card sx={{ height: '100%' }}>
+                <Card sx={{ height: '100%',boxShadow: '0 0 10px rgba(255, 255, 255, 0.5)' }}>
                   <CardContent>
-                    <Typography variant="h5" component="div" className="michroma" gutterBottom>
+                    <Typography variant="h5" component="div" className="michroma" gutterBottom sx={{  fontWeight: 'bold'  }}>
                       {highlight}
                     </Typography>
                     <Typography variant="body2" color="text.secondary" className="exo-2-regular">
@@ -178,6 +197,7 @@ export function About() {
             ))}
           </Grid>
         </Container>
+        </Box>
       </Box>
     </>
   );
