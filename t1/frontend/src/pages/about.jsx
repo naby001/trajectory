@@ -70,7 +70,7 @@ export function About() {
       <Box
         ref={sectionRef}
         sx={{
-          background: 'linear-gradient(90deg, #1C1B1F 0%, rgb(81, 44, 44) 50%, #1C1B1F 100%)', // Updated gradient background
+          background: '#1C1B1F', // Match the background color of the details page
           minHeight: '100vh',
           py: 8,
           color: 'white', // Set font color to white

@@ -27,6 +27,7 @@ import "@fontsource/roboto";
 import "@fontsource/lobster";
 import "@fontsource/open-sans";
 import { Link } from "react-scroll";
+import Squares from "../components/Square"; // Import Squares component
 
 const theme = createTheme({
   typography: {
@@ -386,11 +387,18 @@ export function Explore() {
           paddingTop: "8%",
           pt: { xs: 10, md: 14 },
           pb: { xs: 2, md: 10 },
-          background: 'linear-gradient(90deg, #1C1B1F 0%, rgb(81, 44, 44) 50%, #1C1B1F 100%)',
+          background: "#1C1B1F", // Match the background color of the details page
           zIndex: 1, // Added z-index
           border: "2px solid black", // Added black border
         }}
       >
+        <Squares 
+          speed={0.5} 
+          squareSize={40}
+          direction='diagonal' // up, down, left, right, diagonal
+          borderColor='#fff'
+          hoverFillColor='#222'
+        />
         <Typography
           variant="h1"
           component="h1"

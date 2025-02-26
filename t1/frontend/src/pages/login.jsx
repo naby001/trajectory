@@ -269,8 +269,8 @@ export default function AuthPage() {
             sx={{
               p: { xs: 2, md: 4 },
               borderRadius: 2,
-              backdropFilter: "blur(10px)",
-              backgroundColor: "rgba(28, 27, 31, 0.8)",
+              backdropFilter: "blur(10px)", // Add blur effect
+              backgroundColor: "rgba(28, 27, 31, 0.5)", // Make background more transparent
               boxShadow: "0 0 20px #F45558",
             }}
           >

@@ -360,28 +360,7 @@ function HomePage() {
                       {/* Card Content */}
                       <CardContent sx={{ textAlign: "center", color: "white" }}>
                         {/* Date-like Badge on Top */}
-                        <Box
-                          sx={{
-                            display: "inline-block",
-                            backgroundColor: [
-                              "#FF0000",
-                              "#00FF00",
-                              "#0000FF",
-                              "#FFFF00",
-                              "#FF00FF",
-                              "#00FFFF",
-                            ][index],
-                            color: "white",
-                            padding: "5px 10px",
-                            borderRadius: "5px",
-                            fontWeight: "bold",
-                            position: "absolute",
-                            top: "10px",
-                            left: "10px",
-                          }}
-                        >
-                          {`JUNE ${29 + index}`}
-                        </Box>
+                        
 
                         <Typography
                           gutterBottom
