@@ -11,6 +11,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "./Navbar"; // Import Navbar component
+import Squares from "../components/Square"; // Import Squares component
 
 const TeamRegistration = () => {
   const [isRegistered, setIsRegistered] = useState(false);
@@ -99,21 +100,34 @@ const TeamRegistration = () => {
   return (
     <div
       style={{
+        position: "relative",
         backgroundColor: "#1C1B1F",
         minHeight: "100vh",
         padding: "20px",
+        overflow: "hidden",
       }}
     >
       <Navbar /> {/* Add Navbar component */}
-      <Container maxWidth="sm">
+      <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: 0 }}>
+        <Squares 
+          speed={0.5} 
+          squareSize={40}
+          direction='diagonal' // up, down, left, right, diagonal
+          borderColor='#fff'
+          hoverFillColor='#222'
+        />
+      </div>
+      <Container maxWidth="sm" style={{ position: "relative", zIndex: 1 }}>
         <Paper
           elevation={10} // Increase elevation
           style={{
             padding: "20px",
+            paddingBottom: "40px", // Add padding to the bottom
             marginTop: "100px",
-            backgroundColor: "#1C1B1F",
+            backgroundColor: "rgba(28, 27, 31, 0.8)", // Transparent background
             color: "white",
             boxShadow: "0 0 10px #F45558", // Red glow effect
+            backdropFilter: "blur(10px)", // Blur effect
           }}
         >
           <Typography variant="h5" align="center" gutterBottom>
