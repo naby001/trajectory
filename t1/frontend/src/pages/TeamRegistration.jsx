@@ -3,9 +3,6 @@ import {
   Container,
   TextField,
   Button,
-  Radio,
-  RadioGroup,
-  FormControlLabel,
   Typography,
   Paper,
   Snackbar,
@@ -13,14 +10,18 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Navbar from "./Navbar"; // Import Navbar component
 
 const TeamRegistration = () => {
   const [isRegistered, setIsRegistered] = useState(false);
-  const [teamName, setTeamName] = useState("");  // ✅ Ensures empty string as default
-  const [teamChoice, setTeamChoice] = useState("create"); // ✅ Default choice
-  const [email, setEmail] = useState(""); 
+  const [teamName, setTeamName] = useState(""); // ✅ Ensures empty string as default
+  const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [institution, setInstitution] = useState("");
+  const [member1, setMember1] = useState(""); // New state for team member 1
+  const [member2, setMember2] = useState(""); // New state for team member 2
+  const [member3, setMember3] = useState(""); // New state for team member 3
+  const [phone, setPhone] = useState(""); // New state for team lead's phone number
   const [error, setError] = useState("");
   const [open, setOpen] = useState(false); // Snackbar state
   const [loading, setLoading] = useState(false); // Loading state
@@ -41,13 +42,15 @@ const TeamRegistration = () => {
         const token = localStorage.getItem("token");
         if (!token) return;
 
-        const response = await axios.get("http://localhost:5000/api/team/my-teams", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const response = await axios.get(
+          "http://localhost:5000/api/team/my-teams",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
 
         if (response.data.length > 0) {
           setTeamName(response.data[0].name || ""); // ✅ Default empty if missing
-          setTeamChoice("create");
           setIsRegistered(true);
         }
       } catch (err) {
@@ -77,7 +80,7 @@ const TeamRegistration = () => {
 
       const response = await axios.post(
         "http://localhost:5000/api/team/create",
-        { name: teamName },
+        { name: teamName, members: [member1, member2, member3], phone }, // Include team members and phone number
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
@@ -94,22 +97,71 @@ const TeamRegistration = () => {
   };
 
   return (
-    <div style={{ backgroundColor: "#1C1B1F", minHeight: "100vh", padding: "20px" }}>
+    <div
+      style={{
+        backgroundColor: "#1C1B1F",
+        minHeight: "100vh",
+        padding: "20px",
+      }}
+    >
+      <Navbar /> {/* Add Navbar component */}
       <Container maxWidth="sm">
-        <Paper elevation={3} style={{ padding: "20px", marginTop: "20px", backgroundColor: "#1C1B1F", color: "#FFFFFF" }}>
+        <Paper
+          elevation={10} // Increase elevation
+          style={{
+            padding: "20px",
+            marginTop: "100px",
+            backgroundColor: "#1C1B1F",
+            color: "white",
+            boxShadow: "0 0 10px #F45558", // Red glow effect
+          }}
+        >
           <Typography variant="h5" align="center" gutterBottom>
             Team Registration
           </Typography>
 
           {/* ✅ Snackbar for Notifications */}
-          <Snackbar open={open} autoHideDuration={3000} onClose={() => setOpen(false)}>
-            <Alert severity={error.includes("successfully") ? "success" : "error"}>{error}</Alert>
+          <Snackbar
+            open={open}
+            autoHideDuration={3000}
+            onClose={() => setOpen(false)}
+          >
+            <Alert
+              severity={error.includes("successfully") ? "success" : "error"}
+            >
+              {error}
+            </Alert>
           </Snackbar>
 
           {/* ✅ User Details - Always Locked */}
-          <TextField label="Email" fullWidth variant="outlined" margin="normal" value={email} disabled InputProps={{ style: { color: "#FFFFFF" } }} />
-          <TextField label="Full Name" fullWidth variant="outlined" margin="normal" value={name} disabled InputProps={{ style: { color: "#FFFFFF" } }} />
-          <TextField label="Institution" fullWidth variant="outlined" margin="normal" value={institution} disabled InputProps={{ style: { color: "#FFFFFF" } }} />
+          <TextField
+            label="Email"
+            fullWidth
+            variant="outlined"
+            margin="normal"
+            value={email}
+            disabled
+            InputProps={{ style: { color: "#FFFFFF", backgroundColor: "#FFFFFF" } }} // White background
+          />
+          <TextField
+            label="Full Name"
+            fullWidth
+            variant="outlined"
+            margin="normal"
+            value={name}
+            disabled
+            InputProps={{ style: { color: "#FFFFFF", backgroundColor: "#FFFFFF" } }} // White background
+          />
+          <TextField
+            label="Institution"
+            fullWidth
+            variant="outlined"
+            margin="normal"
+            value={institution}
+            disabled
+            InputProps={{ style: { color: "#FFFFFF", backgroundColor: "#FFFFFF" } }} // White background
+             style={{ color: "#FFFFFF" }} // Make text white
+          />
 
           {/* ✅ Team Name - Editable only before registration */}
           <TextField
@@ -117,24 +169,52 @@ const TeamRegistration = () => {
             fullWidth
             variant="outlined"
             margin="normal"
-            value={teamName || ""}  // ✅ Prevent undefined
+            value={teamName || ""} // ✅ Prevent undefined
             onChange={(e) => setTeamName(e.target.value)}
             disabled={isRegistered}
-            InputProps={{ style: { color: "#FFFFFF" } }}
+            InputProps={{ style: { color: "#FFFFFF", backgroundColor: "#FFFFFF" } }} // White background
+            style={{ color: "#FFFFFF" }} // Make text white
           />
 
-          {/* ✅ Create or Join a Team */}
-          <Typography variant="subtitle1" gutterBottom>
-            Select your option:
-          </Typography>
-          <RadioGroup
-            row
-            value={teamChoice}
-            onChange={(e) => setTeamChoice(e.target.value)}
-          >
-            <FormControlLabel value="create" control={<Radio />} label="Create a Team" disabled={isRegistered} />
-            <FormControlLabel value="join" control={<Radio />} label="Join a Team" disabled={isRegistered} />
-          </RadioGroup>
+          {/* ✅ Team Members */}
+          <TextField
+            label="Team Member 1"
+            fullWidth
+            variant="outlined"
+            margin="normal"
+            value={member1}
+            onChange={(e) => setMember1(e.target.value)}
+            InputProps={{ style: { color: "#FFFFFF", backgroundColor: "#FFFFFF" } }} // White background
+          />
+          <TextField
+            label="Team Member 2"
+            fullWidth
+            variant="outlined"
+            margin="normal"
+            value={member2}
+            onChange={(e) => setMember2(e.target.value)}
+            InputProps={{ style: { color: "#FFFFFF", backgroundColor: "#FFFFFF" } }} // White background
+          />
+          <TextField
+            label="Team Member 3"
+            fullWidth
+            variant="outlined"
+            margin="normal"
+            value={member3}
+            onChange={(e) => setMember3(e.target.value)}
+            InputProps={{ style: { color: "#FFFFFF", backgroundColor: "#FFFFFF" } }} // White background
+          />
+
+          {/* ✅ Team Lead Phone Number */}
+          <TextField
+            label="Team Lead Phone Number"
+            fullWidth
+            variant="outlined"
+            margin="normal"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            InputProps={{ style: { color: "#FFFFFF", backgroundColor: "#FFFFFF" } }} // White background
+          />
 
           {/* ✅ Register or Manage Team */}
           {!isRegistered ? (
@@ -144,7 +224,11 @@ const TeamRegistration = () => {
               fullWidth
               onClick={handleRegister}
               disabled={loading}
-              style={{ marginTop: "20px", backgroundColor: "#F45558", color: "#FFFFFF" }}
+              style={{
+                marginTop: "20px",
+                backgroundColor: "#F45558",
+                color: "#FFFFFF",
+              }}
             >
               {loading ? "Registering..." : "Register"}
             </Button>
@@ -154,7 +238,11 @@ const TeamRegistration = () => {
               color="secondary"
               fullWidth
               onClick={() => navigate("/invites")}
-              style={{ marginTop: "20px", backgroundColor: "#F45558", color: "#FFFFFF" }}
+              style={{
+                marginTop: "20px",
+                backgroundColor: "#F45558",
+                color: "#FFFFFF",
+              }}
             >
               Manage Your Team
             </Button>

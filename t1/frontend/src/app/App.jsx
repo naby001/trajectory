@@ -3,7 +3,6 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-
 import HomePage from "../pages/Homepage";
 import {Explore} from "../pages/explore";
 import {About} from "../pages/about";
@@ -12,6 +11,7 @@ import AuthPage from "../pages/login";
 import TeamRegistration from "../pages/TeamRegistration";
 // import InviteTeamMembers from "./pages/InviteTeamMembers";
 import Invites from "../pages/Invites"; // ✅ Added Invites Page
+import SplashCursor from "../components/SplashCursor"; // ✅ Import SplashCursor component
 
 const theme = createTheme({
   palette: {
@@ -35,6 +35,7 @@ function App() {
       <CssBaseline />
       <Router>
         {/* <Navbar /> ✅ Add Navbar so it updates dynamically */}
+        <SplashCursor /> {/* ✅ Add SplashCursor component */}
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<HomePage />} />
