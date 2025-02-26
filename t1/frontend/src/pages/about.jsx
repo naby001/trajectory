@@ -13,6 +13,7 @@ import {
   Box,
 } from "@mui/material";
 import Navbar from './Navbar';
+import DecryptedText from '../components/decry';
 
 export function About() {
   const sectionRef = useRef(null);
@@ -98,13 +99,13 @@ export function About() {
             }}
           >
             <Typography variant="body1" sx={{ mb: 2, color: 'white', fontFamily: 'Open Sans, Arial' }}>
-              Welcome to **Trajectory 2025**, the premier event for mechanical engineering enthusiasts and professionals! This event is designed to bring together the brightest minds in the field to showcase innovations, share knowledge, and inspire the next generation of engineers.
+              <DecryptedText text="Welcome to Trajectory 2025, the premier event for mechanical engineering enthusiasts and professionals! This event is designed to bring together the brightest minds in the field to showcase innovations, share knowledge, and inspire the next generation of engineers." />
             </Typography>
             <Typography variant="body1" sx={{ mb: 2, color: 'white', fontFamily: 'Open Sans, Arial' }}>
-              Trajectory 2025 will feature a variety of activities including hands-on workshops, live demonstrations, keynote speeches by industry leaders, and exciting competitions. Whether you're a seasoned engineer or a curious student, there's something for everyone.
+              <DecryptedText text="Trajectory 2025 will feature a variety of activities including hands-on workshops, live demonstrations, keynote speeches by industry leaders, and exciting competitions. Whether you're a seasoned engineer or a curious student, there's something for everyone." />
             </Typography>
             <Typography variant="body1" sx={{ color: 'white', fontFamily: 'Open Sans, Arial' }}>
-              Join us in exploring the latest advancements in sustainable engineering, robotics, and manufacturing. Together, let's shape the future of mechanical engineering.
+              <DecryptedText text="Join us in exploring the latest advancements in sustainable engineering, robotics, and manufacturing. Together, let's shape the future of mechanical engineering." />
             </Typography>
           </Grid>
           <Grid
@@ -159,9 +160,9 @@ export function About() {
                     {highlight}
                   </Typography>
                   <Typography variant="body2" color="text.secondary" sx={{ fontFamily: 'Open Sans, Arial' }}>
-                    {index === 0 && "Explore groundbreaking projects and prototypes created by the brightest minds in mechanical engineering."}
-                    {index === 1 && "Connect with global leaders, experts, and peers to share ideas and expand your professional network."}
-                    {index === 2 && "Dive into themes like sustainable design, advanced manufacturing, and AI-driven robotics."}
+                    {index === 0 && <DecryptedText text="Explore groundbreaking projects and prototypes created by the brightest minds in mechanical engineering." />}
+                    {index === 1 && <DecryptedText text="Connect with global leaders, experts, and peers to share ideas and expand your professional network." />}
+                    {index === 2 && <DecryptedText text="Dive into themes like sustainable design, advanced manufacturing, and AI-driven robotics." />}
                   </Typography>
                 </CardContent>
               </Card>
