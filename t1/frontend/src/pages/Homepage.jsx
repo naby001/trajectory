@@ -34,6 +34,7 @@ import "@fontsource/lobster"; // Import Lobster font
 import "@fontsource/open-sans"; // Import Open Sans font
 import CarRoadmap from "../components/CarRoadmap"; // Import the CarRoadmap component
 import InfiniteScrollAnimation from "../components/infinity"; // Import the InfiniteScrollAnimation component
+import GlitchText from "../components/GlitchText";
 
 const theme = createTheme({
   typography: {
@@ -211,17 +212,33 @@ function HomePage() {
         sx={{
           display: "flex",
           flexDirection: "column",
-          minHeight: "100%",
+          minHeight: "100vh",
+          backgroundSize: "cover",
+          backgroundImage: "url('path/to/your/background/image.jpg')", // Add this line to set the background image
           position: "relative",
-          top: -70,
+          top: 0, // Change from -70 to 0
           backgroundColor: "#1C1B1F", // Set consistent background color
           overflow: "hidden", // Ensure content stays within screen boundaries
         }}
       >
+        {/* Heading */}
+        <Box sx={{ mt: 14, display: "flex", justifyContent: "center" }}> {/* Add margin-top and center the box */}
+          <GlitchText
+            speed={1}
+            enableShadows={true}
+            enableOnHover={true}
+            className="custom-class"
+          >
+            Trajectory
+          </GlitchText>
+        </Box>
+
         {/* Navbar */}
         <AppBar position="fixed" sx={{ background: "#1C1B1F" }}>
           <Navbar />
         </AppBar>
+          
+
 
         {/* Infinite Scroll Animation */}
         <Box sx={{ overflow: "hidden" }}>
@@ -506,8 +523,10 @@ function HomePage() {
             className="fade-in"
             sx={{
               bgcolor: "rgba(0, 0, 0, 0.7)",
+             
               p: 3, // Reduced padding
               mt: "auto",
+              
             }}
             component="footer"
           >
