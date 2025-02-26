@@ -36,14 +36,15 @@ import CarRoadmap from "../components/CarRoadmap"; // Import the CarRoadmap comp
 import InfiniteScrollAnimation from "../components/infinity"; // Import the InfiniteScrollAnimation component
 import GlitchText from "../components/GlitchText";
 
+
 const theme = createTheme({
   typography: {
-    fontFamily: "Open Sans, Arial",
+    fontFamily: "Exo 2, Arial",
     h1: {
-      fontFamily: "Lobster, Arial",
+      fontFamily: "Michroma, Arial",
     },
     h4: {
-      fontFamily: "Lobster, Arial",
+      fontFamily: "Michroma, Arial",
     },
   },
   palette: {
@@ -208,6 +209,13 @@ function HomePage() {
 
   return (
     <ThemeProvider theme={theme}>
+      <style>
+        {`@import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');`}
+        {`@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');`}
+        {`.exo-2-regular { font-family: "Exo 2", serif; font-optical-sizing: auto; font-weight: 400; font-style: normal; }`}
+        {`.exo-2-bold { font-family: "Exo 2", serif; font-optical-sizing: auto; font-weight: 700; font-style: normal; }`}
+        {`.michroma { font-family: "Michroma", sans-serif; }`}
+      </style>
       <Box
         sx={{
           display: "flex",
@@ -223,12 +231,14 @@ function HomePage() {
       >
         {/* Heading */}
         <Box sx={{ mt: 14, display: "flex", justifyContent: "center" }}> {/* Add margin-top and center the box */}
-          <GlitchText
+        <GlitchText
             speed={1}
             enableShadows={true}
             enableOnHover={true}
             className="custom-class"
+            
           >
+          
             Trajectory
           </GlitchText>
         </Box>
@@ -260,6 +270,7 @@ function HomePage() {
             <Typography
               variant="h4"
               align="center"
+              className="michroma"
               sx={{
                 fontWeight: "bold",
                 mb: 4,
@@ -438,7 +449,7 @@ function HomePage() {
             sx={{ py: 8, color: "white" }}
           >
             <Container maxWidth="lg">
-              <Typography variant="h4" align="center" gutterBottom>
+              <Typography variant="h4" align="center" className="michroma" gutterBottom>
                 Where You Find Us?
               </Typography>
               <Box
@@ -569,6 +580,7 @@ function HomePage() {
               align="center"
               color="white"
               component="p"
+              className="exo-2-regular"
               sx={{ mt: 2 }} // Reduced margin-top
             >
               © {new Date().getFullYear()} Trajectory. All rights reserved.

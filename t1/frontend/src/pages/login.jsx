@@ -26,6 +26,7 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
 import Navbar from "./Navbar";
+import Squares from '../components/Square'; // Import Squares component
 
 const theme = createTheme({
   palette: {
@@ -249,9 +250,20 @@ export default function AuthPage() {
           justifyContent: "center",
           pt: { xs: 10, md: 14 },
           pb: { xs: 2, md: 10 },
+          position: "relative", // Add relative positioning
+          zIndex: 1, // Ensure content is above the background
         }}
       >
-        <Container component="main" maxWidth="lg">
+        <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: 1 }}>
+          <Squares 
+            speed={0.5} 
+            squareSize={40}
+            direction='diagonal' // up, down, left, right, diagonal
+            borderColor='#fff'
+            hoverFillColor='#222'
+          />
+        </div>
+        <Container component="main" maxWidth="lg" sx={{ zIndex: 10, position: "relative", padding: "20px", overflow: "hidden" }}>
           <Paper
             elevation={3}
             sx={{
