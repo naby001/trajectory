@@ -94,71 +94,74 @@ const TeamRegistration = () => {
   };
 
   return (
-    <Container maxWidth="sm">
-      <Paper elevation={3} style={{ padding: "20px", marginTop: "20px" }}>
-        <Typography variant="h5" align="center" gutterBottom>
-          Team Registration
-        </Typography>
+    <div style={{ backgroundColor: "#1C1B1F", minHeight: "100vh", padding: "20px" }}>
+      <Container maxWidth="sm">
+        <Paper elevation={3} style={{ padding: "20px", marginTop: "20px", backgroundColor: "#1C1B1F", color: "#FFFFFF" }}>
+          <Typography variant="h5" align="center" gutterBottom>
+            Team Registration
+          </Typography>
 
-        {/* ✅ Snackbar for Notifications */}
-        <Snackbar open={open} autoHideDuration={3000} onClose={() => setOpen(false)}>
-          <Alert severity={error.includes("successfully") ? "success" : "error"}>{error}</Alert>
-        </Snackbar>
+          {/* ✅ Snackbar for Notifications */}
+          <Snackbar open={open} autoHideDuration={3000} onClose={() => setOpen(false)}>
+            <Alert severity={error.includes("successfully") ? "success" : "error"}>{error}</Alert>
+          </Snackbar>
 
-        {/* ✅ User Details - Always Locked */}
-        <TextField label="Email" fullWidth variant="outlined" margin="normal" value={email} disabled />
-        <TextField label="Full Name" fullWidth variant="outlined" margin="normal" value={name} disabled />
-        <TextField label="Institution" fullWidth variant="outlined" margin="normal" value={institution} disabled />
+          {/* ✅ User Details - Always Locked */}
+          <TextField label="Email" fullWidth variant="outlined" margin="normal" value={email} disabled InputProps={{ style: { color: "#FFFFFF" } }} />
+          <TextField label="Full Name" fullWidth variant="outlined" margin="normal" value={name} disabled InputProps={{ style: { color: "#FFFFFF" } }} />
+          <TextField label="Institution" fullWidth variant="outlined" margin="normal" value={institution} disabled InputProps={{ style: { color: "#FFFFFF" } }} />
 
-        {/* ✅ Team Name - Editable only before registration */}
-        <TextField
-          label="Team Name"
-          fullWidth
-          variant="outlined"
-          margin="normal"
-          value={teamName || ""}  // ✅ Prevent undefined
-          onChange={(e) => setTeamName(e.target.value)}
-          disabled={isRegistered}
-        />
-
-        {/* ✅ Create or Join a Team */}
-        <Typography variant="subtitle1" gutterBottom>
-          Select your option:
-        </Typography>
-        <RadioGroup
-          row
-          value={teamChoice}
-          onChange={(e) => setTeamChoice(e.target.value)}
-        >
-          <FormControlLabel value="create" control={<Radio />} label="Create a Team" disabled={isRegistered} />
-          <FormControlLabel value="join" control={<Radio />} label="Join a Team" disabled={isRegistered} />
-        </RadioGroup>
-
-        {/* ✅ Register or Manage Team */}
-        {!isRegistered ? (
-          <Button
-            variant="contained"
-            color="primary"
+          {/* ✅ Team Name - Editable only before registration */}
+          <TextField
+            label="Team Name"
             fullWidth
-            onClick={handleRegister}
-            disabled={loading}
-            style={{ marginTop: "20px" }}
+            variant="outlined"
+            margin="normal"
+            value={teamName || ""}  // ✅ Prevent undefined
+            onChange={(e) => setTeamName(e.target.value)}
+            disabled={isRegistered}
+            InputProps={{ style: { color: "#FFFFFF" } }}
+          />
+
+          {/* ✅ Create or Join a Team */}
+          <Typography variant="subtitle1" gutterBottom>
+            Select your option:
+          </Typography>
+          <RadioGroup
+            row
+            value={teamChoice}
+            onChange={(e) => setTeamChoice(e.target.value)}
           >
-            {loading ? "Registering..." : "Register"}
-          </Button>
-        ) : (
-          <Button
-            variant="contained"
-            color="secondary"
-            fullWidth
-            onClick={() => navigate("/invites")}
-            style={{ marginTop: "20px" }}
-          >
-            Manage Your Team
-          </Button>
-        )}
-      </Paper>
-    </Container>
+            <FormControlLabel value="create" control={<Radio />} label="Create a Team" disabled={isRegistered} />
+            <FormControlLabel value="join" control={<Radio />} label="Join a Team" disabled={isRegistered} />
+          </RadioGroup>
+
+          {/* ✅ Register or Manage Team */}
+          {!isRegistered ? (
+            <Button
+              variant="contained"
+              color="primary"
+              fullWidth
+              onClick={handleRegister}
+              disabled={loading}
+              style={{ marginTop: "20px", backgroundColor: "#F45558", color: "#FFFFFF" }}
+            >
+              {loading ? "Registering..." : "Register"}
+            </Button>
+          ) : (
+            <Button
+              variant="contained"
+              color="secondary"
+              fullWidth
+              onClick={() => navigate("/invites")}
+              style={{ marginTop: "20px", backgroundColor: "#F45558", color: "#FFFFFF" }}
+            >
+              Manage Your Team
+            </Button>
+          )}
+        </Paper>
+      </Container>
+    </div>
   );
 };
 

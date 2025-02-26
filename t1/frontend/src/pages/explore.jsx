@@ -490,38 +490,11 @@ export function Explore() {
                     ₹ {event.price}
                   </Typography>
                   <Button
-                    variant="contained"
-                    sx={{
-                      backgroundColor: registeredEvents.includes(event._id)
-                        ? "#F45558" // Updated red color
-                        : "primary.main",
-                      "&:hover": {
-                        backgroundColor: registeredEvents.includes(event._id)
-                          ? "darkred"
-                          : "primary.dark",
-                      },
-                      color: "#fff", // Ensures text remains visible
-                      cursor: registeredEvents.includes(event._id)
-                        ? "not-allowed"
-                        : "pointer", // Prevents clicks but remains visible
-                      opacity: registeredEvents.includes(event._id) ? 1 : 1, // Ensures full visibility
-                    }}
-                    onClick={
-                      !registeredEvents.includes(event._id)
-                        ? () => handleRegisterClick(event)
-                        : undefined
-                    }
-                  >
-                    {registeredEvents.includes(event._id)
-                      ? "Registered"
-                      : "Register"}
-                  </Button>
-                  <Button
                     variant="outlined"
                     sx={{ color: "#F45558", borderColor: "#F45558" }} // Updated red color
                     onClick={() => navigate(`/details?event=${event._id}`)} // Use _id instead of id
                   >
-                   Event Details
+                    Event Details
                   </Button>
                 </CardActions>
               </Card>

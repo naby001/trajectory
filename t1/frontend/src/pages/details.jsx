@@ -19,7 +19,7 @@ import {
   Phone as PhoneIcon,
 } from '@mui/icons-material';
 import Navbar from './Navbar';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { events } from './events'; // Import events from a separate file
 
@@ -28,6 +28,8 @@ export default function Details() {
   const queryParams = new URLSearchParams(location.search);
   const eventId = queryParams.get("event");
   const [eventDetails, setEventDetails] = useState(null);
+  const navigate = useNavigate();
+  const [registeredEvents, setRegisteredEvents] = useState([]);
 
   useEffect(() => {
     console.log("Event ID from URL:", eventId); // Debugging statement
@@ -35,6 +37,37 @@ export default function Details() {
     console.log("Event details found:", event); // Debugging statement
     setEventDetails(event);
   }, [eventId]);
+
+  useEffect(() => {
+    const fetchRegisteredEvents = async () => {
+      const token = localStorage.getItem("token");
+      if (!token) return;
+
+      try {
+        const response = await fetch(
+          "http://localhost:5000/api/events/registered",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(`Error ${response.status}: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        setRegisteredEvents(data.map((event) => event._id));
+      } catch (error) {
+        console.error("❌ Error fetching registered events:", error);
+      }
+    };
+
+    fetchRegisteredEvents();
+  }, []);
+
+  const handleRegisterClick = () => {
+    navigate('/teamregistration');
+  };
 
   if (!eventDetails) {
     return (
@@ -145,7 +178,7 @@ export default function Details() {
                     },
                   }}
                   fullWidth
-                  onClick={() => window.location.href = '/teamregistration'}
+                  onClick={handleRegisterClick}
                 >
                  Quick Register
                 </Button>
