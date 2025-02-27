@@ -35,7 +35,7 @@ function App() {
       <CssBaseline />
       <Router>
         {/* <Navbar /> ✅ Add Navbar so it updates dynamically */}
-        {/* <SplashCursor /> ✅ Add SplashCursor component */}
+        <SplashCursor /> ✅ Add SplashCursor component
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<HomePage />} />
