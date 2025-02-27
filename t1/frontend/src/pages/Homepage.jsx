@@ -35,7 +35,7 @@ import "@fontsource/open-sans"; // Import Open Sans font
 import CarRoadmap from "../components/CarRoadmap"; // Import the CarRoadmap component
 import InfiniteScrollAnimation from "../components/infinity"; // Import the InfiniteScrollAnimation component
 import GlitchText from "../components/GlitchText";
-
+import videoSrc from "../assets/v.mp4"; // Ensure this path is correct
 
 const theme = createTheme({
   typography: {
@@ -230,17 +230,28 @@ function HomePage() {
         }}
       >
         {/* Heading */}
-        <Box sx={{ mt: 14, display: "flex", justifyContent: "center" }}> {/* Add margin-top and center the box */}
-        <GlitchText
+        {/* <Box sx={{ mt: 14, display: "flex", justifyContent: "center" }}> 
+          <GlitchText
             speed={1}
             enableShadows={true}
             enableOnHover={true}
             className="custom-class"
-            
           >
-          
             Trajectory
           </GlitchText>
+        </Box> */}
+
+        {/* Video below the heading */}
+        <Box sx={{ width: "100%", display: "flex", justifyContent: "center", mt: 20 }}>
+          <video
+            width="50%"
+            height="auto"
+            controls
+            style={{ maxHeight: "500px" }}
+          >
+            <source src={videoSrc} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </Box>
 
         {/* Navbar */}
