@@ -30,6 +30,10 @@ const Navbar = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
+  const handleComingSoon = () => {
+    alert("Coming Soon");
+  };
+
   // ✅ Fetch user & team info
   useEffect(() => {
     const updateUserData = async () => {
@@ -143,8 +147,9 @@ const Navbar = () => {
             {["Home", "Explore", "About"].map((label, index) => (
               <Button
                 key={index}
-                component={Link}
+                component={label === "Explore" ? "button" : Link}
                 to={label === "Home" ? "/" : `/${label.toLowerCase()}`}
+                onClick={label === "Explore" ? handleComingSoon : undefined}
                 sx={{
                   color: "white",
                   margin: "0 12px",
@@ -200,8 +205,8 @@ const Navbar = () => {
             {/* ✅ Show login button only if NOT logged in */}
             {!isLoggedIn && (
               <Button
-                component={Link}
-                to="/login"
+                component="button"
+                onClick={handleComingSoon}
                 sx={{
                   backgroundColor: "#F45558", // Updated to red
                   color: "#FFFFFF", // Updated to white
@@ -248,9 +253,9 @@ const Navbar = () => {
             {["Home", "Explore", "About"].map((label, index) => (
               <MenuItem
                 key={index}
-                component={Link}
+                component={label === "Explore" ? "button" : Link}
                 to={label === "Home" ? "/" : `/${label.toLowerCase()}`}
-                onClick={handleMobileMenuToggle}
+                onClick={label === "Explore" ? handleComingSoon : handleMobileMenuToggle}
               >
                 {label}
               </MenuItem>
@@ -281,9 +286,8 @@ const Navbar = () => {
             )}
             {!isLoggedIn && (
               <MenuItem
-                component={Link}
-                to="/login"
-                onClick={handleMobileMenuToggle}
+                component="button"
+                onClick={handleComingSoon}
               >
                 Login
               </MenuItem>

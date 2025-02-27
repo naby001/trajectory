@@ -157,9 +157,9 @@ const destinations = [
 function HomePage() {
   const navigate = useNavigate();
 
-  // When a card's SEE MORE is clicked, navigate to the Explore page with the tour title as filter.
+  // When a card's SEE MORE is clicked, show an alert for "Coming Soon".
   const handleCardClick = (type) => {
-    navigate(`/explore?filter=${type}`);
+    alert("Coming Soon");
   };
 
   const [currentDestination, setCurrentDestination] = React.useState(0);
