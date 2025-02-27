@@ -11,7 +11,7 @@ import AuthPage from "../pages/login";
 import TeamRegistration from "../pages/TeamRegistration";
 // import InviteTeamMembers from "./pages/InviteTeamMembers";
 import Invites from "../pages/Invites"; // ✅ Added Invites Page
-// import SplashCursor from "../components/SplashCursor"; // ✅ Remove SplashCursor component
+import SplashCursor from "../components/SplashCursor"; // ✅ Import SplashCursor component
 
 const theme = createTheme({
   palette: {
@@ -35,7 +35,7 @@ function App() {
       <CssBaseline />
       <Router>
         {/* <Navbar /> ✅ Add Navbar so it updates dynamically */}
-        {/* <SplashCursor /> ✅ Remove SplashCursor component */}
+        {/* <SplashCursor /> ✅ Add SplashCursor component */}
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<HomePage />} />

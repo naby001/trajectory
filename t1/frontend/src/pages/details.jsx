@@ -71,7 +71,7 @@ export default function Details() {
       alert("Please log in first.");
       navigate('/login');
     } else {
-      navigate('/teamregistration');
+      navigate(`/teamregistration?event=${eventId}&name=${eventDetails.title}`);
     }
   };
 

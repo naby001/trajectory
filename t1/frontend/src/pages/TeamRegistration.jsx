@@ -8,13 +8,14 @@ import {
   Snackbar,
   Alert,
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import axios from "axios";
 import Navbar from "./Navbar"; // Import Navbar component
 import Squares from "../components/Square"; // Import Squares component
 
 const TeamRegistration = () => {
   const [isRegistered, setIsRegistered] = useState(false);
+
   const [teamName, setTeamName] = useState(""); // ✅ Ensures empty string as default
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -27,42 +28,81 @@ const TeamRegistration = () => {
   const [error, setError] = useState("");
   const [open, setOpen] = useState(false); // Snackbar state
   const [loading, setLoading] = useState(false); // Loading state
-
+  const [totalemails,settotalemails]=useState([]);//contains all registered emails in trajectory
+  const [registeredemails,setregisteredemails]=useState([]);//contains all regsitered emails for this particular event
   const navigate = useNavigate();
-
+  const user = JSON.parse(localStorage.getItem("user"));
   // ✅ Load user & team data from localStorage or API
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
+    
+  
     if (user) {
       setEmail(user.email || ""); // ✅ Default empty if missing
       setName(user.name || "");
       setInstitution(user.university || "");
     }
 
-    const fetchTeamData = async () => {
+    // const fetchTeamData = async () => {
+    //   try {
+    //     const token = localStorage.getItem("token");
+    //     if (!token) return;
+
+    //     const response = await axios.get(
+    //       "http://localhost:5000/api/team/my-teams",
+    //       {
+    //         headers: { Authorization: `Bearer ${token}` },
+    //       }
+    //     );
+
+    //     if (response.data.length > 0) {
+    //       setTeamName(response.data[0].name || ""); // ✅ Default empty if missing
+    //       //setIsRegistered(true);
+    //     }
+    //   } catch (err) {
+    //     console.error("❌ Error fetching team data:", err);
+    //   }
+    // };
+
+    const fetchallusers=async()=>{
       try {
-        const token = localStorage.getItem("token");
-        if (!token) return;
-
-        const response = await axios.get(
-          "http://localhost:5000/api/team/my-teams",
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        );
-
-        if (response.data.length > 0) {
-          setTeamName(response.data[0].name || ""); // ✅ Default empty if missing
-          setIsRegistered(true);
-        }
-      } catch (err) {
-        console.error("❌ Error fetching team data:", err);
+        const response=await fetch("http://localhost:5000/api/auth/getallusers",{
+          method:"POST"
+        });
+        const returnedemails=await response.json();
+        console.log(returnedemails);
+        settotalemails(returnedemails);
+      } catch (error) {
+        console.log(error);
       }
     };
 
-    fetchTeamData();
+    const fetchallregisteredemails=async()=>{
+      const data={eventId:searchParams.get("event")};
+      try {
+        const response=await fetch("http://localhost:5000/api/team/getteamsofevent",{
+          headers:{"Content-Type":"application/json"},
+          method:'POST',
+          body:JSON.stringify(data)
+        });
+        const returnedemails=await response.json();
+       // console.log(returnedemails)
+        setregisteredemails(returnedemails.registeredPeople);
+      } catch (error) {
+        
+      }
+    }
+    fetchallusers();
+    fetchallregisteredemails();
+    //fetchTeamData();
   }, []);
 
+  // const location = useLocation();
+  // const queryParams = new URLSearchParams(location.search);
+  // const eventId = queryParams.get("event");
+  // setEvent(eventId);
+
+  const [searchParams]=useSearchParams();
+ 
   // ✅ Handle Team Registration
   const handleRegister = async () => {
     if (!teamName.trim()) {
@@ -88,7 +128,7 @@ const TeamRegistration = () => {
           member2, 
           member3, 
           phone, 
-          event,
+          event:searchParams.get("event"),
           email, 
           fullName: name, 
           institution 
@@ -96,18 +136,40 @@ const TeamRegistration = () => {
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      localStorage.setItem("team", JSON.stringify(response.data.team));
       setIsRegistered(true);
       setError("✅ Team Registered Successfully!");
       setOpen(true);
     } catch (error) {
-      setError(error.response?.data?.message || "❌ Error registering team");
+      setError( "❌ Error registering team");
       setOpen(true);
     } finally {
       setLoading(false);
     }
   };
 
+  const [isValidMember1, setIsValidMember1] = useState(null);
+const [isValidMember2, setIsValidMember2] = useState(null);
+const [isValidMember3, setIsValidMember3] = useState(null);
+
+let timeout1, timeout2, timeout3;
+
+const checkEmail = (email, setValidMember, otherEmails) => {
+  clearTimeout(timeout1);
+  clearTimeout(timeout2);
+  clearTimeout(timeout3);
+
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const isRegistered = totalemails.includes(email);
+      const isUnique = !otherEmails.includes(email);
+      const isNotCurrentUser = email !== user.email; // Ensure it's not the logged-in user's email
+      const isEventRegistered=registeredemails.includes(email);
+      const isValid = isRegistered && isUnique && isNotCurrentUser && !isEventRegistered;
+      setValidMember(isValid);
+      resolve(isValid);
+    }, 1000);
+  });
+};
   return (
     <div
       style={{
@@ -203,31 +265,76 @@ const TeamRegistration = () => {
 
           {/* ✅ Team Members */}
           <TextField
-            label="Team Member 1"
+            label="Team Member 1 Registered email"
             fullWidth
             variant="outlined"
             margin="normal"
             value={member1}
-            onChange={(e) => setMember1(e.target.value)}
-            InputProps={{ style: { color: "#000000", backgroundColor: "#FFFFFF" } }} // Black text color
+            onChange={(e) => {
+              const email = e.target.value;
+              setMember1(email);
+              timeout1 = setTimeout(() => checkEmail(email, setIsValidMember1, [member2, member3]), 1000);
+            }}
+            InputProps={{ style: { color: "#000000", backgroundColor: "#FFFFFF" } }}
+            error={isValidMember1 === false}
+            helperText={
+              isValidMember1 === false
+                ? !totalemails.includes(member1)
+                  ? "Email not registered"
+                  : member1 === user.email
+                  ? "You cannot add yourself"
+                  : registeredemails.includes(member1)?
+                "User already registered for this event"
+                : "Email must be unique":""
+            }
           />
           <TextField
-            label="Team Member 2"
+            label="Team Member 2 Registered email"
             fullWidth
             variant="outlined"
             margin="normal"
             value={member2}
-            onChange={(e) => setMember2(e.target.value)}
-            InputProps={{ style: { color: "#000000", backgroundColor: "#FFFFFF" } }} // Black text color
+            onChange={(e) => {
+              const email = e.target.value;
+              setMember2(email);
+              timeout2 = setTimeout(() => checkEmail(email, setIsValidMember2, [member1, member3]), 1000);
+            }}
+            InputProps={{ style: { color: "#000000", backgroundColor: "#FFFFFF" } }}
+            error={isValidMember2 === false}
+            helperText={
+              isValidMember2 === false
+                ? !totalemails.includes(member2)
+                  ? "Email not registered"
+                  : member2 === user.email
+                  ? "You cannot add yourself"
+                  : registeredemails.includes(member2)?
+                "User already registered for this event"
+                : "Email must be unique":""
+            }
           />
           <TextField
-            label="Team Member 3"
+            label="Team Member 3 Registered email"
             fullWidth
             variant="outlined"
             margin="normal"
             value={member3}
-            onChange={(e) => setMember3(e.target.value)}
-            InputProps={{ style: { color: "#000000", backgroundColor: "#FFFFFF" } }} // Black text color
+            onChange={(e) => {
+              const email = e.target.value;
+              setMember3(email);
+              timeout3 = setTimeout(() => checkEmail(email, setIsValidMember3, [member1, member2]), 1000);
+            }}
+            InputProps={{ style: { color: "#000000", backgroundColor: "#FFFFFF" } }}
+            error={isValidMember3 === false}
+            helperText={
+              isValidMember3 === false
+                ? !totalemails.includes(member3)
+                  ? "Email not registered"
+                  : member3 === user.email
+                  ? "You cannot add yourself"
+                  : registeredemails.includes(member3)?
+                  "User already registered for this event"
+                  : "Email must be unique":""
+            }
           />
 
           {/* ✅ Team Lead Phone Number */}
@@ -244,11 +351,12 @@ const TeamRegistration = () => {
           {/* ✅ Event */}
           <TextField
             label="Event"
+            disabled
             fullWidth
             variant="outlined"
             margin="normal"
-            value={event}
-            onChange={(e) => setEvent(e.target.value)}
+            value={searchParams.get('name')}
+            //onChange={(e) => setEvent(e.target.value)}
             InputProps={{ style: { color: "#000000", backgroundColor: "#FFFFFF" } }} // Black text color
           />
 
