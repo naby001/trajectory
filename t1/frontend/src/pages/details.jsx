@@ -66,7 +66,13 @@ export default function Details() {
   }, []);
 
   const handleRegisterClick = () => {
-    navigate('/teamregistration');
+    const token = localStorage.getItem("token");
+    if (!token) {
+      alert("Please log in first.");
+      navigate('/login');
+    } else {
+      navigate('/teamregistration');
+    }
   };
 
   if (!eventDetails) {
