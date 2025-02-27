@@ -19,18 +19,30 @@ import axios from "axios";
 const Navbar = () => {
   const isMobile = useMediaQuery("(max-width: 600px)");
   const location = useLocation();
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUserName] = useState("User");
-  const [anchorEl, setAnchorEl] = useState(null);
   const [hasTeam, setHasTeam] = useState(false);
   const [inviteCount, setInviteCount] = useState(0);
+
+  // Avatar dropdown anchor
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  // For the mobile menu, we no longer rely on an anchorEl
+  // We'll just use a boolean to show/hide it.
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleMobileMenuToggle = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
+    setMobileMenuOpen((prev) => !prev);
   };
 
-  // ✅ Fetch user & team info
+  const handleComingSoon = () => {
+    alert("Coming Soon");
+  };
+
+  // ----------------------------------------
+  // Fetch user & team info
+  // ----------------------------------------
   useEffect(() => {
     const updateUserData = async () => {
       const token = localStorage.getItem("token");
@@ -42,17 +54,15 @@ const Navbar = () => {
           const parsedUser = JSON.parse(storedUser);
           setUserName(parsedUser?.name || "User");
 
-          // ✅ Check if user has a team
           const storedTeam = localStorage.getItem("team");
           setHasTeam(!!storedTeam);
 
-          // ✅ Fetch pending invites count
           if (token && token !== "null" && token !== "undefined") {
             try {
               const response = await axios.get("http://localhost:5000/api/team/invites", {
                 headers: { Authorization: `Bearer ${token}` },
               });
-          
+
               if (response.status === 200) {
                 setInviteCount(response.data.length);
               }
@@ -64,7 +74,6 @@ const Navbar = () => {
               }
             }
           }
-          
         } catch (error) {
           console.error("Error parsing user data:", error);
           setUserName("User");
@@ -79,6 +88,9 @@ const Navbar = () => {
     return () => window.removeEventListener("storage", updateUserData);
   }, [location]);
 
+  // ----------------------------------------
+  // Handlers
+  // ----------------------------------------
   const handleLogout = () => {
     localStorage.clear();
     setIsLoggedIn(false);
@@ -98,16 +110,18 @@ const Navbar = () => {
     setAnchorEl(null);
   };
 
+  // ----------------------------------------
+  // Render
+  // ----------------------------------------
   return (
     <AppBar
       position="fixed"
       sx={{
         background: "rgba(28, 27, 31, 0.8)", // Transparent background
-        backdropFilter: "blur(10px)", // Backdrop filter for blur effect
+        backdropFilter: "blur(10px)",        // Backdrop filter for blur effect
         padding: "5px 0",
       }}
     >
-      
       <Toolbar sx={{ justifyContent: "space-between", padding: "0 20px", height: "60px" }}>
         {/* Logo */}
         <Link to="/">
@@ -115,8 +129,8 @@ const Navbar = () => {
             src={logo}
             alt="Logo"
             style={{
-              width: isMobile ? 120 : 150, // Adjusted width
-              height: isMobile ? 50 : 50, // Adjusted height
+              width: isMobile ? 120 : 150,
+              height: 50,
               cursor: "pointer",
               transition: "transform 0.3s ease-in-out",
             }}
@@ -125,32 +139,28 @@ const Navbar = () => {
           />
         </Link>
 
-        {/* Mobile Menu Icon */}
+        {/* MOBILE: Hamburger Icon */}
         {isMobile && (
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            onClick={handleMobileMenuToggle}
-          >
+          <IconButton edge="start" color="inherit" aria-label="menu" onClick={handleMobileMenuToggle}>
             <MenuIcon />
           </IconButton>
         )}
 
-        {/* Navigation */}
+        {/* DESKTOP: Navigation */}
         {!isMobile && (
           <div style={{ display: "flex", alignItems: "center", marginLeft: "auto" }}>
             {["Home", "Explore", "About"].map((label, index) => (
               <Button
                 key={index}
-                component={Link}
+                component={label === "Explore" ? "button" : Link}
                 to={label === "Home" ? "/" : `/${label.toLowerCase()}`}
+                onClick={label === "Explore" ? handleComingSoon : undefined}
                 sx={{
                   color: "white",
                   margin: "0 12px",
                   fontSize: "16px",
                   fontWeight: "bold",
-                  transition: "transform 0.3s, text-shadow 0.3s",
+                  transition: "transform 0.3s, textShadow 0.3s",
                   "&:hover": {
                     color: "#ffcc00",
                     transform: "scale(1.2)",
@@ -162,11 +172,9 @@ const Navbar = () => {
               </Button>
             ))}
 
-            {/* ✅ Show only if logged in */}
+            {/* If logged in */}
             {isLoggedIn && (
               <>
-                {/* Remove Team Registration Button */}
-                {/* Invitations Button */}
                 {inviteCount > 0 && (
                   <IconButton component={Link} to="/invites" sx={{ marginLeft: "20px", color: "white" }}>
                     <Badge badgeContent={inviteCount} color="error">
@@ -175,9 +183,11 @@ const Navbar = () => {
                   </IconButton>
                 )}
 
-                {/* ✅ Profile Avatar with Dropdown */}
+                {/* Avatar Menu */}
                 <IconButton onClick={handleAvatarClick} sx={{ marginLeft: "20px" }}>
-                  <Avatar sx={{ bgcolor: "#F45558" }}>{userName.charAt(0).toUpperCase()}</Avatar>
+                  <Avatar sx={{ bgcolor: "#F45558" }}>
+                    {userName.charAt(0).toUpperCase()}
+                  </Avatar>
                 </IconButton>
                 <Menu
                   anchorEl={anchorEl}
@@ -191,25 +201,29 @@ const Navbar = () => {
                     },
                   }}
                 >
-                  <MenuItem disabled sx={{ fontWeight: "bold" }}>{userName.toUpperCase()}</MenuItem>
-                  <MenuItem onClick={handleLogout} sx={{ color: "red", fontWeight: "bold" }}>Logout</MenuItem>
+                  <MenuItem disabled sx={{ fontWeight: "bold" }}>
+                    {userName.toUpperCase()}
+                  </MenuItem>
+                  <MenuItem onClick={handleLogout} sx={{ color: "red", fontWeight: "bold" }}>
+                    Logout
+                  </MenuItem>
                 </Menu>
               </>
             )}
 
-            {/* ✅ Show login button only if NOT logged in */}
+            {/* If not logged in */}
             {!isLoggedIn && (
               <Button
-                component={Link}
-                to="/login"
+                component="button"
+                onClick={handleComingSoon}
                 sx={{
-                  backgroundColor: "#F45558", // Updated to red
-                  color: "#FFFFFF", // Updated to white
+                  backgroundColor: "#F45558",
+                  color: "#FFFFFF",
                   fontWeight: "bold",
                   borderRadius: "20px",
                   padding: "8px 16px",
                   marginLeft: "20px",
-                  transition: "transform 0.3s, box-shadow 0.3s",
+                  transition: "transform 0.3s, boxShadow 0.3s",
                   "&:hover": {
                     backgroundColor: "#ff6666",
                     transform: "scale(1.1)",
@@ -223,39 +237,44 @@ const Navbar = () => {
           </div>
         )}
 
-        {/* Mobile Menu */}
+        {/* MOBILE: Right-Side, Full-Height, Thin Menu */}
         {isMobile && (
           <Menu
-            anchorEl={anchorEl}
+            // Instead of anchoring to the button, we position it at the far right
             open={mobileMenuOpen}
             onClose={handleMobileMenuToggle}
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
+            anchorReference="anchorPosition"
+            // Large left coordinate so it clamps to the screen's right edge
+            anchorPosition={{ top: 0, left: 9999999 }}
             transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
+              vertical: "top",
+              horizontal: "right",
             }}
-            sx={{
-              "& .MuiPaper-root": {
-                backgroundColor: "#1C1B1F", // Updated to black
-                color: "#FFFFFF", // Updated to white
+            PaperProps={{
+              sx: {
+                width: "150px",          // Thin width
+                height: "100vh",         // Full vertical coverage
+                backgroundColor: "#1C1B1F",
+                color: "#FFFFFF",
                 boxShadow: "0 0 10px rgba(255, 215, 0, 0.5)",
+                borderRadius: 0,
+                overflowY: "auto",
               },
             }}
           >
             {["Home", "Explore", "About"].map((label, index) => (
               <MenuItem
                 key={index}
-                component={Link}
+                component={label === "Explore" ? "button" : Link}
                 to={label === "Home" ? "/" : `/${label.toLowerCase()}`}
-                onClick={handleMobileMenuToggle}
+                onClick={
+                  label === "Explore" ? handleComingSoon : handleMobileMenuToggle
+                }
               >
                 {label}
               </MenuItem>
             ))}
-            {/* Show only if logged in */}
+
             {isLoggedIn && (
               <>
                 <MenuItem
@@ -274,16 +293,25 @@ const Navbar = () => {
                     Invitations ({inviteCount})
                   </MenuItem>
                 )}
-                <MenuItem onClick={handleLogout} sx={{ color: "red", fontWeight: "bold" }}>
+                <MenuItem
+                  onClick={() => {
+                    handleLogout();
+                    handleMobileMenuToggle();
+                  }}
+                  sx={{ color: "red", fontWeight: "bold" }}
+                >
                   Logout
                 </MenuItem>
               </>
             )}
+
             {!isLoggedIn && (
               <MenuItem
-                component={Link}
-                to="/login"
-                onClick={handleMobileMenuToggle}
+                component="button"
+                onClick={() => {
+                  handleComingSoon();
+                  handleMobileMenuToggle();
+                }}
               >
                 Login
               </MenuItem>
