@@ -23,6 +23,7 @@ const TeamRegistration = () => {
   const [member2, setMember2] = useState(""); // New state for team member 2
   const [member3, setMember3] = useState(""); // New state for team member 3
   const [phone, setPhone] = useState(""); // New state for team lead's phone number
+  const [event, setEvent] = useState(""); // New state for event
   const [error, setError] = useState("");
   const [open, setOpen] = useState(false); // Snackbar state
   const [loading, setLoading] = useState(false); // Loading state
@@ -81,7 +82,17 @@ const TeamRegistration = () => {
 
       const response = await axios.post(
         "http://localhost:5000/api/team/create",
-        { name: teamName, members: [member1, member2, member3], phone }, // Include team members and phone number
+        { 
+          name: teamName, 
+          member1, 
+          member2, 
+          member3, 
+          phone, 
+          event,
+          email, 
+          fullName: name, 
+          institution 
+        }, // Include all data
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
@@ -155,7 +166,7 @@ const TeamRegistration = () => {
             margin="normal"
             value={email}
             disabled
-            InputProps={{ style: { color: "#FFFFFF", backgroundColor: "#FFFFFF" } }} // White background
+            InputProps={{ style: { color: "#000000", backgroundColor: "#FFFFFF" } }} // Black text color
           />
           <TextField
             label="Full Name"
@@ -164,7 +175,7 @@ const TeamRegistration = () => {
             margin="normal"
             value={name}
             disabled
-            InputProps={{ style: { color: "#FFFFFF", backgroundColor: "#FFFFFF" } }} // White background
+            InputProps={{ style: { color: "#000000", backgroundColor: "#FFFFFF" } }} // Black text color
           />
           <TextField
             label="Institution"
@@ -173,8 +184,8 @@ const TeamRegistration = () => {
             margin="normal"
             value={institution}
             disabled
-            InputProps={{ style: { color: "#FFFFFF", backgroundColor: "#FFFFFF" } }} // White background
-             style={{ color: "#FFFFFF" }} // Make text white
+            InputProps={{ style: { color: "#000000", backgroundColor: "#FFFFFF" } }} // Black text color
+             style={{ color: "#000000" }} // Black text color
           />
 
           {/* ✅ Team Name - Editable only before registration */}
@@ -186,8 +197,8 @@ const TeamRegistration = () => {
             value={teamName || ""} // ✅ Prevent undefined
             onChange={(e) => setTeamName(e.target.value)}
             disabled={isRegistered}
-            InputProps={{ style: { color: "#FFFFFF", backgroundColor: "#FFFFFF" } }} // White background
-            style={{ color: "#FFFFFF" }} // Make text white
+            InputProps={{ style: { color: "#000000", backgroundColor: "#FFFFFF" } }} // Black text color
+            style={{ color: "#000000" }} // Black text color
           />
 
           {/* ✅ Team Members */}
@@ -198,7 +209,7 @@ const TeamRegistration = () => {
             margin="normal"
             value={member1}
             onChange={(e) => setMember1(e.target.value)}
-            InputProps={{ style: { color: "#FFFFFF", backgroundColor: "#FFFFFF" } }} // White background
+            InputProps={{ style: { color: "#000000", backgroundColor: "#FFFFFF" } }} // Black text color
           />
           <TextField
             label="Team Member 2"
@@ -207,7 +218,7 @@ const TeamRegistration = () => {
             margin="normal"
             value={member2}
             onChange={(e) => setMember2(e.target.value)}
-            InputProps={{ style: { color: "#FFFFFF", backgroundColor: "#FFFFFF" } }} // White background
+            InputProps={{ style: { color: "#000000", backgroundColor: "#FFFFFF" } }} // Black text color
           />
           <TextField
             label="Team Member 3"
@@ -216,7 +227,7 @@ const TeamRegistration = () => {
             margin="normal"
             value={member3}
             onChange={(e) => setMember3(e.target.value)}
-            InputProps={{ style: { color: "#FFFFFF", backgroundColor: "#FFFFFF" } }} // White background
+            InputProps={{ style: { color: "#000000", backgroundColor: "#FFFFFF" } }} // Black text color
           />
 
           {/* ✅ Team Lead Phone Number */}
@@ -227,7 +238,18 @@ const TeamRegistration = () => {
             margin="normal"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            InputProps={{ style: { color: "#FFFFFF", backgroundColor: "#FFFFFF" } }} // White background
+            InputProps={{ style: { color: "#000000", backgroundColor: "#FFFFFF" } }} // Black text color
+          />
+
+          {/* ✅ Event */}
+          <TextField
+            label="Event"
+            fullWidth
+            variant="outlined"
+            margin="normal"
+            value={event}
+            onChange={(e) => setEvent(e.target.value)}
+            InputProps={{ style: { color: "#000000", backgroundColor: "#FFFFFF" } }} // Black text color
           />
 
           {/* ✅ Register or Manage Team */}
@@ -246,21 +268,7 @@ const TeamRegistration = () => {
             >
               {loading ? "Registering..." : "Register"}
             </Button>
-          ) : (
-            <Button
-              variant="contained"
-              color="secondary"
-              fullWidth
-              onClick={() => navigate("/invites")}
-              style={{
-                marginTop: "20px",
-                backgroundColor: "#F45558",
-                color: "#FFFFFF",
-              }}
-            >
-              Manage Your Team
-            </Button>
-          )}
+          ) : null} {/* Remove the "Manage Your Team" button */}
         </Paper>
       </Container>
     </div>

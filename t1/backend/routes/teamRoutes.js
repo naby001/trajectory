@@ -3,26 +3,31 @@ const router = express.Router();
 const Team = require("../models/Team");
 const User = require("../models/User");
 const authMiddleware = require("../middleware/authMiddleware");
+const { protect } = require("../middleware/authMiddleware");
 
 // ✅ Create a new team
-router.post("/create", authMiddleware, async (req, res) => {
+router.post("/create", async (req, res) => {
+  const { name, member1, member2, member3, phone, event, email, fullName, institution } = req.body;
+
   try {
-    const { name } = req.body;
-    const leader = req.user.id;
+    const newTeam = new Team({
+      name,
+      member1, // Store member 1 name
+      member2, // Store member 2 name
+      member3, // Store member 3 name
+      phone,
+      event,
+      email,
+      fullName,
+      institution,
+      leader: req.user.id, // Ensure leader is set correctly
+    });
 
-    // Check if team name already exists
-    if (await Team.findOne({ name })) {
-      return res.status(400).json({ message: "Team name already exists" });
-    }
-
-    // Create a new team
-    const team = new Team({ name, leader, members: [leader] });
-    await team.save();
-
-    res.status(201).json({ message: "Team created successfully", team });
+    const savedTeam = await newTeam.save();
+    res.status(201).json({ team: savedTeam });
   } catch (error) {
-    console.error("Error creating team:", error);
-    res.status(500).json({ message: "Server Error", error: error.message });
+    console.error("❌ Error creating team:", error);
+    res.status(500).json({ message: "Internal Server Error" });
   }
 });
 
@@ -129,12 +134,26 @@ router.post("/decline-invite", authMiddleware, async (req, res) => {
 // ✅ Fetch teams of a specific user
 router.get("/my-teams", authMiddleware, async (req, res) => {
   try {
-    const teams = await Team.find({ members: req.user.id }).populate("leader members");
+    const teams = await Team.find({ leader: req.user.id }) // Fetch teams where the user is the leader
+      .populate("leader", "name email") // Populate leader's name and email
+      .exec();
+
     res.json(teams);
   } catch (error) {
     console.error("Error fetching user teams:", error);
     res.status(500).json({ message: "Server Error", error: error.message });
   }
 });
+
+router.get("/allteams",async(req,res)=>{
+try {
+  const teams=await Team.find({}).populate('member1').populate('member2').populate('member3');
+  res.status(200).json(teams);
+
+} catch (error) {
+  console.log(error);
+  res.status(400).json(error);
+}
+})
 
 module.exports = router;
