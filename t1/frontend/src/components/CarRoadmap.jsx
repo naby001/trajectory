@@ -10,26 +10,26 @@ const events = [
     title: "Day 1",
     date: "March 17, 2024",
     description:
-      "Sports day! Get ready for a day of fun and games, and meet your fellow participants.",
+      "Opening Ceremony! Get ready for a day of fun and games, and meet your fellow participants.",
     align: "right",
   },
   {
     title: "Day 2",
     date: "March 18, 2024",
-    description: "Hardware workshop! Learn how to build your own AR/VR hardware from scratch.",
+    description: "Hardware Showdown! Learn how to build your own AR/VR hardware from scratch.",
     align: "left",
   },
   {
     title: "Day 3",
     date: "March 19, 2024",
     description:
-      "Software workshop! Learn how to develop AR/VR applications using the latest tools and technologies.",
+      "Brainstorming! Engage in a quiz debate and collaborative sessions to generate innovative ideas. ",
     align: "right",
   },
   {
     title: "Final Night",
     date: "March 19, 2024",
-    description: "Closing ceremony and awards presentation. Celebrate your achievements with your team!",
+    description: "Closing ceremony and awards presentation. Celebrate your achievements with your team! ",
     align: "left",
   },
 ]

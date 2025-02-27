@@ -532,12 +532,13 @@ function HomePage() {
             component="footer"
           >
             <Box sx={{ mt: 1, display: "flex", justifyContent: "center" }}>
-              <Button
-                variant="outlined"
-                sx={{ color: "rgb(187, 83, 84)", borderColor: "rgb(187, 83, 84)" }} // Updated button color
-              >
-                Subscribe to Social Media
-              </Button>
+            <Button
+  variant="outlined"
+  href="https://linktr.ee/trajectoryjumech?fbclid=PAZXh0bgNhZW0CMTEAAaajz1I4w0OH00Qw7UtFQyHtOTuEdyiokldRelhsoZ4jyZgJvdnJ57qURH4_aem_KOr5iI6NgY0WGz17PuGT3A"
+  sx={{ color: "rgb(187, 83, 84)", borderColor: "rgb(187, 83, 84)" }} // Updated button color
+>
+  Subscribe to Social Media
+</Button>
             </Box>
             <Box sx={{ mt: 2, display: "flex", justifyContent: "center" }}> {/* Reduced margin-top */}
               <IconButton
