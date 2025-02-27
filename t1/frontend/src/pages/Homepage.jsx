@@ -230,7 +230,7 @@ function HomePage() {
         }}
       >
         {/* Heading */}
-        {/* <Box sx={{ mt: 14, display: "flex", justifyContent: "center" }}> 
+        <Box sx={{ mt: 14, display: "flex", justifyContent: "center" }}> 
           <GlitchText
             speed={1}
             enableShadows={true}
@@ -239,10 +239,10 @@ function HomePage() {
           >
             Trajectory
           </GlitchText>
-        </Box> */}
+        </Box>
 
         {/* Video below the heading */}
-        <Box sx={{ width: "100%", display: "flex", justifyContent: "center", mt: 20 }}>
+        {/* <Box sx={{ width: "100%", display: "flex", justifyContent: "center", mt: 20 }}>
           <video
             width="50%"
             height="auto"
@@ -252,7 +252,7 @@ function HomePage() {
             <source src={videoSrc} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-        </Box>
+        </Box> */}
 
         {/* Navbar */}
         <AppBar position="fixed" sx={{ background: "#1C1B1F" }}>
