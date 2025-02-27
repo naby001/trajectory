@@ -3,8 +3,7 @@ const Event = require("../models/Event");
 const User = require("../models/User");
 
 exports.registerEvent = async (req, res) => {
-  console.log("📌 Debug: registerEvent function is running");
-
+  
   const { eventId } = req.body;
 
   try {

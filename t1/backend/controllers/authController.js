@@ -40,7 +40,7 @@ exports.registerUser = async (req, res) => {
     res.status(201).json({
       message: "User registered successfully",
       token,
-      user: { id: user.id, name: user.name, email: user.email },
+      user: { id: user.id, name: user.name, email: user.email, university:user.university },
     });
   } catch (error) {
     console.error("Error in registerUser:", error);
@@ -61,7 +61,7 @@ exports.loginUser = async (req, res) => {
     if (!user) {
       return res.status(400).json({ msg: "Invalid email or password" });
     }
-
+    
     // Compare password
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
@@ -75,7 +75,7 @@ exports.loginUser = async (req, res) => {
     res.json({
       message: "Login successful",
       token,
-      user: { id: user.id, name: user.name, email: user.email },
+      user: { id: user.id, name: user.name, email: user.email, university:user.university },
     });
   } catch (error) {
     console.error("Error in loginUser:", error);
@@ -98,4 +98,15 @@ exports.getUserDetails = async (req, res) => {
     res.status(500).json({ msg: "Server error", error: error.message });
   }
 };
+
+exports.getallUseremails=async(req,res)=>{
+  try {
+    const allUserEmails = await User.find().select("email").lean();
+const emailArray = allUserEmails.map(user => user.email);
+res.json(emailArray);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
+  }
+}
 

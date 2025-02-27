@@ -5,8 +5,33 @@ const User = require("../models/User");
 const authMiddleware = require("../middleware/authMiddleware");
 const { protect } = require("../middleware/authMiddleware");
 
+router.post("/getteamsofevent",async(req,res)=>{
+  //route to get a list of all registered people of an event to make sure to prevent duplicate registrations
+
+  try {
+    const { eventId } = req.body;
+
+    if (!eventId) {
+      return res.status(400).json({ message: "Event ID is required" });
+    }
+
+    // Query to get emails and members from teams of the given event
+    const teams = await Team.find({ event: eventId }).select("email member1 member2 member3");
+
+    // Extract values and flatten the array
+    const registeredPeople = teams
+      .map(team => [team.email, team.member1, team.member2, team.member3]) // Extract fields
+      .flat() // Flatten into a single array
+      .filter(Boolean); // Remove null/undefined values
+
+    return res.status(200).json({ registeredPeople });
+  } catch (error) {
+    console.error("Error fetching team members:", error);
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+})
 // ✅ Create a new team
-router.post("/create", async (req, res) => {
+router.post("/create",authMiddleware, async (req, res) => {
   const { name, member1, member2, member3, phone, event, email, fullName, institution } = req.body;
 
   try {
