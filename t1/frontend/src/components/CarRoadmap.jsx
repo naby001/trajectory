@@ -59,13 +59,13 @@ const TimelineItem = styled(Paper)(({ theme }) => ({
   position: "relative",
   width: "45%",
   marginBottom: "60px",
-  background: "rgba(28, 27, 31, 0.9)",
+  background: "transparent", // Changed from "rgba(28, 27, 31, 0.9)"
   border: "1px solid rgba(244, 85, 88, 0.3)",
   borderRadius: "8px",
-  boxShadow: "0 0 20px rgba(244, 85, 88, 0.1)",
+  boxShadow: "0 0 30px rgba(244, 85, 88, 0.5)", // Increased glow effect
   opacity: 0,
   transform: 'translateY(50px)',
-  transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
+  transition: 'opacity 0.4s ease-out, transform 0.6s ease-out',
   '&.visible': {
     opacity: 1,
     transform: 'translateY(0)',
@@ -147,7 +147,7 @@ export default function EventTimeline() {
   return (
     <Box
       sx={{
-        bgcolor:  "#1C1B1F",
+       
         minHeight: "100vh",
         color: "white",
         py: 8,

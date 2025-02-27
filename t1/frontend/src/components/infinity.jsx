@@ -16,7 +16,7 @@ const fadeInOut = keyframes`
 // Styled components
 const AppContainer = styled(Box)({
   fontFamily: "'Poppins', sans-serif",
-  backgroundColor: '#1C1B1F',
+  backgroundColor: 'transparent', // Changed to transparent
   color: '#FFFFFF',
   width: '100vw', // Adjusted to fit the whole screen
   height: '100vh', // Adjusted to fit the whole screen
