@@ -237,9 +237,11 @@ function HomePage() {
             enableOnHover={true}
             className="custom-class"
           >
-            Trajectory
+            Trajectory 2k25
           </GlitchText>
+          
         </Box>
+        
 
         {/* Video below the heading */}
         {/* <Box sx={{ width: "100%", display: "flex", justifyContent: "center", mt: 20 }}>
