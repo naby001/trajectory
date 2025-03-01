@@ -144,7 +144,7 @@ const events = [
     description:
       "Build a hydraulic arm to complete specified tasks with precision.",
     location: "Mechanical Dept, Jadavpur University",
-    type: "Hardware Challenge",
+    type: "Fun Activities",
     groupSize: "1-4",
     price: 1000.0,
     image:
@@ -196,7 +196,7 @@ const events = [
     title: "Beyond The Frame",
     description: "Compete in a fast-paced mixed doubles badminton tournament.",
     location: "Mechanical Dept, Jadavpur University",
-    type: "Sports Challenge",
+    type: "Fun Activities",
     groupSize: "1",
     price: 1000.0,
     image:
@@ -207,7 +207,7 @@ const events = [
     description:
       "Compete in a traditional tug of war competition with your team.",
     location: "Mechanical Dept, Jadavpur University",
-    type: "Sports Challenge",
+    type: "Case Study",
     groupSize: "3-5",
     price: 1000.0,
     image:
@@ -218,22 +218,12 @@ const events = [
     description:
       "Participate in a thrilling cricket match, showcasing your skills.",
     location: "Mechanical Dept, Jadavpur University",
-    type: "Sports Challenge",
+    type: "Case Study",
     groupSize: "3",
     price: 1000.0,
     image: data,
   },
-  {
-    _id: "67b714ad9a01ff3f0a3c85ed",
-    title: "Football",
-    description: "Participate in an exciting football match with your team.",
-    location: "Mechanical Dept, Jadavpur University",
-    type: "Sports Challenge",
-    groupSize: "6-10",
-    price: 1000.0,
-    image:
-      "https://cdn.magicdecor.in/com/2024/05/22173454/Football-Abstract-Design-Wallpaper-Mural-710x488.jpg",
-  },
+  
   {
     _id: "67b714b79a01ff3f0a3c85ee",
     title: "Treasure Hunt",
@@ -434,7 +424,7 @@ export function Explore() {
                 Simulation Challenge
               </MenuItem>
               <MenuItem value="General">General</MenuItem>
-              <MenuItem value="Sports Challenge">Sports Challenge</MenuItem>
+              <MenuItem value="Case Study">Case Study</MenuItem>
               <MenuItem value="Fun Activities">Fun Activities</MenuItem>
               <MenuItem value="Mystery Event?">Mystery Event?</MenuItem>
             </Select>
