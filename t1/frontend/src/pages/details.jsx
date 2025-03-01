@@ -285,9 +285,11 @@ export const events = [
     prelimsDate: "18-03-2025",
     finalsDate: "19-03-2025",
     coordinators: [
-      { name: "Sayan Das", phone: "" },
-      { name: "Samrat Roy Chowdhuri", phone: "99339 03605" },
-      { name: "Sampad Chanda", phone: "91261 27847" }
+      { name: "Sayan Das", phone: "+91 7980148375" },
+      { name: "Souvik Howlader", phone: "+91 9775430333" },
+      { name: "Samrat Roy Choudhury", phone: "+91 9933903605" },
+      { name: "Prothoma Dutta", phone: "+91 9163403723" },
+      { name: "Sampad Chanda", phone: "+91 9126127847" }
     ],
     rules: [
       "Each team must answer the given questions within the time limit.",
@@ -476,6 +478,10 @@ export default function Details() {
                     height: 'auto',
                     mb: 2,
                     borderRadius: 2,
+                    transition: 'transform 0.3s ease-in-out', // Added transition
+                    '&:hover': {
+                      transform: 'scale(1.05)', // Scale up on hover
+                    },
                   }}
                 />
                 
@@ -503,6 +509,10 @@ export default function Details() {
                       width: '24px',
                       height: '24px',
                       mr: 1,
+                      transition: 'transform 0.3s ease-in-out', // Added transition
+                      '&:hover': {
+                        transform: 'scale(1.2)', // Scale up on hover
+                      },
                     }}
                   />
                   Register on Unstop
