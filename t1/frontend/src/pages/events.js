@@ -236,8 +236,8 @@ export const events = [
     prelimsDate: "18-03-2025",
     finalsDate: "18-03-2025",
     coordinators: [
-      { name: "Arijit Mandal", phone: "" },
-      { name: "Nabyendu Ghosh", phone: "" },
+      { name: "Arijit Mandal", phone: "89107 10278" },
+      { name: "Nabyendu Das", phone: "7003751910" },
       { name: "Nilendu Dikshit", phone: "" },
       { name: "Dipayan Mandal", phone: "" }
     ],
@@ -248,7 +248,7 @@ export const events = [
       "Teams must inform organizers in advance if their robot requires specific technical support.",
       "Judges' decisions are final."
     ],
-    pdfLink: "https://example.com/roboleague.pdf"
+    pdfLink: "https://drive.google.com/file/d/1YDw7s5VcqIFc3Dl7m9gYtxgv78GVvFXa/view?usp=drive_link"
   },
   {
     id: "67b714529a01ff3f0a3c85e7",
