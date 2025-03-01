@@ -35,7 +35,7 @@ import clash from "../assets/thumb/clash of cases.webp";
 import data from "../assets/thumb/Data mine.jpg";
 import egg from "../assets/thumb/Egg.webp";
 import Hover from "../assets/thumb/Hoverpod.webp";
-import mazecraft from "../assets/thumb/Mazecraft.webp";
+import mazecraft from "../assets/thumb/mazecraft.webp";
 import model from "../assets/thumb/Model matrix.webp";
 import robo from "../assets/thumb/Robo league_.webp";
 import tarka from "../assets/thumb/torko.webp";
