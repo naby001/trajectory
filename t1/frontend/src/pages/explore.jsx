@@ -37,7 +37,7 @@ import egg from "../assets/thumb/Egg.webp";
 import Hover from "../assets/thumb/Hoverpod.webp";
 import mazecraft from "../assets/thumb/mazecraft.webp";
 import model from "../assets/thumb/Model matrix.webp";
-import robo from "../assets/thumb/Robo league_.webp";
+import robo from "../assets/thumb/robo league_.webp";
 import tarka from "../assets/thumb/torko.webp";
 import treasure from "../assets/thumb/Treasure hunt_.webp";
 
