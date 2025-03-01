@@ -27,7 +27,7 @@ import "@fontsource/roboto";
 import "@fontsource/lobster";
 import "@fontsource/open-sans";
 import { Link } from "react-scroll";
-
+import Squares from '../components/Square'; // Import Squares component
 
 import hydro from "../assets/thumb/h.jpg";
 import lens from "../assets/thumb/Beyondlens.webp";
@@ -109,10 +109,10 @@ const events = [
     _id: "67b7102b9a01ff3f0a3c85e1",
     title: "HydroBlasters",
     description:
-      "Showcase your CAD skills by designing innovative mechanical components.",
+      "Get ready for an exciting water-based adventure event featuring water jets and aerodynamics.",
     location: "Mechanical Dept, Jadavpur University",
     type: "Hardware Challenge",
-    groupSize: "1-3",
+    groupSize: "2-3",
     price: 1000.0,
     image:
       hydro,
@@ -120,10 +120,10 @@ const events = [
   {
     _id: "67b710919a01ff3f0a3c85e2",
     title: "Robo League",
-    description: "Build and race your robots on an obstacle-filled track.",
+    description: "Buckle up to build and program robots to play soccer autonomously or via remote control",
     location: "Mechanical Dept, Jadavpur University",
     type: "Hardware Challenge",
-    groupSize: "2-5",
+    groupSize: "3-4",
     price: 6000.0,
     image:
       robo,},
@@ -134,7 +134,7 @@ const events = [
       "Design and construct a line-following robot that navigates a predefined path.",
     location: "Mechanical Dept, Jadavpur University",
     type: "Hardware Challenge",
-    groupSize: "3-6",
+    groupSize: "3-4",
     price: 6000.0,
     image:mazecraft,
   },
@@ -142,17 +142,17 @@ const events = [
     _id: "67b7141b9a01ff3f0a3c85e4",
     title: "Prot-Egg-t",
     description:
-      "Build a hydraulic arm to complete specified tasks with precision.",
+      "A fun event where participants design protective contraptions to prevent an egg from breaking during a high drop",
     location: "Mechanical Dept, Jadavpur University",
     type: "Fun Activities",
-    groupSize: "1-4",
+    groupSize: "2-4",
     price: 1000.0,
     image:
       egg,},
   {
     _id: "67b714349a01ff3f0a3c85e5",
     title: "Hoverpod",
-    description: "Compete in an intense 5-a-side football tournament.",
+    description: "",
     location: "Mechanical Dept, Jadavpur University",
     type: "Hardware Challenge",
     groupSize: "5",
@@ -166,7 +166,7 @@ const events = [
       "Design innovative mechanical components using Solidworks or Fusion software.",
     location: "Mechanical Dept, Jadavpur University",
     type: "Simulation Challenge",
-    groupSize: "5",
+    groupSize: "1",
     price: 1000.0,
     image:
       model,  },
@@ -176,10 +176,10 @@ const events = [
     description: "Test your knowledge in a challenging quiz competition.",
     location: "Mechanical Dept, Jadavpur University",
     type: "General",
-    groupSize: "General",
+    groupSize: "1-3",
     price: 1000.0,
     image:
-      lens, },
+      "https://viralsolutions.net/wp-content/uploads/2019/06/shutterstock_749036344.webp", },
   {
     _id: "67b7145e9a01ff3f0a3c85e8",
     title: "Tarka Bitarka",
@@ -187,14 +187,14 @@ const events = [
       "Engage in a lively debate on important topics with fellow participants.",
     location: "Mechanical Dept, Jadavpur University",
     type: "General",
-    groupSize: "5",
+    groupSize: "1-4",
     price: 1000.0,
     image:
       tarka,},
   {
     _id: "67b7146e9a01ff3f0a3c85e9",
     title: "Beyond The Frame",
-    description: "Compete in a fast-paced mixed doubles badminton tournament.",
+    description: "Grasp the oppurtunity to capture the world from a unique perspective.",
     location: "Mechanical Dept, Jadavpur University",
     type: "Fun Activities",
     groupSize: "1",
@@ -205,10 +205,10 @@ const events = [
     _id: "67b714799a01ff3f0a3c85ea",
     title: "Clash of Cases",
     description:
-      "Compete in a traditional tug of war competition with your team.",
+      "Use your skills to analyze real-world business scenarios and present innovative solutions to showcase your problem-solving and analytical thinking abilities.",
     location: "Mechanical Dept, Jadavpur University",
     type: "Case Study",
-    groupSize: "3-5",
+    groupSize: "3-4",
     price: 1000.0,
     image:
       clash,},
@@ -216,10 +216,10 @@ const events = [
     _id: "67b7148d9a01ff3f0a3c85ec",
     title: "Data Mine",
     description:
-      "Participate in a thrilling cricket match, showcasing your skills.",
+      " It tests logical thinking, cryptography knowledge, and problem-solving speed.",
     location: "Mechanical Dept, Jadavpur University",
     type: "Case Study",
-    groupSize: "3",
+    groupSize: "2-4",
     price: 1000.0,
     image: data,
   },
@@ -231,7 +231,7 @@ const events = [
       "Embark on a treasure hunt across the campus, solving clues and finding hidden treasures.",
     location: "Mechanical Dept, Jadavpur University",
     type: "Fun Activities",
-    groupSize: "6-10",
+    groupSize: "2-4",
     price: 1000.0,
     image:
 treasure,  },
@@ -241,7 +241,7 @@ treasure,  },
     description: "",
     location: "Mechanical Dept, Jadavpur University",
     type: "Mystery Event?",
-    groupSize: "6-10",
+    groupSize: "1000",
     price: 1000.0,
     image:
       "https://images.pexels.com/photos/5428830/pexels-photo-5428830.jpeg?auto=compress&cs=tinysrgb&w=600",
@@ -370,7 +370,13 @@ export function Explore() {
       <AppBar position="fixed" sx={{ background: "#1C1B1F", zIndex: 1000 }}>
         <Navbar />
       </AppBar>
-
+      <style>
+        {`@import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');`}
+        {`@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');`}
+        {`.exo-2-regular { font-family: "Exo 2", serif; font-optical-sizing: auto; font-weight: 400; font-style: normal; }`}
+        {`.exo-2-bold { font-family: "Exo 2", serif; font-optical-sizing: auto; font-weight: 700; font-style: normal; }`}
+        {`.michroma { font-family: "Michroma", sans-serif; }`}
+      </style>
       <Box
         sx={{
           position: "relative",
@@ -384,118 +390,125 @@ export function Explore() {
           border: "2px solid black", // Added black border
         }}
       >
-        <Typography
-          variant="h1"
-          component="h1"
-          gutterBottom
-          sx={{ color: "white", fontSize: { xs: "2rem", md: "4rem" } }}
-        >
-          Explore Events
-        </Typography>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: { xs: "column", md: "row" },
-            gap: 4,
-            mb: 8,
-            animation: `${slideIn} 0.5s ease-in-out`,
-          }}
-        >
-          <TextField
-            label="Search Events..."
-            variant="outlined"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            sx={{ width: { xs: "100%", md: "50%" }, backgroundColor: "#fff" }}
+        <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: 1 }}>
+          <Squares 
+            speed={0.5} 
+            squareSize={40}
+            direction='diagonal' // up, down, left, right, diagonal
+            borderColor='#fff'
+            hoverFillColor='#222'
           />
-          <FormControl
-            variant="outlined"
-            sx={{ width: { xs: "100%", md: "25%" }, backgroundColor: "#fff" }}
+        </div>
+        <Box sx={{ zIndex: 10, position: "relative" }}>
+          <Typography variant="h2" component="h1" className="michroma" sx={{ color: '#FFD700', mb: 4, textShadow: '10px 10px 4px black, 0 0 10px black', pt: 3, fontWeight: 'bold' }}>
+            Explore Events
+          </Typography>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: { xs: "column", md: "row" },
+              gap: 4,
+              mb: 8,
+              animation: `${slideIn} 0.5s ease-in-out`,
+            }}
           >
-            <InputLabel>Filter by Type</InputLabel>
-            <Select
-              value={filterType}
-              onChange={(e) => setFilterType(e.target.value)}
-              label="Filter by Type"
+            <TextField
+              label="Search Events..."
+              variant="outlined"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              sx={{ width: { xs: "100%", md: "50%" }, backgroundColor: "#fff" }}
+            />
+            <FormControl
+              variant="outlined"
+              sx={{ width: { xs: "100%", md: "25%" }, backgroundColor: "#fff" }}
             >
-              <MenuItem value="">All events</MenuItem>
-              <MenuItem value="Hardware Challenge">Hardware Challenge</MenuItem>
-              <MenuItem value="Simulation Challenge">
-                Simulation Challenge
-              </MenuItem>
-              <MenuItem value="General">General</MenuItem>
-              <MenuItem value="Case Study">Case Study</MenuItem>
-              <MenuItem value="Fun Activities">Fun Activities</MenuItem>
-              <MenuItem value="Mystery Event?">Mystery Event?</MenuItem>
-            </Select>
-          </FormControl>
-        </Box>
-        <Grid container spacing={4} > {/* Increased padding */}
-          {filteredEvents.map((event, index) => (
-            <Grid item xs={12} md={6} key={event._id}> {/* 2 cards per row */}
-              <Card
-                id={`event-${event._id}`}
-                ref={(el) => (cardRefs.current[index] = el)}
-                sx={{
-                  borderRadius: "15px",
-                  overflow: "hidden",
-                  backgroundColor: "#1C1B1F",
-                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                  height: "100%", // Increase card height
-                  minHeight: "400px", // Set a minimum height
-                  display: "flex",
-                  flexDirection: "column",
-                  animation: `${glow} 2s infinite`,
-                  "&:hover": {
-                    transform: "scale(1.05)",
-                    boxShadow: "0 0 20px rgba(255, 215, 0, 0.3)",
-                  },
-                }}
+              <InputLabel>Filter by Type</InputLabel>
+              <Select
+                value={filterType}
+                onChange={(e) => setFilterType(e.target.value)}
+                label="Filter by Type"
               >
-                <CardHeader
-                  title={event.title}
-                  sx={{ backgroundColor: "rgba(0, 0, 0, 0.7)", color: "#fff" }}
-                />
-                <CardMedia
-                  component="img"
-                  height="300" // Increased thumbnail height
-                  image={event.image}
-                  alt={event.title}
-                  sx={{ objectFit: "cover", objectPosition: "top" }} // Display image from the top
-                />
-                <CardContent sx={{ flexGrow: 1, color: "#fff" }}>
-                  <Typography>{event.description}</Typography>
-                  <Box sx={{ mt: 2 }}>
-                    <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
-                      <MapPin style={{ marginRight: "8px" }} />
-                      <Typography>{event.location}</Typography>
+                <MenuItem value="">All events</MenuItem>
+                <MenuItem value="Hardware Challenge">Hardware Challenge</MenuItem>
+                <MenuItem value="Simulation Challenge">
+                  Simulation Challenge
+                </MenuItem>
+                <MenuItem value="General">General</MenuItem>
+                <MenuItem value="Case Study">Case Study</MenuItem>
+                <MenuItem value="Fun Activities">Fun Activities</MenuItem>
+                <MenuItem value="Mystery Event?">Mystery Event?</MenuItem>
+              </Select>
+            </FormControl>
+          </Box>
+          <Grid container spacing={4} > {/* Increased padding */}
+            {filteredEvents.map((event, index) => (
+              <Grid item xs={12} md={6} key={event._id}> {/* 2 cards per row */}
+                <Card
+                  id={`event-${event._id}`}
+                  ref={(el) => (cardRefs.current[index] = el)}
+                  sx={{
+                    borderRadius: "15px",
+                    overflow: "hidden",
+                    backgroundColor: "#1C1B1F",
+                    transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                    height: "100%", // Increase card height
+                    minHeight: "400px", // Set a minimum height
+                    display: "flex",
+                    flexDirection: "column",
+                    animation: `${glow} 2s infinite`,
+                    "&:hover": {
+                      transform: "scale(1.05)",
+                      boxShadow: "0 0 20px rgba(255, 215, 0, 0.3)",
+                    },
+                  }}
+                >
+                  <CardHeader
+                    title={event.title}
+                    className="michroma"
+                    sx={{ backgroundColor: "rgba(0, 0, 0, 0.7)", color: "#fff" }}
+                  />
+                  <CardMedia
+                    component="img"
+                    height="300" // Increased thumbnail height
+                    image={event.image}
+                    alt={event.title}
+                    sx={{ objectFit: "cover", objectPosition: "top" }} // Display image from the top
+                  />
+                  <CardContent sx={{ flexGrow: 1, color: "#fff" }}>
+                    <Typography className="exo-2-regular">{event.description}</Typography>
+                    <Box sx={{ mt: 2 }}>
+                      <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
+                        <MapPin style={{ marginRight: "8px" }} />
+                        <Typography className="exo-2-regular">{event.location}</Typography>
+                      </Box>
+                      <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
+                        <Calendar style={{ marginRight: "8px" }} />
+                        <Typography className="exo-2-regular">{event.type}</Typography>
+                      </Box>
+                      <Box sx={{ display: "flex", alignItems: "center" }}>
+                        <Users style={{ marginRight: "8px" }} />
+                        <Typography className="exo-2-regular">{event.groupSize} people</Typography>
+                      </Box>
                     </Box>
-                    <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
-                      <Calendar style={{ marginRight: "8px" }} />
-                      <Typography>{event.type}</Typography>
-                    </Box>
-                    <Box sx={{ display: "flex", alignItems: "center" }}>
-                      <Users style={{ marginRight: "8px" }} />
-                      <Typography>{event.groupSize} people</Typography>
-                    </Box>
-                  </Box>
-                </CardContent>
-                <CardActions sx={{ justifyContent: "space-between", p: 2 }}>
-                  <Typography variant="h6" sx={{ color: "#fff" }}>
-                    ₹ {event.price}
-                  </Typography>
-                  <Button
-                    variant="outlined"
-                    sx={{ color: "#F45558", borderColor: "#F45558" }} // Updated red color
-                    onClick={() => navigate(`/details?event=${event._id}`)} // Use _id instead of id
-                  >
-                    Event Details
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
+                  </CardContent>
+                  <CardActions sx={{ justifyContent: "space-between", p: 2 }}>
+                    <Typography variant="h6" className="exo-2-bold" sx={{ color: "#fff" }}>
+                      ₹ {event.price}
+                    </Typography>
+                    <Button
+                      variant="outlined"
+                      sx={{ color: "#F45558", borderColor: "#F45558" }} // Updated red color
+                      onClick={() => navigate(`/details?event=${event._id}`)} // Use _id instead of id
+                    >
+                      Event Details
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
       </Box>
     </ThemeProvider>
   );
