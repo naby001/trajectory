@@ -45,7 +45,7 @@ import gate3 from '../assets/gate3.jpg';
 import heatpower from '../assets/heatpower.jpg';
 import hydraulic from '../assets/HYDRAULIC.jpg';
 import maingate from '../assets/maingate.jpg';
-import mechanical from '../assets/Mechanical.png';
+
 import microhydro from '../assets/microhydro.jpg';
 import workshop from '../assets/workshop.jpg';
 
@@ -197,11 +197,7 @@ const destinations = [
     name: "Main Gate",
     image: maingate,
   },
-  {
-    id: 11,
-    name: "Mechanical Department",
-    image: mechanical,
-  },
+  
   {
     id: 12,
     name: "Micro Hydro Project",
