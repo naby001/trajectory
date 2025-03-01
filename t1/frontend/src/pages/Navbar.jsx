@@ -30,9 +30,7 @@ const Navbar = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  const handleComingSoon = () => {
-    alert("Coming Soon");
-  };
+ 
 
   // ✅ Fetch user & team info
   useEffect(() => {
@@ -147,9 +145,9 @@ const Navbar = () => {
             {["Home", "Explore", "About"].map((label, index) => (
               <Button
                 key={index}
-                component={label === "Explore" ? "button" : Link}
+                component={Link}
                 to={label === "Home" ? "/" : `/${label.toLowerCase()}`}
-                onClick={label === "Explore" ? handleComingSoon : undefined}
+               
                 sx={{
                   color: "white",
                   margin: "0 12px",
@@ -205,8 +203,8 @@ const Navbar = () => {
             {/* ✅ Show login button only if NOT logged in */}
             {!isLoggedIn && (
               <Button
-                component="button"
-                onClick={handleComingSoon}
+                component={Link}
+                to="/login"
                 sx={{
                   backgroundColor: "#F45558", // Updated to red
                   color: "#FFFFFF", // Updated to white
@@ -255,7 +253,7 @@ const Navbar = () => {
                 key={index}
                 component={label === "Explore" ? "button" : Link}
                 to={label === "Home" ? "/" : `/${label.toLowerCase()}`}
-                onClick={label === "Explore" ? handleComingSoon : handleMobileMenuToggle}
+                onClick={ handleMobileMenuToggle}
               >
                 {label}
               </MenuItem>
@@ -286,8 +284,8 @@ const Navbar = () => {
             )}
             {!isLoggedIn && (
               <MenuItem
-                component="button"
-                onClick={handleComingSoon}
+                component={Link}
+                onClick={handleMobileMenuToggle}
               >
                 Login
               </MenuItem>
