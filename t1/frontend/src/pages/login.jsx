@@ -188,7 +188,7 @@ export default function AuthPage() {
         ? { email, password }
         : { email, password, name, university, department, universityYear };
       const response = await fetch(
-        `http://localhost:5000/api/auth/${endpoint}`,
+        `https://trajectory-37k0.onrender.com/api/auth/${endpoint}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

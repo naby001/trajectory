@@ -159,7 +159,7 @@ function HomePage() {
 
   // When a card's SEE MORE is clicked, show an alert for "Coming Soon".
   const handleCardClick = (type) => {
-    alert("Coming Soon");
+    navigate(`/explore?filter=${type}`);
   };
 
   const [currentDestination, setCurrentDestination] = React.useState(0);
