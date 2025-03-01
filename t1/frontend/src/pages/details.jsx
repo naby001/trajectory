@@ -45,7 +45,7 @@ export default function Details() {
 
       try {
         const response = await fetch(
-          "http://localhost:5000/api/events/registered",
+          "https://trajectory-37k0.onrender.com/api/events/registered",
           {
             headers: { Authorization: `Bearer ${token}` },
           }

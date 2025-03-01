@@ -273,7 +273,7 @@ export function Explore() {
 
       try {
         const response = await fetch(
-          "http://localhost:5000/api/events/registered",
+          "https://trajectory-37k0.onrender.com/api/events/registered",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -310,7 +310,7 @@ export function Explore() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/events/register",
+        "https://trajectory-37k0.onrender.com/api/events/register",
         {
           method: "POST",
           headers: {

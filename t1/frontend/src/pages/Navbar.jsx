@@ -51,7 +51,7 @@ const Navbar = () => {
           // ✅ Fetch pending invites count
           if (token && token !== "null" && token !== "undefined") {
             try {
-              const response = await axios.get("http://localhost:5000/api/team/invites", {
+              const response = await axios.get("https://trajectory-37k0.onrender.com/api/team/invites", {
                 headers: { Authorization: `Bearer ${token}` },
               });
           
