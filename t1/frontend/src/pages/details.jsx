@@ -156,7 +156,8 @@ export const events = [
      finalsDate: "19-03-2025",
      coordinators: [
        { name: "Mrinmay Tarafdar", phone: "9749386827" },
-       {name: "Koustav Das", phone: "8348217647" }  
+       {name: "Koustav Das", phone: "8348217647" },
+       { name: "Aditya Mondal", phone: "974270706" }  
      ],
      rules: [
        "During the preparation period, usage of mobile phones, laptops, or any reference material is strictly prohibited.",
@@ -300,7 +301,7 @@ export const events = [
   },
   {
     id: "67b710b69a01ff3f0a3c85e3",
-    title: "Mazecraft",
+    title: "Robotrail",
     description: "Design and construct a line-following robot that navigates a predefined path.",
     location: "Mechanical Dept, Jadavpur University",
     type: "Hardware Challenge",
