@@ -30,7 +30,7 @@ import egg from "../assets/10.png";
 import frame from "../assets/9.png";
 import robo from "../assets/7.png";
 import qui from "../assets/4.png";
-import maze from "../assets/8.png";
+import maze from "../assets/8.jpg";
 
 
 
@@ -262,8 +262,8 @@ export const events = [
     coordinators: [
       { name: "Arijit Mandal", phone: "89107 10278" },
       { name: "Nabyendu Das", phone: "7003751910" },
-      { name: "Nilendu Dikshit", phone: "" },
-      { name: "Dipayan Mandal", phone: "" }
+      { name: "Nilendu Dikshit", phone: "77977 49574" },
+      { name: "Dipayan Mandal", phone: "6289 742 848" }
     ],
     rules: [
       "Each team must build their own robot.",
@@ -322,7 +322,7 @@ export const events = [
       "Teams must inform organizers in advance if their robot requires specific technical support.",
       "Judges' decisions are final."
     ],
-    pdfLink: "https://example.com/mazecraft.pdf"
+    pdfLink: "https://drive.google.com/file/d/1at1zypz0_h0R4pt2UU9ohbSAfCVJLGXt/view?usp=sharing"
   },
   {
     id: "",
