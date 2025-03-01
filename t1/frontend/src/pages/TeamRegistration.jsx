@@ -377,7 +377,14 @@ const checkEmail = (email, setValidMember, otherEmails) => {
               {loading ? "Registering..." : "Register"}
             </Button>
           ) : null} {/* Remove the "Manage Your Team" button */}
+
+<Typography variant="body2" align="center" style={{ marginTop: "20px", color: "white" }}>
+          <strong>Note:</strong> &nbsp;
+           Only the team leader needs to register.
+           All team members must have an account on this website.
+        </Typography>
         </Paper>
+       
       </Container>
     </div>
   );

@@ -56,8 +56,7 @@ const departments = [
   "Economics",
 ];
 
-const yearOptions = ["Freshman", "Sophomore", "Junior", "Senior", "Graduate"];
-
+const yearOptions = ["1st", "2nd", "3rd", "4th", "5th"];
 export default function AuthPage() {
   const [isLogin, setIsLogin] = useState(true);
   const [userName, setUserName] = useState("User");
@@ -351,35 +350,20 @@ export default function AuthPage() {
                     helperText={errors.email}
                   />
                   {!isLogin && (
-                    <Autocomplete
-                    options={universities}
-                    getOptionLabel={(option) => option}
-                    filterOptions={(options, { inputValue }) =>
-                      options.filter((option) =>
-                        option.toLowerCase().includes(inputValue.toLowerCase())
-                      ).slice(0, 10) // Limit to 10 results for better UX
-                    }
-                    value={university}
-                    onChange={(event, newValue) => setUniversity(newValue)}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        label="University"
-                        variant="outlined"
-                        margin="normal"
-                        error={!!errors.university}
-                        helperText={errors.university}
-                      />
-                    )}
-                  />
-                  
-                  
-                  
+                    <TextField
+                      label="University"
+                      fullWidth
+                      variant="outlined"
+                      margin="normal"
+                      value={university}
+                      onChange={(e) => setUniversity(e.target.value)}
+                      error={!!errors.university}
+                      helperText={errors.university}
+                    />
                   )}
                   {!isLogin && (
                     <TextField
                       label="Department"
-                      select
                       fullWidth
                       variant="outlined"
                       margin="normal"
@@ -387,13 +371,7 @@ export default function AuthPage() {
                       onChange={(e) => setDepartment(e.target.value)}
                       error={!!errors.department}
                       helperText={errors.department}
-                    >
-                      {departments.map((option) => (
-                        <MenuItem key={option} value={option}>
-                          {option}
-                        </MenuItem>
-                      ))}
-                    </TextField>
+                    />
                   )}
                   {!isLogin && (
                     <TextField
