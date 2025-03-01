@@ -230,14 +230,23 @@ function HomePage() {
         }}
       >
         {/* Heading */}
-        <Box sx={{ mt: 14, display: "flex", justifyContent: "center" }}> 
+        <Box sx={{ mt: 14, justifyContent: "center" ,alignItems: "center", display: "flex", flexDirection: "column" }}>  
           <GlitchText
             speed={1}
             enableShadows={true}
             enableOnHover={true}
             className="custom-class"
           >
-            Trajectory 2k25
+            Trajectory 
+          </GlitchText>
+          <br></br>
+          <GlitchText
+            speed={1}
+            enableShadows={true}
+            enableOnHover={true}
+            className="custom-class"
+          >
+            2k25
           </GlitchText>
           
         </Box>
