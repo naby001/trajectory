@@ -28,6 +28,19 @@ import "@fontsource/lobster";
 import "@fontsource/open-sans";
 import { Link } from "react-scroll";
 
+
+import hydro from "../assets/thumb/hydro_.jpg";
+import lens from "../assets/thumb/Beyondlens.webp";
+import clash from "../assets/thumb/clash of cases.webp";
+import data from "../assets/thumb/Data mine.jpg";
+import egg from "../assets/thumb/Egg.webp";
+import Hover from "../assets/thumb/Hoverpod.webp";
+import mazecraft from "../assets/thumb/Mazecraft.webp";
+import model from "../assets/thumb/Model matrix.webp";
+import robo from "../assets/thumb/Robo league_.webp";
+import tarka from "../assets/thumb/torko.webp";
+import treasure from "../assets/thumb/Treasure hunt_.webp";
+
 const theme = createTheme({
   typography: {
     fontFamily: "Open Sans, Arial",
@@ -102,7 +115,7 @@ const events = [
     groupSize: "1-3",
     price: 1000.0,
     image:
-      "https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
+      hydro,
   },
   {
     _id: "67b710919a01ff3f0a3c85e2",
@@ -113,8 +126,7 @@ const events = [
     groupSize: "2-5",
     price: 6000.0,
     image:
-      "https://images.pexels.com/photos/256412/pexels-photo-256412.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
-  },
+      robo,},
   {
     _id: "67b710b69a01ff3f0a3c85e3",
     title: "Mazecraft",
@@ -124,8 +136,7 @@ const events = [
     type: "Hardware Challenge",
     groupSize: "3-6",
     price: 6000.0,
-    image:
-      "https://images.pexels.com/photos/1438515/pexels-photo-1438515.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
+    image:mazecraft,
   },
   {
     _id: "67b7141b9a01ff3f0a3c85e4",
@@ -137,8 +148,7 @@ const events = [
     groupSize: "1-4",
     price: 1000.0,
     image:
-      "https://images.pexels.com/photos/256660/pexels-photo-256660.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
-  },
+      egg,},
   {
     _id: "67b714349a01ff3f0a3c85e5",
     title: "Hoverpod",
@@ -148,8 +158,7 @@ const events = [
     groupSize: "5",
     price: 6000.0,
     image:
-      "https://images.pexels.com/photos/47730/the-ball-stadion-football-the-pitch-47730.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
-  },
+      Hover,},
   {
     _id: "67b714449a01ff3f0a3c85e6",
     title: "Model Matrix",
@@ -160,8 +169,7 @@ const events = [
     groupSize: "5",
     price: 1000.0,
     image:
-      "https://images.pexels.com/photos/4425763/pexels-photo-4425763.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
-  },
+      model,  },
   {
     _id: "67b714529a01ff3f0a3c85e7",
     title: "Gyaan Yudh",
@@ -171,8 +179,7 @@ const events = [
     groupSize: "General",
     price: 1000.0,
     image:
-      "https://images.pexels.com/photos/209831/pexels-photo-209831.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
-  },
+      lens, },
   {
     _id: "67b7145e9a01ff3f0a3c85e8",
     title: "Tarka Bitarka",
@@ -183,8 +190,7 @@ const events = [
     groupSize: "5",
     price: 1000.0,
     image:
-      "https://images.pexels.com/photos/9825980/pexels-photo-9825980.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
-  },
+      tarka,},
   {
     _id: "67b7146e9a01ff3f0a3c85e9",
     title: "Beyond The Frame",
@@ -194,8 +200,7 @@ const events = [
     groupSize: "1",
     price: 1000.0,
     image:
-      "https://images.pexels.com/photos/210027/pexels-photo-210027.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
-  },
+      lens,},
   {
     _id: "67b714799a01ff3f0a3c85ea",
     title: "Clash of Cases",
@@ -206,8 +211,7 @@ const events = [
     groupSize: "3-5",
     price: 1000.0,
     image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMpWZh3RDT7SttEtt1yebbB2tnpHMeQ8BqqA&s",
-  },
+      clash,},
   {
     _id: "67b7148d9a01ff3f0a3c85ec",
     title: "Data Mine",
@@ -217,7 +221,7 @@ const events = [
     type: "Sports Challenge",
     groupSize: "3",
     price: 1000.0,
-    image: cricketImage,
+    image: data,
   },
   {
     _id: "67b714ad9a01ff3f0a3c85ed",
@@ -240,8 +244,7 @@ const events = [
     groupSize: "6-10",
     price: 1000.0,
     image:
-      "https://www.wanderquest.in/monthly-subscription-boxes-for-kids-6-to-12-years/modules//smartblog/images/15-single-default.jpg",
-  },
+treasure,  },
   {
     _id: "67b714d09a01ff3f0a3c85ef",
     title: "Mystery Event",
