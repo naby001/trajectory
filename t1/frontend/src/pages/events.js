@@ -100,8 +100,8 @@ export const events = [
     description: "Use your skills to analyze real-world business scenarios and present innovative solutions to showcase your problem-solving and analytical thinking abilities",
     location: "Mechanical Dept, Jadavpur University",
     type: "General",
-    groupSize: "1",
-   // price: 1000.00, // not yet decided
+    groupSize: "1-4",
+      price: 1000.00, // not yet decided
     image: clash,
     prelimsDate: "17-03-2025(online)",
     finalsDate: "18-03-2025",
@@ -126,7 +126,7 @@ export const events = [
      description: "Be prepared to engage yourself in thought-provoking discussions on general knowledge, core engineering concepts, and current affairs to showcase analytical thinking, argumentation skills and intellectual agility",
      location: "Mechanical Dept, Jadavpur University",
      type: "General",
-     groupSize: "1",
+     groupSize: "1-4",
     // price: 1000.00,
      image: debate,
     // prelimsDate: "17-03-2025",
@@ -143,7 +143,7 @@ export const events = [
        "The decision of the Event Coordinator will be final and no arguments will be entertained.",
        
      ],
-     pdfLink: "https://drive.google.com/file/d/1eQ4bsbd-ukHU7gcg2FxWmgIfqYVX0xGt/view?usp=drive_link"
+     pdfLink: "https://drive.google.com/file/d/1rXmIVzJE1DdFaVpSf6-nW8eVs_rqUhrp/view?usp=drive_link"
    },
    {
     id: "",
@@ -279,16 +279,15 @@ export const events = [
     description: "Design and construct a line-following robot that navigates a predefined path.",
     location: "Mechanical Dept, Jadavpur University",
     type: "Hardware Challenge",
-    groupSize: "3-6",
+    groupSize: "3-4",
     price: 6000.00,
     image: maze,
     prelimsDate: "18-03-2025",
     finalsDate: "18-03-2025",
     coordinators: [
       { name: "Rohit Dutta", phone: "" },
-      { name: "Satyam", phone: "" },
-      { name: "Antan", phone: "" },
-      { name: "Abhirup Guha Roy", phone: "" }
+      { name: "Antan Shah", phone: "8585050938" },
+      { name: "Abhirup Guha Roy", phone: "8910232532" }
     ],
     rules: [
       "Each team must design and build their own line-following robot.",
