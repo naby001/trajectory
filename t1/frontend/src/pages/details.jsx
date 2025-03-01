@@ -30,7 +30,7 @@ import egg from "../assets/10.png";
 import frame from "../assets/9.png";
 import robo from "../assets/7.png";
 import qui from "../assets/4.png";
-import maze from "../assets/8.png";
+import maze from "../assets/8.jpg";
 
 
 
@@ -156,7 +156,8 @@ export const events = [
      finalsDate: "19-03-2025",
      coordinators: [
        { name: "Mrinmay Tarafdar", phone: "9749386827" },
-       {name: "Koustav Das", phone: "8348217647" }  
+       {name: "Koustav Das", phone: "8348217647" },
+       { name: "Aditya Mondal", phone: "974270706" }  
      ],
      rules: [
        "During the preparation period, usage of mobile phones, laptops, or any reference material is strictly prohibited.",
@@ -261,8 +262,8 @@ export const events = [
     coordinators: [
       { name: "Arijit Mandal", phone: "89107 10278" },
       { name: "Nabyendu Das", phone: "7003751910" },
-      { name: "Nilendu Dikshit", phone: "" },
-      { name: "Dipayan Mandal", phone: "" }
+      { name: "Nilendu Dikshit", phone: "77977 49574" },
+      { name: "Dipayan Mandal", phone: "6289 742 848" }
     ],
     rules: [
       "Each team must build their own robot.",
@@ -300,7 +301,7 @@ export const events = [
   },
   {
     id: "67b710b69a01ff3f0a3c85e3",
-    title: "Mazecraft",
+    title: "Robotrail",
     description: "Design and construct a line-following robot that navigates a predefined path.",
     location: "Mechanical Dept, Jadavpur University",
     type: "Hardware Challenge",
@@ -321,7 +322,7 @@ export const events = [
       "Teams must inform organizers in advance if their robot requires specific technical support.",
       "Judges' decisions are final."
     ],
-    pdfLink: "https://example.com/mazecraft.pdf"
+    pdfLink: "https://drive.google.com/file/d/1at1zypz0_h0R4pt2UU9ohbSAfCVJLGXt/view?usp=sharing"
   },
   {
     id: "",

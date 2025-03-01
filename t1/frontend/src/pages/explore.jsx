@@ -129,7 +129,7 @@ const events = [
       robo,},
   {
     _id: "67b710b69a01ff3f0a3c85e3",
-    title: "Mazecraft",
+    title: "Robotrail",
     description:
       "Design and construct a line-following robot that navigates a predefined path.",
     location: "Mechanical Dept, Jadavpur University",
@@ -494,8 +494,9 @@ export function Explore() {
                   </CardContent>
                   <CardActions sx={{ justifyContent: "space-between", p: 2 }}>
                     <Typography variant="h6" className="exo-2-bold" sx={{ color: "#fff" }}>
-                      ₹ {event.price}
+                       Prize Pool :  &nbsp;   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;₹ {event.price}
                     </Typography>
+                    
                     <Button
                       variant="outlined"
                       sx={{ color: "#F45558", borderColor: "#F45558" }} // Updated red color
