@@ -1,3 +1,16 @@
+import hydro from "../assets/6.png";
+import datamine from "../assets/1.png";
+import model from "../assets/13.png";
+import clash from "../assets/3.png";
+import debate from "../assets/5.png";
+import egg from "../assets/10.png";
+import frame from "../assets/9.png";
+import robo from "../assets/7.png";
+import qui from "../assets/4.png";
+import maze from "../assets/8.png";
+
+
+
 export const events = [
   {
     id: "67b7102b9a01ff3f0a3c85e1",
@@ -7,7 +20,7 @@ export const events = [
     type: "Hardware Challenge",
     groupSize: "2-3",
     price: 2000.00,
-    image: "https://drive.google.com/file/d/1SuFgU76tqFKJ0xuvJz8RAaCIXXY8c3u4/view?usp=drivesdk",
+    image: hydro,
     //prelimsDate: "2023-11-01",
     finalsDate: "19-03-2025",
     coordinators: [
@@ -26,14 +39,14 @@ export const events = [
   },
 
   {
-    id:"67b714349a01ff3f0a3c85e7", //id of code sprint
+    id:"67b7148d9a01ff3f0a3c85ec", //id of code sprint
     title: "Data Mine",
     description: "A code-breaking and puzzle-solving event where participants decode encrypted messages, solve cryptic clues, and crack complex challenges. It tests logical thinking, cryptography knowledge, and problem-solving speed",
     location: "Mechanical Dept, Jadavpur University",
     type: "Simulation Challenge",
     groupSize: "2-4",
    // price: 6000.00,
-    image: "https://drive.google.com/file/d/1SyyZuSkf7G6zjlXfbkKARrwzato5rKSg/view?usp=drivesdk",
+    image: datamine,
     prelimsDate: "17-03-2025 (online mode)",
     finalsDate: "18-03-2025",
     coordinators: [
@@ -50,14 +63,14 @@ export const events = [
     ]
   },
   {
-    id:"",
+    id:"67b714449a01ff3f0a3c85e6",
     title: "Model Matrix",
     description: "Gear up to flex your skills in CAD modeling and simulation. Focussed on complex core engineering parts and components, it challenges precision, creativity, and technical expertise in a dynamic and competitive setting."   ,
     location: "Mechanical Dept, Jadavpur University",
     type: "Simulation Challenge",
     groupSize: "1",
     price: 5000.00,
-    image: "https://drive.google.com/file/d/1SyyZuSkf7G6zjlXfbkKARrwzato5rKSg/view?usp=drivesdk",
+    image: model,
     prelimsDate: "17-03-2025 (online mode)",
     finalsDate: "18-03-2025",
     coordinators: [
@@ -79,14 +92,14 @@ export const events = [
     ]
   },
   {
-    id: "",
+    id: "67b714799a01ff3f0a3c85ea",
     title: "Clash of Cases",
     description: "Use your skills to analyze real-world business scenarios and present innovative solutions to showcase your problem-solving and analytical thinking abilities",
     location: "Mechanical Dept, Jadavpur University",
     type: "General",
     groupSize: "1",
    // price: 1000.00, // not yet decided
-    //image: "https://images.pexels.com/photos/256660/pexels-photo-256660.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
+    image: clash,
     prelimsDate: "17-03-2025(online)",
     finalsDate: "18-03-2025",
     coordinators: [
@@ -104,14 +117,14 @@ export const events = [
     ]
   },
   {
-     id: "67b714349a01ff3f0a3c85e9", //id of debate competition
+     id: "67b7145e9a01ff3f0a3c85e8", //id of debate competition
      title: "Torko Bitorko",
      description: "Be prepared to engage yourself in thought-provoking discussions on general knowledge, core engineering concepts, and current affairs to showcase analytical thinking, argumentation skills and intellectual agility",
      location: "Mechanical Dept, Jadavpur University",
      type: "General",
      groupSize: "1",
     // price: 1000.00,
-     image: "https://drive.google.com/file/d/1UjufNzRgUcEhKVJYLPU1ymqtMf2BE8av/view?usp=drivesdk",
+     image: debate,
     // prelimsDate: "17-03-2025",
      finalsDate: "19-03-2025",
      coordinators: [
@@ -160,7 +173,7 @@ export const events = [
     type: "Hardware Challenge",
     groupSize: "2-4",
     price: 2000.00,
-    image: "https://drive.google.com/file/d/1UFRuB6_k83NpdcqcZ6TNh5_xxFwTaGq3/view?usp=drivesdk",
+    image: egg,
     prelimsDate: "17-03-2025",
     finalsDate: "17-03-2025",
     coordinators: [
@@ -178,14 +191,14 @@ export const events = [
     ]
   },
   {
-    id: "",
+    id: "67b7146e9a01ff3f0a3c85e9",
     title: "Beyond The Frame",
     description: "Grasp the oppurtunity to capture the world from a unique perspective. This event challenges creativity in storytelling, showcasing extraordinary moments that highlight life’s beauty and intricacies.",
     location: "Mechanical Dept, Jadavpur University",
     type: "Fun Activities",
     groupSize: "1",
     price: 2000.00,
-    image: "https://drive.google.com/file/d/1U_RLsU6_jhXCFtMY3srTqunJSoqdEuQR/view?usp=drivesdk",
+    image: frame,
     prelimsDate: "17-03-2025 & 18-03-2025",
     finalsDate: "19-03-2025",
     coordinators: [
@@ -211,7 +224,7 @@ export const events = [
     type: "Hardware Challenge",
     groupSize: "2-5",
    // price: 6000.00, //not confirmed
-    image: "https://drive.google.com/file/d/1UmJh0UuWwXry8u_tHsWyPpzfmdn_slKs/view?usp=drivesdk",
+    image: robo,
     prelimsDate: "18-03-2025",
     finalsDate: "18-03-2025",
     coordinators: [
@@ -229,14 +242,14 @@ export const events = [
     ]
   },
   {
-    id: "67b714349a01ff3f0a3c85ea",
+    id: "67b714529a01ff3f0a3c85e7",
     title: "Gyan Yudh",
     description: "Test your knowledge in a variety of subjects in this quiz competition. It challenges intellect, speed, and awareness, offering a thrilling battle of wits for all knowledge enthusiasts.",
     location: "Lecture Hall, Jadavpur University",
     type: "General",
     groupSize: "1-3",
     price: 1000.00,
-    image: "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
+    image: qui,
     prelimsDate: "18-03-2025",
     finalsDate: "19-03-2025",
     coordinators: [
@@ -258,8 +271,8 @@ export const events = [
     type: "Hardware Challenge",
     groupSize: "3-6",
     price: 6000.00,
-    image: "https://images.pexels.com/photos/1438515/pexels-photo-1438515.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
-    //prelimsDate: "",
+    image: maze,
+    prelimsDate: "18-03-2025",
     finalsDate: "18-03-2025",
     coordinators: [
       { name: "Rohit Dutta", phone: "" },
@@ -300,90 +313,7 @@ export const events = [
     ]
   },
   
-  {
-    id: "67b714349a01ff3f0a3c85e6",
-    title: "Tech Talk",
-    description: "Attend a series of talks by industry experts on the latest trends in technology.",
-    location: "Auditorium, Jadavpur University",
-    type: "General",
-    groupSize: "1",
-    price: 500.00,
-    image: "https://images.pexels.com/photos/3184298/pexels-photo-3184298.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
-    prelimsDate: "2023-11-06",
-    finalsDate: "2023-11-10",
-    coordinators: [
-      { name: "John Doe", phone: "1234567890" },
-      { name: "Jane Smith", phone: "0987654321" }
-    ],
-    rules: [
-      "Each participant must register individually.",
-      "Participants must adhere to the event guidelines.",
-      "Judges' decisions are final."
-    ]
-  },
- /* {
-    id: "67b714349a01ff3f0a3c85e7",
-    title: "Code Sprint",
-    description: "Participate in a competitive coding challenge to solve complex problems.",
-    location: "Computer Lab, Jadavpur University",
-    type: "Simulation Challenge",
-    groupSize: "1-2",
-    price: 2000.00,
-    image: "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
-    prelimsDate: "2023-11-07",
-    finalsDate: "2023-11-11",
-    coordinators: [
-      { name: "Alice Johnson", phone: "1122334455" },
-      { name: "Bob Brown", phone: "5566778899" }
-    ],
-    rules: [
-      "Each team must solve the given problems within the time limit.",
-      "All solutions must be original and adhere to the event guidelines.",
-      "Judges' decisions are final."
-    ]
-  },*/
-  {
-    id: "67b714349a01ff3f0a3c85e8",
-    title: "Cultural Fest",
-    description: "Enjoy a variety of cultural performances and activities.",
-    location: "Open Ground, Jadavpur University",
-    type: "General",
-    groupSize: "1",
-    price: 0.00,
-    image: "https://images.pexels.com/photos/176306/pexels-photo-176306.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
-    prelimsDate: "2023-11-08",
-    finalsDate: "2023-11-12",
-    coordinators: [
-      { name: "Charlie Davis", phone: "6677889900" },
-      { name: "Dana White", phone: "9988776655" }
-    ],
-    rules: [
-      "Participants must register for individual performances.",
-      "All performances must adhere to the event guidelines.",
-      "Judges' decisions are final."
-    ]
-  },
- /* {
-    id: "67b714349a01ff3f0a3c85e9",
-    title: "Debate Competition",
-    description: "Engage in a debate on various topics and showcase your oratory skills.",
-    location: "Seminar Hall, Jadavpur University",
-    type: "General",
-    groupSize: "1-2",
-    price: 500.00,
-    image: "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
-    prelimsDate: "2023-11-09",
-    finalsDate: "2023-11-13",
-    coordinators: [
-      { name: "Eve Green", phone: "3344556677" },
-      { name: "Frank Black", phone: "7766554433" }
-    ],
-    rules: [
-      "Each team must prepare for the given topics.",
-      "All debates must adhere to the event guidelines.",
-      "Judges' decisions are final."
-    ]
-  },*/
   
-  // ...additional events with unique details...
+ 
+  
 ];
