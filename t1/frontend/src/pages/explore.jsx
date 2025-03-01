@@ -451,7 +451,8 @@ export function Explore() {
                   overflow: "hidden",
                   backgroundColor: "#1C1B1F",
                   transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                  height: "100%",
+                  height: "100%", // Increase card height
+                  minHeight: "400px", // Set a minimum height
                   display: "flex",
                   flexDirection: "column",
                   animation: `${glow} 2s infinite`,
@@ -467,9 +468,10 @@ export function Explore() {
                 />
                 <CardMedia
                   component="img"
-                  height="200"
+                  height="300" // Increased thumbnail height
                   image={event.image}
                   alt={event.title}
+                  sx={{ objectFit: "cover", objectPosition: "top" }} // Display image from the top
                 />
                 <CardContent sx={{ flexGrow: 1, color: "#fff" }}>
                   <Typography>{event.description}</Typography>
