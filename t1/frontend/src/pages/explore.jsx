@@ -27,7 +27,7 @@ import "@fontsource/roboto";
 import "@fontsource/lobster";
 import "@fontsource/open-sans";
 import { Link } from "react-scroll";
-
+import Squares from '../components/Square'; // Import Squares component
 
 import hydro from "../assets/thumb/h.jpg";
 import lens from "../assets/thumb/Beyondlens.webp";
@@ -390,114 +390,125 @@ export function Explore() {
           border: "2px solid black", // Added black border
         }}
       >
-        <Typography variant="h2" component="h1" className="michroma" sx={{ color: '#FFD700', mb: 4, textShadow: '10px 10px 4px black, 0 0 10px black', pt: 3, fontWeight: 'bold' }}>
-                    Explore Events
-                  </Typography>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: { xs: "column", md: "row" },
-            gap: 4,
-            mb: 8,
-            animation: `${slideIn} 0.5s ease-in-out`,
-          }}
-        >
-          <TextField
-            label="Search Events..."
-            variant="outlined"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            sx={{ width: { xs: "100%", md: "50%" }, backgroundColor: "#fff" }}
+        <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: 1 }}>
+          <Squares 
+            speed={0.5} 
+            squareSize={40}
+            direction='diagonal' // up, down, left, right, diagonal
+            borderColor='#fff'
+            hoverFillColor='#222'
           />
-          <FormControl
-            variant="outlined"
-            sx={{ width: { xs: "100%", md: "25%" }, backgroundColor: "#fff" }}
+        </div>
+        <Box sx={{ zIndex: 10, position: "relative" }}>
+          <Typography variant="h2" component="h1" className="michroma" sx={{ color: '#FFD700', mb: 4, textShadow: '10px 10px 4px black, 0 0 10px black', pt: 3, fontWeight: 'bold' }}>
+            Explore Events
+          </Typography>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: { xs: "column", md: "row" },
+              gap: 4,
+              mb: 8,
+              animation: `${slideIn} 0.5s ease-in-out`,
+            }}
           >
-            <InputLabel>Filter by Type</InputLabel>
-            <Select
-              value={filterType}
-              onChange={(e) => setFilterType(e.target.value)}
-              label="Filter by Type"
+            <TextField
+              label="Search Events..."
+              variant="outlined"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              sx={{ width: { xs: "100%", md: "50%" }, backgroundColor: "#fff" }}
+            />
+            <FormControl
+              variant="outlined"
+              sx={{ width: { xs: "100%", md: "25%" }, backgroundColor: "#fff" }}
             >
-              <MenuItem value="">All events</MenuItem>
-              <MenuItem value="Hardware Challenge">Hardware Challenge</MenuItem>
-              <MenuItem value="Simulation Challenge">
-                Simulation Challenge
-              </MenuItem>
-              <MenuItem value="General">General</MenuItem>
-              <MenuItem value="Case Study">Case Study</MenuItem>
-              <MenuItem value="Fun Activities">Fun Activities</MenuItem>
-              <MenuItem value="Mystery Event?">Mystery Event?</MenuItem>
-            </Select>
-          </FormControl>
-        </Box>
-        <Grid container spacing={4} > {/* Increased padding */}
-          {filteredEvents.map((event, index) => (
-            <Grid item xs={12} md={6} key={event._id}> {/* 2 cards per row */}
-              <Card
-                id={`event-${event._id}`}
-                ref={(el) => (cardRefs.current[index] = el)}
-                sx={{
-                  borderRadius: "15px",
-                  overflow: "hidden",
-                  backgroundColor: "#1C1B1F",
-                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                  height: "100%", // Increase card height
-                  minHeight: "400px", // Set a minimum height
-                  display: "flex",
-                  flexDirection: "column",
-                  animation: `${glow} 2s infinite`,
-                  "&:hover": {
-                    transform: "scale(1.05)",
-                    boxShadow: "0 0 20px rgba(255, 215, 0, 0.3)",
-                  },
-                }}
+              <InputLabel>Filter by Type</InputLabel>
+              <Select
+                value={filterType}
+                onChange={(e) => setFilterType(e.target.value)}
+                label="Filter by Type"
               >
-                <CardHeader
-                  title={event.title}
-                  className="michroma"
-                  sx={{ backgroundColor: "rgba(0, 0, 0, 0.7)", color: "#fff" }}
-                />
-                <CardMedia
-                  component="img"
-                  height="300" // Increased thumbnail height
-                  image={event.image}
-                  alt={event.title}
-                  sx={{ objectFit: "cover", objectPosition: "top" }} // Display image from the top
-                />
-                <CardContent sx={{ flexGrow: 1, color: "#fff" }}>
-                  <Typography className="exo-2-regular">{event.description}</Typography>
-                  <Box sx={{ mt: 2 }}>
-                    <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
-                      <MapPin style={{ marginRight: "8px" }} />
-                      <Typography className="exo-2-regular">{event.location}</Typography>
+                <MenuItem value="">All events</MenuItem>
+                <MenuItem value="Hardware Challenge">Hardware Challenge</MenuItem>
+                <MenuItem value="Simulation Challenge">
+                  Simulation Challenge
+                </MenuItem>
+                <MenuItem value="General">General</MenuItem>
+                <MenuItem value="Case Study">Case Study</MenuItem>
+                <MenuItem value="Fun Activities">Fun Activities</MenuItem>
+                <MenuItem value="Mystery Event?">Mystery Event?</MenuItem>
+              </Select>
+            </FormControl>
+          </Box>
+          <Grid container spacing={4} > {/* Increased padding */}
+            {filteredEvents.map((event, index) => (
+              <Grid item xs={12} md={6} key={event._id}> {/* 2 cards per row */}
+                <Card
+                  id={`event-${event._id}`}
+                  ref={(el) => (cardRefs.current[index] = el)}
+                  sx={{
+                    borderRadius: "15px",
+                    overflow: "hidden",
+                    backgroundColor: "#1C1B1F",
+                    transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                    height: "100%", // Increase card height
+                    minHeight: "400px", // Set a minimum height
+                    display: "flex",
+                    flexDirection: "column",
+                    animation: `${glow} 2s infinite`,
+                    "&:hover": {
+                      transform: "scale(1.05)",
+                      boxShadow: "0 0 20px rgba(255, 215, 0, 0.3)",
+                    },
+                  }}
+                >
+                  <CardHeader
+                    title={event.title}
+                    className="michroma"
+                    sx={{ backgroundColor: "rgba(0, 0, 0, 0.7)", color: "#fff" }}
+                  />
+                  <CardMedia
+                    component="img"
+                    height="300" // Increased thumbnail height
+                    image={event.image}
+                    alt={event.title}
+                    sx={{ objectFit: "cover", objectPosition: "top" }} // Display image from the top
+                  />
+                  <CardContent sx={{ flexGrow: 1, color: "#fff" }}>
+                    <Typography className="exo-2-regular">{event.description}</Typography>
+                    <Box sx={{ mt: 2 }}>
+                      <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
+                        <MapPin style={{ marginRight: "8px" }} />
+                        <Typography className="exo-2-regular">{event.location}</Typography>
+                      </Box>
+                      <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
+                        <Calendar style={{ marginRight: "8px" }} />
+                        <Typography className="exo-2-regular">{event.type}</Typography>
+                      </Box>
+                      <Box sx={{ display: "flex", alignItems: "center" }}>
+                        <Users style={{ marginRight: "8px" }} />
+                        <Typography className="exo-2-regular">{event.groupSize} people</Typography>
+                      </Box>
                     </Box>
-                    <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
-                      <Calendar style={{ marginRight: "8px" }} />
-                      <Typography className="exo-2-regular">{event.type}</Typography>
-                    </Box>
-                    <Box sx={{ display: "flex", alignItems: "center" }}>
-                      <Users style={{ marginRight: "8px" }} />
-                      <Typography className="exo-2-regular">{event.groupSize} people</Typography>
-                    </Box>
-                  </Box>
-                </CardContent>
-                <CardActions sx={{ justifyContent: "space-between", p: 2 }}>
-                  <Typography variant="h6" className="exo-2-bold" sx={{ color: "#fff" }}>
-                    ₹ {event.price}
-                  </Typography>
-                  <Button
-                    variant="outlined"
-                    sx={{ color: "#F45558", borderColor: "#F45558" }} // Updated red color
-                    onClick={() => navigate(`/details?event=${event._id}`)} // Use _id instead of id
-                  >
-                    Event Details
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
+                  </CardContent>
+                  <CardActions sx={{ justifyContent: "space-between", p: 2 }}>
+                    <Typography variant="h6" className="exo-2-bold" sx={{ color: "#fff" }}>
+                      ₹ {event.price}
+                    </Typography>
+                    <Button
+                      variant="outlined"
+                      sx={{ color: "#F45558", borderColor: "#F45558" }} // Updated red color
+                      onClick={() => navigate(`/details?event=${event._id}`)} // Use _id instead of id
+                    >
+                      Event Details
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
       </Box>
     </ThemeProvider>
   );
