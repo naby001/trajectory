@@ -35,7 +35,8 @@ export const events = [
       "Teams are expected to maintain professionalism. Any form of misconduct will lead to immediate disqualification.",
       "The Decision of the Event Coordinators will be final and NO Arguments shall be entertained."
       
-    ]
+    ],
+    pdfLink: "https://drive.google.com/file/d/1GOzVMhgb9HAqCN0ZGwCVXjcN9jZS70QA/view?usp=sharing"
   },
 
   {
@@ -60,7 +61,8 @@ export const events = [
      " Participants are expected to maintain professional conduct throughout the competition.",
      "Any form of plagiarism, cheating, or unethical behavior will result in immediate disqualification.",
       "The decision of the Event Coordinator will be final and no arguments will be entertained."
-    ]
+    ],
+    pdfLink: "https://drive.google.com/file/d/1ES9vS307RdhUQAGo-OOZ9-X_K15W_vq2/view?usp=drive_link"
   },
   {
     id:"67b714449a01ff3f0a3c85e6",
@@ -89,7 +91,8 @@ export const events = [
      "Any form of plagiarism, cheating, or unethical behavior will result in immediate disqualification.",
      "During the offine round, participants must reach the venue on time. Once the clock starts, they will have only the remaining time to complete the task. No extra time will be given. If a player is absent on that day, their opponent will receive a walkover.",
       "The decision of the Event Coordinator will be final and no arguments will be entertained."
-    ]
+    ],
+    pdfLink: "https://drive.google.com/file/d/1YWZxyWIP6_x_ofAvv_PD1CGFjeXgOQv7/view?usp=drive_link"
   },
   {
     id: "67b714799a01ff3f0a3c85ea",
@@ -114,7 +117,8 @@ export const events = [
        "Any form of plagiarism, cheating, or unethical behavior will result in immediate disqualification.",
       "The decision of the Event Coordinator will be final and no arguments will be entertained."
       
-    ]
+    ],
+    pdfLink: "https://drive.google.com/file/d/1eQ4bsbd-ukHU7gcg2FxWmgIfqYVX0xGt/view?usp=drive_link"
   },
   {
      id: "67b7145e9a01ff3f0a3c85e8", //id of debate competition
@@ -138,7 +142,8 @@ export const events = [
         "Any form of plagiarism, cheating, or unethical behavior will result in immediate disqualification.",
        "The decision of the Event Coordinator will be final and no arguments will be entertained.",
        
-     ]
+     ],
+     pdfLink: "https://drive.google.com/file/d/1eQ4bsbd-ukHU7gcg2FxWmgIfqYVX0xGt/view?usp=drive_link"
    },
    {
     id: "",
@@ -163,7 +168,8 @@ export const events = [
       "Participant is expected to maintain professional conduct throughout the competition.",
        "Any form of plagiarism, cheating, or unethical behavior will result in immediate disqualification.",
       "The decision of the Event Coordinator will be final and no arguments will be entertained.",
-    ]     
+    ],
+    pdfLink: "https://drive.google.com/file/d/1s9ANyRgxjhtUzYBGttqUFFJChxMj7lM0/view?usp=drive_link"
   },
   {
     id: "67b7141b9a01ff3f0a3c85e4",
@@ -188,7 +194,8 @@ export const events = [
        "Any form of plagiarism, cheating, or unethical behavior will result in immediate disqualification.",
       "The decision of the Event Coordinator will be final and no arguments will be entertained.",
       
-    ]
+    ],
+    pdfLink: "https://drive.google.com/file/d/1exEWry5G-5XeBCgQv6SRGRlOgV320aAD/view?usp=drive_link"
   },
   {
     id: "67b7146e9a01ff3f0a3c85e9",
@@ -213,7 +220,8 @@ export const events = [
       "Participants must respect the privacy and dignity of subjects in their photographs,especially in street photography.",
        "Offensive, violent, or politically sensitive imagery may be rejected at the discretion of the organizers.",      
       "The decision of the Event Coordinator will be final and no arguments will be entertained.",
-    ]     
+    ],
+    pdfLink: "https://drive.google.com/file/d/11rnn8pP9JeGEINmdTDc_B5MyVWi-KSqM/view?usp=drive_link"
   },
   
   {
@@ -223,7 +231,7 @@ export const events = [
     location: "Mechanical Dept, Jadavpur University",
     type: "Hardware Challenge",
     groupSize: "2-5",
-   // price: 6000.00, //not confirmed
+   price: 6000.00, //not confirmed
     image: robo,
     prelimsDate: "18-03-2025",
     finalsDate: "18-03-2025",
@@ -239,7 +247,8 @@ export const events = [
       "All designs must adhere to the event guidelines.",
       "Teams must inform organizers in advance if their robot requires specific technical support.",
       "Judges' decisions are final."
-    ]
+    ],
+    pdfLink: "https://example.com/roboleague.pdf"
   },
   {
     id: "67b714529a01ff3f0a3c85e7",
@@ -261,7 +270,8 @@ export const events = [
       "Each team must answer the given questions within the time limit.",
       "All answers must adhere to the event guidelines.",
       "Judges' decisions are final."
-    ]
+    ],
+    pdfLink: "https://drive.google.com/file/d/1YkrZC0uLcGNNWWYH17k2VxrGGxdaTKcv/view?usp=drive_link"
   },
   {
     id: "67b710b69a01ff3f0a3c85e3",
@@ -286,7 +296,8 @@ export const events = [
       "All designs must adhere to the event guidelines.",
       "Teams must inform organizers in advance if their robot requires specific technical support.",
       "Judges' decisions are final."
-    ]
+    ],
+    pdfLink: "https://example.com/mazecraft.pdf"
   },
   {
     id: "",
@@ -310,7 +321,8 @@ export const events = [
        "Any form of plagiarism, cheating, or unethical behavior will result in immediate disqualification.",
       "The decision of the Event Coordinator will be final and no arguments will be entertained."
       
-    ]
+    ],
+    pdfLink: "https://example.com/treasurehunt.pdf"
   },
   
   

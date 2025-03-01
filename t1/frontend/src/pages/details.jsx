@@ -132,6 +132,10 @@ export default function Details() {
                   p: 3,
                   background: '#1C1B1F', // Removed transparency
                   boxShadow: '0 0 10px 2px #F45558', // Added glow effect
+                  height: '750px', // Set fixed height
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
                 }}
               >
                 <Box component="img" 
@@ -200,6 +204,10 @@ export default function Details() {
                   p: 3,
                   background: '#1C1B1F', // Removed transparency
                   boxShadow: '0 0 10px 2px #F45558', // Added glow effect
+                  height: '750px', // Set fixed height
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
                 }}
               >
                 <List>
@@ -300,6 +308,19 @@ export default function Details() {
                     </ListItem>
                   ))}
                 </List>
+                <Button
+                  variant="contained"
+                  sx={{ 
+                    mt: 2, 
+                    backgroundColor: '#0099ff', // Updated button color
+                    '&:hover': {
+                      backgroundColor: '#F45558',
+                    },
+                  }}
+                  onClick={() => window.open(eventDetails.pdfLink, '_blank')}
+                >
+                  Statement
+                </Button>
               </Paper>
             </Grid>
           </Grid>
