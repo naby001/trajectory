@@ -29,7 +29,7 @@ import "@fontsource/open-sans";
 import { Link } from "react-scroll";
 
 
-import hydro from "../assets/thumb/Beyondlens.webp";
+import hydro from "../assets/thumb/h.jpg";
 import lens from "../assets/thumb/Beyondlens.webp";
 import clash from "../assets/thumb/clash of cases.webp";
 import data from "../assets/thumb/Data mine.jpg";
@@ -440,7 +440,7 @@ export function Explore() {
             </Select>
           </FormControl>
         </Box>
-        <Grid container spacing={4} sx={{ px: 6, py: 4 }}> {/* Increased padding */}
+        <Grid container spacing={4} > {/* Increased padding */}
           {filteredEvents.map((event, index) => (
             <Grid item xs={12} md={6} key={event._id}> {/* 2 cards per row */}
               <Card
