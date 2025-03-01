@@ -8,11 +8,9 @@ import {
   Avatar,
   Menu,
   MenuItem,
-  Badge,
   useMediaQuery,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import MailIcon from "@mui/icons-material/Mail";
 import logo from "../assets/logo.png";
 import axios from "axios";
 
@@ -22,15 +20,11 @@ const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUserName] = useState("User");
   const [anchorEl, setAnchorEl] = useState(null);
-  const [hasTeam, setHasTeam] = useState(false);
-  const [inviteCount, setInviteCount] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleMobileMenuToggle = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
-
- 
 
   // ✅ Fetch user & team info
   useEffect(() => {
@@ -43,30 +37,6 @@ const Navbar = () => {
         try {
           const parsedUser = JSON.parse(storedUser);
           setUserName(parsedUser?.name || "User");
-
-          // ✅ Check if user has a team
-          const storedTeam = localStorage.getItem("team");
-          setHasTeam(!!storedTeam);
-
-          // ✅ Fetch pending invites count
-          if (token && token !== "null" && token !== "undefined") {
-            try {
-              const response = await axios.get("https://trajectory-37k0.onrender.com/api/team/invites", {
-                headers: { Authorization: `Bearer ${token}` },
-              });
-          
-              if (response.status === 200) {
-                setInviteCount(response.data.length);
-              }
-            } catch (err) {
-              console.error("Error fetching invites:", err.response?.data || err.message);
-              if (err.response?.status === 401) {
-                localStorage.removeItem("token"); // Clear invalid token
-                setIsLoggedIn(false);
-              }
-            }
-          }
-          
         } catch (error) {
           console.error("Error parsing user data:", error);
           setUserName("User");
@@ -85,8 +55,6 @@ const Navbar = () => {
     localStorage.clear();
     setIsLoggedIn(false);
     setUserName("User");
-    setHasTeam(false);
-    setInviteCount(0);
     setAnchorEl(null);
     window.dispatchEvent(new Event("storage"));
     window.location.reload();
@@ -168,16 +136,6 @@ const Navbar = () => {
             {/* ✅ Show only if logged in */}
             {isLoggedIn && (
               <>
-                {/* Remove Team Registration Button */}
-                {/* Invitations Button */}
-                {inviteCount > 0 && (
-                  <IconButton component={Link} to="/invites" sx={{ marginLeft: "20px", color: "white" }}>
-                    <Badge badgeContent={inviteCount} color="error">
-                      <MailIcon />
-                    </Badge>
-                  </IconButton>
-                )}
-
                 {/* ✅ Profile Avatar with Dropdown */}
                 <IconButton onClick={handleAvatarClick} sx={{ marginLeft: "20px" }}>
                   <Avatar sx={{ bgcolor: "#F45558" }}>{userName.charAt(0).toUpperCase()}</Avatar>
@@ -251,9 +209,9 @@ const Navbar = () => {
             {["Home", "Explore", "About"].map((label, index) => (
               <MenuItem
                 key={index}
-                component={label === "Explore" ? "button" : Link}
+                component={Link}
                 to={label === "Home" ? "/" : `/${label.toLowerCase()}`}
-                onClick={ handleMobileMenuToggle}
+                onClick={handleMobileMenuToggle}
               >
                 {label}
               </MenuItem>
@@ -261,22 +219,6 @@ const Navbar = () => {
             {/* Show only if logged in */}
             {isLoggedIn && (
               <>
-                <MenuItem
-                  component={Link}
-                  to="/teamregistration"
-                  onClick={handleMobileMenuToggle}
-                >
-                  {hasTeam ? "Edit Team" : "Register Team"}
-                </MenuItem>
-                {inviteCount > 0 && (
-                  <MenuItem
-                    component={Link}
-                    to="/invites"
-                    onClick={handleMobileMenuToggle}
-                  >
-                    Invitations ({inviteCount})
-                  </MenuItem>
-                )}
                 <MenuItem onClick={handleLogout} sx={{ color: "red", fontWeight: "bold" }}>
                   Logout
                 </MenuItem>
@@ -285,6 +227,7 @@ const Navbar = () => {
             {!isLoggedIn && (
               <MenuItem
                 component={Link}
+                to="/login"
                 onClick={handleMobileMenuToggle}
               >
                 Login
