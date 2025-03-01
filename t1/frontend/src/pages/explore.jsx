@@ -29,7 +29,7 @@ import "@fontsource/open-sans";
 import { Link } from "react-scroll";
 
 
-import hydro from "../assets/thumb/hydro_.jpg";
+import hydro from "../assets/thumb/Beyondlens.webp";
 import lens from "../assets/thumb/Beyondlens.webp";
 import clash from "../assets/thumb/clash of cases.webp";
 import data from "../assets/thumb/Data mine.jpg";
