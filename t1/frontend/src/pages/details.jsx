@@ -132,7 +132,7 @@ export default function Details() {
                   p: 3,
                   background: '#1C1B1F', // Removed transparency
                   boxShadow: '0 0 10px 2px #F45558', // Added glow effect
-                  height: '750px', // Set fixed height
+                  height: { xs: 'auto', md: '750px' }, // Set height to auto on mobile
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
@@ -204,7 +204,7 @@ export default function Details() {
                   p: 3,
                   background: '#1C1B1F', // Removed transparency
                   boxShadow: '0 0 10px 2px #F45558', // Added glow effect
-                  height: '750px', // Set fixed height
+                  height: { xs: 'auto', md: '750px' }, // Set height to auto on mobile
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
