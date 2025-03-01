@@ -33,6 +33,12 @@ const GlitchText = ({
           cursor: pointer;
         }
 
+        @media (max-width: 600px) {
+          .glitch {
+            font-size: clamp(4.8rem, 15vw, 10rem); /* Increase font size on mobile */
+          }
+        }
+
         .glitch::after,
         .glitch::before {
           content: attr(data-text);

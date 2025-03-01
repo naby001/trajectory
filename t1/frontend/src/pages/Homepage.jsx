@@ -35,7 +35,7 @@ import "@fontsource/open-sans"; // Import Open Sans font
 import CarRoadmap from "../components/CarRoadmap"; // Import the CarRoadmap component
 import InfiniteScrollAnimation from "../components/infinity"; // Import the InfiniteScrollAnimation component
 import GlitchText from "../components/GlitchText";
-
+import videoSrc from "../assets/v.mp4"; // Ensure this path is correct
 
 const theme = createTheme({
   typography: {
@@ -157,9 +157,9 @@ const destinations = [
 function HomePage() {
   const navigate = useNavigate();
 
-  // When a card's SEE MORE is clicked, navigate to the Explore page with the tour title as filter.
+  // When a card's SEE MORE is clicked, show an alert for "Coming Soon".
   const handleCardClick = (type) => {
-    navigate(`/explore?filter=${type}`);
+    alert("Coming Soon");
   };
 
   const [currentDestination, setCurrentDestination] = React.useState(0);
@@ -230,18 +230,40 @@ function HomePage() {
         }}
       >
         {/* Heading */}
-        <Box sx={{ mt: 14, display: "flex", justifyContent: "center" }}> {/* Add margin-top and center the box */}
-        <GlitchText
+        <Box sx={{ mt: 14, justifyContent: "center" ,alignItems: "center", display: "flex", flexDirection: "column" }}>  
+          <GlitchText
             speed={1}
             enableShadows={true}
             enableOnHover={true}
             className="custom-class"
-            
           >
-          
-            Trajectory
+            Trajectory 
           </GlitchText>
+          <br></br>
+          <GlitchText
+            speed={1}
+            enableShadows={true}
+            enableOnHover={true}
+            className="custom-class"
+          >
+            2k25
+          </GlitchText>
+          
         </Box>
+        
+
+        {/* Video below the heading */}
+        {/* <Box sx={{ width: "100%", display: "flex", justifyContent: "center", mt: 20 }}>
+          <video
+            width="50%"
+            height="auto"
+            controls
+            style={{ maxHeight: "500px" }}
+          >
+            <source src={videoSrc} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </Box> */}
 
         {/* Navbar */}
         <AppBar position="fixed" sx={{ background: "#1C1B1F" }}>
@@ -521,12 +543,13 @@ function HomePage() {
             component="footer"
           >
             <Box sx={{ mt: 1, display: "flex", justifyContent: "center" }}>
-              <Button
-                variant="outlined"
-                sx={{ color: "rgb(187, 83, 84)", borderColor: "rgb(187, 83, 84)" }} // Updated button color
-              >
-                Subscribe to Social Media
-              </Button>
+            <Button
+  variant="outlined"
+  href="https://linktr.ee/trajectoryjumech?fbclid=PAZXh0bgNhZW0CMTEAAaajz1I4w0OH00Qw7UtFQyHtOTuEdyiokldRelhsoZ4jyZgJvdnJ57qURH4_aem_KOr5iI6NgY0WGz17PuGT3A"
+  sx={{ color: "rgb(187, 83, 84)", borderColor: "rgb(187, 83, 84)" }} // Updated button color
+>
+  Subscribe to Social Media
+</Button>
             </Box>
             <Box sx={{ mt: 2, display: "flex", justifyContent: "center" }}> {/* Reduced margin-top */}
               <IconButton
