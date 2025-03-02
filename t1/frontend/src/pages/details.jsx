@@ -27,7 +27,7 @@ import model from "../assets/13.png";
 import clash from "../assets/3.png";
 import debate from "../assets/5.png";
 import egg from "../assets/10.png";
-import frame from "../assets/9.png";
+import frame from "../assets/9.jpg";
 import robo from "../assets/7.png";
 import qui from "../assets/4.png";
 import maze from "../assets/8.jpg";
@@ -272,7 +272,7 @@ export const events = [
       "Teams must inform organizers in advance if their robot requires specific technical support.",
       "Judges' decisions are final."
     ],
-    pdfLink: "https://drive.google.com/file/d/1YDw7s5VcqIFc3Dl7m9gYtxgv78GVvFXa/view?usp=drive_link"
+    pdfLink: "https://drive.google.com/file/d/1YDw7s5VcqIFc3Dl7m9gYtxgv78GVvFXa/view?usp=sharing"
   },
   {
     id: "67b714529a01ff3f0a3c85e7",
