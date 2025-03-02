@@ -272,7 +272,7 @@ export const events = [
       "Teams must inform organizers in advance if their robot requires specific technical support.",
       "Judges' decisions are final."
     ],
-    pdfLink: "https://drive.google.com/file/d/1YDw7s5VcqIFc3Dl7m9gYtxgv78GVvFXa/view?usp=sharing"
+    pdfLink: "https://drive.google.com/file/d/1YDw7s5VcqIFc3Dl7m9gYtxgv78GVvFXa/view?usp=drive_link"
   },
   {
     id: "67b714529a01ff3f0a3c85e7",
@@ -355,6 +355,19 @@ export const events = [
   
 ];
 
+const unstopLinks = {
+  "67b7102b9a01ff3f0a3c85e1": "https://unstop.com/o/mAg4YNs?lb=5D9mviYU&utm_medium=Share&utm_source=shortUrl",
+  "67b7148d9a01ff3f0a3c85ec": "https://unstop.com/o/PGkBT7a?lb=5D9mviYU&utm_medium=Share&utm_source=shortUr",
+  "67b714449a01ff3f0a3c85e6": "https://unstop.com/o/gBP02F1?lb=5D9mviYU&utm_medium=Share&utm_source=shortUr",
+  "67b714799a01ff3f0a3c85ea": "https://unstop.com/o/Zi3vI8n?lb=5D9mviYU&utm_medium=Share&utm_source=shortUrl",
+  "67b7145e9a01ff3f0a3c85e8": "https://unstop.com/o/Rzv2xHh?lb=5D9mviYU&utm_medium=Share&utm_source=shortU",
+  "": "https://unstop.com/o/7dNvB96?lb=5D9mviYU&utm_medium=Share&utm_source=shortUr",
+  "67b7141b9a01ff3f0a3c85e4": "https://unstop.com/o/r4Vap1c?lb=5D9mviYU&utm_medium=Share&utm_source=shortUr",
+  "67b7146e9a01ff3f0a3c85e9": "https://unstop.com/o/1W62PzC?lb=5D9mviYU&utm_medium=Share&utm_source=shortUrl",
+  "67b710919a01ff3f0a3c85e2": "https://unstop.com/o/TuF04d6?lb=5D9mviYU&utm_medium=Share&utm_source=shortU",
+  "67b714529a01ff3f0a3c85e7": "https://unstop.com/o/TMnrf9G?lb=5D9mviYU&utm_medium=Share&utm_source=shortUr",
+  "67b710b69a01ff3f0a3c85e3": "https://unstop.com/o/rDWuaG6?lb=5D9mviYU&utm_medium=Share&utm_source=shortUrl"
+};
 
 export default function Details() {
   const location = useLocation();
@@ -499,8 +512,7 @@ export default function Details() {
                     justifyContent: 'center',
                   }}
                   fullWidth
-                  onClick={() => window.location.href = 'https://unstop.com/'
-                  }
+                  onClick={() => window.location.href = unstopLinks[eventId] || 'https://unstop.com/'}
                 >
                   <Box
                     component="img"
