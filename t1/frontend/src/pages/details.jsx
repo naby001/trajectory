@@ -31,7 +31,7 @@ import frame from "../assets/9.jpg";
 import robo from "../assets/7.png";
 import qui from "../assets/4.png";
 import maze from "../assets/8.jpg";
-
+import Hover from "../assets/thumb/Hoverpod.webp";
 
 
 export const events = [
@@ -170,14 +170,14 @@ export const events = [
      pdfLink: "https://drive.google.com/file/d/1rXmIVzJE1DdFaVpSf6-nW8eVs_rqUhrp/view?usp=drive_link"
    },
    {
-    id: "",
+    id: "67b714349a01ff3f0a3c85e5",
     title: "Hoverpod",
     description: "An exciting event where participants build and race hovercraft-like vehicles. These self-propelled pods glide on a cushion of air. Teams focus on design, stability, and speed to compete in time-based challenges",
     location: "Mechanical Dept, Jadavpur University",
     type: "Hardware Challenge",
     groupSize: "5",
     price: 6000.00,
-    image: "https://drive.google.com/file/d/1UW2KqHxMlZ6_Ut6Id9pHLvmdG1JvqRGd/view?usp=drivesdk",
+    image: Hover,
     //prelimsDate: "2023-11-05",
     finalsDate: "17-03-2025",
     coordinators: [
@@ -361,7 +361,7 @@ const unstopLinks = {
   "67b714449a01ff3f0a3c85e6": "https://unstop.com/o/gBP02F1?lb=5D9mviYU&utm_medium=Share&utm_source=shortUr",
   "67b714799a01ff3f0a3c85ea": "https://unstop.com/o/Zi3vI8n?lb=5D9mviYU&utm_medium=Share&utm_source=shortUrl",
   "67b7145e9a01ff3f0a3c85e8": "https://unstop.com/o/Rzv2xHh?lb=5D9mviYU&utm_medium=Share&utm_source=shortU",
-  "": "https://unstop.com/o/7dNvB96?lb=5D9mviYU&utm_medium=Share&utm_source=shortUr",
+  "67b714349a01ff3f0a3c85e5": "https://unstop.com/o/7dNvB96?lb=5D9mviYU&utm_medium=Share&utm_source=shortUr", // Updated link
   "67b7141b9a01ff3f0a3c85e4": "https://unstop.com/o/r4Vap1c?lb=5D9mviYU&utm_medium=Share&utm_source=shortUr",
   "67b7146e9a01ff3f0a3c85e9": "https://unstop.com/o/1W62PzC?lb=5D9mviYU&utm_medium=Share&utm_source=shortUrl",
   "67b710919a01ff3f0a3c85e2": "https://unstop.com/o/TuF04d6?lb=5D9mviYU&utm_medium=Share&utm_source=shortU",
