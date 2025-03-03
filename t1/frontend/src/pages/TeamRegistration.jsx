@@ -48,7 +48,7 @@ const TeamRegistration = () => {
     //     if (!token) return;
 
     //     const response = await axios.get(
-    //       "https://trajectory-37k0.onrender.comapi/team/my-teams",
+    //       "https://trajectory-37k0.onrender.com/api/team/my-teams",
     //       {
     //         headers: { Authorization: `Bearer ${token}` },
     //       }
@@ -65,7 +65,7 @@ const TeamRegistration = () => {
 
     const fetchallusers=async()=>{
       try {
-        const response=await fetch("https://trajectory-37k0.onrender.comapi/auth/getallusers",{
+        const response=await fetch("https://trajectory-37k0.onrender.com/api/auth/getallusers",{
           method:"POST"
         });
         const returnedemails=await response.json();
@@ -79,7 +79,7 @@ const TeamRegistration = () => {
     const fetchallregisteredemails=async()=>{
       const data={eventId:searchParams.get("event")};
       try {
-        const response=await fetch("https://trajectory-37k0.onrender.comapi/team/getteamsofevent",{
+        const response=await fetch("https://trajectory-37k0.onrender.com/api/team/getteamsofevent",{
           headers:{"Content-Type":"application/json"},
           method:'POST',
           body:JSON.stringify(data)
@@ -121,7 +121,7 @@ const TeamRegistration = () => {
       }
 
       const response = await axios.post(
-        "https://trajectory-37k0.onrender.comapi/team/create",
+        "https://trajectory-37k0.onrender.com/api/team/create",
         { 
           name: teamName, 
           member1, 
