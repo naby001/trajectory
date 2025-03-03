@@ -48,7 +48,7 @@ const TeamRegistration = () => {
     //     if (!token) return;
 
     //     const response = await axios.get(
-    //       "https://trajectory-37k0.onrender.com/api/team/my-teams",
+    //       "https://trajectory-37k0.onrender.comapi/team/my-teams",
     //       {
     //         headers: { Authorization: `Bearer ${token}` },
     //       }
@@ -65,7 +65,7 @@ const TeamRegistration = () => {
 
     const fetchallusers=async()=>{
       try {
-        const response=await fetch("https://trajectory-37k0.onrender.com/api/auth/getallusers",{
+        const response=await fetch("https://trajectory-37k0.onrender.comapi/auth/getallusers",{
           method:"POST"
         });
         const returnedemails=await response.json();
@@ -79,7 +79,7 @@ const TeamRegistration = () => {
     const fetchallregisteredemails=async()=>{
       const data={eventId:searchParams.get("event")};
       try {
-        const response=await fetch("https://trajectory-37k0.onrender.com/api/team/getteamsofevent",{
+        const response=await fetch("https://trajectory-37k0.onrender.comapi/team/getteamsofevent",{
           headers:{"Content-Type":"application/json"},
           method:'POST',
           body:JSON.stringify(data)
@@ -121,7 +121,7 @@ const TeamRegistration = () => {
       }
 
       const response = await axios.post(
-        "https://trajectory-37k0.onrender.com/api/team/create",
+        "https://trajectory-37k0.onrender.comapi/team/create",
         { 
           name: teamName, 
           member1, 
@@ -154,6 +154,10 @@ const [isValidMember3, setIsValidMember3] = useState(null);
 let timeout1, timeout2, timeout3;
 
 const checkEmail = (email, setValidMember, otherEmails) => {
+  if (!email) {
+    setValidMember(true);
+    return;
+  }
   clearTimeout(timeout1);
   clearTimeout(timeout2);
   clearTimeout(timeout3);
@@ -276,9 +280,9 @@ const checkEmail = (email, setValidMember, otherEmails) => {
               timeout1 = setTimeout(() => checkEmail(email, setIsValidMember1, [member2, member3]), 1000);
             }}
             InputProps={{ style: { color: "#000000", backgroundColor: "#FFFFFF" } }}
-            error={isValidMember1 === false}
+            error={isValidMember1 === false && member1 !=  false} // Show error only if email is not empty
             helperText={
-              isValidMember1 === false
+              isValidMember1 === false  && member1 != false
                 ? !totalemails.includes(member1)
                   ? "Email not registered"
                   : member1 === user.email
@@ -300,9 +304,9 @@ const checkEmail = (email, setValidMember, otherEmails) => {
               timeout2 = setTimeout(() => checkEmail(email, setIsValidMember2, [member1, member3]), 1000);
             }}
             InputProps={{ style: { color: "#000000", backgroundColor: "#FFFFFF" } }}
-            error={isValidMember2 === false}
+            error={isValidMember2 === false && member2 !=  false}
             helperText={
-              isValidMember2 === false
+              isValidMember2 === false&& member2 !=  false
                 ? !totalemails.includes(member2)
                   ? "Email not registered"
                   : member2 === user.email
@@ -324,9 +328,9 @@ const checkEmail = (email, setValidMember, otherEmails) => {
               timeout3 = setTimeout(() => checkEmail(email, setIsValidMember3, [member1, member2]), 1000);
             }}
             InputProps={{ style: { color: "#000000", backgroundColor: "#FFFFFF" } }}
-            error={isValidMember3 === false}
+            error={isValidMember3 === false && member3 !=  false}
             helperText={
-              isValidMember3 === false
+              isValidMember3 === false&& member3 !=  false
                 ? !totalemails.includes(member3)
                   ? "Email not registered"
                   : member3 === user.email
