@@ -31,7 +31,7 @@ import frame from "../assets/9.jpg";
 import robo from "../assets/7.png";
 import qui from "../assets/4.png";
 import maze from "../assets/8.jpg";
-import Hover from "../assets/thumb/Hoverpod.webp";
+import Hover from "../assets/20.jpg";
 
 
 export const events = [

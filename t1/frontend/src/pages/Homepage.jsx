@@ -72,7 +72,7 @@ const theme = createTheme({
 const tours = [
   {
     id: 1,
-    title: "Simulation Challenge",
+    title: "3D Design Battle",
     description:
       "Test your problem-solving skills with complex simulations and scenarios.",
     image:
