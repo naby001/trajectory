@@ -27,7 +27,7 @@ const Invites = () => {
   const fetchInvites = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.get("https://trajectory-37k0.onrender.com/api/team/invites", {
+      const response = await axios.get("https://trajectory-37k0.onrender.comapi/team/invites", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setInvites(response.data);
@@ -45,7 +45,7 @@ const Invites = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.post(
-        "https://trajectory-37k0.onrender.com/api/team/accept-invite",
+        "https://trajectory-37k0.onrender.comapi/team/accept-invite",
         { teamId },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -64,7 +64,7 @@ const Invites = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.post(
-        "https://trajectory-37k0.onrender.com/api/team/decline-invite",
+        "https://trajectory-37k0.onrender.comapi/team/decline-invite",
         { teamId },
         { headers: { Authorization: `Bearer ${token}` } }
       );
