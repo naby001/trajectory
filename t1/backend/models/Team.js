@@ -20,12 +20,9 @@ const teamSchema = new mongoose.Schema({
   institution: { type: String, required: true },
   createdAt: { type: Date, default: Date.now },
 });
-teamSchema.index({ name: 1, event: 1 }, { unique: true });
-teamSchema.index({ email: 1, event: 1 }, { unique: true });
-teamSchema.index({ member1: 1, event: 1 }, { unique: true, sparse: true });
-teamSchema.index({ member2: 1, event: 1 }, { unique: true, sparse: true });
-teamSchema.index({ member3: 1, event: 1 }, { unique: true, sparse: true });
+
 //the above indexes make sure to prevent duplicate registrations
 
 const Team = mongoose.model("Team", teamSchema);
 module.exports = Team;
+
