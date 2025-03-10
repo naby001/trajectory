@@ -256,7 +256,7 @@ const checkEmail = (email, setValidMember, otherEmails) => {
 
           {/* ✅ Team Name - Editable only before registration */}
           <TextField
-            label="Team Name"
+            label="Team Name*"
             fullWidth
             variant="outlined"
             margin="normal"
@@ -343,7 +343,7 @@ const checkEmail = (email, setValidMember, otherEmails) => {
 
           {/* ✅ Team Lead Phone Number */}
           <TextField
-            label="Team Lead Phone Number"
+            label="Team Lead Phone Number*"
             fullWidth
             variant="outlined"
             margin="normal"
