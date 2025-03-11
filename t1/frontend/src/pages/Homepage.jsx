@@ -584,7 +584,7 @@ function HomePage() {
         </Fade>
 
         {/* Additional Content Box */}
-        <Box sx={{ py: 8, color: "white", backgroundColor: "grey" }}>
+        {/* <Box sx={{ py: 8, color: "white", backgroundColor: "grey" }}>
           <Container maxWidth="lg">
             <Typography variant="h4" align="center" className="michroma" gutterBottom>
               Additional Content
@@ -593,7 +593,7 @@ function HomePage() {
               This is where you can add more information or content relevant to your page.
             </Typography>
           </Container>
-        </Box>
+        </Box> */}
 
         {/* Footer */}
         <Fade in={true} timeout={1000}>
