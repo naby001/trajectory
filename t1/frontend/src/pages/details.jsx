@@ -21,17 +21,18 @@ import {
 import Navbar from './Navbar';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import hydro from "../assets/6.png";
-import datamine from "../assets/1.png";
-import model from "../assets/13.png";
-import clash from "../assets/3.png";
-import debate from "../assets/5.png";
-import egg from "../assets/10.png";
-import frame from "../assets/9.jpg";
-import robo from "../assets/7.png";
-import qui from "../assets/4.png";
-import maze from "../assets/8.jpg";
-import Hover from "../assets/20.jpg";
+import hydro from "../assets/EventPosters/Hydro-Blasters.avif";
+import datamine from "../assets/EventPosters/Data-Mine.avif";
+import model from "../assets/EventPosters/Model-Matrix.avif";
+import clash from "../assets/EventPosters/Clash-Of-Cases.avif";
+import debate from "../assets/EventPosters/Torko-Bitorko.avif";
+import egg from "../assets/EventPosters/Prot-Egg-T.avif";
+import frame from "../assets/EventPosters/Beyond-The-Frame.avif";
+import robo from "../assets/EventPosters/RoboTrail.avif";
+import qui from "../assets/EventPosters/GyanYudh.avif";
+import maze from "../assets/EventPosters/RoboTrail.avif";
+import Hover from "../assets/EventPosters/Hoverpod.avif";
+import treasure from "../assets/EventPosters/Treasure-Hunt.avif";
 
 
 export const events = [
@@ -45,11 +46,11 @@ export const events = [
     price: 2000.00,
     image: hydro,
     //prelimsDate: "2023-11-01",
-    finalsDate: "19-03-2025",
+    finalsDate: "04-04-2025",
     coordinators: [
-      { name: "Kaulik Das", phone: " 9830669894" },
-      { name: "Avipso Sinha", phone: "94332 43651" },
-      { name: "Shayan Charan", phone: "91631 23389" } //hih
+      { name: "Kaulik Das", phone: "+91 9830669894" },
+      { name: "Avipso Sinha", phone: "+91 94332 43651" },
+      { name: "Shayan Charan", phone: "+91 91631 23389" }
     ],
     rules: 
     [
@@ -71,12 +72,12 @@ export const events = [
     groupSize: "2-4",
    // price: 6000.00,
     image: datamine,
-    prelimsDate: "17-03-2025 (online mode)",
-    finalsDate: "18-03-2025",
+    prelimsDate: "01-04-2025 (online mode)",
+    finalsDate: "03-04-2025",
     coordinators: [
-      { name: "Tuhin Chakraborty", phone: "9038432263" },
-      { name: "Rohit Dutta", phone: "9064890591" },
-      { name: "Koustav Das",phone:"8348217647"}
+      { name: "Tuhin Chakraborty", phone: "+91 9038432263" },
+      { name: "Rohit Dutta", phone: "+91 9064890591" },
+      { name: "Koustav Das",phone:"+91 8348217647"}
     ],
     rules:
      [
@@ -102,7 +103,7 @@ export const events = [
       { name: "Debadrita Hazra", phone: "9883311422" },
       { name: "Sourav Paul", phone: "94330 31650" },
       { name: "Koustav Bhattacharjee",phone:"85849 77088"},
-      { name: " Soumyojit Biswas",phone:"83890 06855"}
+      { name: "Soumyojit Biswas",phone:"83890 06855"}
      
     ],
     rules:
@@ -126,8 +127,8 @@ export const events = [
     groupSize: "1-4",
       price: 1000.00, // not yet decided
     image: clash,
-    prelimsDate: "17-03-2025(online)",
-    finalsDate: "18-03-2025",
+    prelimsDate: "01-04-2025 (online)",
+    finalsDate: "03-04-2025",
     coordinators: [
       { name: "Srija Mondal", phone: "8851270470" },
       {name: "Koustav Bhattacharjee", phone: "8584977088" },
@@ -153,17 +154,17 @@ export const events = [
     // price: 1000.00,
      image: debate,
     // prelimsDate: "17-03-2025",
-     finalsDate: "19-03-2025",
+     finalsDate: "03-04-2025",
      coordinators: [
        { name: "Mrinmay Tarafdar", phone: "9749386827" },
-       {name: "Koustav Das", phone: "8348217647" },
-       { name: "Aditya Mondal", phone: "974270706" }  
+       { name: "Koustav Das", phone: "8348217647" },
+       { name: "Aditya Mondal", phone: "9748270706" }  
      ],
      rules: [
        "During the preparation period, usage of mobile phones, laptops, or any reference material is strictly prohibited.",
        "Participants must respect their fellow debaters. Interruptions, personal attacks, or aggressive behavior will not be tolerated.",
        "Participants are expected to maintain professional conduct throughout the competition.",
-        "Any form of plagiarism, cheating, or unethical behavior will result in immediate disqualification.",
+       "Any form of plagiarism, cheating, or unethical behavior will result in immediate disqualification.",
        "The decision of the Event Coordinator will be final and no arguments will be entertained.",
        
      ],
@@ -179,12 +180,12 @@ export const events = [
     price: 6000.00,
     image: Hover,
     //prelimsDate: "2023-11-05",
-    finalsDate: "17-03-2025",
+    finalsDate: "02-04-2025",
     coordinators: [
-      { name: "Suman Kundu", phone: "98019 41637" },
-      { name: "Himopravo Chowdhuri", phone: "94759 74209" },
-      { name: "Nasim Ahmed Mallick", phone: "80160 53970" },
-      { name: "Archit", phone: "90026 84106" }
+      { name: "Suman Kundu", phone: "+91 98019 41637" },
+      { name: "Himopravo Chowdhuri", phone: "+91 94759 74209" },
+      { name: "Nasim Ahmed Mallick", phone: "+91 80160 53970" },
+      { name: "Archit Maiti", phone: "+91 90026 84106" }
     ],
     rules: [
       "Points will be given based on the parameters and penalties, following all the specifications mentioned in the document ",
@@ -207,9 +208,9 @@ export const events = [
     prelimsDate: "17-03-2025",
     finalsDate: "17-03-2025",
     coordinators: [
-      { name: "Samriddha Chakraborty", phone: "9330284935" },
-      {name: "Mainak Roy", phone: "7908373925" },
-      { name: "Satanik Auddy", phone: "9038514040" }
+      { name: "Samriddha Chakraborty", phone: "+91 9330284935" },
+      {name: "Mainak Roy", phone: "+91 7908373925" },
+      { name: "Satanik Auddy", phone: "+91 9038514040" }
     ],
     rules: [
       "Necessary materials will be prvided.Scissors and Fevicol only are allowed. Other adhesives like dendrite, Fevi-quick, glue guns are strictly prohibited.",
@@ -233,10 +234,10 @@ export const events = [
     prelimsDate: "17-03-2025 & 18-03-2025",
     finalsDate: "19-03-2025",
     coordinators: [
-      { name: "Arijit Mandal:", phone: "89107 10278" },
-      { name: "Soham Sharma Sarkar", phone: "98369 37267" },
-      { name: "Souranshu Roy Chaudhuri", phone: "81005 35494" },
-      { name: "Deepayan Roy", phone: "70475 21166" }
+      { name: "Arijit Mandal:", phone: "+91 89107 10278" },
+      { name: "Soham Sharma Sarkar", phone: "+91 98369 37267" },
+      { name: "Souranshu Roy Chaudhuri", phone: "+91 81005 35494" },
+      { name: "Deepayan Roy", phone: "+91 70475 21166" }
     ],
     rules: [
       "Multi-exposure and composite images are allowed, but all components must be photographed by the participant. No stock or third-party images can be used.",
@@ -260,10 +261,10 @@ export const events = [
     prelimsDate: "18-03-2025",
     finalsDate: "18-03-2025",
     coordinators: [
-      { name: "Arijit Mandal", phone: "89107 10278" },
-      { name: "Nabyendu Das", phone: "7003751910" },
-      { name: "Nilendu Dikshit", phone: "77977 49574" },
-      { name: "Dipayan Mandal", phone: "6289 742 848" }
+      { name: "Arijit Mandal", phone: "+91 8910710278" },
+      { name: "Nabyendu Das", phone: "+91 7003751910" },
+      { name: "Nilendu Dikshit", phone: "+91 7797749574" },
+      { name: "Dipayan Mandal", phone: "+91 6289742848" }
     ],
     rules: [
       "Each team must build their own robot.",
@@ -311,9 +312,9 @@ export const events = [
     prelimsDate: "18-03-2025",
     finalsDate: "18-03-2025",
     coordinators: [
-      { name: "Rohit Dutta", phone: "" },
-      { name: "Antan Shah", phone: "8585050938" },
-      { name: "Abhirup Guha Roy", phone: "8910232532" }
+      { name: "Rohit Dutta", phone: "+91 9064890591" },
+      { name: "Antan Saha", phone: "+91 8585050938" },
+      { name: "Abhirup Guha Roy", phone: "+91 8910232532" }
     ],
     rules: [
       "Each team must design and build their own line-following robot.",
@@ -325,29 +326,29 @@ export const events = [
     pdfLink: "https://drive.google.com/file/d/1at1zypz0_h0R4pt2UU9ohbSAfCVJLGXt/view?usp=sharing"
   },
   {
-    id: "",
+    id: "67b714b79a01ff3f0a3c85ee",
     title: "Treasure Hunt",
     description: "An adventurous event where participants solve clues and complete challenges to find hidden treasures. It combines teamwork,problem-solving, and strategy as teams race to finish first and claim victory.",
     location: "Mechanical Dept, Jadavpur University",
     type: "Fun Actvities",
     groupSize: "1",
    // price: 1000.00, // not yet decided
-    //image: "https://images.pexels.com/photos/256660/pexels-photo-256660.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300",
+    image: treasure,
    // prelimsDate: "17-03-2025(online)",
-    finalsDate: "17-03-2025",
+    finalsDate: "03-04-2025",
     coordinators: [
-      { name: "Himopravo Chowdhuri", phone: "94759 74209" },
-      { name: "Mrinmay Tarafdar", phone: "9749386827" },
-      { name: "Tuhin Chakraborty", phone: "9038432263" }
+      { name: "Himopravo Chowdhuri", phone: "+91 94759 74209" },
+      { name: "Mrinmay Tarafdar", phone: "+91 9749386827" },
+      { name: "Tuhin Chakraborty", phone: "+91 9038432263" }
     ],
     rules: [
       "Any deviation or violation of the rules will result in immediate disqualification.",
       "Participant is expected to maintain professional conduct throughout the competition.",
-       "Any form of plagiarism, cheating, or unethical behavior will result in immediate disqualification.",
+      "Any form of plagiarism, cheating, or unethical behavior will result in immediate disqualification.",
       "The decision of the Event Coordinator will be final and no arguments will be entertained."
       
     ],
-    pdfLink: "https://example.com/treasurehunt.pdf"
+    pdfLink: "https://www.trajectoryjume.tech/"
   },
   
   
