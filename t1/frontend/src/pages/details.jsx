@@ -434,7 +434,7 @@ export default function Details() {
           fontFamily: 'Poppins', // Updated font family
         }}
       >
-        <Typography variant="h4">Comming Soon</Typography>
+        <Typography variant="h4">Coming Soon</Typography>
       </Box>
     );
   }
