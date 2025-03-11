@@ -113,7 +113,7 @@ const events = [
     location: "Mechanical Dept, Jadavpur University",
     type: "Hardware Challenge",
     groupSize: "2-3",
-    price: 1000.0,
+    price: 2000.0,
     image:
       hydro,
   },
@@ -124,7 +124,7 @@ const events = [
     location: "Mechanical Dept, Jadavpur University",
     type: "Hardware Challenge",
     groupSize: "3-4",
-    price: 6000.0,
+    price: 10000.0,
     image:
       robo,},
   {
@@ -135,7 +135,7 @@ const events = [
     location: "Mechanical Dept, Jadavpur University",
     type: "Hardware Challenge",
     groupSize: "3-4",
-    price: 6000.0,
+    price: 10000.0,
     image:mazecraft,
   },
   {
@@ -146,7 +146,7 @@ const events = [
     location: "Mechanical Dept, Jadavpur University",
     type: "Fun Activities",
     groupSize: "2-4",
-    price: 1000.0,
+    price: 2000.0,
     image:
       egg,},
   {
@@ -156,7 +156,7 @@ const events = [
     location: "Mechanical Dept, Jadavpur University",
     type: "Hardware Challenge",
     groupSize: "5",
-    price: 6000.0,
+    price: 10000.0,
     image:
       Hover,},
   {
@@ -165,9 +165,9 @@ const events = [
     description:
       "Design innovative mechanical components using Solidworks or Fusion software.",
     location: "Mechanical Dept, Jadavpur University",
-    type: "Simulation Challenge",
+    type: "3D Design Battle",
     groupSize: "1",
-    price: 1000.0,
+    price: 2000.0,
     image:
       model,  },
   {
@@ -177,7 +177,7 @@ const events = [
     location: "Mechanical Dept, Jadavpur University",
     type: "General",
     groupSize: "1-3",
-    price: 1000.0,
+    price: 2000.0,
     image:
       "https://viralsolutions.net/wp-content/uploads/2019/06/shutterstock_749036344.webp", },
   {
@@ -188,7 +188,7 @@ const events = [
     location: "Mechanical Dept, Jadavpur University",
     type: "General",
     groupSize: "1-4",
-    price: 1000.0,
+    price: 2000.0,
     image:
       tarka,},
   {
@@ -198,7 +198,7 @@ const events = [
     location: "Mechanical Dept, Jadavpur University",
     type: "Fun Activities",
     groupSize: "1",
-    price: 1000.0,
+    price: 2000.0,
     image:
       lens,},
   {
@@ -209,7 +209,7 @@ const events = [
     location: "Mechanical Dept, Jadavpur University",
     type: "Case Study",
     groupSize: "3-4",
-    price: 1000.0,
+    price: 2000.0,
     image:
       clash,},
   {
@@ -220,7 +220,7 @@ const events = [
     location: "Mechanical Dept, Jadavpur University",
     type: "Case Study",
     groupSize: "2-4",
-    price: 1000.0,
+    price: 2000.0,
     image: data,
   },
   
@@ -232,7 +232,7 @@ const events = [
     location: "Mechanical Dept, Jadavpur University",
     type: "Fun Activities",
     groupSize: "2-4",
-    price: 1000.0,
+    price: 2000.0,
     image:
 treasure,  },
   {
@@ -242,7 +242,7 @@ treasure,  },
     location: "Mechanical Dept, Jadavpur University",
     type: "Mystery Event?",
     groupSize: "1000",
-    price: 1000.0,
+    price: 2000.0,
     image:
       "https://images.pexels.com/photos/5428830/pexels-photo-5428830.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
@@ -417,11 +417,17 @@ export function Explore() {
               variant="outlined"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              sx={{ width: { xs: "100%", md: "50%" }, backgroundColor: "#fff" }}
+              sx={{ 
+                width: { xs: "100%", md: "50%" }, 
+               
+            "& .MuiOutlinedInput-root": {
+                borderRadius: "8px", // Ensure the input itself has rounded corners
+                backgroundColor: "#fff",
+               } }}
             />
             <FormControl
               variant="outlined"
-              sx={{ width: { xs: "100%", md: "25%" }, backgroundColor: "#fff" }}
+              sx={{ width: { xs: "100%", md: "25%" }, backgroundColor: "#fff",   borderRadius: "8px",  }}
             >
               <InputLabel>Filter by Type</InputLabel>
               <Select
@@ -431,8 +437,8 @@ export function Explore() {
               >
                 <MenuItem value="">All events</MenuItem>
                 <MenuItem value="Hardware Challenge">Hardware Challenge</MenuItem>
-                <MenuItem value="Simulation Challenge">
-                  Simulation Challenge
+                <MenuItem value="3D Design Battle">
+                  3D Design Battle
                 </MenuItem>
                 <MenuItem value="General">General</MenuItem>
                 <MenuItem value="Case Study">Case Study</MenuItem>

@@ -30,6 +30,8 @@ const TeamRegistration = () => {
   const [loading, setLoading] = useState(false); // Loading state
   const [totalemails,settotalemails]=useState([]);//contains all registered emails in trajectory
   const [registeredemails,setregisteredemails]=useState([]);//contains all regsitered emails for this particular event
+  const [isphone,setisphone]=useState(true);
+  const [isteamname,setisteamname]=useState(true);
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
   // ✅ Load user & team data from localStorage or API
@@ -107,6 +109,13 @@ const TeamRegistration = () => {
   const handleRegister = async () => {
     if (!teamName.trim()) {
       setError("⚠️ Please enter a valid team name.");
+      setisteamname(false);
+      setOpen(true);
+      return;
+    }
+    if(!phone){
+      setError("⚠️ Please enter team leader phone number.");
+      setisphone(false);
       setOpen(true);
       return;
     }
@@ -154,6 +163,10 @@ const [isValidMember3, setIsValidMember3] = useState(null);
 let timeout1, timeout2, timeout3;
 
 const checkEmail = (email, setValidMember, otherEmails) => {
+  if (!email) {
+    setValidMember(true);
+    return;
+  }
   clearTimeout(timeout1);
   clearTimeout(timeout2);
   clearTimeout(timeout3);
@@ -252,12 +265,14 @@ const checkEmail = (email, setValidMember, otherEmails) => {
 
           {/* ✅ Team Name - Editable only before registration */}
           <TextField
-            label="Team Name"
+            label="Team Name*"
             fullWidth
             variant="outlined"
             margin="normal"
             value={teamName || ""} // ✅ Prevent undefined
-            onChange={(e) => setTeamName(e.target.value)}
+            onChange={(e) => {setTeamName(e.target.value); setisteamname(true);}}
+            error={!isteamname}
+            helperText={!isteamname && "Enter a team name"}
             disabled={isRegistered}
             InputProps={{ style: { color: "#000000", backgroundColor: "#FFFFFF" } }} // Black text color
             style={{ color: "#000000" }} // Black text color
@@ -276,9 +291,9 @@ const checkEmail = (email, setValidMember, otherEmails) => {
               timeout1 = setTimeout(() => checkEmail(email, setIsValidMember1, [member2, member3]), 1000);
             }}
             InputProps={{ style: { color: "#000000", backgroundColor: "#FFFFFF" } }}
-            error={isValidMember1 === false}
+            error={isValidMember1 === false && member1 !=  false} // Show error only if email is not empty
             helperText={
-              isValidMember1 === false
+              isValidMember1 === false  && member1 != false
                 ? !totalemails.includes(member1)
                   ? "Email not registered"
                   : member1 === user.email
@@ -300,9 +315,9 @@ const checkEmail = (email, setValidMember, otherEmails) => {
               timeout2 = setTimeout(() => checkEmail(email, setIsValidMember2, [member1, member3]), 1000);
             }}
             InputProps={{ style: { color: "#000000", backgroundColor: "#FFFFFF" } }}
-            error={isValidMember2 === false}
+            error={isValidMember2 === false && member2 !=  false}
             helperText={
-              isValidMember2 === false
+              isValidMember2 === false&& member2 !=  false
                 ? !totalemails.includes(member2)
                   ? "Email not registered"
                   : member2 === user.email
@@ -324,9 +339,9 @@ const checkEmail = (email, setValidMember, otherEmails) => {
               timeout3 = setTimeout(() => checkEmail(email, setIsValidMember3, [member1, member2]), 1000);
             }}
             InputProps={{ style: { color: "#000000", backgroundColor: "#FFFFFF" } }}
-            error={isValidMember3 === false}
+            error={isValidMember3 === false && member3 !=  false}
             helperText={
-              isValidMember3 === false
+              isValidMember3 === false&& member3 !=  false
                 ? !totalemails.includes(member3)
                   ? "Email not registered"
                   : member3 === user.email
@@ -339,13 +354,17 @@ const checkEmail = (email, setValidMember, otherEmails) => {
 
           {/* ✅ Team Lead Phone Number */}
           <TextField
-            label="Team Lead Phone Number"
+            label="Team Lead Phone Number*"
             fullWidth
             variant="outlined"
             margin="normal"
             value={phone}
-            onChange={(e) => setPhone(e.target.value)}
+            onChange={(e) => {setPhone(e.target.value); setisphone(true);}}
+            error={!isphone}
             InputProps={{ style: { color: "#000000", backgroundColor: "#FFFFFF" } }} // Black text color
+            helperText={
+              !isphone && "Team Leader Phone Number is mandatory"
+            }
           />
 
           {/* ✅ Event */}
