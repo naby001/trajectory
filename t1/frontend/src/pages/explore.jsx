@@ -27,7 +27,7 @@ import "@fontsource/roboto";
 import "@fontsource/lobster";
 import "@fontsource/open-sans";
 import { Link } from "react-scroll";
-import Squares from '../components/Square'; // Import Squares component
+import Squares from '../components/Square';
 
 import hydro from "../assets/thumb/h.jpg";
 import lens from "../assets/thumb/Beyondlens.webp";
@@ -56,7 +56,7 @@ const theme = createTheme({
       main: "#1C1B1F",
     },
     secondary: {
-      main: "#F45558", // Updated red color
+      main: "#F45558",
     },
   },
 });
@@ -401,7 +401,7 @@ export function Explore() {
         </div>
         <Box sx={{ zIndex: 10, position: "relative" }}>
           <Typography variant="h2" component="h1" className="michroma" sx={{ color: '#FFD700', mb: 4, textShadow: '10px 10px 4px black, 0 0 10px black', pt: 3, fontWeight: 'bold' }}>
-            Explore Events
+            Explore Challenges
           </Typography>
           <Box
             sx={{
