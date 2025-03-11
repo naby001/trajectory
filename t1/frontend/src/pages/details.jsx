@@ -49,7 +49,7 @@ export const events = [
     coordinators: [
       { name: "Kaulik Das", phone: " 9830669894" },
       { name: "Avipso Sinha", phone: "94332 43651" },
-      { name: "Shayan Charan", phone: "91631 23389" }
+      { name: "Shayan Charan", phone: "91631 23389" } //hih
     ],
     rules: 
     [
