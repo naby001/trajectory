@@ -417,11 +417,17 @@ export function Explore() {
               variant="outlined"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              sx={{ width: { xs: "100%", md: "50%" }, backgroundColor: "#fff" }}
+              sx={{ 
+                width: { xs: "100%", md: "50%" }, 
+               
+            "& .MuiOutlinedInput-root": {
+                borderRadius: "8px", // Ensure the input itself has rounded corners
+                backgroundColor: "#fff",
+               } }}
             />
             <FormControl
               variant="outlined"
-              sx={{ width: { xs: "100%", md: "25%" }, backgroundColor: "#fff" }}
+              sx={{ width: { xs: "100%", md: "25%" }, backgroundColor: "#fff",   borderRadius: "8px",  }}
             >
               <InputLabel>Filter by Type</InputLabel>
               <Select

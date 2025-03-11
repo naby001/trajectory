@@ -30,6 +30,8 @@ const TeamRegistration = () => {
   const [loading, setLoading] = useState(false); // Loading state
   const [totalemails,settotalemails]=useState([]);//contains all registered emails in trajectory
   const [registeredemails,setregisteredemails]=useState([]);//contains all regsitered emails for this particular event
+  const [isphone,setisphone]=useState(true);
+  const [isteamname,setisteamname]=useState(true);
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
   // ✅ Load user & team data from localStorage or API
@@ -107,6 +109,13 @@ const TeamRegistration = () => {
   const handleRegister = async () => {
     if (!teamName.trim()) {
       setError("⚠️ Please enter a valid team name.");
+      setisteamname(false);
+      setOpen(true);
+      return;
+    }
+    if(!phone){
+      setError("⚠️ Please enter team leader phone number.");
+      setisphone(false);
       setOpen(true);
       return;
     }
@@ -261,7 +270,9 @@ const checkEmail = (email, setValidMember, otherEmails) => {
             variant="outlined"
             margin="normal"
             value={teamName || ""} // ✅ Prevent undefined
-            onChange={(e) => setTeamName(e.target.value)}
+            onChange={(e) => {setTeamName(e.target.value); setisteamname(true);}}
+            error={!isteamname}
+            helperText={!isteamname && "Enter a team name"}
             disabled={isRegistered}
             InputProps={{ style: { color: "#000000", backgroundColor: "#FFFFFF" } }} // Black text color
             style={{ color: "#000000" }} // Black text color
@@ -348,8 +359,12 @@ const checkEmail = (email, setValidMember, otherEmails) => {
             variant="outlined"
             margin="normal"
             value={phone}
-            onChange={(e) => setPhone(e.target.value)}
+            onChange={(e) => {setPhone(e.target.value); setisphone(true);}}
+            error={!isphone}
             InputProps={{ style: { color: "#000000", backgroundColor: "#FFFFFF" } }} // Black text color
+            helperText={
+              !isphone && "Team Leader Phone Number is mandatory"
+            }
           />
 
           {/* ✅ Event */}
