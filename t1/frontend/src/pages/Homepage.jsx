@@ -36,6 +36,7 @@ import CarRoadmap from "../components/CarRoadmap"; // Import the CarRoadmap comp
 import InfiniteScrollAnimation from "../components/infinity"; // Import the InfiniteScrollAnimation component
 import GlitchText from "../components/GlitchText";
 import videoSrc from "../assets/v.mp4"; // Ensure this path is correct
+import MeetOurTeam from "../components/Team";
 
 import edclassroom from '../assets/edclassroom.jpg';
 import microhydro from '../assets/microhydro.jpg';
@@ -468,6 +469,8 @@ function HomePage() {
             </Grid>
           </Container>
         </Fade>
+
+        <MeetOurTeam />
 
         {/* Where You Find Us? */}
         <Fade in={true} timeout={1000}>
