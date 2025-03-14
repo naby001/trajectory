@@ -15,6 +15,7 @@ import {
 import Navbar from './Navbar';
 import DecryptedText from '../components/decry';
 import Squares from '../components/Square'; // Import Squares component
+import MeetOurTeam from "../components/Team";
 
 export function About() {
   const sectionRef = useRef(null);
@@ -98,7 +99,7 @@ export function About() {
           hoverFillColor='#222'
         />
       </div>
-         <Box  sx={{ zIndex:10, position: "relative", padding: "20px", overflow: "hidden"  }}>
+         <Box  sx={{ zIndex:10, position: "relative", padding: "10px 10px", overflow: "hidden"  }}>
         <Container maxWidth="lg">
           <Typography variant="h2" component="h1" className="michroma" sx={{ color: '#FFD700', mb: 4, textShadow: '10px 10px 4px black, 0 0 10px black', pt: 3, fontWeight: 'bold' }}>
             Trajectory 2025
@@ -196,8 +197,15 @@ export function About() {
               </Grid>
             ))}
           </Grid>
+          <Typography variant="h3" className="michroma" sx={{ color: '#FFD700', mt: 6, mb: 3, textShadow: '10px 10px 8px black', fontWeight: 'bold' }}>
+           Meet Our Team
+          </Typography>
+        
         </Container>
+        <MeetOurTeam /> 
+       
         </Box>
+        
       </Box>
     </>
   );
