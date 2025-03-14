@@ -150,7 +150,7 @@ export const events = [
      description: "Be prepared to engage yourself in thought-provoking discussions on general knowledge, core engineering concepts, and current affairs to showcase analytical thinking, argumentation skills and intellectual agility",
      location: "Mechanical Dept, Jadavpur University",
      type: "General",
-     groupSize: "1-4",
+     groupSize: "1",
     // price: 1000.00,
      image: debate,
     // prelimsDate: "17-03-2025",
@@ -231,8 +231,8 @@ export const events = [
     groupSize: "1",
     price: 2000.00,
     image: frame,
-    prelimsDate: "17-03-2025 & 18-03-2025",
-    finalsDate: "19-03-2025",
+    prelimsDate: "01-04-2025 & 02-04-2025",
+    finalsDate: "04-04-2025",
     coordinators: [
       { name: "Arijit Mandal:", phone: "+91 89107 10278" },
       { name: "Soham Sharma Sarkar", phone: "+91 98369 37267" },
@@ -258,8 +258,8 @@ export const events = [
     groupSize: "2-5",
    price: 6000.00, //not confirmed
     image: robo,
-    prelimsDate: "18-03-2025",
-    finalsDate: "18-03-2025",
+    prelimsDate: "02-04-2025",
+    finalsDate: "02-04-2025",
     coordinators: [
       { name: "Arijit Mandal", phone: "+91 8910710278" },
       { name: "Nabyendu Das", phone: "+91 7003751910" },

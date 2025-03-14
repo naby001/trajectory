@@ -36,17 +36,10 @@ import CarRoadmap from "../components/CarRoadmap"; // Import the CarRoadmap comp
 import InfiniteScrollAnimation from "../components/infinity"; // Import the InfiniteScrollAnimation component
 import GlitchText from "../components/GlitchText";
 import videoSrc from "../assets/v.mp4"; // Ensure this path is correct
+import MeetOurTeam from "../components/Team";
 
 import edclassroom from '../assets/edclassroom.jpg';
-import gate1 from '../assets/gate1.jpg';
-import gate3 from '../assets/gate3.jpg';
-import heatpower from '../assets/heatpower.jpg';
-import hydraulic from '../assets/HYDRAULIC.jpg';
-import maingate from '../assets/maingate.jpg';
-
 import microhydro from '../assets/microhydro.jpg';
-import workshop from '../assets/workshop.jpg';
-
 
 
 const theme = createTheme({
@@ -142,69 +135,50 @@ const testimonials = [
 const destinations = [
   {
     id: 1,
-    name: "Mechanical Department",
+    name: "Mechanical Engineering Department",
     image:
-      "https://lh3.googleusercontent.com/p/AF1QipNFES13e38ErdouLsTOOg3bLR9eOeokcMRXVc0c=s1360-w1360-h1020",
+      "https://res.cloudinary.com/dig63yzxi/image/upload/v1740909479/L_v8wbsy.jpg",
   },
   {
     id: 2,
-    name: "Playground",
+    name: "Hydraulics Laboratory",
     image:
-      "https://lh3.googleusercontent.com/p/AF1QipOUccatxSmzPhxPiiGjKlywuohaPcLe_LCNce94=s1360-w1360-h1020",
+      "https://res.cloudinary.com/dig63yzxi/image/upload/v1740909890/b_jfa5pg.jpg",
   },
   {
     id: 3,
+    name: "Heat Power Laboratory",
+    image:
+      "https://res.cloudinary.com/dig63yzxi/image/upload/v1740909994/f_wdydqq.jpg",
+  },
+  {
+    id: 4,
+    name: "Blue Earth Machine Shop",
+    image:
+      "https://res.cloudinary.com/dig63yzxi/image/upload/v1740910052/g_wkyodj.jpg",
+  },
+  {
+    id: 5,
     name: "Playground",
     image:
       "https://lh3.googleusercontent.com/p/AF1QipPiTbxdJpMtj2MNCUWrZ7h__6jGr2iL4ft9QZeX=s1360-w1360-h1020",
   },
   {
-    id: 4,
-    name: "Mechanical Department",
-    image:
-      "https://lh3.googleusercontent.com/p/AF1QipPiNJJwo8Zm5JsHLqmoyL3PhlPFybcvYTExE_Fv=s1360-w1360-h1020",
-  },
-  {
-    id: 5,
+    id: 6,
     name: "ED Classroom",
     image: edclassroom,
+
   },
  
   {
-    id: 6,
-    name: "Main Gate 4",
-    image: gate1,
-  },
-  {
     id: 7,
-    name: "Main Gate 3",
-    image: gate3,
+    name: "Jadavpur University Gate",
+    image: "https://res.cloudinary.com/dig63yzxi/image/upload/v1740910145/h_uinwlz.jpg",
   },
   {
     id: 8,
-    name: "Heat Power Lab",
-    image: heatpower,
-  },
-  {
-    id: 9,
-    name: "Hydraulic Lab",
-    image: hydraulic,
-  },
-  {
-    id: 10,
-    name: "Main Gate",
-    image: maingate,
-  },
- 
-  {
-    id: 12,
     name: "Micro Hydro Project",
     image: microhydro,
-  },
-  {
-    id: 13,
-    name: "Workshop",
-    image: workshop,
   },
 ];
 
@@ -497,6 +471,8 @@ function HomePage() {
           </Container>
         </Fade>
 
+        <MeetOurTeam />
+
         {/* Where You Find Us? */}
         <Fade in={true} timeout={1000}>
           <Box
@@ -505,7 +481,7 @@ function HomePage() {
           >
             <Container maxWidth="lg">
               <Typography variant="h4" align="center" className="michroma" gutterBottom>
-                Where You Find Us?
+                Find Us In
               </Typography>
               <Box
                 sx={{
@@ -564,7 +540,7 @@ function HomePage() {
                       }}
                     >
                       <Typography
-                        variant="h3"
+                        variant="h5"
                         sx={{
                           color: "white",
                           backgroundColor: "rgba(0,0,0,0.5)",

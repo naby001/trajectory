@@ -63,7 +63,7 @@ const Squares = ({
         canvas.height / 2,
         Math.sqrt(canvas.width ** 2 + canvas.height ** 2) / 2
       );
-      gradient.addColorStop(0, 'rgba(0, 0, 0, 0.5)'); // reduced transparency
+      gradient.addColorStop(0, 'rgba(0, 0, 0, 0.7)');
       // gradient.addColorStop(1, '#060606'); // uncomment for gradient
 
       ctx.fillStyle = gradient;
