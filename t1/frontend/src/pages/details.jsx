@@ -72,7 +72,7 @@ export const events = [
     groupSize: "2-4",
    // price: 6000.00,
     image: datamine,
-    prelimsDate: "01-04-2025 (online mode)",
+    prelimsDate: "02-04-2025 (online mode)",
     finalsDate: "03-04-2025",
     coordinators: [
       { name: "Tuhin Chakraborty", phone: "+91 9038432263" },
@@ -97,8 +97,8 @@ export const events = [
     groupSize: "1",
     price: 5000.00,
     image: model,
-    prelimsDate: "17-03-2025 (online mode)",
-    finalsDate: "18-03-2025",
+    prelimsDate: "02-04-2025 (online mode)",
+    finalsDate: "03-04-2025",
     coordinators: [
       { name: "Debadrita Hazra", phone: "9883311422" },
       { name: "Sourav Paul", phone: "94330 31650" },
@@ -127,7 +127,7 @@ export const events = [
     groupSize: "1-4",
       price: 1000.00, // not yet decided
     image: clash,
-    prelimsDate: "01-04-2025 (online)",
+    prelimsDate: "02-04-2025 (online)",
     finalsDate: "03-04-2025",
     coordinators: [
       { name: "Srija Mondal", phone: "8851270470" },
@@ -154,7 +154,7 @@ export const events = [
     // price: 1000.00,
      image: debate,
     // prelimsDate: "17-03-2025",
-     finalsDate: "03-04-2025",
+     finalsDate: "04-04-2025",
      coordinators: [
        { name: "Mrinmay Tarafdar", phone: "9749386827" },
        { name: "Koustav Das", phone: "8348217647" },
@@ -180,7 +180,7 @@ export const events = [
     price: 6000.00,
     image: Hover,
     //prelimsDate: "2023-11-05",
-    finalsDate: "02-04-2025",
+    finalsDate: "03-04-2025",
     coordinators: [
       { name: "Suman Kundu", phone: "+91 98019 41637" },
       { name: "Himopravo Chowdhuri", phone: "+91 94759 74209" },
@@ -205,8 +205,8 @@ export const events = [
     groupSize: "2-4",
     price: 2000.00,
     image: egg,
-    prelimsDate: "17-03-2025",
-    finalsDate: "17-03-2025",
+    prelimsDate: "03-04-2025",
+    finalsDate: "03-04-2025",
     coordinators: [
       { name: "Samriddha Chakraborty", phone: "+91 9330284935" },
       {name: "Mainak Roy", phone: "+91 7908373925" },
@@ -231,7 +231,7 @@ export const events = [
     groupSize: "1",
     price: 2000.00,
     image: frame,
-    prelimsDate: "01-04-2025 & 02-04-2025",
+    prelimsDate: "02-04-2025 & 03-04-2025",
     finalsDate: "04-04-2025",
     coordinators: [
       { name: "Arijit Mandal:", phone: "+91 89107 10278" },
@@ -258,8 +258,8 @@ export const events = [
     groupSize: "2-5",
    price: 6000.00, //not confirmed
     image: robo,
-    prelimsDate: "02-04-2025",
-    finalsDate: "02-04-2025",
+    prelimsDate: "03-04-2025",
+    finalsDate: "03-04-2025",
     coordinators: [
       { name: "Arijit Mandal", phone: "+91 8910710278" },
       { name: "Nabyendu Das", phone: "+91 7003751910" },
@@ -284,8 +284,8 @@ export const events = [
     groupSize: "1-3",
     price: 1000.00,
     image: qui,
-    prelimsDate: "18-03-2025",
-    finalsDate: "19-03-2025",
+    prelimsDate: "02-04-2025",
+    finalsDate: "03-04-2025",
     coordinators: [
       { name: "Sayan Das", phone: "+91 7980148375" },
       { name: "Souvik Howlader", phone: "+91 9775430333" },
@@ -309,8 +309,8 @@ export const events = [
     groupSize: "3-4",
     price: 6000.00,
     image: maze,
-    prelimsDate: "18-03-2025",
-    finalsDate: "18-03-2025",
+    prelimsDate: "04-04-2025",
+    finalsDate: "04-04-2025",
     coordinators: [
       { name: "Rohit Dutta", phone: "+91 9064890591" },
       { name: "Antan Saha", phone: "+91 8585050938" },
@@ -335,7 +335,7 @@ export const events = [
    // price: 1000.00, // not yet decided
     image: treasure,
    // prelimsDate: "17-03-2025(online)",
-    finalsDate: "03-04-2025",
+    finalsDate: "04-04-2025",
     coordinators: [
       { name: "Himopravo Chowdhuri", phone: "+91 94759 74209" },
       { name: "Mrinmay Tarafdar", phone: "+91 9749386827" },
