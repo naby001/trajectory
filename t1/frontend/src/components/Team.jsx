@@ -16,8 +16,8 @@ const teamMembers = [
         name: "Maurya Samanta",
         role: "Software Developer",
         image: "https://res.cloudinary.com/df9fz5s3o/image/upload/f_auto,q_auto/erlc1tzjzd8fdvljnwqv",
-        linkedin: "https://linkedin.com/in/janesmith",
-        email: "mailto:janesmith@example.com",
+        linkedin: "https://www.linkedin.com/in/maurya-samanta-262329287?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        email: "mauryas.production.ug@jadavpuruniversity.in",
     },
    
     {
@@ -31,9 +31,9 @@ const teamMembers = [
     {
         name: "Koustav Das",
         role: "UI/UX Designer",
-        image: "https://picsum.photos/130/130?image=839",
-        linkedin: "https://linkedin.com/in/janesmith",
-        email: "mailto:janesmith@example.com",
+        image: "https://res.cloudinary.com/dig63yzxi/image/upload/v1741957639/koustav_bzxwnq.jpg",
+        linkedin: "https://www.linkedin.com/in/koustav-das-in/",
+        email: "itskoustavdas@gmail.com",
     },
 ];
 
@@ -61,7 +61,11 @@ const MeetOurTeam = () => {
                                         {member.role}
                                     </Typography>
                                     <Box className="social">
-                                        <a href={member.email} target="_blank" rel="noopener noreferrer">
+                                        <a
+                                            href={`https://mail.google.com/mail/?view=cm&fs=1&to=${member.email}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
                                             <EmailIcon />
                                         </a>
                                         <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
