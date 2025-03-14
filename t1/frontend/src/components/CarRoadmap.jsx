@@ -8,27 +8,27 @@ import { useEffect, useState, useRef } from 'react'
 const events = [
   {
     title: "Day 1",
-    date: "March 17, 2025",
+    date: "April 2, 2025",
     description:
       "Opening Ceremony! Get ready for a day of fun and games, and meet your fellow participants.",
     align: "right",
   },
   {
     title: "Day 2",
-    date: "March 18, 2025",
+    date: "April 3, 2025",
     description: "Hardware Showdown! Learn how to build your own AR/VR hardware from scratch.",
     align: "left",
   },
   {
     title: "Day 3",
-    date: "March 19, 2025",
+    date: "April 4, 2025",
     description:
       "Brainstorming! Engage in a quiz debate and collaborative sessions to generate innovative ideas. ",
     align: "right",
   },
   {
     title: "Final Night",
-    date: "March 19, 2025",
+    date: "April 4, 2025",
     description: "Closing ceremony and awards presentation. Celebrate your achievements with your team! ",
     align: "left",
   },

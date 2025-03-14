@@ -167,6 +167,7 @@ const destinations = [
     id: 6,
     name: "ED Classroom",
     image: edclassroom,
+
   },
  
   {
@@ -557,6 +558,18 @@ function HomePage() {
             </Container>
           </Box>
         </Fade>
+
+        {/* Additional Content Box */}
+        {/* <Box sx={{ py: 8, color: "white", backgroundColor: "grey" }}>
+          <Container maxWidth="lg">
+            <Typography variant="h4" align="center" className="michroma" gutterBottom>
+              Additional Content
+            </Typography>
+            <Typography variant="body1" align="center">
+              This is where you can add more information or content relevant to your page.
+            </Typography>
+          </Container>
+        </Box> */}
 
         {/* Footer */}
         <Fade in={true} timeout={1000}>
