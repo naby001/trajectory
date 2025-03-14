@@ -7,6 +7,7 @@ import HomePage from "../pages/Homepage";
 import {Explore} from "../pages/explore";
 import {About} from "../pages/about";
 import Details from "../pages/details";
+import Meta from "../components/Meta";
 import AuthPage from "../pages/login";
 import TeamRegistration from "../pages/TeamRegistration";
 // import InviteTeamMembers from "./pages/InviteTeamMembers";
@@ -32,6 +33,7 @@ const theme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
+      <Meta />
       <CssBaseline />
       <Router>
         {/* <Navbar /> ✅ Add Navbar so it updates dynamically */}

@@ -28,6 +28,7 @@ import "@fontsource/lobster";
 import "@fontsource/open-sans";
 import { Link } from "react-scroll";
 import Squares from '../components/Square';
+import Meta from "../components/Meta";
 
 import hydro from "../assets/thumb/h.jpg";
 import lens from "../assets/thumb/Beyondlens.webp";
@@ -370,6 +371,13 @@ export function Explore() {
       <AppBar position="fixed" sx={{ background: "#1C1B1F", zIndex: 1000 }}>
         <Navbar />
       </AppBar>
+      <Meta
+        title="Events | Trajectory 2025 | Competitions, Workshops, and Technical Challenges"
+        description="Discover the exciting lineup of events at Trajectory 2025! From technical competitions to creative workshops, explore opportunities to learn, compete, and showcase your skills."
+        keyword={["events", "JU Mechanical Fest events", "technical competitions", "workshops", "robotics", "coding challenges", "design events", "debate", "Trajectory 2025 events"]}
+        type="website"
+        link="explore"
+      />
       <style>
         {`@import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');`}
         {`@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');`}

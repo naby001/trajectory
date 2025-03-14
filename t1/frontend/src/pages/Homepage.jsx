@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import {
   AppBar,
-  Toolbar,
   Typography,
   Button,
   Container,
@@ -10,33 +9,25 @@ import {
   CardContent,
   CardMedia,
   Box,
-  TextField,
-  Avatar,
-  Paper,
   IconButton,
-  InputAdornment,
   Fade,
 } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
-import ExploreIcon from "@mui/icons-material/Explore";
-import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import EmailIcon from "@mui/icons-material/Email";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import "@fontsource/roboto"; // Import Roboto font
-import "@fontsource/lobster"; // Import Lobster font
-import "@fontsource/open-sans"; // Import Open Sans font
-import CarRoadmap from "../components/CarRoadmap"; // Import the CarRoadmap component
-import InfiniteScrollAnimation from "../components/infinity"; // Import the InfiniteScrollAnimation component
+import "@fontsource/roboto";
+import "@fontsource/lobster";
+import "@fontsource/open-sans";
+import CarRoadmap from "../components/CarRoadmap";
+import InfiniteScrollAnimation from "../components/infinity";
 import GlitchText from "../components/GlitchText";
-import videoSrc from "../assets/v.mp4"; // Ensure this path is correct
 import MeetOurTeam from "../components/Team";
+import Meta from "../components/Meta";
 
 import edclassroom from '../assets/edclassroom.jpg';
 import microhydro from '../assets/microhydro.jpg';
@@ -185,7 +176,6 @@ const destinations = [
 function HomePage() {
   const navigate = useNavigate();
 
-  // When a card's SEE MORE is clicked, show an alert for "Coming Soon".
   const handleCardClick = (type) => {
     navigate(`/explore?filter=${type}`);
   };
@@ -237,6 +227,13 @@ function HomePage() {
 
   return (
     <ThemeProvider theme={theme}>
+      <Meta
+        title="Trajectory 2025 | Jadavpur University"
+        description="Welcome to Trajectory, the annual fest of Jadavpur University's Mechanical Department. Explore exciting events, competitions, and workshops across various themes."
+        keyword={["college fest", "technical events", "workshops", "competitions"]}
+        type="website"
+        link=""
+      />
       <style>
         {`@import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');`}
         {`@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');`}

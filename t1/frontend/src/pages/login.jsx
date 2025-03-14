@@ -27,6 +27,7 @@ import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
 import Navbar from "./Navbar";
 import Squares from '../components/Square'; // Import Squares component
+import Meta from "../components/Meta";
 
 const theme = createTheme({
   palette: {
@@ -235,6 +236,13 @@ export default function AuthPage() {
 
   return (
     <ThemeProvider theme={theme}>
+      <Meta
+        title="Login to Trajectory 2025 | Jadavpur University Mechanical Fest"
+        description="Access your Trajectory 2025 account to register for events, participate in competitions, and stay updated with the latest updates from Jadavpur University's Mechanical Fest."
+        keyword={["Trajectory login", "JU Mechanical Fest login", "Trajectory 2025 login", "event registration", "Jadavpur University fest login", "participant portal"]}
+        type="website"
+        link="login"
+      />
       <CssBaseline />
       {/* Navbar */}
       <AppBar position="fixed" sx={{ background: "#282a3a" }}>

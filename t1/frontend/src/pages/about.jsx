@@ -2,9 +2,7 @@ import React, { useEffect, useRef } from 'react';
 
 import {
   AppBar,
-  Toolbar,
   Typography,
-  Button,
   Container,
   Grid,
   Card,
@@ -15,6 +13,7 @@ import {
 import Navbar from './Navbar';
 import DecryptedText from '../components/decry';
 import Squares from '../components/Square'; // Import Squares component
+import Meta from '../components/Meta';
 
 export function About() {
   const sectionRef = useRef(null);
@@ -58,7 +57,14 @@ export function About() {
   }, []);
 
   return (
-    <>
+    <main>
+      <Meta
+        title="About Trajectory 2025 | Jadavpur University Mechanical Department Fest"
+        description="Learn about Trajectory, the annual fest of Jadavpur University's Mechanical Department. Discover our history, mission, and vision behind innovation, creativity, and technical excellence."
+        keyword={["About Trajectory", "Trajectory mission", "Jadavpur University fest", "Trajectory vision", "mechanical engineering fest"]}
+        type="website"
+        link="about"
+      />
       <style>
         {`@import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');`}
         {`@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');`}
@@ -199,6 +205,6 @@ export function About() {
         </Container>
         </Box>
       </Box>
-    </>
+    </main>
   );
 }

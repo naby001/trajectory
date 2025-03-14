@@ -28,7 +28,7 @@ import clash from "../assets/EventPosters/Clash-Of-Cases.avif";
 import debate from "../assets/EventPosters/Torko-Bitorko.avif";
 import egg from "../assets/EventPosters/Prot-Egg-T.avif";
 import frame from "../assets/EventPosters/Beyond-The-Frame.avif";
-import robo from "../assets/EventPosters/RoboTrail.avif";
+import robo from "../assets/EventPosters/Robo-League.avif";
 import qui from "../assets/EventPosters/GyanYudh.avif";
 import maze from "../assets/EventPosters/RoboTrail.avif";
 import Hover from "../assets/EventPosters/Hoverpod.avif";
