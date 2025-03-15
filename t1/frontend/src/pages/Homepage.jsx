@@ -40,6 +40,7 @@ import videoSrc from "../assets/v.mp4"; // Ensure this path is correct
 
 import edclassroom from "../assets/edclassroom.jpg";
 import microhydro from "../assets/microhydro.jpg";
+import Squares from "../components/Square";
 
 const theme = createTheme({
   typography: {
@@ -236,6 +237,7 @@ function HomePage() {
 
   return (
     <ThemeProvider theme={theme}>
+    
       <style>
         {`@import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');`}
         {`@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');`}
@@ -254,8 +256,19 @@ function HomePage() {
           top: 0, // Change from -70 to 0
           backgroundColor: "#1C1B1F", // Set consistent background color
           overflow: "hidden", // Ensure content stays within screen boundaries
+          zIndex: 1, // Ensure this container is properly layered
         }}
       >
+      <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: -1 }}>
+                <Squares 
+                  speed={0.5} 
+                  squareSize={40}
+                  direction='diagonal' // up, down, left, right, diagonal
+                  borderColor='#fff'
+                  hoverFillColor='#222'
+                />
+              </div>
+       
         {/* Heading */}
         <Box
           sx={{
@@ -299,7 +312,7 @@ function HomePage() {
         </Box> */}
 
         {/* Navbar */}
-        <AppBar position="fixed" sx={{ background: "#1C1B1F" }}>
+        <AppBar position="fixed" sx={{ background: "#1C1B1F", zIndex: 2 }}>
           <Navbar />
         </AppBar>
 
@@ -357,7 +370,7 @@ function HomePage() {
                         height: "100%",
                         position: "relative",
                         overflow: "hidden",
-                        backgroundColor: "rgba(255, 255, 255, 0.1)",
+                        backgroundColor: "rgba(28, 27, 31, 0.9)",
                         transition: "transform 0.5s, box-shadow 0.5s",
                         transform:
                           "perspective(1000px) rotateX(0deg) rotateY(0deg)",
@@ -499,6 +512,7 @@ function HomePage() {
                   width: "100%",
                   height: { xs: 300, sm: 400 }, // Adjust height for responsiveness
                   overflow: "hidden",
+                  zIndex: 1, // Ensure this section is above the background
                 }}
               >
                 <IconButton
@@ -507,7 +521,7 @@ function HomePage() {
                     left: 0,
                     top: "50%",
                     transform: "translateY(-50%)",
-                    zIndex: 1,
+                    zIndex: 3, // Ensure navigation buttons are above the carousel
                     color: "white",
                   }}
                   onClick={prevDestination}
@@ -520,7 +534,7 @@ function HomePage() {
                     right: 0,
                     top: "50%",
                     transform: "translateY(-50%)",
-                    zIndex: 1,
+                    zIndex: 3, // Ensure navigation buttons are above the carousel
                     color: "white",
                   }}
                   onClick={nextDestination}
@@ -576,7 +590,7 @@ function HomePage() {
           <Box
             className="fade-in"
             sx={{
-              bgcolor: "rgba(0, 0, 0, 0.7)",
+              bgcolor: "rgb(0, 0, 0)",
 
               p: 3, // Reduced padding
               mt: "auto",

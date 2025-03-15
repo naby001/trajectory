@@ -59,10 +59,10 @@ const TimelineItem = styled(Paper)(({ theme }) => ({
   position: "relative",
   width: "45%",
   marginBottom: "60px",
-  background: "transparent", // Changed from "rgba(28, 27, 31, 0.9)"
+  background: "rgba(28, 27, 31, 0.9)", // Changed from "rgba(28, 27, 31, 0.9)"
   border: "1px solid rgba(244, 85, 88, 0.3)",
   borderRadius: "8px",
-  boxShadow: "0 0 30px rgba(244, 85, 88, 0.5)", // Increased glow effect
+  boxShadow: "0 0 50px rgba(244, 85, 88, 0.5)", // Increased blur effect
   opacity: 0,
   transform: 'translateY(50px)',
   transition: 'opacity 0.4s ease-out, transform 0.6s ease-out',
