@@ -409,7 +409,7 @@ export function Explore() {
         </div>
         <Box sx={{ zIndex: 10, position: "relative" }}>
           <Typography variant="h2" component="h1" className="michroma" sx={{ color: '#FFD700', mb: 4, textShadow: '10px 10px 4px black, 0 0 10px black', pt: 3, fontWeight: 'bold' }}>
-            Explore Challenges
+            Explore Events
           </Typography>
           <Box
             sx={{

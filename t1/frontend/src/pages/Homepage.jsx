@@ -26,12 +26,17 @@ import "@fontsource/open-sans";
 import CarRoadmap from "../components/CarRoadmap";
 import InfiniteScrollAnimation from "../components/infinity";
 import GlitchText from "../components/GlitchText";
+
 import MeetOurTeam from "../components/Team";
 import Meta from "../components/Meta";
 
 import edclassroom from '../assets/edclassroom.jpg';
 import microhydro from '../assets/microhydro.jpg';
 
+
+
+import edclassroom from "../assets/edclassroom.jpg";
+import microhydro from "../assets/microhydro.jpg";
 
 const theme = createTheme({
   typography: {
@@ -158,13 +163,13 @@ const destinations = [
     id: 6,
     name: "ED Classroom",
     image: edclassroom,
-
   },
- 
+
   {
     id: 7,
     name: "Jadavpur University Gate",
-    image: "https://res.cloudinary.com/dig63yzxi/image/upload/v1740910145/h_uinwlz.jpg",
+    image:
+      "https://res.cloudinary.com/dig63yzxi/image/upload/v1740910145/h_uinwlz.jpg",
   },
   {
     id: 8,
@@ -255,14 +260,22 @@ function HomePage() {
         }}
       >
         {/* Heading */}
-        <Box sx={{ mt: 14, justifyContent: "center" ,alignItems: "center", display: "flex", flexDirection: "column" }}>  
+        <Box
+          sx={{
+            mt: 14,
+            justifyContent: "center",
+            alignItems: "center",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
           <GlitchText
             speed={1}
             enableShadows={true}
             enableOnHover={true}
             className="custom-class"
           >
-            Trajectory 
+            Trajectory
           </GlitchText>
           <br></br>
           <GlitchText
@@ -273,9 +286,7 @@ function HomePage() {
           >
             2k25
           </GlitchText>
-          
         </Box>
-        
 
         {/* Video below the heading */}
         {/* <Box sx={{ width: "100%", display: "flex", justifyContent: "center", mt: 20 }}>
@@ -294,8 +305,6 @@ function HomePage() {
         <AppBar position="fixed" sx={{ background: "#1C1B1F" }}>
           <Navbar />
         </AppBar>
-          
-
 
         {/* Infinite Scroll Animation */}
         <Box sx={{ overflow: "hidden" }}>
@@ -308,8 +317,7 @@ function HomePage() {
             <CarRoadmap />
           </Box>
         </Fade>
-        <br>
-        </br>
+        <br></br>
 
         {/* Featured Events */}
         <Fade in={true} timeout={1000}>
@@ -339,7 +347,14 @@ function HomePage() {
                   "#00FFFF", // Cyan
                 ][index];
                 return (
-                  <Grid item key={tour.id} xs={12} sm={6} md={6} className="event-card">
+                  <Grid
+                    item
+                    key={tour.id}
+                    xs={12}
+                    sm={6}
+                    md={6}
+                    className="event-card"
+                  >
                     <Card
                       sx={{
                         height: "100%",
@@ -407,7 +422,6 @@ function HomePage() {
                       {/* Card Content */}
                       <CardContent sx={{ textAlign: "center", color: "white" }}>
                         {/* Date-like Badge on Top */}
-                        
 
                         <Typography
                           gutterBottom
@@ -468,16 +482,18 @@ function HomePage() {
           </Container>
         </Fade>
 
-        <MeetOurTeam />
+        {/* <MeetOurTeam /> */}
 
         {/* Where You Find Us? */}
         <Fade in={true} timeout={1000}>
-          <Box
-            className="fade-in"
-            sx={{ py: 8, color: "white" }}
-          >
+          <Box className="fade-in" sx={{ py: 8, color: "white" }}>
             <Container maxWidth="lg">
-              <Typography variant="h4" align="center" className="michroma" gutterBottom>
+              <Typography
+                variant="h4"
+                align="center"
+                className="michroma"
+                gutterBottom
+              >
                 Find Us In
               </Typography>
               <Box
@@ -556,17 +572,7 @@ function HomePage() {
           </Box>
         </Fade>
 
-        {/* Additional Content Box */}
-        {/* <Box sx={{ py: 8, color: "white", backgroundColor: "grey" }}>
-          <Container maxWidth="lg">
-            <Typography variant="h4" align="center" className="michroma" gutterBottom>
-              Additional Content
-            </Typography>
-            <Typography variant="body1" align="center">
-              This is where you can add more information or content relevant to your page.
-            </Typography>
-          </Container>
-        </Box> */}
+        
 
         {/* Footer */}
         <Fade in={true} timeout={1000}>
@@ -574,23 +580,27 @@ function HomePage() {
             className="fade-in"
             sx={{
               bgcolor: "rgba(0, 0, 0, 0.7)",
-             
+
               p: 3, // Reduced padding
               mt: "auto",
-              
             }}
             component="footer"
           >
             <Box sx={{ mt: 1, display: "flex", justifyContent: "center" }}>
-            <Button
-  variant="outlined"
-  href="https://linktr.ee/trajectoryjumech?fbclid=PAZXh0bgNhZW0CMTEAAaajz1I4w0OH00Qw7UtFQyHtOTuEdyiokldRelhsoZ4jyZgJvdnJ57qURH4_aem_KOr5iI6NgY0WGz17PuGT3A"
-  sx={{ color: "rgb(187, 83, 84)", borderColor: "rgb(187, 83, 84)" }} // Updated button color
->
-  Subscribe to Social Media
-</Button>
+              <Button
+                variant="outlined"
+                href="https://linktr.ee/trajectoryjumech?fbclid=PAZXh0bgNhZW0CMTEAAaajz1I4w0OH00Qw7UtFQyHtOTuEdyiokldRelhsoZ4jyZgJvdnJ57qURH4_aem_KOr5iI6NgY0WGz17PuGT3A"
+                sx={{
+                  color: "rgb(187, 83, 84)",
+                  borderColor: "rgb(187, 83, 84)",
+                }} // Updated button color
+              >
+                Subscribe to Social Media
+              </Button>
             </Box>
-            <Box sx={{ mt: 2, display: "flex", justifyContent: "center" }}> {/* Reduced margin-top */}
+            <Box sx={{ mt: 2, display: "flex", justifyContent: "center" }}>
+              {" "}
+              {/* Reduced margin-top */}
               <IconButton
                 component="a"
                 href="https://www.linkedin.com/company/trajectoryjumech/"

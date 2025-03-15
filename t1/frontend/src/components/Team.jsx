@@ -1,70 +1,57 @@
-import { Card, CardContent, Typography, Fade, Box } from "@mui/material";
+import { Card, CardContent, Typography, Fade, Box, Grid } from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import "./MeetOurTeam.css";
 
 const teamMembers = [
     {
-        name: "Koustav Das",
-        role: "Event Coordinator",
-        image: "https://picsum.photos/130/130?image=1027",
-        linkedin: "https://linkedin.com/in/johndoe",
-        email: "mailto:johndoe@example.com",
+        name: "Nabyendu Das",
+        role: "Tech Lead",
+        image: "https://res.cloudinary.com/dz4ooxird/image/upload/f_auto,q_auto/v1/my/nc8nkkhw46lins64niuz",
+        linkedin: "https://www.linkedin.com/in/nabyendu-das-596b45266/",
+        email: "nabyendutukai.das@gmail.com",
     },
+    
     {
-        name: "Koustav Das",
-        role: "Marketing Lead",
-        image: "https://picsum.photos/130/130?image=839",
-        linkedin: "https://linkedin.com/in/janesmith",
-        email: "mailto:janesmith@example.com",
+        name: "Maurya Samanta",
+        role: "Software Developer",
+        image: "https://res.cloudinary.com/df9fz5s3o/image/upload/f_auto,q_auto/erlc1tzjzd8fdvljnwqv",
+        linkedin: "https://www.linkedin.com/in/maurya-samanta-262329287?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        email: "mauryas.production.ug@jadavpuruniversity.in",
     },
+   
     {
-        name: "Koustav Das",
-        role: "Event Coordinator",
-        image: "https://picsum.photos/130/130?image=1027",
-        linkedin: "https://linkedin.com/in/johndoe",
-        email: "mailto:johndoe@example.com",
-    },
-    {
-        name: "Koustav Das",
-        role: "Marketing Lead",
-        image: "https://picsum.photos/130/130?image=839",
-        linkedin: "https://linkedin.com/in/janesmith",
-        email: "mailto:janesmith@example.com",
+        name: "Debdutta Naskar",
+        role: "Backend Developer",
+        image: "https://media-hosting.imagekit.io//bb323ed2704642ed/IMG_20250311_090325.webp?Expires=1836284985&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=WUMFef6DDz3K~8VNYiyCTMyTeC90Q75KTsRY8zIKHsqdUm319KQNVl7Cl19gHKJlh18NeCiefQv3Ld4odczctLID1EEV-R6iEQbR9Dg9MWbRosr-W5zAcoUpmTLpc00cIhDfm3SOAEo~XDGIFlMrUHL5gCMKiybeRP5Vwn2h6mHHvIgkocLQ22IWU9tsAZbh~b214qzVcFwOdIv0nQdGMp4QcRlGDV2MAjqZgYDl0quwQFvhpFNq~-FuiaiYL6gH0CPJYnAEmgf9QhASiX0qtpCjwT~7cWS5LKZsaSMLzwRj20uYSNUg0gqyQFuJNnlqewwHkisvxZRUhc8L2EmgHg__",
+        linkedin: "https://www.linkedin.com/in/debdutta-naskar-66b3bb213/?trk=opento_sprofile_details",
+        email: "debduttanaskar777@gmail.com",
     },
 
     {
         name: "Koustav Das",
-        role: "Marketing Lead",
-        image: "https://picsum.photos/130/130?image=839",
-        linkedin: "https://linkedin.com/in/janesmith",
-        email: "mailto:janesmith@example.com",
+        role: "UI/UX Designer",
+        image: "https://res.cloudinary.com/dig63yzxi/image/upload/v1741957639/koustav_bzxwnq.jpg",
+        linkedin: "https://www.linkedin.com/in/koustav-das-in/",
+        email: "itskoustavdas@gmail.com",
     },
 ];
 
 const MeetOurTeam = () => {
     return (
-        <div>
-            <Typography
-                variant="h4"
-                align="center"
-                className="michroma"
-                sx={{
-                    fontWeight: "bold",
-                    mb: 2,
-                    color: "rgb(187, 83, 84)",
-                    textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)",
-                }}
-            >
-                Meet Our Team
-            </Typography>
-            <Box display="flex" justifyContent="center">
-                <Box className="container">
-                    {teamMembers.map((member, index) => (
-                        <Fade in={true} timeout={1000} key={index}>
+        <Box sx={{ padding: 4 }}>
+            <Grid container spacing={4} justifyContent="center">
+                {teamMembers.map((member, index) => (
+                    <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+                        <Fade in={true} timeout={1000}>
                             <Card className="our-team">
                                 <Box className="picture">
-                                    <img src={member.image} alt={member.name} className="img-fluid" />
+                                    <img 
+                                        src={member.image} 
+                                        alt={member.name} 
+                                        className="img-fluid" 
+                                        style={{ width: "130px", height: "130px", objectFit: "cover", borderRadius: "50%" }} 
+                                    />
                                 </Box>
                                 <CardContent className="team-content">
                                     <Typography variant="h6" className="name">
@@ -74,7 +61,11 @@ const MeetOurTeam = () => {
                                         {member.role}
                                     </Typography>
                                     <Box className="social">
-                                        <a href={member.email} target="_blank" rel="noopener noreferrer">
+                                        <a
+                                            href={`https://mail.google.com/mail/?view=cm&fs=1&to=${member.email}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
                                             <EmailIcon />
                                         </a>
                                         <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
@@ -84,10 +75,10 @@ const MeetOurTeam = () => {
                                 </CardContent>
                             </Card>
                         </Fade>
-                    ))}
-                </Box>
-            </Box>
-        </div>
+                    </Grid>
+                ))}
+            </Grid>
+        </Box>
     );
 };
 
