@@ -149,16 +149,16 @@ const events = [
     price: 2000.0,
     image:
       egg,},
-  {
-    _id: "67b714349a01ff3f0a3c85e5",
-    title: "Hoverpod",
-    description: "",
-    location: "Mechanical Dept, Jadavpur University",
-    type: "Hardware Challenge",
-    groupSize: "5",
-    price: 10000.0,
-    image:
-      Hover,},
+  // {
+  //   _id: "67b714349a01ff3f0a3c85e5",
+  //   title: "Hoverpod",
+  //   description: "",
+  //   location: "Mechanical Dept, Jadavpur University",
+  //   type: "Hardware Challenge",
+  //   groupSize: "5",
+  //   price: 10000.0,
+  //   image:
+  //     Hover,},
   {
     _id: "67b714449a01ff3f0a3c85e6",
     title: "Model Matrix",
