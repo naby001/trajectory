@@ -365,126 +365,97 @@ function HomePage() {
                     md={6}
                     className="event-card"
                   >
-                    <Card
-                      sx={{
-                        height: "100%",
-                        position: "relative",
-                        overflow: "hidden",
-                        backgroundColor: "rgba(28, 27, 31, 0.9)",
-                        transition: "transform 0.5s, box-shadow 0.5s",
-                        transform:
-                          "perspective(1000px) rotateX(0deg) rotateY(0deg)",
-                        borderRadius: "16px", // Increase border radius
-                        "&:hover": {
-                          transform:
-                            "perspective(1000px) rotateX(5deg) rotateY(5deg) scale(0.95)",
-                          boxShadow: `0 0 20px ${glowColor}, 0 0 30px ${glowColor}, 0 0 40px ${glowColor}`,
-                        },
-                      }}
+                    <Box
+                      onClick={() => handleCardClick(tour.title)}
+                      sx={{ cursor: "pointer" }}
                     >
-                      {/* Glowing Background Effect */}
-                      <Box
+                      <Card
                         sx={{
-                          position: "absolute",
-                          top: 0,
-                          left: 0,
-                          width: "100%",
                           height: "100%",
-                          background: `radial-gradient(circle, ${
-                            [
-                              "rgba(255, 0, 0, 0.3)",
-                              "rgba(0, 255, 0, 0.3)",
-                              "rgba(0, 0, 255, 0.3)",
-                              "rgba(255, 255, 0, 0.3)",
-                              "rgba(255, 0, 255, 0.3)",
-                              "rgba(0, 255, 255, 0.3)",
-                            ][index]
-                          }, transparent)`,
-                          filter: "blur(15px)",
-                          opacity: 0,
-                          transition: "opacity 0.5s",
-                          zIndex: -1,
-                          // Keep the existing effect and let the card hover add more glow
+                          position: "relative",
+                          overflow: "hidden",
+                          backgroundColor: "rgba(28, 27, 31, 0.9)",
+                          transition: "transform 0.5s, box-shadow 0.5s",
+                          transform:
+                            "perspective(1000px) rotateX(0deg) rotateY(0deg)",
+                          borderRadius: "16px", // Increase border radius
                           "&:hover": {
-                            opacity: 1,
+                            transform:
+                              "perspective(1000px) rotateX(5deg) rotateY(5deg) scale(0.95)",
+                            boxShadow: `0 0 20px ${glowColor}, 0 0 30px ${glowColor}, 0 0 40px ${glowColor}`,
                           },
                         }}
-                      />
-
-                      {/* Card Image */}
-                      <Box sx={{ overflow: "hidden", position: "relative" }}>
-                        <CardMedia
-                          component="img"
-                          height="200"
-                          image={tour.image}
-                          alt={tour.title}
+                      >
+                        {/* Glowing Background Effect */}
+                        <Box
                           sx={{
-                            filter: "grayscale(100%) brightness(50%)",
-                            transition: "all 0.5s ease-in-out",
+                            position: "absolute",
+                            top: 0,
+                            left: 0,
+                            width: "100%",
+                            height: "100%",
+                            background: `radial-gradient(circle, ${
+                              [
+                                "rgba(255, 0, 0, 0.3)",
+                                "rgba(0, 255, 0, 0.3)",
+                                "rgba(0, 0, 255, 0.3)",
+                                "rgba(255, 255, 0, 0.3)",
+                                "rgba(255, 0, 255, 0.3)",
+                                "rgba(0, 255, 255, 0.3)",
+                              ][index]
+                            }, transparent)`,
+                            filter: "blur(15px)",
+                            opacity: 0,
+                            transition: "opacity 0.5s",
+                            zIndex: -1,
+                            // Keep the existing effect and let the card hover add more glow
                             "&:hover": {
-                              filter:
-                                "grayscale(0%) brightness(100%) drop-shadow(0 0 20px white)",
+                              opacity: 1,
                             },
                           }}
                         />
-                      </Box>
 
-                      {/* Card Content */}
-                      <CardContent sx={{ textAlign: "center", color: "white" }}>
-                        {/* Date-like Badge on Top */}
+                        {/* Card Image */}
+                        <Box sx={{ overflow: "hidden", position: "relative" }}>
+                          <CardMedia
+                            component="img"
+                            height="200"
+                            image={tour.image}
+                            alt={tour.title}
+                            sx={{
+                              filter: "grayscale(100%) brightness(50%)",
+                              transition: "all 0.5s ease-in-out",
+                              "&:hover": {
+                                filter:
+                                  "grayscale(0%) brightness(100%) drop-shadow(0 0 20px white)",
+                              },
+                            }}
+                          />
+                        </Box>
 
-                        <Typography
-                          gutterBottom
-                          variant="h5"
-                          sx={{
-                            fontWeight: "bold",
-                            transition: "color 0.3s",
-                            "&:hover": {
-                              color: "#FFD700",
-                              textShadow: "0 0 10px #FFD700",
-                            },
-                          }}
-                        >
-                          {tour.title}
-                        </Typography>
+                        {/* Card Content */}
+                        <CardContent sx={{ textAlign: "center", color: "white" }}>
+                          <Typography
+                            gutterBottom
+                            variant="h5"
+                            sx={{
+                              fontWeight: "bold",
+                              transition: "color 0.3s",
+                              "&:hover": {
+                                color: "#FFD700",
+                                textShadow: "0 0 10px #FFD700",
+                              },
+                            }}
+                          >
+                            {tour.title}
+                          </Typography>
 
-                        <Typography variant="body2" sx={{ color: "gray" }}>
-                          {tour.description}
-                        </Typography>
-
-                        {/* See More Button with Navigation */}
-                        <Button
-                          onClick={() => handleCardClick(tour.title)}
-                          sx={{
-                            marginTop: "10px",
-                            color: "white",
-                            fontWeight: "bold",
-                            "&:hover": {
-                              color: [
-                                "#FF0000",
-                                "#00FF00",
-                                "#0000FF",
-                                "#FFFF00",
-                                "#FF00FF",
-                                "#00FFFF",
-                              ][index],
-                              textShadow: `0 0 10px ${
-                                [
-                                  "#FF0000",
-                                  "#00FF00",
-                                  "#0000FF",
-                                  "#FFFF00",
-                                  "#FF00FF",
-                                  "#00FFFF",
-                                ][index]
-                              }`,
-                            },
-                          }}
-                        >
-                          SEE MORE
-                        </Button>
-                      </CardContent>
-                    </Card>
+                          <Typography variant="body2" sx={{ color: "gray" }}>
+                            {tour.description}
+                          </Typography>
+                        </CardContent>
+                      </Card>
+                    </Box>
                   </Grid>
                 );
               })}
