@@ -43,7 +43,7 @@ export const events = [
     location: "Mechanical Dept, Jadavpur University",
     type: "Hardware Challenge",
     groupSize: "2-3",
-    price: 2000.00,
+    price: 4000.00,
     image: hydro,
     //prelimsDate: "2023-11-01",
     finalsDate: "04-04-2025",
@@ -52,70 +52,70 @@ export const events = [
       { name: "Avipso Sinha", phone: "+91 94332 43651" },
       { name: "Shayan Charan", phone: "+91 91631 23389" }
     ],
-    rules: 
-    [
-      "All teams must strictly adhere to the competition guidelines and design constraints outlined in this event documentation",
-      "Any deviation or violation of the rules will result in immediate disqualification.",
-      "Teams are expected to maintain professionalism. Any form of misconduct will lead to immediate disqualification.",
-      "The Decision of the Event Coordinators will be final and NO Arguments shall be entertained."
-      
-    ],
+    rules:
+      [
+        "All teams must strictly adhere to the competition guidelines and design constraints outlined in this event documentation",
+        "Any deviation or violation of the rules will result in immediate disqualification.",
+        "Teams are expected to maintain professionalism. Any form of misconduct will lead to immediate disqualification.",
+        "The Decision of the Event Coordinators will be final and NO Arguments shall be entertained."
+
+      ],
     pdfLink: "https://drive.google.com/file/d/1GOzVMhgb9HAqCN0ZGwCVXjcN9jZS70QA/view?usp=sharing"
   },
 
   {
-    id:"67b7148d9a01ff3f0a3c85ec", //id of code sprint
+    id: "67b7148d9a01ff3f0a3c85ec", //id of code sprint
     title: "Data Mine",
     description: "A code-breaking and puzzle-solving event where participants decode encrypted messages, solve cryptic clues, and crack complex challenges. It tests logical thinking, cryptography knowledge, and problem-solving speed",
     location: "Mechanical Dept, Jadavpur University",
     type: "Simulation Challenge",
     groupSize: "2-4",
-   // price: 6000.00,
+    price: 4500.00,
     image: datamine,
     prelimsDate: "02-04-2025 (online mode)",
     finalsDate: "03-04-2025",
     coordinators: [
       { name: "Tuhin Chakraborty", phone: "+91 9038432263" },
       { name: "Rohit Dutta", phone: "+91 9064890591" },
-      { name: "Koustav Das",phone:"+91 8348217647"}
+      { name: "Koustav Das", phone: "+91 8348217647" }
     ],
     rules:
-     [
-      "A participant can join only one team. Multiple registrations will lead to disqualification.",
-     " Participants are expected to maintain professional conduct throughout the competition.",
-     "Any form of plagiarism, cheating, or unethical behavior will result in immediate disqualification.",
-      "The decision of the Event Coordinator will be final and no arguments will be entertained."
-    ],
+      [
+        "A participant can join only one team. Multiple registrations will lead to disqualification.",
+        " Participants are expected to maintain professional conduct throughout the competition.",
+        "Any form of plagiarism, cheating, or unethical behavior will result in immediate disqualification.",
+        "The decision of the Event Coordinator will be final and no arguments will be entertained."
+      ],
     pdfLink: "https://drive.google.com/file/d/1ES9vS307RdhUQAGo-OOZ9-X_K15W_vq2/view?usp=drive_link"
   },
   {
-    id:"67b714449a01ff3f0a3c85e6",
+    id: "67b714449a01ff3f0a3c85e6",
     title: "Model Matrix",
-    description: "Gear up to flex your skills in CAD modeling and simulation. Focussed on complex core engineering parts and components, it challenges precision, creativity, and technical expertise in a dynamic and competitive setting."   ,
+    description: "Gear up to flex your skills in CAD modeling and simulation. Focussed on complex core engineering parts and components, it challenges precision, creativity, and technical expertise in a dynamic and competitive setting.",
     location: "Mechanical Dept, Jadavpur University",
     type: "Simulation Challenge",
     groupSize: "1",
-    price: 5000.00,
+    price: 4500.00,
     image: model,
     prelimsDate: "02-04-2025 (online mode)",
     finalsDate: "03-04-2025",
     coordinators: [
       { name: "Debadrita Hazra", phone: "9883311422" },
       { name: "Sourav Paul", phone: "94330 31650" },
-      { name: "Koustav Bhattacharjee",phone:"85849 77088"},
-      { name: "Soumyojit Biswas",phone:"83890 06855"}
-     
+      { name: "Koustav Bhattacharjee", phone: "85849 77088" },
+      { name: "Soumyojit Biswas", phone: "83890 06855" }
+
     ],
     rules:
-     [
-      "Every participant should bring a personal laptop on the day of the competition.",
-      "Everyone should submit the .sldprt or .f3d and assembly files after the exam.",
-      "Teams must strictly adhere to competition guidelines and event constraints outlined in this document.",
-     " Participants are expected to maintain professional conduct throughout the competition.",
-     "Any form of plagiarism, cheating, or unethical behavior will result in immediate disqualification.",
-     "During the offine round, participants must reach the venue on time. Once the clock starts, they will have only the remaining time to complete the task. No extra time will be given. If a player is absent on that day, their opponent will receive a walkover.",
-      "The decision of the Event Coordinator will be final and no arguments will be entertained."
-    ],
+      [
+        "Every participant should bring a personal laptop on the day of the competition.",
+        "Everyone should submit the .sldprt or .f3d and assembly files after the exam.",
+        "Teams must strictly adhere to competition guidelines and event constraints outlined in this document.",
+        " Participants are expected to maintain professional conduct throughout the competition.",
+        "Any form of plagiarism, cheating, or unethical behavior will result in immediate disqualification.",
+        "During the offine round, participants must reach the venue on time. Once the clock starts, they will have only the remaining time to complete the task. No extra time will be given. If a player is absent on that day, their opponent will receive a walkover.",
+        "The decision of the Event Coordinator will be final and no arguments will be entertained."
+      ],
     pdfLink: "https://drive.google.com/file/d/1YWZxyWIP6_x_ofAvv_PD1CGFjeXgOQv7/view?usp=drive_link"
   },
   {
@@ -125,52 +125,52 @@ export const events = [
     location: "Mechanical Dept, Jadavpur University",
     type: "General",
     groupSize: "1-4",
-      price: 1000.00, // not yet decided
+    price: 3000.00,
     image: clash,
     prelimsDate: "02-04-2025 (online)",
     finalsDate: "03-04-2025",
     coordinators: [
       { name: "Srija Mondal", phone: "8851270470" },
-      {name: "Koustav Bhattacharjee", phone: "8584977088" },
+      { name: "Koustav Bhattacharjee", phone: "8584977088" },
       { name: "Nilendu Dikshit", phone: "7797749574" }
     ],
     rules: [
       "The primary task is to redesign and optimize the heat exchanger to maximize heat transfer efficiency while maintaining structural integrity and satisfy other conditions.",
       "Any deviation or violation of the rules will result in immediate disqualification.",
       "Participant is expected to maintain professional conduct throughout the competition.",
-       "Any form of plagiarism, cheating, or unethical behavior will result in immediate disqualification.",
+      "Any form of plagiarism, cheating, or unethical behavior will result in immediate disqualification.",
       "The decision of the Event Coordinator will be final and no arguments will be entertained."
-      
+
     ],
     pdfLink: "https://drive.google.com/file/d/1eQ4bsbd-ukHU7gcg2FxWmgIfqYVX0xGt/view?usp=drive_link"
   },
   {
-     id: "67b7145e9a01ff3f0a3c85e8", //id of debate competition
-     title: "Torko Bitorko",
-     description: "Be prepared to engage yourself in thought-provoking discussions on general knowledge, core engineering concepts, and current affairs to showcase analytical thinking, argumentation skills and intellectual agility",
-     location: "Mechanical Dept, Jadavpur University",
-     type: "General",
-     groupSize: "1",
-    // price: 1000.00,
-     image: debate,
+    id: "67b7145e9a01ff3f0a3c85e8", //id of debate competition
+    title: "Torko Bitorko",
+    description: "Be prepared to engage yourself in thought-provoking discussions on general knowledge, core engineering concepts, and current affairs to showcase analytical thinking, argumentation skills and intellectual agility",
+    location: "Mechanical Dept, Jadavpur University",
+    type: "General",
+    groupSize: "1",
+    price: 3000.00,
+    image: debate,
     // prelimsDate: "17-03-2025",
-     finalsDate: "04-04-2025",
-     coordinators: [
-       { name: "Mrinmay Tarafdar", phone: "9749386827" },
-       { name: "Koustav Das", phone: "8348217647" },
-       { name: "Aditya Mondal", phone: "9748270706" }  
-     ],
-     rules: [
-       "During the preparation period, usage of mobile phones, laptops, or any reference material is strictly prohibited.",
-       "Participants must respect their fellow debaters. Interruptions, personal attacks, or aggressive behavior will not be tolerated.",
-       "Participants are expected to maintain professional conduct throughout the competition.",
-       "Any form of plagiarism, cheating, or unethical behavior will result in immediate disqualification.",
-       "The decision of the Event Coordinator will be final and no arguments will be entertained.",
-       
-     ],
-     pdfLink: "https://drive.google.com/file/d/1rXmIVzJE1DdFaVpSf6-nW8eVs_rqUhrp/view?usp=drive_link"
-   },
-   {
+    finalsDate: "04-04-2025",
+    coordinators: [
+      { name: "Mrinmay Tarafdar", phone: "9749386827" },
+      { name: "Koustav Das", phone: "8348217647" },
+      { name: "Aditya Mondal", phone: "9748270706" }
+    ],
+    rules: [
+      "During the preparation period, usage of mobile phones, laptops, or any reference material is strictly prohibited.",
+      "Participants must respect their fellow debaters. Interruptions, personal attacks, or aggressive behavior will not be tolerated.",
+      "Participants are expected to maintain professional conduct throughout the competition.",
+      "Any form of plagiarism, cheating, or unethical behavior will result in immediate disqualification.",
+      "The decision of the Event Coordinator will be final and no arguments will be entertained.",
+
+    ],
+    pdfLink: "https://drive.google.com/file/d/1rXmIVzJE1DdFaVpSf6-nW8eVs_rqUhrp/view?usp=drive_link"
+  },
+  {
     id: "67b714349a01ff3f0a3c85e5",
     title: "Hoverpod",
     description: "An exciting event where participants build and race hovercraft-like vehicles. These self-propelled pods glide on a cushion of air. Teams focus on design, stability, and speed to compete in time-based challenges",
@@ -191,7 +191,7 @@ export const events = [
       "Points will be given based on the parameters and penalties, following all the specifications mentioned in the document ",
       "Any deviation or violation of the rules will result in immediate disqualification.",
       "Participant is expected to maintain professional conduct throughout the competition.",
-       "Any form of plagiarism, cheating, or unethical behavior will result in immediate disqualification.",
+      "Any form of plagiarism, cheating, or unethical behavior will result in immediate disqualification.",
       "The decision of the Event Coordinator will be final and no arguments will be entertained.",
     ],
     pdfLink: "https://drive.google.com/file/d/1s9ANyRgxjhtUzYBGttqUFFJChxMj7lM0/view?usp=drive_link"
@@ -203,22 +203,22 @@ export const events = [
     location: "Mechanical Dept, Jadavpur University",
     type: "Hardware Challenge",
     groupSize: "2-4",
-    price: 2000.00,
+    price: 4000.00,
     image: egg,
     prelimsDate: "03-04-2025",
     finalsDate: "03-04-2025",
     coordinators: [
       { name: "Samriddha Chakraborty", phone: "+91 9330284935" },
-      {name: "Mainak Roy", phone: "+91 7908373925" },
+      { name: "Mainak Roy", phone: "+91 7908373925" },
       { name: "Satanik Auddy", phone: "+91 9038514040" }
     ],
     rules: [
       "Necessary materials will be prvided.Scissors and Fevicol only are allowed. Other adhesives like dendrite, Fevi-quick, glue guns are strictly prohibited.",
       "Interdisciplinary teams (members from different courses) and intercollege teams (members from different institutions) are allowed.",
       "Participants are expected to maintain professional conduct throughout the competition.",
-       "Any form of plagiarism, cheating, or unethical behavior will result in immediate disqualification.",
+      "Any form of plagiarism, cheating, or unethical behavior will result in immediate disqualification.",
       "The decision of the Event Coordinator will be final and no arguments will be entertained.",
-      
+
     ],
     pdfLink: "https://drive.google.com/file/d/1exEWry5G-5XeBCgQv6SRGRlOgV320aAD/view?usp=drive_link"
   },
@@ -229,7 +229,7 @@ export const events = [
     location: "Mechanical Dept, Jadavpur University",
     type: "Fun Activities",
     groupSize: "1",
-    price: 2000.00,
+    price: 4000.00,
     image: frame,
     prelimsDate: "02-04-2025 & 03-04-2025",
     finalsDate: "04-04-2025",
@@ -243,12 +243,12 @@ export const events = [
       "Multi-exposure and composite images are allowed, but all components must be photographed by the participant. No stock or third-party images can be used.",
       "Plagiarism, copyright violations, or submission of AI-generated content will lead to immediate disqualification. ",
       "Participants must respect the privacy and dignity of subjects in their photographs,especially in street photography.",
-       "Offensive, violent, or politically sensitive imagery may be rejected at the discretion of the organizers.",      
+      "Offensive, violent, or politically sensitive imagery may be rejected at the discretion of the organizers.",
       "The decision of the Event Coordinator will be final and no arguments will be entertained.",
     ],
     pdfLink: "https://drive.google.com/file/d/11rnn8pP9JeGEINmdTDc_B5MyVWi-KSqM/view?usp=drive_link"
   },
-  
+
   {
     id: "67b710919a01ff3f0a3c85e2",
     title: "Robo League",
@@ -256,7 +256,7 @@ export const events = [
     location: "Mechanical Dept, Jadavpur University",
     type: "Hardware Challenge",
     groupSize: "2-5",
-   price: 6000.00, //not confirmed
+    price: 10000.00,
     image: robo,
     prelimsDate: "03-04-2025",
     finalsDate: "03-04-2025",
@@ -282,7 +282,7 @@ export const events = [
     location: "Lecture Hall, Jadavpur University",
     type: "General",
     groupSize: "1-3",
-    price: 1000.00,
+    price: 4000.00,
     image: qui,
     prelimsDate: "02-04-2025",
     finalsDate: "03-04-2025",
@@ -307,7 +307,7 @@ export const events = [
     location: "Mechanical Dept, Jadavpur University",
     type: "Hardware Challenge",
     groupSize: "3-4",
-    price: 6000.00,
+    price: 10000.00,
     image: maze,
     prelimsDate: "04-04-2025",
     finalsDate: "04-04-2025",
@@ -332,9 +332,9 @@ export const events = [
     location: "Mechanical Dept, Jadavpur University",
     type: "Fun Actvities",
     groupSize: "1",
-   // price: 1000.00, // not yet decided
+    price: 3000.00,
     image: treasure,
-   // prelimsDate: "17-03-2025(online)",
+    // prelimsDate: "17-03-2025(online)",
     finalsDate: "04-04-2025",
     coordinators: [
       { name: "Himopravo Chowdhuri", phone: "+91 94759 74209" },
@@ -346,14 +346,14 @@ export const events = [
       "Participant is expected to maintain professional conduct throughout the competition.",
       "Any form of plagiarism, cheating, or unethical behavior will result in immediate disqualification.",
       "The decision of the Event Coordinator will be final and no arguments will be entertained."
-      
+
     ],
     pdfLink: "https://www.trajectoryjume.tech/"
   },
-  
-  
- 
-  
+
+
+
+
 ];
 
 const unstopLinks = {
@@ -457,11 +457,11 @@ export default function Details() {
           <Grid container spacing={4}>
             {/* Header */}
             <Grid item xs={12} textAlign="center">
-              <Typography 
-                variant="h2" 
-                component="h1" 
-                sx={{ 
-                  mb: 1, 
+              <Typography
+                variant="h2"
+                component="h1"
+                sx={{
+                  mb: 1,
                   background: 'linear-gradient(90deg, yellow, white)', // Gradient text color
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
@@ -485,7 +485,7 @@ export default function Details() {
                   justifyContent: 'space-between',
                 }}
               >
-                <Box component="img" 
+                <Box component="img"
                   src={eventDetails.image}
                   // Added lazy loading
                   sx={{
@@ -499,11 +499,11 @@ export default function Details() {
                     },
                   }}
                 />
-                
+
                 <Button
                   variant="contained"
-                  sx={{ 
-                    mt: 2, 
+                  sx={{
+                    mt: 2,
                     backgroundColor: '#0099ff', // Updated button color
                     '&:hover': {
                       backgroundColor: '#F45558',
@@ -532,12 +532,12 @@ export default function Details() {
                   Register on Unstop
                 </Button>
                 <Typography variant="body1" sx={{ mt: 2, color: '#FFFFFF', textAlign: 'center' }}>
-                  OR 
+                  OR
                 </Typography>
                 <Button
                   variant="contained"
-                  sx={{ 
-                    mt: 2, 
+                  sx={{
+                    mt: 2,
                     backgroundColor: '#0099ff', // Updated button color
                     '&:hover': {
                       backgroundColor: '#F45558',
@@ -546,11 +546,11 @@ export default function Details() {
                   fullWidth
                   onClick={handleRegisterClick}
                 >
-                 Quick Register
+                  Quick Register
                 </Button>
               </Paper>
             </Grid>
-            
+
 
             {/* Event Details */}
             <Grid item xs={12} md={6}>
@@ -571,7 +571,7 @@ export default function Details() {
                     <ListItemIcon>
                       <EventIcon sx={{ color: '#FFFFFF' }} />
                     </ListItemIcon>
-                    <ListItemText 
+                    <ListItemText
                       primary={<Typography color="#FFFFFF">Event Date (Prelims)</Typography>}
                       secondary={<Typography color="gray">{eventDetails.prelimsDate}</Typography>}
                     />
@@ -581,7 +581,7 @@ export default function Details() {
                     <ListItemIcon>
                       <EventIcon sx={{ color: '#FFFFFF' }} />
                     </ListItemIcon>
-                    <ListItemText 
+                    <ListItemText
                       primary={<Typography color="#FFFFFF">Event Date (Finals)</Typography>}
                       secondary={<Typography color="gray">{eventDetails.finalsDate}</Typography>}
                     />
@@ -591,7 +591,7 @@ export default function Details() {
                     <ListItemIcon>
                       <GroupIcon sx={{ color: '#FFFFFF' }} />
                     </ListItemIcon>
-                    <ListItemText 
+                    <ListItemText
                       primary={<Typography color="#FFFFFF">Team Size</Typography>}
                       secondary={<Typography color="gray">{eventDetails.groupSize} members</Typography>}
                     />
@@ -601,7 +601,7 @@ export default function Details() {
                     <ListItemIcon>
                       <PhoneIcon sx={{ color: '#FFFFFF' }} />
                     </ListItemIcon>
-                    <ListItemText 
+                    <ListItemText
                       primary={<Typography color="#FFFFFF">Event Coordinators</Typography>}
                       secondary={
                         <Box>
@@ -617,7 +617,7 @@ export default function Details() {
                     <ListItemIcon>
                       <PrizeIcon sx={{ color: '#FFFFFF' }} />
                     </ListItemIcon>
-                    <ListItemText 
+                    <ListItemText
                       primary={<Typography color="#FFFFFF">Prize</Typography>}
                       secondary={<Typography color="gray">Exciting Prizes for the winners.</Typography>}
                     />
@@ -627,7 +627,7 @@ export default function Details() {
                     <ListItemIcon>
                       <InfoIcon sx={{ color: '#FFFFFF' }} />
                     </ListItemIcon>
-                    <ListItemText 
+                    <ListItemText
                       primary={<Typography color="#FFFFFF">Event Description</Typography>}
                       secondary={
                         <Typography color="gray">
@@ -657,7 +657,7 @@ export default function Details() {
                 <List>
                   {eventDetails.rules.map((rule, index) => (
                     <ListItem key={index}>
-                      <ListItemText 
+                      <ListItemText
                         primary={<Typography color="#FFFFFF">{`${index + 1}. ${rule}`}</Typography>}
                         sx={{ color: 'gray' }}
                       />
@@ -666,8 +666,8 @@ export default function Details() {
                 </List>
                 <Button
                   variant="contained"
-                  sx={{ 
-                    mt: 2, 
+                  sx={{
+                    mt: 2,
                     backgroundColor: '#0099ff', // Updated button color
                     '&:hover': {
                       backgroundColor: '#F45558',
