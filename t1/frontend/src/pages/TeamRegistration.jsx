@@ -470,7 +470,23 @@ const TeamRegistration = () => {
                 margin="normal"
                 value={email}
                 disabled
-                InputProps={{ style: { color: "#000000", backgroundColor: "#FFFFFF" } }} // Black text color
+                InputProps={{
+                  style: { backgroundColor: "#FFFFFF" }
+                }}
+                sx={{
+                  "& .MuiInputLabel-root": { color: "#FF0000" },
+                  "& .MuiOutlinedInput-root": { 
+                    "& > fieldset": { borderColor: "#FF0000" },
+                    "& .Mui-disabled": { 
+                      "-webkit-text-fill-color": "#FF0000 !important",
+                      color: "#FF0000 !important"
+                    }
+                  },
+                  "& .MuiInputBase-input.Mui-disabled": {
+                    "-webkit-text-fill-color": "#FF0000",
+                    color: "#FF0000"
+                  }
+                }}
               />
               <TextField
                 label="Full Name"
@@ -479,7 +495,23 @@ const TeamRegistration = () => {
                 margin="normal"
                 value={name}
                 disabled
-                InputProps={{ style: { color: "#000000", backgroundColor: "#FFFFFF" } }} // Black text color
+                InputProps={{
+                  style: { backgroundColor: "#FFFFFF" }
+                }}
+                sx={{
+                  "& .MuiInputLabel-root": { color: "#FF0000" },
+                  "& .MuiOutlinedInput-root": { 
+                    "& > fieldset": { borderColor: "#FF0000" },
+                    "& .Mui-disabled": { 
+                      "-webkit-text-fill-color": "#FF0000 !important",
+                      color: "#FF0000 !important"
+                    }
+                  },
+                  "& .MuiInputBase-input.Mui-disabled": {
+                    "-webkit-text-fill-color": "#FF0000",
+                    color: "#FF0000"
+                  }
+                }}
               />
               <TextField
                 label="Institution"
@@ -488,8 +520,23 @@ const TeamRegistration = () => {
                 margin="normal"
                 value={institution}
                 disabled
-                InputProps={{ style: { color: "#000000", backgroundColor: "#FFFFFF" } }} // Black text color
-                style={{ color: "#000000" }} // Black text color
+                InputProps={{
+                  style: { backgroundColor: "#FFFFFF" }
+                }}
+                sx={{
+                  "& .MuiInputLabel-root": { color: "#FF0000" },
+                  "& .MuiOutlinedInput-root": { 
+                    "& > fieldset": { borderColor: "#FF0000" },
+                    "& .Mui-disabled": { 
+                      "-webkit-text-fill-color": "#FF0000 !important",
+                      color: "#FF0000 !important"
+                    }
+                  },
+                  "& .MuiInputBase-input.Mui-disabled": {
+                    "-webkit-text-fill-color": "#FF0000",
+                    color: "#FF0000"
+                  }
+                }}
               />
 
               {/* ✅ Team Name - Editable only before registration */}
@@ -498,12 +545,22 @@ const TeamRegistration = () => {
                 fullWidth
                 variant="outlined"
                 margin="normal"
-                value={teamName || ""} // ✅ Prevent undefined
+                value={teamName || ""}
                 onChange={(e) => {setTeamName(e.target.value); setisteamname(true);}}
                 error={!isteamname}
                 helperText={!isteamname && "Enter a team name"}
-                InputProps={{ style: { color: "#000000", backgroundColor: "#FFFFFF" } }} // Black text color
-                style={{ color: "#000000" }} // Black text color
+                InputProps={{
+                  style: { backgroundColor: "#FFFFFF" }
+                }}
+                inputProps={{
+                  style: { color: "#FF0000" }
+                }}
+                sx={{
+                  "& .MuiInputLabel-root": { color: "#FF0000" },
+                  "& .MuiOutlinedInput-root": { 
+                    "& > fieldset": { borderColor: "#FF0000" }
+                  }
+                }}
               />
 
               {/* ✅ Team Members - Dynamically rendered based on event requirements with enhanced feedback */}
@@ -517,7 +574,7 @@ const TeamRegistration = () => {
                   value={email}
                   onChange={(e) => handleMemberEmailChange(index, e.target.value)}
                   InputProps={{ 
-                    style: { color: "#000000", backgroundColor: "#FFFFFF" },
+                    style: { backgroundColor: "#FFFFFF" },
                     endAdornment: email ? (
                       <InputAdornment position="end">
                         <Chip
@@ -533,6 +590,15 @@ const TeamRegistration = () => {
                         />
                       </InputAdornment>
                     ) : null
+                  }}
+                  inputProps={{
+                    style: { color: "#FF0000" }
+                  }}
+                  sx={{
+                    "& .MuiInputLabel-root": { color: "#FF0000" },
+                    "& .MuiOutlinedInput-root": { 
+                      "& > fieldset": { borderColor: "#FF0000" }
+                    }
                   }}
                   error={validationStates[index] === false && email !== ''}
                   helperText={
@@ -561,7 +627,18 @@ const TeamRegistration = () => {
                 value={phone}
                 onChange={(e) => {setPhone(e.target.value); setisphone(true);}}
                 error={!isphone}
-                InputProps={{ style: { color: "#000000", backgroundColor: "#FFFFFF" } }} // Black text color
+                InputProps={{
+                  style: { backgroundColor: "#FFFFFF" }
+                }}
+                inputProps={{
+                  style: { color: "#FF0000" }
+                }}
+                sx={{
+                  "& .MuiInputLabel-root": { color: "#FF0000" },
+                  "& .MuiOutlinedInput-root": { 
+                    "& > fieldset": { borderColor: "#FF0000" }
+                  }
+                }}
                 helperText={
                   !isphone && "Team Leader Phone Number is mandatory"
                 }
@@ -575,7 +652,23 @@ const TeamRegistration = () => {
                 variant="outlined"
                 margin="normal"
                 value={eventDetails.title}
-                InputProps={{ style: { color: "#000000", backgroundColor: "#FFFFFF" } }} // Black text color
+                InputProps={{
+                  style: { backgroundColor: "#FFFFFF" }
+                }}
+                sx={{
+                  "& .MuiInputLabel-root": { color: "#FF0000" },
+                  "& .MuiOutlinedInput-root": { 
+                    "& > fieldset": { borderColor: "#FF0000" },
+                    "& .Mui-disabled": { 
+                      "-webkit-text-fill-color": "#FF0000 !important",
+                      color: "#FF0000 !important"
+                    }
+                  },
+                  "& .MuiInputBase-input.Mui-disabled": {
+                    "-webkit-text-fill-color": "#FF0000",
+                    color: "#FF0000"
+                  }
+                }}
               />
 
               {/* Register Button */}
@@ -632,7 +725,7 @@ const TeamRegistration = () => {
             </Box>
           )}
 
-          <Typography variant="body2" align="center" style={{ marginTop: "20px", color: "white" }}>
+          <Typography variant="body2" align="center" style={{ marginTop: "20px", color: "#FF0000", fontWeight: "bold" }}>
             <strong>Note:</strong> &nbsp;
              Only the team leader needs to register.
              All team members must have an account on this website.
