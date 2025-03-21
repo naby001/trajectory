@@ -670,6 +670,12 @@ const TeamRegistration = () => {
                     "& .MuiOutlinedInput-root": { 
                       "& > fieldset": { borderColor: "#888888", borderWidth: "1px" }
                     },
+                    "& .MuiFormHelperText-root": {
+                      color: "#FF0000",
+                      fontWeight: "bold",
+                      fontSize: "0.9rem",
+                      marginTop: "5px"
+                    },
                     marginBottom: "20px"
                   }}
                   error={validationStates[index] === false && email !== ''}
@@ -683,12 +689,19 @@ const TeamRegistration = () => {
                         ? "User already registered for this event"
                         : "Email must be unique"
                       : index < (minTeamSize - 1) && email === ''
-                      ? "This member is required for this event"
+                      ? "This member must be added for this event"
                       : ""
                   }
                   required={index < (minTeamSize - 1)}
                 />
               ))}
+
+              {/* Event information message */}
+              {minTeamSize > 1 && (
+                <Typography variant="body2" align="left" style={{ marginTop: "5px", marginBottom: "15px", color: "#FF0000", fontWeight: "bold" }}>
+                  This event requires at least {minTeamSize} members in a team
+                </Typography>
+              )}
 
               {/* ✅ Team Lead Phone Number */}
               <TextField
