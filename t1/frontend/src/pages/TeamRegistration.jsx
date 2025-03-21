@@ -474,18 +474,34 @@ const TeamRegistration = () => {
                   style: { backgroundColor: "#FFFFFF" }
                 }}
                 sx={{
-                  "& .MuiInputLabel-root": { color: "#FF0000" },
+                  "& .MuiInputLabel-root": { 
+                    color: "#FF0000",
+                    fontWeight: "bold",
+                    fontSize: "1.2rem",
+                    backgroundColor: "rgba(255, 255, 255, 0.9)",
+                    padding: "0 8px",
+                    borderRadius: "4px"
+                  },
+                  "& .MuiInputLabel-root.Mui-focused": { 
+                    color: "#FF0000",
+                    fontWeight: "bold" 
+                  },
+                  "& .MuiInputLabel-root.Mui-disabled": { 
+                    color: "#FF0000",
+                    fontWeight: "bold" 
+                  },
                   "& .MuiOutlinedInput-root": { 
-                    "& > fieldset": { borderColor: "#FF0000" },
+                    "& > fieldset": { borderColor: "#888888", borderWidth: "1px" },
                     "& .Mui-disabled": { 
-                      "-webkit-text-fill-color": "#FF0000 !important",
-                      color: "#FF0000 !important"
+                      "-webkit-text-fill-color": "#666666 !important",
+                      color: "#666666 !important"
                     }
                   },
                   "& .MuiInputBase-input.Mui-disabled": {
-                    "-webkit-text-fill-color": "#FF0000",
-                    color: "#FF0000"
-                  }
+                    "-webkit-text-fill-color": "#666666",
+                    color: "#666666"
+                  },
+                  marginBottom: "20px"
                 }}
               />
               <TextField
@@ -499,18 +515,34 @@ const TeamRegistration = () => {
                   style: { backgroundColor: "#FFFFFF" }
                 }}
                 sx={{
-                  "& .MuiInputLabel-root": { color: "#FF0000" },
+                  "& .MuiInputLabel-root": { 
+                    color: "#FF0000",
+                    fontWeight: "bold",
+                    fontSize: "1.2rem",
+                    backgroundColor: "rgba(255, 255, 255, 0.9)",
+                    padding: "0 8px",
+                    borderRadius: "4px"
+                  },
+                  "& .MuiInputLabel-root.Mui-focused": { 
+                    color: "#FF0000",
+                    fontWeight: "bold" 
+                  },
+                  "& .MuiInputLabel-root.Mui-disabled": { 
+                    color: "#FF0000",
+                    fontWeight: "bold" 
+                  },
                   "& .MuiOutlinedInput-root": { 
-                    "& > fieldset": { borderColor: "#FF0000" },
+                    "& > fieldset": { borderColor: "#888888", borderWidth: "1px" },
                     "& .Mui-disabled": { 
-                      "-webkit-text-fill-color": "#FF0000 !important",
-                      color: "#FF0000 !important"
+                      "-webkit-text-fill-color": "#666666 !important",
+                      color: "#666666 !important"
                     }
                   },
                   "& .MuiInputBase-input.Mui-disabled": {
-                    "-webkit-text-fill-color": "#FF0000",
-                    color: "#FF0000"
-                  }
+                    "-webkit-text-fill-color": "#666666",
+                    color: "#666666"
+                  },
+                  marginBottom: "20px"
                 }}
               />
               <TextField
@@ -524,18 +556,34 @@ const TeamRegistration = () => {
                   style: { backgroundColor: "#FFFFFF" }
                 }}
                 sx={{
-                  "& .MuiInputLabel-root": { color: "#FF0000" },
+                  "& .MuiInputLabel-root": { 
+                    color: "#FF0000",
+                    fontWeight: "bold",
+                    fontSize: "1.2rem",
+                    backgroundColor: "rgba(255, 255, 255, 0.9)",
+                    padding: "0 8px",
+                    borderRadius: "4px"
+                  },
+                  "& .MuiInputLabel-root.Mui-focused": { 
+                    color: "#FF0000",
+                    fontWeight: "bold" 
+                  },
+                  "& .MuiInputLabel-root.Mui-disabled": { 
+                    color: "#FF0000",
+                    fontWeight: "bold" 
+                  },
                   "& .MuiOutlinedInput-root": { 
-                    "& > fieldset": { borderColor: "#FF0000" },
+                    "& > fieldset": { borderColor: "#888888", borderWidth: "1px" },
                     "& .Mui-disabled": { 
-                      "-webkit-text-fill-color": "#FF0000 !important",
-                      color: "#FF0000 !important"
+                      "-webkit-text-fill-color": "#666666 !important",
+                      color: "#666666 !important"
                     }
                   },
                   "& .MuiInputBase-input.Mui-disabled": {
-                    "-webkit-text-fill-color": "#FF0000",
-                    color: "#FF0000"
-                  }
+                    "-webkit-text-fill-color": "#666666",
+                    color: "#666666"
+                  },
+                  marginBottom: "20px"
                 }}
               />
 
@@ -553,13 +601,25 @@ const TeamRegistration = () => {
                   style: { backgroundColor: "#FFFFFF" }
                 }}
                 inputProps={{
-                  style: { color: "#FF0000" }
+                  style: { color: "#666666" }
                 }}
                 sx={{
-                  "& .MuiInputLabel-root": { color: "#FF0000" },
+                  "& .MuiInputLabel-root": { 
+                    color: "#FF0000",
+                    fontWeight: "bold",
+                    fontSize: "1.2rem",
+                    backgroundColor: "rgba(255, 255, 255, 0.9)",
+                    padding: "0 8px",
+                    borderRadius: "4px"
+                  },
+                  "& .MuiInputLabel-root.Mui-focused": { 
+                    color: "#FF0000",
+                    fontWeight: "bold" 
+                  },
                   "& .MuiOutlinedInput-root": { 
-                    "& > fieldset": { borderColor: "#FF0000" }
-                  }
+                    "& > fieldset": { borderColor: "#888888", borderWidth: "1px" }
+                  },
+                  marginBottom: "20px"
                 }}
               />
 
@@ -592,13 +652,31 @@ const TeamRegistration = () => {
                     ) : null
                   }}
                   inputProps={{
-                    style: { color: "#FF0000" }
+                    style: { color: "#666666" }
                   }}
                   sx={{
-                    "& .MuiInputLabel-root": { color: "#FF0000" },
+                    "& .MuiInputLabel-root": { 
+                      color: "#FF0000",
+                      fontWeight: "bold",
+                      fontSize: "1.2rem",
+                      backgroundColor: "rgba(255, 255, 255, 0.9)",
+                      padding: "0 8px",
+                      borderRadius: "4px"
+                    },
+                    "& .MuiInputLabel-root.Mui-focused": { 
+                      color: "#FF0000",
+                      fontWeight: "bold" 
+                    },
                     "& .MuiOutlinedInput-root": { 
-                      "& > fieldset": { borderColor: "#FF0000" }
-                    }
+                      "& > fieldset": { borderColor: "#888888", borderWidth: "1px" }
+                    },
+                    "& .MuiFormHelperText-root": {
+                      color: "#FF0000",
+                      fontWeight: "bold",
+                      fontSize: "0.9rem",
+                      marginTop: "5px"
+                    },
+                    marginBottom: "20px"
                   }}
                   error={validationStates[index] === false && email !== ''}
                   helperText={
@@ -611,12 +689,19 @@ const TeamRegistration = () => {
                         ? "User already registered for this event"
                         : "Email must be unique"
                       : index < (minTeamSize - 1) && email === ''
-                      ? "This member is required for this event"
+                      ? "This member must be added for this event"
                       : ""
                   }
                   required={index < (minTeamSize - 1)}
                 />
               ))}
+
+              {/* Event information message */}
+              {minTeamSize > 1 && (
+                <Typography variant="body2" align="left" style={{ marginTop: "5px", marginBottom: "15px", color: "#FF0000", fontWeight: "bold" }}>
+                  This event requires at least {minTeamSize} members in a team
+                </Typography>
+              )}
 
               {/* ✅ Team Lead Phone Number */}
               <TextField
@@ -631,13 +716,25 @@ const TeamRegistration = () => {
                   style: { backgroundColor: "#FFFFFF" }
                 }}
                 inputProps={{
-                  style: { color: "#FF0000" }
+                  style: { color: "#666666" }
                 }}
                 sx={{
-                  "& .MuiInputLabel-root": { color: "#FF0000" },
+                  "& .MuiInputLabel-root": { 
+                    color: "#FF0000",
+                    fontWeight: "bold",
+                    fontSize: "1.2rem",
+                    backgroundColor: "rgba(255, 255, 255, 0.9)",
+                    padding: "0 8px",
+                    borderRadius: "4px"
+                  },
+                  "& .MuiInputLabel-root.Mui-focused": { 
+                    color: "#FF0000",
+                    fontWeight: "bold" 
+                  },
                   "& .MuiOutlinedInput-root": { 
-                    "& > fieldset": { borderColor: "#FF0000" }
-                  }
+                    "& > fieldset": { borderColor: "#888888", borderWidth: "1px" }
+                  },
+                  marginBottom: "20px"
                 }}
                 helperText={
                   !isphone && "Team Leader Phone Number is mandatory"
@@ -656,18 +753,34 @@ const TeamRegistration = () => {
                   style: { backgroundColor: "#FFFFFF" }
                 }}
                 sx={{
-                  "& .MuiInputLabel-root": { color: "#FF0000" },
+                  "& .MuiInputLabel-root": { 
+                    color: "#FF0000",
+                    fontWeight: "bold",
+                    fontSize: "1.2rem",
+                    backgroundColor: "rgba(255, 255, 255, 0.9)",
+                    padding: "0 8px",
+                    borderRadius: "4px"
+                  },
+                  "& .MuiInputLabel-root.Mui-focused": { 
+                    color: "#FF0000",
+                    fontWeight: "bold" 
+                  },
+                  "& .MuiInputLabel-root.Mui-disabled": { 
+                    color: "#FF0000",
+                    fontWeight: "bold" 
+                  },
                   "& .MuiOutlinedInput-root": { 
-                    "& > fieldset": { borderColor: "#FF0000" },
+                    "& > fieldset": { borderColor: "#888888", borderWidth: "1px" },
                     "& .Mui-disabled": { 
-                      "-webkit-text-fill-color": "#FF0000 !important",
-                      color: "#FF0000 !important"
+                      "-webkit-text-fill-color": "#666666 !important",
+                      color: "#666666 !important"
                     }
                   },
                   "& .MuiInputBase-input.Mui-disabled": {
-                    "-webkit-text-fill-color": "#FF0000",
-                    color: "#FF0000"
-                  }
+                    "-webkit-text-fill-color": "#666666",
+                    color: "#666666"
+                  },
+                  marginBottom: "20px"
                 }}
               />
 
