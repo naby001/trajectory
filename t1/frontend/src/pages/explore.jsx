@@ -176,7 +176,7 @@ const events = [
     description: "Test your knowledge in a challenging quiz competition.",
     location: "Mechanical Dept, Jadavpur University",
     type: "General",
-    groupSize: "1-3",
+    groupSize: "1-2",
     price: 2000.0,
     image:
       "https://viralsolutions.net/wp-content/uploads/2019/06/shutterstock_749036344.webp", },
