@@ -281,7 +281,7 @@ export const events = [
     description: "Test your knowledge in a variety of subjects in this quiz competition. It challenges intellect, speed, and awareness, offering a thrilling battle of wits for all knowledge enthusiasts.",
     location: "Lecture Hall, Jadavpur University",
     type: "General",
-    groupSize: "1-3",
+    groupSize: "1-2",
     price: 4000.00,
     image: qui,
     prelimsDate: "02-04-2025",
