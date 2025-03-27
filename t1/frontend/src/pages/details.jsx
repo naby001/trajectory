@@ -331,7 +331,7 @@ export const events = [
     description: "An adventurous event where participants solve clues and complete challenges to find hidden treasures. It combines teamwork,problem-solving, and strategy as teams race to finish first and claim victory.",
     location: "Mechanical Dept, Jadavpur University",
     type: "Fun Actvities",
-    groupSize: "1",
+    groupSize: "1-4",
     price:6000,
     image: treasure,
     // prelimsDate: "17-03-2025(online)",
