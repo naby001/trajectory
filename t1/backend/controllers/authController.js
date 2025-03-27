@@ -33,9 +33,8 @@ exports.registerUser = async (req, res) => {
 
     await user.save();
 
-    // Generate JWT Token
     const payload = { user: { id: user.id } };
-    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "1h" });
+    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "365d" });
 
     res.status(201).json({
       message: "User registered successfully",
@@ -70,7 +69,7 @@ exports.loginUser = async (req, res) => {
 
     // Generate JWT Token
     const payload = { user: { id: user.id } };
-    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "1h" });
+    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "365d" });
 
     res.json({
       message: "Login successful",
