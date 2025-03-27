@@ -238,7 +238,6 @@ function HomePage() {
 
   return (
     <ThemeProvider theme={theme}>
-    
       <style>
         {`@import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');`}
         {`@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');`}
@@ -260,16 +259,25 @@ function HomePage() {
           zIndex: 1, // Ensure this container is properly layered
         }}
       >
-      <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: -1 }}>
-                <Squares 
-                  speed={0.5} 
-                  squareSize={40}
-                  direction='diagonal' // up, down, left, right, diagonal
-                  borderColor='#fff'
-                  hoverFillColor='#222'
-                />
-              </div>
-       
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            zIndex: -1,
+          }}
+        >
+          <Squares
+            speed={0.5}
+            squareSize={40}
+            direction="diagonal" // up, down, left, right, diagonal
+            borderColor="#fff"
+            hoverFillColor="#222"
+          />
+        </div>
+
         {/* Heading */}
         <Box
           sx={{
@@ -435,7 +443,9 @@ function HomePage() {
                         </Box>
 
                         {/* Card Content */}
-                        <CardContent sx={{ textAlign: "center", color: "white" }}>
+                        <CardContent
+                          sx={{ textAlign: "center", color: "white" }}
+                        >
                           <Typography
                             gutterBottom
                             variant="h5"
@@ -556,83 +566,82 @@ function HomePage() {
         </Fade>
 
         {/* Sponsors Section */}
-        <Box 
-          component="section" 
-          sx={{ 
-            py: 6, 
-            backgroundColor: 'rgba(0, 0, 0, 0.8)',
-            position: 'relative',
-            overflow: 'hidden',
-            zIndex: 1 
+        <Box
+          component="section"
+          sx={{
+            py: 6,
+            
           }}
           className="fade-in"
         >
           <Container maxWidth="lg">
-            <Typography 
-              variant="h4" 
-              component="h2" 
-              align="center" 
+            <Typography
+              variant="h4"
+              component="h2"
+              align="center"
               className="michroma"
-              sx={{ 
-                mb: 5, 
-                color: '#fff',
-                position: 'relative',
-                zIndex: 2
+              sx={{
+                mb: 5,
+                color: "#fff",
+                position: "relative",
+                zIndex: 2,
               }}
             >
               Our Sponsors
             </Typography>
-            
-            <Box sx={{ 
-              display: 'flex', 
-              justifyContent: 'center', 
-              flexWrap: 'wrap',
-              gap: 4,
-              position: 'relative',
-              zIndex: 2
-            }}>
-              <Paper 
-                elevation={6} 
-                sx={{ 
-                  p: 3, 
-                  display: 'flex', 
-                  flexDirection: 'column', 
-                  alignItems: 'center',
-                  backgroundColor: '#000000',
+
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                flexWrap: "wrap",
+                gap: 4,
+                position: "relative",
+                zIndex: 2,
+              }}
+            >
+              <Paper
+                elevation={6}
+                sx={{
+                  p: 3,
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  backgroundColor: "#000000",
                   borderRadius: 2,
-                  transition: 'transform 0.3s, box-shadow 0.3s',
-                  border: '1px solid #D4AF37',
-                  '&:hover': {
-                    transform: 'translateY(-5px)',
-                    boxShadow: '0 12px 20px rgba(212, 175, 55, 0.6)'
-                  }
+                  transition: "transform 0.3s, box-shadow 0.3s",
+                  border: "1px solid #D4AF37",
+                  "&:hover": {
+                    transform: "translateY(-5px)",
+                    boxShadow: "0 12px 20px rgba(212, 175, 55, 0.6)",
+                  },
                 }}
               >
-                <Typography 
-                  variant="h6" 
-                  component="h3" 
-                  sx={{ mb: 2, color: '#D4AF37' }}
+                <Typography
+                  variant="h6"
+                  component="h3"
+                  sx={{ mb: 2, color: "#D4AF37" }}
                   className="exo-2-bold"
                 >
                   Associates Sponsor
                 </Typography>
-                
-                <Box 
+
+                <Box
                   component="img"
                   src={versAttiresLogo}
                   alt="Vers Attires"
-                  sx={{ 
+                  sx={{
                     width: 220,
-                    height: 'auto',
+                    height: "auto",
                     mb: 2,
-                    objectFit: 'contain'
+                    objectFit: "contain",
                   }}
                 />
-                
-                <Typography 
-                  variant="body1" 
+
+                <Typography
+                  variant="body1"
                   align="center"
-                  sx={{ color: '#D4AF37' }}
+                  sx={{ color: "#D4AF37" }}
                   className="exo-2-regular"
                 >
                   Fashion Redefined
@@ -640,27 +649,8 @@ function HomePage() {
               </Paper>
             </Box>
           </Container>
-          
-          <Box 
-            sx={{ 
-              position: 'absolute', 
-              top: 0, 
-              left: 0, 
-              right: 0, 
-              bottom: 0,
-              zIndex: 0
-            }}
-          >
-            <Squares
-              speed={0.7}
-              squareSize={30}
-              direction="diagonal"
-              borderColor="#F45558"
-              hoverFillColor="#222"
-            />
-          </Box>
         </Box>
-        
+
         {/* Footer */}
         <Fade in={true} timeout={1000}>
           <Box
