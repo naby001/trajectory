@@ -113,7 +113,7 @@ const events = [
     location: "Mechanical Dept, Jadavpur University",
     type: "Hardware Challenge",
     groupSize: "2-3",
-    price: 2000.0,
+    price: 6000.0,
     image:
       hydro,
   },
@@ -124,7 +124,7 @@ const events = [
     location: "Mechanical Dept, Jadavpur University",
     type: "Hardware Challenge",
     groupSize: "3-4",
-    price: 10000.0,
+    price: 12000.0,
     image:
       robo,},
   {
@@ -135,7 +135,7 @@ const events = [
     location: "Mechanical Dept, Jadavpur University",
     type: "Hardware Challenge",
     groupSize: "3-4",
-    price: 10000.0,
+    price: 12000.0,
     image:mazecraft,
   },
   {
@@ -146,7 +146,7 @@ const events = [
     location: "Mechanical Dept, Jadavpur University",
     type: "Fun Activities",
     groupSize: "2-4",
-    price: 2000.0,
+    price: 6000,
     image:
       egg,},
   // {
@@ -167,7 +167,7 @@ const events = [
     location: "Mechanical Dept, Jadavpur University",
     type: "3D Design Battle",
     groupSize: "1",
-    price: 2000.0,
+    price: 6000.0,
     image:
       model,  },
   {
@@ -177,7 +177,7 @@ const events = [
     location: "Mechanical Dept, Jadavpur University",
     type: "General",
     groupSize: "1-2",
-    price: 2000.0,
+    price: 6000.0,
     image:
       "https://viralsolutions.net/wp-content/uploads/2019/06/shutterstock_749036344.webp", },
   {
@@ -188,7 +188,7 @@ const events = [
     location: "Mechanical Dept, Jadavpur University",
     type: "General",
     groupSize: "1-4",
-    price: 2000.0,
+    price: 6000.0,
     image:
       tarka,},
   {
@@ -198,7 +198,7 @@ const events = [
     location: "Mechanical Dept, Jadavpur University",
     type: "Fun Activities",
     groupSize: "1",
-    price: 2000.0,
+    price: 4000.0,
     image:
       lens,},
   {
@@ -209,7 +209,7 @@ const events = [
     location: "Mechanical Dept, Jadavpur University",
     type: "Case Study",
     groupSize: "3-4",
-    price: 2000.0,
+    price: 6000.0,
     image:
       clash,},
   {
@@ -220,7 +220,7 @@ const events = [
     location: "Mechanical Dept, Jadavpur University",
     type: "Case Study",
     groupSize: "2-4",
-    price: 2000.0,
+    price: 6000.0,
     image: data,
   },
   
@@ -232,7 +232,7 @@ const events = [
     location: "Mechanical Dept, Jadavpur University",
     type: "Fun Activities",
     groupSize: "2-4",
-    price: 2000.0,
+    price: 6000.0,
     image:
 treasure,  },
   {
@@ -242,7 +242,7 @@ treasure,  },
     location: "Mechanical Dept, Jadavpur University",
     type: "Mystery Event?",
     groupSize: "1000",
-    price: 2000.0,
+    price: 0,
     image:
       "https://images.pexels.com/photos/5428830/pexels-photo-5428830.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
