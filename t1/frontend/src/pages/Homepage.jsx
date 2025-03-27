@@ -40,6 +40,7 @@ import videoSrc from "../assets/v.mp4"; // Ensure this path is correct
 
 import edclassroom from "../assets/edclassroom.jpg";
 import microhydro from "../assets/microhydro.jpg";
+import versAttiresLogo from "../assets/vers-attires-logo.png"; // Import Vers Attires logo
 import Squares from "../components/Square";
 
 const theme = createTheme({
@@ -554,8 +555,112 @@ function HomePage() {
           </Box>
         </Fade>
 
+        {/* Sponsors Section */}
+        <Box 
+          component="section" 
+          sx={{ 
+            py: 6, 
+            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+            position: 'relative',
+            overflow: 'hidden',
+            zIndex: 1 
+          }}
+          className="fade-in"
+        >
+          <Container maxWidth="lg">
+            <Typography 
+              variant="h4" 
+              component="h2" 
+              align="center" 
+              className="michroma"
+              sx={{ 
+                mb: 5, 
+                color: '#fff',
+                position: 'relative',
+                zIndex: 2
+              }}
+            >
+              Our Sponsors
+            </Typography>
+            
+            <Box sx={{ 
+              display: 'flex', 
+              justifyContent: 'center', 
+              flexWrap: 'wrap',
+              gap: 4,
+              position: 'relative',
+              zIndex: 2
+            }}>
+              <Paper 
+                elevation={6} 
+                sx={{ 
+                  p: 3, 
+                  display: 'flex', 
+                  flexDirection: 'column', 
+                  alignItems: 'center',
+                  backgroundColor: '#000000',
+                  borderRadius: 2,
+                  transition: 'transform 0.3s, box-shadow 0.3s',
+                  border: '1px solid #D4AF37',
+                  '&:hover': {
+                    transform: 'translateY(-5px)',
+                    boxShadow: '0 12px 20px rgba(212, 175, 55, 0.6)'
+                  }
+                }}
+              >
+                <Typography 
+                  variant="h6" 
+                  component="h3" 
+                  sx={{ mb: 2, color: '#D4AF37' }}
+                  className="exo-2-bold"
+                >
+                  Associates Sponsor
+                </Typography>
+                
+                <Box 
+                  component="img"
+                  src={versAttiresLogo}
+                  alt="Vers Attires"
+                  sx={{ 
+                    width: 220,
+                    height: 'auto',
+                    mb: 2,
+                    objectFit: 'contain'
+                  }}
+                />
+                
+                <Typography 
+                  variant="body1" 
+                  align="center"
+                  sx={{ color: '#D4AF37' }}
+                  className="exo-2-regular"
+                >
+                  Fashion Redefined
+                </Typography>
+              </Paper>
+            </Box>
+          </Container>
+          
+          <Box 
+            sx={{ 
+              position: 'absolute', 
+              top: 0, 
+              left: 0, 
+              right: 0, 
+              bottom: 0,
+              zIndex: 0
+            }}
+          >
+            <Squares
+              speed={0.7}
+              squareSize={30}
+              direction="diagonal"
+              borderColor="#F45558"
+              hoverFillColor="#222"
+            />
+          </Box>
+        </Box>
         
-
         {/* Footer */}
         <Fade in={true} timeout={1000}>
           <Box
