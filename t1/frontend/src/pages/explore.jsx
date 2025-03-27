@@ -149,16 +149,16 @@ const events = [
     price: 6000,
     image:
       egg,},
-  // {
-  //   _id: "67b714349a01ff3f0a3c85e5",
-  //   title: "Hoverpod",
-  //   description: "",
-  //   location: "Mechanical Dept, Jadavpur University",
-  //   type: "Hardware Challenge",
-  //   groupSize: "5",
-  //   price: 10000.0,
-  //   image:
-  //     Hover,},
+  {
+    _id: "67b714349a01ff3f0a3c85e5",
+    title: "Hoverpod",
+    description: "",
+    location: "Mechanical Dept, Jadavpur University",
+    type: "Hardware Challenge",
+    groupSize: "5",
+    price: 10000.0,
+    image:
+      Hover,},
   {
     _id: "67b714449a01ff3f0a3c85e6",
     title: "Model Matrix",
@@ -235,17 +235,17 @@ const events = [
     price: 6000.0,
     image:
 treasure,  },
-  {
-    _id: "67b714d09a01ff3f0a3c85ef",
-    title: "Mystery Event",
-    description: "",
-    location: "Mechanical Dept, Jadavpur University",
-    type: "Mystery Event?",
-    groupSize: "1000",
-    price: 0,
-    image:
-      "https://images.pexels.com/photos/5428830/pexels-photo-5428830.jpeg?auto=compress&cs=tinysrgb&w=600",
-  },
+  // {
+  //   _id: "67b714d09a01ff3f0a3c85ef",
+  //   title: "Mystery Event",
+  //   description: "",
+  //   location: "Mechanical Dept, Jadavpur University",
+  //   type: "Mystery Event?",
+  //   groupSize: "1000",
+  //   price: "?",
+  //   image:
+  //     "https://images.pexels.com/photos/5428830/pexels-photo-5428830.jpeg?auto=compress&cs=tinysrgb&w=600",
+  // },
 ];
 
 export function Explore() {
