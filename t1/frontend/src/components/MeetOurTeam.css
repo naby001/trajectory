@@ -29,8 +29,8 @@
 
 .picture {
   display: inline-block;
-  height: 110px; /* Reduced from 130px */
-  width: 110px;  /* Reduced from 130px */
+  height: 130px;
+  width: 130px;
   margin-bottom: 20px;
   position: relative;
 }
@@ -54,14 +54,14 @@
   height: 100%;
 }
 
-.picture img {
+.picture img, .picture .MuiAvatar-root {
   width: 100%;
   height: auto;
   border-radius: 50%;
   transition: all 0.9s ease 0s;
 }
 
-.our-team:hover .picture img {
+.our-team:hover .picture img, .our-team:hover .picture .MuiAvatar-root {
   box-shadow: 0 0 0 14px #F45558;
   transform: scale(0.85);
 }
