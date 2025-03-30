@@ -571,9 +571,7 @@ function HomePage() {
           component="section" 
           sx={{ 
             py: 6, 
-            backgroundColor: 'rgba(0, 0, 0, 0.8)',
-            position: 'relative',
-            overflow: 'hidden',
+           
             zIndex: 0  // Changed from 1 to 0 to ensure it's below the navbar
           }}
           className="fade-in"
@@ -652,24 +650,8 @@ function HomePage() {
             </Box>
           </Container>
           
-          <Box 
-            sx={{ 
-              position: 'absolute', 
-              top: 0, 
-              left: 0, 
-              right: 0, 
-              bottom: 0,
-              zIndex: 0
-            }}
-          >
-            <Squares
-              speed={0.7}
-              squareSize={30}
-              direction="diagonal"
-              borderColor="#D4AF37"
-              hoverFillColor="#222"
-            />
-          </Box>
+          
+          
         </Box>
 
         {/* Organisers Section */}
