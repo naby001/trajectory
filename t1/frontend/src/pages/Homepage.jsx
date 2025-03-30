@@ -41,6 +41,9 @@ import videoSrc from "../assets/v.mp4"; // Ensure this path is correct
 import edclassroom from "../assets/edclassroom.jpg";
 import microhydro from "../assets/microhydro.jpg";
 import versAttiresLogo from "../assets/vers-attires-logo.png"; // Import Vers Attires logo
+import exideLogo from "../assets/exide-logo.png"; // Import Exide logo
+import webskittersLogo from "../assets/webskitters.png"; // Import Webskitters logo
+
 import Squares from "../components/Square";
 import "../components/MeetOurTeam.css"; // Fix the import path
 
@@ -567,45 +570,50 @@ function HomePage() {
         </Fade>
 
         {/* Sponsors Section */}
-        <Box 
-          component="section" 
-          sx={{ 
-            py: 6, 
-            backgroundColor: 'rgba(0, 0, 0, 0.8)',
-            position: 'relative',
-            overflow: 'hidden',
-            zIndex: 0  // Changed from 1 to 0 to ensure it's below the navbar
+        <Box
+          component="section"
+          sx={{
+            py: 6,
+            backgroundColor: "rgba(0, 0, 0, 0.8)",
+            position: "relative",
+            overflow: "hidden",
+            zIndex: 0, // Changed from 1 to 0 to ensure it's below the navbar
+            minHeight: "500px", // Fixed height to maintain consistent background
+            height: "auto"
           }}
           className="fade-in"
         >
           <Container maxWidth="lg">
-            <Typography 
-              variant="h4" 
-              component="h2" 
-              align="center" 
+            <Typography
+              variant="h4"
+              component="h2"
+              align="center"
               className="michroma"
-              sx={{ 
-                mb: 5, 
-                color: '#fff',
-                position: 'relative',
-                zIndex: 1  // Changed from 2 to 1
+              sx={{
+                mb: 5,
+                color: "#fff",
+                position: "relative",
+                zIndex: 1, // Changed from 2 to 1
               }}
             >
               Our Sponsors
             </Typography>
-            
-            <Box sx={{ 
-              display: 'flex', 
-              justifyContent: 'center', 
-              flexWrap: 'wrap',
-              gap: 4,
-              position: 'relative',
-              zIndex: 1  // Changed from 2 to 1
-            }}>
+
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                flexWrap: "wrap",
+                gap: 4,
+                position: "relative",
+                zIndex: 1, // Changed from 2 to 1
+              }}
+            >
               <Paper
                 elevation={6}
                 sx={{
                   p: 3,
+                  width: 280,
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
@@ -649,24 +657,128 @@ function HomePage() {
                   Fashion Redefined
                 </Typography>
               </Paper>
+              
+              <Paper
+                elevation={6}
+                sx={{
+                  p: 3,
+                  width: 280,
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  backgroundColor: "#000000",
+                  borderRadius: 2,
+                  transition: "transform 0.3s, box-shadow 0.3s",
+                  border: "1px solid #e60000",
+                  "&:hover": {
+                    transform: "translateY(-5px)",
+                    boxShadow: "0 12px 20px rgba(230, 0, 0, 0.6)",
+                  },
+                }}
+              >
+                <Typography
+                  variant="h6"
+                  component="h3"
+                  sx={{ mb: 2, color: "#e60000" }}
+                  className="exo-2-bold"
+                >
+                  Co-Sponsor
+                </Typography>
+
+                <Box
+                  component="img"
+                  src={exideLogo}
+                  alt="Exide"
+                  sx={{
+                    width: 220,
+                    height: "auto",
+                    mb: 2,
+                    objectFit: "contain",
+                    display: "block",
+                    marginLeft: "auto",
+                    marginRight: "auto"
+                  }}
+                />
+
+                <Typography
+                  variant="body1"
+                  align="center"
+                  sx={{ color: "#e60000" }}
+                  className="exo-2-regular"
+                >
+                  Powering the Future
+                </Typography>
+              </Paper>
+              
+              <Paper
+                elevation={6}
+                sx={{
+                  p: 3,
+                  width: 280,
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  backgroundColor: "#000000",
+                  borderRadius: 2,
+                  transition: "transform 0.3s, box-shadow 0.3s",
+                  border: "1px solid #D4AF37",
+                  "&:hover": {
+                    transform: "translateY(-5px)",
+                    boxShadow: "0 12px 20px rgba(212, 175, 55, 0.6)",
+                  },
+                }}
+              >
+                <Typography
+                  variant="h6"
+                  component="h3"
+                  sx={{ mb: 2, color: "#D4AF37" }}
+                  className="exo-2-bold"
+                >
+                  Associate Sponsor
+                </Typography>
+
+                <Box
+                  component="img"
+                  src={webskittersLogo}
+                  alt="Webskitters"
+                  sx={{
+                    width: 220,
+                    height: "auto",
+                    mb: 2,
+                    objectFit: "contain",
+                    display: "block",
+                    marginLeft: "auto",
+                    marginRight: "auto"
+                  }}
+                />
+
+                <Typography
+                  variant="body1"
+                  align="center"
+                  sx={{ color: "#D4AF37" }}
+                  className="exo-2-regular"
+                >
+                  A national award winning company
+                </Typography>
+              </Paper>
             </Box>
           </Container>
-          
-          <Box 
-            sx={{ 
-              position: 'absolute', 
-              top: 0, 
-              left: 0, 
-              right: 0, 
+
+          <Box
+            sx={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
               bottom: 0,
-              zIndex: 0
+              zIndex: 0,
             }}
           >
             <Squares
-              speed={0.7}
-              squareSize={30}
+              speed={0.5}
+              squareSize={40}
               direction="diagonal"
-              borderColor="#D4AF37"
+              borderColor="#fff"
               hoverFillColor="#222"
             />
           </Box>
@@ -674,13 +786,13 @@ function HomePage() {
 
         {/* Organisers Section */}
         <Fade in={true} timeout={1000}>
-          <Box 
-            className="fade-in" 
-            sx={{ 
-              py: 8, 
+          <Box
+            className="fade-in"
+            sx={{
+              py: 8,
               color: "white",
-              position: 'relative',
-              zIndex: 0
+              position: "relative",
+              zIndex: 0,
             }}
           >
             <Container maxWidth="lg">
@@ -693,7 +805,7 @@ function HomePage() {
               >
                 Our Organisers
               </Typography>
-              
+
               <Grid container spacing={4} justifyContent="center">
                 {[
                   { name: "Himoprovo Chowdhury", linkedin: "#", image: "" },
@@ -709,29 +821,29 @@ function HomePage() {
                   { name: "Satyam Roy", linkedin: "#", image: "" },
                   { name: "Arkarabrata Das", linkedin: "#", image: "" },
                   { name: "Soumyojit Biswas", linkedin: "#", image: "" },
-                  { name: "Suprabhat", linkedin: "#", image: "" }
+                  { name: "Suprabhat", linkedin: "#", image: "" },
                 ].map((member, index) => (
                   <Grid item xs={12} sm={6} md={3} key={index}>
                     <Fade in={true} timeout={1000}>
                       <Card className="our-team">
                         <Box className="picture">
                           {member.image ? (
-                            <img 
-                              src={member.image} 
-                              alt={member.name} 
-                              style={{ 
-                                width: "130px", 
-                                height: "130px", 
-                                objectFit: "cover", 
-                                borderRadius: "50%"
-                              }} 
+                            <img
+                              src={member.image}
+                              alt={member.name}
+                              style={{
+                                width: "130px",
+                                height: "130px",
+                                objectFit: "cover",
+                                borderRadius: "50%",
+                              }}
                             />
                           ) : (
                             <Avatar
                               sx={{
-                                width: "130px", 
+                                width: "130px",
                                 height: "130px",
-                                fontSize: '2.5rem'
+                                fontSize: "2.5rem",
                               }}
                             >
                               {member.name.charAt(0)}
@@ -743,7 +855,11 @@ function HomePage() {
                             {member.name}
                           </Typography>
                           <Box className="social">
-                            <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
+                            <a
+                              href={member.linkedin}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
                               <LinkedInIcon />
                             </a>
                           </Box>
