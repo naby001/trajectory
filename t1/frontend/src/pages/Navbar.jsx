@@ -83,6 +83,7 @@ const Navbar = () => {
         lineHeight: "1.5",
         backgroundColor: "transparent",
         boxShadow: "0 0 15px rgba(255, 102, 102, 0.8)",
+        zIndex: 1100,
       }}
     >
       

@@ -42,6 +42,7 @@ import edclassroom from "../assets/edclassroom.jpg";
 import microhydro from "../assets/microhydro.jpg";
 import versAttiresLogo from "../assets/vers-attires-logo.png"; // Import Vers Attires logo
 import Squares from "../components/Square";
+import "../components/MeetOurTeam.css"; // Fix the import path
 
 const theme = createTheme({
   typography: {
@@ -566,40 +567,41 @@ function HomePage() {
         </Fade>
 
         {/* Sponsors Section */}
-        <Box
-          component="section"
-          sx={{
-            py: 6,
-            
+        <Box 
+          component="section" 
+          sx={{ 
+            py: 6, 
+            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+            position: 'relative',
+            overflow: 'hidden',
+            zIndex: 0  // Changed from 1 to 0 to ensure it's below the navbar
           }}
           className="fade-in"
         >
           <Container maxWidth="lg">
-            <Typography
-              variant="h4"
-              component="h2"
-              align="center"
+            <Typography 
+              variant="h4" 
+              component="h2" 
+              align="center" 
               className="michroma"
-              sx={{
-                mb: 5,
-                color: "#fff",
-                position: "relative",
-                zIndex: 2,
+              sx={{ 
+                mb: 5, 
+                color: '#fff',
+                position: 'relative',
+                zIndex: 1  // Changed from 2 to 1
               }}
             >
               Our Sponsors
             </Typography>
-
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                flexWrap: "wrap",
-                gap: 4,
-                position: "relative",
-                zIndex: 2,
-              }}
-            >
+            
+            <Box sx={{ 
+              display: 'flex', 
+              justifyContent: 'center', 
+              flexWrap: 'wrap',
+              gap: 4,
+              position: 'relative',
+              zIndex: 1  // Changed from 2 to 1
+            }}>
               <Paper
                 elevation={6}
                 sx={{
@@ -623,7 +625,7 @@ function HomePage() {
                   sx={{ mb: 2, color: "#D4AF37" }}
                   className="exo-2-bold"
                 >
-                  Associates Sponsor
+                  Associate Sponsor
                 </Typography>
 
                 <Box
@@ -649,7 +651,111 @@ function HomePage() {
               </Paper>
             </Box>
           </Container>
+          
+          <Box 
+            sx={{ 
+              position: 'absolute', 
+              top: 0, 
+              left: 0, 
+              right: 0, 
+              bottom: 0,
+              zIndex: 0
+            }}
+          >
+            <Squares
+              speed={0.7}
+              squareSize={30}
+              direction="diagonal"
+              borderColor="#D4AF37"
+              hoverFillColor="#222"
+            />
+          </Box>
         </Box>
+
+        {/* Organisers Section */}
+        <Fade in={true} timeout={1000}>
+          <Box 
+            className="fade-in" 
+            sx={{ 
+              py: 8, 
+              color: "white",
+              position: 'relative',
+              zIndex: 0
+            }}
+          >
+            <Container maxWidth="lg">
+              <Typography
+                variant="h4"
+                align="center"
+                className="michroma"
+                gutterBottom
+                sx={{ mb: 6 }}
+              >
+                Our Organisers
+              </Typography>
+              
+              <Grid container spacing={4} justifyContent="center">
+                {[
+                  { name: "Himoprovo Chowdhury", linkedin: "#", image: "" },
+                  { name: "Arijit Mandal", linkedin: "#", image: "" },
+                  { name: "Srija Mondal", linkedin: "#", image: "" },
+                  { name: "Abhranuj Poddar", linkedin: "#", image: "" },
+                  { name: "Subhranuj Poddar", linkedin: "#", image: "" },
+                  { name: "Mrinmoy Tarafdar", linkedin: "#", image: "" },
+                  { name: "Sayan Das", linkedin: "#", image: "" },
+                  { name: "Nabyendu Das", linkedin: "#", image: "" },
+                  { name: "Koustav Das", linkedin: "#", image: "" },
+                  { name: "Souvik Howlader", linkedin: "#", image: "" },
+                  { name: "Satyam Roy", linkedin: "#", image: "" },
+                  { name: "Arkarabrata Das", linkedin: "#", image: "" },
+                  { name: "Soumyojit Biswas", linkedin: "#", image: "" },
+                  { name: "Suprabhat", linkedin: "#", image: "" }
+                ].map((member, index) => (
+                  <Grid item xs={12} sm={6} md={3} key={index}>
+                    <Fade in={true} timeout={1000}>
+                      <Card className="our-team">
+                        <Box className="picture">
+                          {member.image ? (
+                            <img 
+                              src={member.image} 
+                              alt={member.name} 
+                              style={{ 
+                                width: "130px", 
+                                height: "130px", 
+                                objectFit: "cover", 
+                                borderRadius: "50%"
+                              }} 
+                            />
+                          ) : (
+                            <Avatar
+                              sx={{
+                                width: "130px", 
+                                height: "130px",
+                                fontSize: '2.5rem'
+                              }}
+                            >
+                              {member.name.charAt(0)}
+                            </Avatar>
+                          )}
+                        </Box>
+                        <CardContent className="team-content">
+                          <Typography variant="h6" className="name">
+                            {member.name}
+                          </Typography>
+                          <Box className="social">
+                            <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
+                              <LinkedInIcon />
+                            </a>
+                          </Box>
+                        </CardContent>
+                      </Card>
+                    </Fade>
+                  </Grid>
+                ))}
+              </Grid>
+            </Container>
+          </Box>
+        </Fade>
 
         {/* Footer */}
         <Fade in={true} timeout={1000}>
