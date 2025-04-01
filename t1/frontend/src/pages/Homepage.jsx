@@ -667,7 +667,7 @@ function HomePage() {
                   backgroundColor: "#000000",
                   borderRadius: 2,
                   transition: "transform 0.3s, box-shadow 0.3s",
-                  border: "1px solid #e60000",
+                  border: "4px solid #e60000",
                   "&:hover": {
                     transform: "translateY(-5px)",
                     boxShadow: "0 12px 20px rgba(230, 0, 0, 0.6)",
@@ -682,7 +682,7 @@ function HomePage() {
                 >
                   Co-Sponsor
                 </Typography>
-
+                <br></br><br></br><br></br>
                 <Box
                   component="img"
                   src={exideLogo}
@@ -697,15 +697,15 @@ function HomePage() {
                     marginRight: "auto"
                   }}
                 />
-
-                <Typography
-                  variant="body1"
-                  align="center"
-                  sx={{ color: "#e60000" }}
-                  className="exo-2-regular"
-                >
-                  Powering the Future
-                </Typography>
+               <br></br><br></br><br></br>
+               <Typography
+  variant="body1"
+  align="center"
+  sx={{ color: "#e60000", fontWeight: "bold" }}
+  className="exo-2-regular"
+>
+  Powering the Future
+</Typography>
               </Paper>
               
               <Paper
@@ -719,22 +719,22 @@ function HomePage() {
                   backgroundColor: "#000000",
                   borderRadius: 2,
                   transition: "transform 0.3s, box-shadow 0.3s",
-                  border: "1px solid #D4AF37",
+                  border: "1px blue solid",
                   "&:hover": {
                     transform: "translateY(-5px)",
-                    boxShadow: "0 12px 20px rgba(212, 175, 55, 0.6)",
+                    boxShadow: "0 12px 20px rgba(55, 175, 212, 0.6)",
                   },
                 }}
               >
                 <Typography
                   variant="h6"
                   component="h3"
-                  sx={{ mb: 2, color: "#D4AF37" }}
+                  sx={{ mb: 2, color: "rgba(0, 195, 255, 0.6)" }}
                   className="exo-2-bold"
                 >
                   Associate Sponsor
                 </Typography>
-
+                <br></br><br></br><br></br>
                 <Box
                   component="img"
                   src={webskittersLogo}
@@ -749,11 +749,11 @@ function HomePage() {
                     marginRight: "auto"
                   }}
                 />
-
+                 <br></br><br></br><br></br>
                 <Typography
                   variant="body1"
                   align="center"
-                  sx={{ color: "#D4AF37" }}
+                  sx={{ color: "rgba(0, 195, 255, 0.6)" }}
                   className="exo-2-regular"
                 >
                   A national award winning company
@@ -797,15 +797,15 @@ function HomePage() {
                   { name: "Himoprovo Chowdhury", linkedin: "#", image: "https://res.cloudinary.com/dz4ooxird/image/upload/v1743362373/my/bwrzuqpx857uye6bgmw3.jpg" },
                   { name: "Arijit Mandal", linkedin: "#", image: "https://res.cloudinary.com/dz4ooxird/image/upload/v1743362520/my/a6v01xfow0ntve4oog9g.jpg" },
                   { name: "Srija Mondal", linkedin: "#", image: "https://res.cloudinary.com/dz4ooxird/image/upload/v1743363490/my/cdnogiksfo65fehn5qjv.png" },
-                  { name: "Abhranuj Poddar", linkedin: "#", image: "https://res.cloudinary.com/dz4ooxird/image/upload/v1743362559/my/oz61wtultyubwu8mb6aa.jpg" },
-                  { name: "Subhranuj Poddar", linkedin: "#", image: "https://res.cloudinary.com/dz4ooxird/image/upload/v1743363536/my/dy8ns9nqe9s6fiskyhdy.png" },
+                  { name: "Abhranuj Podder", linkedin: "#", image: "https://res.cloudinary.com/dz4ooxird/image/upload/v1743362559/my/oz61wtultyubwu8mb6aa.jpg" },
+                  { name: "Subhranuj Podder", linkedin: "#", image: "https://res.cloudinary.com/dz4ooxird/image/upload/v1743363536/my/dy8ns9nqe9s6fiskyhdy.png" },
                   { name: "Mrinmoy Tarafdar", linkedin: "#", image: "https://res.cloudinary.com/dz4ooxird/image/upload/v1743362448/my/saor9vtzo3ehkjklbbdr.jpg" },
                   { name: "Sayan Das", linkedin: "#", image: "https://res.cloudinary.com/dz4ooxird/image/upload/v1743362369/my/fe6rkioivhypms7c4sx8.jpg" },
                   { name: "Nabyendu Das", linkedin: "#", image: "https://res.cloudinary.com/dz4ooxird/image/upload/v1741952758/my/nc8nkkhw46lins64niuz.png" },
                   { name: "Koustav Das", linkedin: "#", image: "https://res.cloudinary.com/dig63yzxi/image/upload/v1741957639/koustav_bzxwnq.jpg" },
                   { name: "Souvik Howlader", linkedin: "#", image: "https://res.cloudinary.com/dz4ooxird/image/upload/v1743363710/my/zujkm7yqjz1rupkrebov.jpg" },
                   { name: "Satyam Roy", linkedin: "#", image: "https://res.cloudinary.com/dz4ooxird/image/upload/v1743362364/my/ejjkxi6le7lndot3khu7.jpg" },
-                  { name: "Arkarabrata Das", linkedin: "#", image: "https://res.cloudinary.com/dz4ooxird/image/upload/v1743362345/my/p7ktlal65pcjuy5o3vi3.jpg" },
+                  { name: "Arkabrata Das", linkedin: "#", image: "https://res.cloudinary.com/dz4ooxird/image/upload/v1743362345/my/p7ktlal65pcjuy5o3vi3.jpg" },
                   { name: "Soumyojit Biswas", linkedin: "#", image: "https://res.cloudinary.com/dz4ooxird/image/upload/v1743363912/gtnnf1hfibhywamckejs.png" },
                   { name: "Suprabhat Das", linkedin: "#", image: "https://res.cloudinary.com/dz4ooxird/image/upload/v1743362355/my/pfnwdqwmewyoybrcx0e4.jpg" }
 
