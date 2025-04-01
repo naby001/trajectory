@@ -570,16 +570,14 @@ function HomePage() {
         </Fade>
 
         {/* Sponsors Section */}
-        <Box
-          component="section"
-          sx={{
-            py: 6,
-            backgroundColor: "rgba(0, 0, 0, 0.8)",
-            position: "relative",
-            overflow: "hidden",
-            zIndex: 0, // Changed from 1 to 0 to ensure it's below the navbar
-            minHeight: "500px", // Fixed height to maintain consistent background
-            height: "auto"
+
+        <Box 
+          component="section" 
+          sx={{ 
+            py: 6, 
+           
+            zIndex: 0  // Changed from 1 to 0 to ensure it's below the navbar
+
           }}
           className="fade-in"
         >
@@ -764,24 +762,11 @@ function HomePage() {
             </Box>
           </Container>
 
-          <Box
-            sx={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              zIndex: 0,
-            }}
-          >
-            <Squares
-              speed={0.5}
-              squareSize={40}
-              direction="diagonal"
-              borderColor="#fff"
-              hoverFillColor="#222"
-            />
-          </Box>
+
+          
+          
+          
+
         </Box>
 
         {/* Organisers Section */}
@@ -808,20 +793,22 @@ function HomePage() {
 
               <Grid container spacing={4} justifyContent="center">
                 {[
-                  { name: "Himoprovo Chowdhury", linkedin: "#", image: "" },
-                  { name: "Arijit Mandal", linkedin: "#", image: "" },
-                  { name: "Srija Mondal", linkedin: "#", image: "" },
-                  { name: "Abhranuj Poddar", linkedin: "#", image: "" },
-                  { name: "Subhranuj Poddar", linkedin: "#", image: "" },
-                  { name: "Mrinmoy Tarafdar", linkedin: "#", image: "" },
-                  { name: "Sayan Das", linkedin: "#", image: "" },
-                  { name: "Nabyendu Das", linkedin: "#", image: "" },
-                  { name: "Koustav Das", linkedin: "#", image: "" },
-                  { name: "Souvik Howlader", linkedin: "#", image: "" },
-                  { name: "Satyam Roy", linkedin: "#", image: "" },
-                  { name: "Arkarabrata Das", linkedin: "#", image: "" },
-                  { name: "Soumyojit Biswas", linkedin: "#", image: "" },
-                  { name: "Suprabhat", linkedin: "#", image: "" },
+
+                  { name: "Himoprovo Chowdhury", linkedin: "#", image: "https://res.cloudinary.com/dz4ooxird/image/upload/v1743362373/my/bwrzuqpx857uye6bgmw3.jpg" },
+                  { name: "Arijit Mandal", linkedin: "#", image: "https://res.cloudinary.com/dz4ooxird/image/upload/v1743362520/my/a6v01xfow0ntve4oog9g.jpg" },
+                  { name: "Srija Mondal", linkedin: "#", image: "https://res.cloudinary.com/dz4ooxird/image/upload/v1743363490/my/cdnogiksfo65fehn5qjv.png" },
+                  { name: "Abhranuj Poddar", linkedin: "#", image: "https://res.cloudinary.com/dz4ooxird/image/upload/v1743362559/my/oz61wtultyubwu8mb6aa.jpg" },
+                  { name: "Subhranuj Poddar", linkedin: "#", image: "https://res.cloudinary.com/dz4ooxird/image/upload/v1743363536/my/dy8ns9nqe9s6fiskyhdy.png" },
+                  { name: "Mrinmoy Tarafdar", linkedin: "#", image: "https://res.cloudinary.com/dz4ooxird/image/upload/v1743362448/my/saor9vtzo3ehkjklbbdr.jpg" },
+                  { name: "Sayan Das", linkedin: "#", image: "https://res.cloudinary.com/dz4ooxird/image/upload/v1743362369/my/fe6rkioivhypms7c4sx8.jpg" },
+                  { name: "Nabyendu Das", linkedin: "#", image: "https://res.cloudinary.com/dz4ooxird/image/upload/v1741952758/my/nc8nkkhw46lins64niuz.png" },
+                  { name: "Koustav Das", linkedin: "#", image: "https://res.cloudinary.com/dig63yzxi/image/upload/v1741957639/koustav_bzxwnq.jpg" },
+                  { name: "Souvik Howlader", linkedin: "#", image: "https://res.cloudinary.com/dz4ooxird/image/upload/v1743363710/my/zujkm7yqjz1rupkrebov.jpg" },
+                  { name: "Satyam Roy", linkedin: "#", image: "https://res.cloudinary.com/dz4ooxird/image/upload/v1743362364/my/ejjkxi6le7lndot3khu7.jpg" },
+                  { name: "Arkarabrata Das", linkedin: "#", image: "https://res.cloudinary.com/dz4ooxird/image/upload/v1743362345/my/p7ktlal65pcjuy5o3vi3.jpg" },
+                  { name: "Soumyojit Biswas", linkedin: "#", image: "https://res.cloudinary.com/dz4ooxird/image/upload/v1743363912/gtnnf1hfibhywamckejs.png" },
+                  { name: "Suprabhat Das", linkedin: "#", image: "https://res.cloudinary.com/dz4ooxird/image/upload/v1743362355/my/pfnwdqwmewyoybrcx0e4.jpg" }
+
                 ].map((member, index) => (
                   <Grid item xs={12} sm={6} md={3} key={index}>
                     <Fade in={true} timeout={1000}>
